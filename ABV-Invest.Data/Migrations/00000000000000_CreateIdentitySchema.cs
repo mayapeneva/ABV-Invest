@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ABV_Invest.Web.Data.Migrations
+namespace ABV_Invest.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
