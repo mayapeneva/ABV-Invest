@@ -12,21 +12,30 @@ body {
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4
-}
-
-#myCarousel {
-    margin-top: 50px;
-    margin-bottom: 50px
-}
-
 /* Layout*/
 .navbar {
     color: #d2db34;
     background-color: #2a833f;
+}
+
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+#myCarousel {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Index */
+#index-menu {
+    margin-bottom: 50px;
+}
+
+/* About*/
+.large-fontsize {
+    font-size: 20px !important;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
@@ -36,7 +45,7 @@ body {
 
 /* Text colors*/
 .bg-abvdarkgreen {
-    color: #2A833F
+    color: #2A833F;
 }
 
 .bg-abvmiddlegreen {
@@ -45,6 +54,19 @@ body {
 
 .bg-abvlightgreen {
     color: #D2DB34;
+}
+
+/* Backgroud color*/
+.bg-bg-abvdarkgreen {
+    background-color: #2A833F;
+}
+
+.bg-bg-abvmiddlegreen {
+    background-color: #89BF32;
+}
+
+.bg-bg-abvlightgreen {
+    background-color: #D2DB34;
 }
 
 /* QR code generator */
