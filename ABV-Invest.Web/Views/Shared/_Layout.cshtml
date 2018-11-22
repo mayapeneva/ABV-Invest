@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ABV Invest</title>
+    <title>@ViewData["Title"] - АБВ Инвестиции</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/reset.css" />
@@ -27,13 +27,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand bg-abvlightgreen">ABV Invest</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand bg-abvlightgreen">АБВ Инвестиции</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="bg-abvlightgreen">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About" class="bg-abvlightgreen">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact" class="bg-abvlightgreen">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About" class="bg-abvlightgreen">За нас</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact" class="bg-abvlightgreen">Контакти</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
@@ -45,7 +44,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="index-footer">
+        <footer>
             <div class="container text-center bg-abvdarkgreen">
                 <p>&copy; 2018 - ABV Invest</p>
             </div>
