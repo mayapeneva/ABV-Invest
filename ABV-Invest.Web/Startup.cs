@@ -31,9 +31,14 @@ namespace ABV_Invest.Web
             });
 
             services.AddDbContext<ABVInvestDbContext>(options =>
-                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ABVInvestDbContext>();
+                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"))
+                    .UseLazyLoadingProxies());
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ABVInvestDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

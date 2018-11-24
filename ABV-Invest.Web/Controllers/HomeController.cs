@@ -4,8 +4,12 @@ using ABV_Invest.Web.Models;
 
 namespace ABV_Invest.Web.Controllers
 {
+    using Microsoft.AspNetCore.Identity;
+
     public class HomeController : Controller
     {
+        private readonly UserManager<IdentityUser> userManager;
+
         public IActionResult Index()
         {
             return this.View();
