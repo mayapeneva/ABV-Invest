@@ -1,15 +1,13 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using ABV_Invest.Web.Models;
-
-namespace ABV_Invest.Web.Controllers
+﻿namespace ABV_Invest.Web.Controllers
 {
+    using System.Diagnostics;
+    using ABV_Invest.Models;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Models;
 
     public class HomeController : Controller
     {
-        private readonly UserManager<IdentityUser> userManager;
-
         public IActionResult Index()
         {
             return this.View();

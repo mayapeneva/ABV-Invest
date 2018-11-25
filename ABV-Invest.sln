@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABV-Invest.Web", "ABV-Invest.Web\ABV-Invest.Web.csproj", "{CE7DCEAD-62B3-43E8-BA67-640B59A41302}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABV_Invest.Web", "ABV-Invest.Web\ABV_Invest.Web.csproj", "{CE7DCEAD-62B3-43E8-BA67-640B59A41302}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABV-Invest.Data", "ABV-Invest.Data\ABV-Invest.Data.csproj", "{CD97DD11-BC73-4FB5-95D9-BA599CF1BA03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABV_Invest.Data", "ABV-Invest.Data\ABV_Invest.Data.csproj", "{CD97DD11-BC73-4FB5-95D9-BA599CF1BA03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABV-Invest.Models", "ABV-Invest.Models\ABV-Invest.Models.csproj", "{040BC4D0-6978-447C-8E88-6DB88724E5B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABV_Invest.Models", "ABV-Invest.Models\ABV_Invest.Models.csproj", "{040BC4D0-6978-447C-8E88-6DB88724E5B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

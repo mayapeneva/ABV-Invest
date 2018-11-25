@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace ABV_Invest.Web
+﻿namespace ABV_Invest.Web
 {
+    using ABV_Invest.Models;
     using Data;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
 
     public class Startup
     {
@@ -30,13 +30,13 @@ namespace ABV_Invest.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ABVInvestDbContext>(options =>
+            services.AddDbContext<AbvDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"))
                     .UseLazyLoadingProxies());
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<AbvUser, IdentityRole>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ABVInvestDbContext>()
+                .AddEntityFrameworkStores<AbvDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 

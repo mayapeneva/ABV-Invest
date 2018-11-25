@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>ABV_Invest.Data</RootNamespace>
+    <AssemblyName>ABV_Invest.Data</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ABV-Invest.Models\ABV-Invest.Models.csproj" />
+    <ProjectReference Include="..\ABV-Invest.Models\ABV_Invest.Models.csproj" />
   </ItemGroup>
 
 </Project>
