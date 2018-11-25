@@ -13,9 +13,9 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<AbvUser> _userManager;
+        private readonly UserManager<AbvInvestUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<AbvUser> userManager)
+        public ConfirmEmailModel(UserManager<AbvInvestUser> userManager)
         {
             _userManager = userManager;
         }

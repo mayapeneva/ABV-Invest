@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ABV-Invest.Data\ABV_Invest.Data.csproj" />
+    <ProjectReference Include="..\ABV-Invest.Models\ABV_Invest.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

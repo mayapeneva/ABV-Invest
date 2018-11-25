@@ -14,10 +14,10 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<AbvUser> _signInManager;
+        private readonly SignInManager<AbvInvestUser> _signInManager;
         private readonly ILogger<LogoutModel> _logger;
 
-        public LogoutModel(SignInManager<AbvUser> signInManager, ILogger<LogoutModel> logger)
+        public LogoutModel(SignInManager<AbvInvestUser> signInManager, ILogger<LogoutModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;

@@ -15,10 +15,10 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
     {
-        private readonly UserManager<AbvUser> _userManager;
+        private readonly UserManager<AbvInvestUser> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordModel(UserManager<AbvUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<AbvInvestUser> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;

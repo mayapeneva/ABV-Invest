@@ -34,9 +34,9 @@
                 options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"))
                     .UseLazyLoadingProxies());
 
-            services.AddIdentity<AbvUser, IdentityRole>()
-                .AddRoles<IdentityRole>()
+            services.AddIdentity<AbvInvestUser, IdentityRole>()
                 .AddEntityFrameworkStores<AbvDbContext>()
+                .AddRoles<IdentityRole>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 

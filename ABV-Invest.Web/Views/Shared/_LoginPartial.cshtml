@@ -1,8 +1,8 @@
 ﻿@using ABV_Invest.Models
 @using Microsoft.AspNetCore.Identity
 
-@inject SignInManager<AbvUser> SignInManager
-@inject UserManager<AbvUser> UserManager
+@inject SignInManager<AbvInvestUser> SignInManager
+@inject UserManager<AbvInvestUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {

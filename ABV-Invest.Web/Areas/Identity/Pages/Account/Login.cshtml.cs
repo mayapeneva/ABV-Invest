@@ -16,10 +16,10 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<AbvUser> _signInManager;
+        private readonly SignInManager<AbvInvestUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<AbvUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<AbvInvestUser> signInManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;

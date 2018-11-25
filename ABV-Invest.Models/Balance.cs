@@ -2,8 +2,8 @@
 {
     public class Balance : BaseEntity
     {
-        public virtual AbvUser Client { get; set; }
-        public string ClientId { get; set; }
+        public virtual AbvInvestUser AbvInvestUser { get; set; }
+        public string AbvInvestUserId { get; set; }
 
         public decimal MoneyInvested { get; set; }
 

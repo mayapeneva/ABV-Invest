@@ -1,6 +1,6 @@
 ﻿namespace ABV_Invest.Models
 {
-    public class SecuritiesPerIssuer : BaseEntity
+    public class SecuritiesPerClient : BaseEntity
     {
         public virtual Security Security { get; set; }
         public int SecurityId { get; set; }

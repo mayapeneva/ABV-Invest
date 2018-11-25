@@ -16,14 +16,14 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<AbvUser> _signInManager;
-        private readonly UserManager<AbvUser> _userManager;
+        private readonly SignInManager<AbvInvestUser> _signInManager;
+        private readonly UserManager<AbvInvestUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<AbvUser> userManager,
-            SignInManager<AbvUser> signInManager,
+            UserManager<AbvInvestUser> userManager,
+            SignInManager<AbvInvestUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -67,7 +67,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new AbvUser { UserName = Input.Email, Email = Input.Email };
+                var user = new AbvInvestUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

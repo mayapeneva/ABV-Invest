@@ -3,18 +3,18 @@
     using System;
     using System.Collections.Generic;
 
-    public class DailySecuritiesPerIssuer : BaseEntity
+    public class DailySecuritiesPerClient : BaseEntity
     {
-        public DailySecuritiesPerIssuer()
+        public DailySecuritiesPerClient()
         {
-            this.SecuritiesPerIssuerCollection = new HashSet<SecuritiesPerIssuer>();
+            this.SecuritiesPerIssuerCollection = new HashSet<SecuritiesPerClient>();
         }
 
-        public virtual AbvUser Client { get; set; }
-        public string ClientId { get; set; }
+        public virtual AbvInvestUser AbvInvestUser { get; set; }
+        public string AbvInvestUserId { get; set; }
 
         public DateTime Date { get; set; }
 
-        public virtual ICollection<SecuritiesPerIssuer> SecuritiesPerIssuerCollection { get; set; }
+        public virtual ICollection<SecuritiesPerClient> SecuritiesPerIssuerCollection { get; set; }
     }
 }

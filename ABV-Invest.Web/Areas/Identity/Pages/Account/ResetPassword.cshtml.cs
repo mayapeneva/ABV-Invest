@@ -14,9 +14,9 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ResetPasswordModel : PageModel
     {
-        private readonly UserManager<AbvUser> _userManager;
+        private readonly UserManager<AbvInvestUser> _userManager;
 
-        public ResetPasswordModel(UserManager<AbvUser> userManager)
+        public ResetPasswordModel(UserManager<AbvInvestUser> userManager)
         {
             _userManager = userManager;
         }

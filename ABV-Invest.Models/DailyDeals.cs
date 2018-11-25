@@ -3,15 +3,15 @@
     using System;
     using System.Collections.Generic;
 
-    public class DailyDeal : BaseEntity
+    public class DailyDeals : BaseEntity
     {
-        public DailyDeal()
+        public DailyDeals()
         {
             this.Deals = new HashSet<Deal>();
         }
 
-        public virtual AbvUser Client { get; set; }
-        public string ClientId { get; set; }
+        public virtual AbvInvestUser AbvInvestUser { get; set; }
+        public string AbvInvestUserId { get; set; }
 
         public DateTime Date { get; set; }
 
