@@ -18,6 +18,9 @@ body {
     background-color: #2a833f;
 }
 
+.bg-image {
+}
+
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
@@ -36,6 +39,13 @@ body {
 /* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%;
+}
+
+.bg-abv-hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 5px;
+    color: #89bf32;
 }
 
 /* Font-sizes*/
