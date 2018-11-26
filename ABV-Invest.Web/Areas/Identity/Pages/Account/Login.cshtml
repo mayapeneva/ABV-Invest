@@ -17,9 +17,9 @@
                 <br />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Input.Email">Имейл</label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <label asp-for="Input.Password">Потребител</label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Password">Парола</label>
@@ -41,10 +41,10 @@
                 <br />
                 <div class="form-group">
                     <p>
-                        <a asp-page="./ForgotPassword">Забравена парола</a>
+                        <a asp-page="./ForgotPassword" class="bg-abvdarkgreen">Забравена парола.</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Регистрирай се като потребител</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="bg-abvdarkgreen">Регистрирай се като потребител.</a>
                     </p>
                 </div>
             </form>
