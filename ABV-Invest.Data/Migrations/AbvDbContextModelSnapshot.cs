@@ -26,6 +26,8 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<int>("BalanceId");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 

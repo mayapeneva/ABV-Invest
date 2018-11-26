@@ -48,6 +48,11 @@
             builder.Entity<Security>()
                 .Property(s => s.SecuritiesType)
                 .HasConversion(st => st.ToString(), st => (SecuritiesType)Enum.Parse(typeof(SecuritiesType), st));
+
+            builder.Entity<AbvInvestUser>()
+                .HasOne(u => u.Balance)
+                .WithOne(b => b.AbvInvestUser)
+                .HasForeignKey<Balance>(b => b.AbvInvestUserId);
         }
     }
 }

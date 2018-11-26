@@ -3,6 +3,7 @@
     public class Balance : BaseEntity
     {
         public virtual AbvInvestUser AbvInvestUser { get; set; }
+        public string AbvInvestUserId { get; set; }
 
         public decimal MoneyInvested { get; set; }
 

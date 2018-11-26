@@ -19,5 +19,7 @@
         public virtual ICollection<DailyDeals> Deals { get; set; }
 
         public virtual Balance Balance { get; set; }
+
+        public int BalanceId { get; set; }
     }
 }
