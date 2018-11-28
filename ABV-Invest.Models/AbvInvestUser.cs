@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Identity;
-    using Models;
 
     public class AbvInvestUser : IdentityUser
     {

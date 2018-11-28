@@ -9,12 +9,17 @@
     <PackageReference Include="CloudinaryDotNet" Version="1.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ABV-Invest.Data\ABV_Invest.Data.csproj" />
     <ProjectReference Include="..\ABV-Invest.Models\ABV_Invest.Models.csproj" />
+    <ProjectReference Include="..\ABV_Invest.BindingModels\ABV_Invest.BindingModels.csproj" />
+    <ProjectReference Include="..\ABV_Invest.DTOs\ABV_Invest.DTOs.csproj" />
+    <ProjectReference Include="..\ABV_Invest.Services\ABV_Invest.Services.csproj" />
+    <ProjectReference Include="..\ABV_Invest.ViewModels\ABV_Invest.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +31,6 @@
   <ItemGroup>
     <Folder Include="Views\Deals\" />
     <Folder Include="Views\Balances\" />
-    <Folder Include="Views\Portfolios\" />
   </ItemGroup>
 
 </Project>

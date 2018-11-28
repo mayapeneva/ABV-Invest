@@ -10,6 +10,8 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Services;
+    using Services.Contracts;
 
     public class Startup
     {
@@ -41,6 +43,8 @@
                 .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IPortfoliosService, PortfoliosService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

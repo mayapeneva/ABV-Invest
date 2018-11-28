@@ -1,8 +1,6 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
     using System.Diagnostics;
-    using ABV_Invest.Models;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models;
 
