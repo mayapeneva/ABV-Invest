@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ABV_Invest.ViewModels.RSSFeedViewModel>
+
+@{
+    ViewData["Title"] = "Новини";
+}
+
+<h2 class="bg-abvmiddlegreen" align="center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <a class="bg-abvdarkgreen" href="@item.Uri" target="_blank">@Html.DisplayFor(modelItem => item.Title)</a>
+        <div class="bg-abvmiddlegreen">
+            @Html.DisplayFor(modelItem => item.Summary)
+        </div>
+        <div class="bg-abvlightgreen">
+            @Html.DisplayFor(modelItem => item.PublishedDate)
+        </div>
+        <hr />
+    }
+</div>
