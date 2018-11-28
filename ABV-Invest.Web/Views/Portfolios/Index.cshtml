@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Портфолио";
+}
+@model ABV_Invest.BindingModels.DateChosenBindingModel
+
+<h2 class="bg-abvmiddlegreen" align="center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class=" col-md-6 bg-abvdarkgreen large-fontsize">
+        <p>
+            Изберете дата, за да можете да получите информация за портфолиото си към тази дата:
+        </p>
+        <br />
+
+        <form asp-controller="Portfolios" asp-action="Index" method="post">
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label asp-for="@Model.Date" class="col-form-label">Дата</label>
+                    <input class="form-control" type="date">
+                    <span asp-validation-for="@Model.Date" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen">Избери</button>
+        </form>
+    </div>
+</div>
