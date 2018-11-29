@@ -6,23 +6,19 @@
     using System.Linq;
     using System.Text;
     using System.Xml;
+    using Common;
     using Microsoft.AspNetCore.Mvc;
     using ViewModels;
 
     public class NewsController : Controller
     {
-        private const string CapitalRSS1 = "https://www.capital.bg/rss/?rubrid=2272";
-        private const string CapitalRSS2 = "https://www.capital.bg/rss/?rubrid=3060";
-        private const string InvestorRSS = "https://www.investor.bg/news/rss/last/10/";
-        private const string X3NewsRSS = "http://www.x3news.com/?page=RSSFeed";
-
         public IActionResult Index()
         {
             var rssModels = new List<RSSFeedViewModel>();
             LoadNewsFromInvestor(rssModels);
 
-            LoadNewsFromCapital(rssModels, CapitalRSS1);
-            LoadNewsFromCapital(rssModels, CapitalRSS2);
+            LoadNewsFromCapital(rssModels, Constants.CapitalRSS1);
+            LoadNewsFromCapital(rssModels, Constants.CapitalRSS2);
 
             LoadNewsFromX3News(rssModels);
 
@@ -32,7 +28,7 @@
         private static void LoadNewsFromInvestor(List<RSSFeedViewModel> rssModels)
         {
             var xmlDoc = new XmlDocument();
-            xmlDoc.Load(InvestorRSS);
+            xmlDoc.Load(Constants.InvestorRSS);
             var feeds = xmlDoc.DocumentElement.FirstChild.ChildNodes;
 
             foreach (XmlNode feed in feeds)
@@ -88,7 +84,7 @@
             Encoding.GetEncoding("windows-1254");
 
             var xmlDoc = new XmlDocument();
-            xmlDoc.Load(X3NewsRSS);
+            xmlDoc.Load(Constants.X3NewsRSS);
             var feeds = xmlDoc.DocumentElement.FirstChild.ChildNodes;
 
             foreach (XmlNode feed in feeds)
@@ -102,7 +98,7 @@
                         Summary = feed["description"].InnerText
                     };
 
-                    var ifParsed = DateTime.TryParseExact(feed["pubDate"].InnerText, "dd/MM/yyyy", CultureInfo.GetCultureInfo("bg-BG"), DateTimeStyles.AssumeLocal, out DateTime pubDate);
+                    var ifParsed = DateTime.TryParseExact(feed["pubDate"].InnerText, Constants.DateTimeParseFormat, CultureInfo.GetCultureInfo("bg-BG"), DateTimeStyles.AssumeLocal, out DateTime pubDate);
                     if (ifParsed)
                     {
                         model.PublishedDate = pubDate;
