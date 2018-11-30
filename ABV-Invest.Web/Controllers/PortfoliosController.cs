@@ -33,7 +33,7 @@
 
         [Authorize]
         [HttpPost]
-        public IActionResult Index(DateChosenBindingModel dateChosen)
+        public IActionResult ChooseDate(DateChosenBindingModel dateChosen)
         {
             if (!this.ModelState.IsValid
                 || dateChosen.Date > DateTime.UtcNow

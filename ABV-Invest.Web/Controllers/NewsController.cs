@@ -12,7 +12,7 @@
 
     public class NewsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Load()
         {
             var rssModels = new List<RSSFeedViewModel>();
             LoadNewsFromInvestor(rssModels);
