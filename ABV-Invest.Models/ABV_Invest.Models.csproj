@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.Identity.Stores">
-      <HintPath>..\..\..\Users\User\.nuget\packages\microsoft.extensions.identity.stores\2.1.6\lib\netstandard2.0\Microsoft.Extensions.Identity.Stores.dll</HintPath>
+      <HintPath>..\..\..\..\Users\User\.nuget\packages\microsoft.extensions.identity.stores\2.1.6\lib\netstandard2.0\Microsoft.Extensions.Identity.Stores.dll</HintPath>
     </Reference>
   </ItemGroup>
 
