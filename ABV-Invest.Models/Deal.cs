@@ -5,6 +5,9 @@
 
     public class Deal : BaseEntity
     {
+        public virtual DailyDeals DailyDeals { get; set; }
+        public int DailyDealsId { get; set; }
+
         public DealType DealType { get; set; }
 
         public virtual Security Security { get; set; }

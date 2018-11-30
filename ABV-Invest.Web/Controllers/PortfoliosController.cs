@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
     using Services.Contracts;
     using ViewModels;
 
@@ -45,6 +46,10 @@
         {
             var userId = this.userManager.GetUserId(this.User);
             var portfolio = this.portfoliosService.GetUserPortfolio(userId, this.TempData["DateChosen"].ToString());
+            if (portfolio == null)
+            {
+                return this.View();
+            }
 
             return this.View(portfolio);
         }

@@ -21,6 +21,11 @@
             var date = DateTime.Parse(chosenDate);
             var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>
                 p.AbvInvestUserId == userId && p.Date == date);
+            if (portfolio == null)
+            {
+                return null;
+            }
+
             var portfolioDtos = new List<PortfolioDto>();
             foreach (var item in portfolio.SecuritiesPerIssuerCollection)
             {
