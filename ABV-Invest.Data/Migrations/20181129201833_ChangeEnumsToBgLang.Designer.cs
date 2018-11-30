@@ -4,14 +4,16 @@ using ABV_Invest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ABV_Invest.Data.Migrations
 {
     [DbContext(typeof(AbvDbContext))]
-    partial class AbvDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181129201833_ChangeEnumsToBgLang")]
+    partial class ChangeEnumsToBgLang
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,7 +162,7 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<int>("CurrencyId");
 
-                    b.Property<int>("DailyDealsId");
+                    b.Property<int?>("DailyDealsId");
 
                     b.Property<string>("DealType")
                         .IsRequired();
@@ -226,7 +228,7 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<decimal>("AveragePriceBuy");
 
-                    b.Property<int>("DailySecuritiesPerClientId");
+                    b.Property<int?>("DailySecuritiesPerClientId");
 
                     b.Property<decimal>("MarketPrice");
 
@@ -413,10 +415,9 @@ namespace ABV_Invest.Data.Migrations
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ABV_Invest.Models.DailyDeals", "DailyDeals")
+                    b.HasOne("ABV_Invest.Models.DailyDeals")
                         .WithMany("Deals")
-                        .HasForeignKey("DailyDealsId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DailyDealsId");
 
                     b.HasOne("ABV_Invest.Models.Market", "Market")
                         .WithMany()
@@ -431,10 +432,9 @@ namespace ABV_Invest.Data.Migrations
 
             modelBuilder.Entity("ABV_Invest.Models.SecuritiesPerClient", b =>
                 {
-                    b.HasOne("ABV_Invest.Models.DailySecuritiesPerClient", "DailySecuritiesPerClient")
+                    b.HasOne("ABV_Invest.Models.DailySecuritiesPerClient")
                         .WithMany("SecuritiesPerIssuerCollection")
-                        .HasForeignKey("DailySecuritiesPerClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DailySecuritiesPerClientId");
 
                     b.HasOne("ABV_Invest.Models.Security", "Security")
                         .WithMany()

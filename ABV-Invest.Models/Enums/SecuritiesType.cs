@@ -2,9 +2,9 @@
 {
     public enum SecuritiesType
     {
-        Shares = 1,
-        Rights = 2,
-        Bonds = 3,
-        Warrants = 4
+        Акции = 1,
+        Права = 2,
+        Облигации = 3,
+        Варанти = 4
     }
 }

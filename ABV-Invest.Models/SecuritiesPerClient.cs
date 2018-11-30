@@ -2,6 +2,9 @@
 {
     public class SecuritiesPerClient : BaseEntity
     {
+        public virtual DailySecuritiesPerClient DailySecuritiesPerClient { get; set; }
+        public int DailySecuritiesPerClientId { get; set; }
+
         public virtual Security Security { get; set; }
         public int SecurityId { get; set; }
 
