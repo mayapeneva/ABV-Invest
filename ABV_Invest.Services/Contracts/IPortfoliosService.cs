@@ -6,6 +6,6 @@
 
     public interface IPortfoliosService
     {
-        IEnumerable<PortfolioDto> GetUserPortfolio(string userId, string chosenDate);
+        PortfolioDto[] GetUserPortfolio(string userId, string chosenDate);
     }
 }

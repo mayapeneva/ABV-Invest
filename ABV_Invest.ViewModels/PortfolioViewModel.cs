@@ -4,7 +4,9 @@
 
     public class PortfolioViewModel
     {
-        public string Security { get; set; }
+        public string SecurityIssuer { get; set; }
+
+        public string SecurityBfbCode { get; set; }
 
         public int Quantity { get; set; }
 

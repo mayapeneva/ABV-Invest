@@ -1,8 +1,11 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using ABV_Invest.Models;
+    using AutoMapper;
     using BindingModels;
+    using DTOs;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -14,11 +17,13 @@
     {
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IPortfoliosService portfoliosService;
+        private readonly IMapper mapper;
 
-        public PortfoliosController(UserManager<AbvInvestUser> userManager, IPortfoliosService portfoliosService)
+        public PortfoliosController(UserManager<AbvInvestUser> userManager, IPortfoliosService portfoliosService, IMapper mapper)
         {
             this.userManager = userManager;
             this.portfoliosService = portfoliosService;
+            this.mapper = mapper;
         }
 
         public IActionResult Index()
@@ -39,19 +44,21 @@
 
             this.TempData["DateChosen"] = dateChosen.Date;
 
-            return this.RedirectToAction("Details");
+            return this.RedirectToAction("Details", "Portfolios", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
         }
 
-        public IActionResult Details()
+        public IActionResult Details(string date)
         {
             var userId = this.userManager.GetUserId(this.User);
-            var portfolio = this.portfoliosService.GetUserPortfolio(userId, this.TempData["DateChosen"].ToString());
+            var portfolio = this.portfoliosService.GetUserPortfolio(userId, date);
             if (portfolio == null)
             {
                 return this.View();
             }
 
-            return this.View(portfolio);
+            var portfolioViewModel = this.mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);
+
+            return this.View(portfolioViewModel);
         }
     }
 }

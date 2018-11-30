@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ABV_Invest.DTOs.PortfolioDto>
+﻿@model IEnumerable<ABV_Invest.ViewModels.PortfolioViewModel>
 
 @{
     ViewData["Title"] = "Портфолио";
@@ -28,7 +28,7 @@
             @foreach (var security in Model)
             {
                 <tr>
-                    <td class="text-left bg-bg-abvlightgreen">@Html.DisplayFor(model => security.SecurityIssuer)</td>
+                    <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuer)</td>
                     <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.Quantity)</td>
                     <td class="text-right align-text-bottom" type="number" min="0.001" step="0.001">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
@@ -48,11 +48,11 @@
                     }
                     else if (security.Profit < 0)
                     {
-                        <td class="text-right bg-abvlightgreen">
+                        <td class="text-right bg-abvred">
                             @Html.DisplayFor(model => security.Profit)<br />
                             <span class="glyphicon glyphicon-triangle-bottom"></span>
                         </td>
-                        <td class="text-right bg-abvlightgreen">
+                        <td class="text-right bg-abvred">
                             @Html.DisplayFor(model => security.ProfitPercentаge)<br />
                             <span class="glyphicon glyphicon-triangle-bottom"></span>
                         </td>

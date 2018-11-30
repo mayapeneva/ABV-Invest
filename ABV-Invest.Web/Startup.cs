@@ -1,6 +1,8 @@
 ﻿namespace ABV_Invest.Web
 {
     using ABV_Invest.Models;
+    using AutoMapper;
+    using Common;
     using Data;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
@@ -41,6 +43,8 @@
                 .AddRoles<IdentityRole>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
+
+            services.AddAutoMapper(conf => conf.AddProfile<ABV_InvestProfile>());
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

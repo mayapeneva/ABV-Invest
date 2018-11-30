@@ -3,20 +3,24 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using AutoMapper;
     using Contracts;
     using Data;
     using DTOs;
+    using Mapper = AutoMapper.Mapper;
 
     public class PortfoliosService : IPortfoliosService
     {
         private readonly AbvDbContext db;
+        private readonly IMapper mapper;
 
-        public PortfoliosService(AbvDbContext db)
+        public PortfoliosService(AbvDbContext db, IMapper mapper)
         {
             this.db = db;
+            this.mapper = mapper;
         }
 
-        public IEnumerable<PortfolioDto> GetUserPortfolio(string userId, string chosenDate)
+        public PortfolioDto[] GetUserPortfolio(string userId, string chosenDate)
         {
             var date = DateTime.Parse(chosenDate);
             var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>
@@ -26,22 +30,12 @@
                 return null;
             }
 
-            var portfolioDtos = new List<PortfolioDto>();
-            foreach (var item in portfolio.SecuritiesPerIssuerCollection)
+            var collection = portfolio.SecuritiesPerIssuerCollection.ToArray();
+            var collectionCount = portfolio.SecuritiesPerIssuerCollection.Count;
+            var portfolioDtos = new PortfolioDto[collectionCount];
+            for (int i = 0; i < collectionCount; i++)
             {
-                portfolioDtos.Add(new PortfolioDto
-                {
-                    SecurityIssuer = item.Security.Issuer.Name,
-                    SecurityBfbCode = item.Security.BfbCode,
-                    Quantity = item.Quantity,
-                    AveragePriceBuy = item.AveragePriceBuy,
-                    TotalPriceBuy = item.TotalPriceBuy,
-                    MarketPrice = item.MarketPrice,
-                    TotalMarketPrice = item.TotalMarketPrice,
-                    Profit = item.Profit,
-                    ProfitPercentаge = item.ProfitPercentаge,
-                    PortfolioShare = item.PortfolioShare
-                });
+                portfolioDtos[i] = this.mapper.Map<PortfolioDto>(collection[i]);
             }
 
             return portfolioDtos;
