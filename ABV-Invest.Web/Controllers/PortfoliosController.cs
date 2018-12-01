@@ -26,7 +26,7 @@
             this.mapper = mapper;
         }
 
-        public IActionResult Index()
+        public IActionResult ChooseDate()
         {
             return this.View();
         }
@@ -44,7 +44,7 @@
 
             this.TempData["DateChosen"] = dateChosen.Date;
 
-            return this.RedirectToAction("Details", "Portfolios", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
+            return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
         }
 
         public IActionResult Details(string date)
