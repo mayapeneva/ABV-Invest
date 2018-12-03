@@ -5,6 +5,7 @@
     using ABV_Invest.Models;
     using AutoMapper;
     using BindingModels;
+    using Common;
     using DTOs;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -39,6 +40,7 @@
                 || dateChosen.Date > DateTime.UtcNow
                 || dateChosen.Date < DateTime.Parse("01/01/2016"))
             {
+                this.ViewBag.ErrorMessage = Messages.NoPortfolio;
                 return this.View();
             }
 
@@ -53,7 +55,8 @@
             var portfolio = this.portfoliosService.GetUserDailyPortfolio(userId, date);
             if (portfolio == null)
             {
-                return this.View();
+                this.ViewBag.ErrorMessage = Messages.NoPortfolio;
+                return this.View("ChooseDate");
             }
 
             var portfolioViewModel = this.mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);

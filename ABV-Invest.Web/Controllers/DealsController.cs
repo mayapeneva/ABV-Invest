@@ -5,6 +5,7 @@
     using ABV_Invest.Models;
     using AutoMapper;
     using BindingModels;
+    using Common;
     using DTOs;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -38,6 +39,7 @@
                 || dateChosen.Date > DateTime.UtcNow
                 || dateChosen.Date < DateTime.Parse("01/01/2016"))
             {
+                this.ViewBag.ErrorMessage = Messages.NoDeals;
                 return this.View();
             }
 
@@ -52,7 +54,8 @@
             var deals = this.dealsService.GetUserDailyDeals(userId, date);
             if (deals == null)
             {
-                return this.View();
+                this.ViewBag.ErrorMessage = Messages.NoDeals;
+                return this.View("ChooseDate");
             }
 
             var dealsViewModel = this.mapper.Map<DealsDto[], IEnumerable<DealsViewModel>>(deals);
