@@ -53,6 +53,7 @@
         {
             var userId = this.userManager.GetUserId(this.User);
             var portfolio = this.portfoliosService.GetUserDailyPortfolio(userId, date);
+
             if (portfolio == null)
             {
                 this.ViewBag.ErrorMessage = Messages.NoPortfolio;

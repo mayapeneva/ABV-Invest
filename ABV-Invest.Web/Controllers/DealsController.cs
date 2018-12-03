@@ -52,6 +52,7 @@
         {
             var userId = this.userManager.GetUserId(this.User);
             var deals = this.dealsService.GetUserDailyDeals(userId, date);
+
             if (deals == null)
             {
                 this.ViewBag.ErrorMessage = Messages.NoDeals;
