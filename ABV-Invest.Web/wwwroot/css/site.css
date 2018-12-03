@@ -80,6 +80,10 @@ body {
     background-color: #D2DB34;
 }
 
+.bg-bg-abvwhite {
+    background-color: white;
+}
+
 /* QR code generator */
 #qrCode {
     margin: 15px;

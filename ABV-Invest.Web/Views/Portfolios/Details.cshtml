@@ -31,7 +31,7 @@
                     <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuer)</td>
                     <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.Quantity)</td>
-                    <td class="text-right align-text-bottom" type="number" min="0.001" step="0.001">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
+                    <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.TotalPriceBuy)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.MarketPrice)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.TotalMarketPrice)</td>
@@ -79,5 +79,5 @@
 <div class="text-center">
     <span class="glyphicon glyphicon-arrow-left bg-abvmiddlegreen"></span>
     &nbsp;
-    <a asp-action="Index" class="bg-abvmiddlegreen large-fontsize">Обратно</a>
+    <a asp-action="ChooseDate" class="bg-abvmiddlegreen large-fontsize">Обратно</a>
 </div>
