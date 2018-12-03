@@ -20,7 +20,7 @@
             this.mapper = mapper;
         }
 
-        public PortfolioDto[] GetUserPortfolio(string userId, string chosenDate)
+        public PortfolioDto[] GetUserDailyPortfolio(string userId, string chosenDate)
         {
             var date = DateTime.Parse(chosenDate);
             var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>

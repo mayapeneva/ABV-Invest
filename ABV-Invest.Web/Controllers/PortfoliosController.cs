@@ -50,7 +50,7 @@
         public IActionResult Details(string date)
         {
             var userId = this.userManager.GetUserId(this.User);
-            var portfolio = this.portfoliosService.GetUserPortfolio(userId, date);
+            var portfolio = this.portfoliosService.GetUserDailyPortfolio(userId, date);
             if (portfolio == null)
             {
                 return this.View();

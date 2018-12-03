@@ -10,7 +10,7 @@
 
         public int Quantity { get; set; }
 
-        public decimal AveragePriceBuy { get; set; }
+        public string AveragePriceBuy { get; set; }
 
         public decimal TotalPriceBuy { get; set; }
 

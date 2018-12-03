@@ -9,6 +9,11 @@
 
     public class AbvDbContext : IdentityDbContext<AbvInvestUser>
     {
+        public AbvDbContext(DbContextOptions<AbvDbContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<AbvInvestUser> AbvInvestUsers { get; set; }
 
         public DbSet<DailySecuritiesPerClient> DailySecuritiesPerClient { get; set; }
@@ -28,11 +33,6 @@
         public DbSet<Issuer> Issuers { get; set; }
 
         public DbSet<Market> Markets { get; set; }
-
-        public AbvDbContext(DbContextOptions<AbvDbContext> options)
-            : base(options)
-        {
-        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

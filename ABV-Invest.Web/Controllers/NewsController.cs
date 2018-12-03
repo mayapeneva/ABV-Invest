@@ -81,7 +81,7 @@
         private static void LoadNewsFromX3News(List<RSSFeedViewModel> rssModels)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Encoding.GetEncoding("windows-1254");
+            Encoding.GetEncoding("windows-1251");
 
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(Constants.X3NewsRSS);
