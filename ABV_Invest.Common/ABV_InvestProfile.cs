@@ -12,6 +12,7 @@
             this.CreateMap<SecuritiesPerClient, PortfolioDto>()
                 .ForMember(dest => dest.SecurityIssuer, opt => opt.MapFrom(src => src.Security.Issuer.Name))
                 .ForMember(dest => dest.SecurityBfbCode, opt => opt.MapFrom(src => src.Security.BfbCode))
+                .ForMember(dest => dest.SecurityIsin, opt => opt.MapFrom(src => src.Security.Isin))
                 .ForMember(dest => dest.AveragePriceBuy, opt => opt.MapFrom(src => src.AveragePriceBuy.ToString("F3")));
             this.CreateMap<PortfolioDto, PortfolioViewModel>();
 

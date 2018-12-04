@@ -14,6 +14,7 @@
             <tr>
                 <th class="text-left" scope="col">Емитент</th>
                 <th class="text-left" scope="col">БФБ Код</th>
+                <th class="text-left" scope="col">ISIN</th>
                 <th class="text-right" scope="col">Наличност</th>
                 <th class="text-right" scope="col">Средна цена</th>
                 <th class="text-right" scope="col">Стойност на придобиване</th>
@@ -30,6 +31,7 @@
                 <tr>
                     <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuer)</td>
                     <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
+                    <td class="text-left">@Html.DisplayFor(model => security.SecurityIsin)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.Quantity)</td>
                     <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.TotalPriceBuy)</td>

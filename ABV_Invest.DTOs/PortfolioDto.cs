@@ -6,6 +6,8 @@
 
         public string SecurityBfbCode { get; set; }
 
+        public string SecurityIsin { get; set; }
+
         public int Quantity { get; set; }
 
         public string AveragePriceBuy { get; set; }
