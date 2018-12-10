@@ -9,6 +9,7 @@
 
 <div>
     <table class="table table-hover table-responsive">
+        Currency
         <caption class="bg-abvdarkgreen">Списък с ценни книжа</caption>
         <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
             <tr>
@@ -29,7 +30,7 @@
             @foreach (var security in Model)
             {
                 <tr>
-                    <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuer)</td>
+                    <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuerName)</td>
                     <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
                     <td class="text-left">@Html.DisplayFor(model => security.SecurityIsin)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.Quantity)</td>

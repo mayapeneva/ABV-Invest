@@ -12,12 +12,10 @@
     public class PortfoliosService : IPortfoliosService
     {
         private readonly AbvDbContext db;
-        private readonly IMapper mapper;
 
-        public PortfoliosService(AbvDbContext db, IMapper mapper)
+        public PortfoliosService(AbvDbContext db)
         {
             this.db = db;
-            this.mapper = mapper;
         }
 
         public PortfolioDto[] GetUserDailyPortfolio(string userId, string chosenDate)
@@ -31,7 +29,7 @@
             var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>
                 p.AbvInvestUserId == userId && p.Date == date);
 
-            var collection = portfolio?.SecuritiesPerIssuerCollection.Select(p => this.mapper.Map<PortfolioDto>(p)).ToArray();
+            var collection = portfolio?.SecuritiesPerIssuerCollection.Select(Mapper.Map<PortfolioDto>).ToArray();
 
             return collection;
         }

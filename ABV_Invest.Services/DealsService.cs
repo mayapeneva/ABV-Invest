@@ -10,12 +10,10 @@
     public class DealsService : IDealsService
     {
         private readonly AbvDbContext db;
-        private readonly IMapper mapper;
 
-        public DealsService(AbvDbContext db, IMapper mapper)
+        public DealsService(AbvDbContext db)
         {
             this.db = db;
-            this.mapper = mapper;
         }
 
         public DealsDto[] GetUserDailyDeals(string userId, string chosenDate)
@@ -29,7 +27,7 @@
             var deals = this.db.DailyDeals.SingleOrDefault(p =>
                 p.AbvInvestUserId == userId && p.Date == date);
 
-            var collection = deals?.Deals.Select(d => this.mapper.Map<DealsDto>(d)).ToArray();
+            var collection = deals?.Deals.Select(Mapper.Map<DealsDto>).ToArray();
 
             return collection;
         }

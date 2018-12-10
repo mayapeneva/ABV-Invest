@@ -1,8 +1,12 @@
 ﻿namespace ABV_Invest.DTOs
 {
-    public class PortfolioDto
+    using AutoMapper;
+    using Mapping.Contracts;
+    using Models;
+
+    public class PortfolioDto : IMapFrom<SecuritiesPerClient>, ICustomMap
     {
-        public string SecurityIssuer { get; set; }
+        public string SecurityIssuerName { get; set; }
 
         public string SecurityBfbCode { get; set; }
 
@@ -23,5 +27,11 @@
         public decimal ProfitPercentаge { get; set; }
 
         public decimal PortfolioShare { get; set; }
+
+        public void CreateMappings(IMapperConfigurationExpression configuration)
+        {
+            configuration.CreateMap<SecuritiesPerClient, PortfolioDto>()
+                .ForMember(dest => dest.AveragePriceBuy, opt => opt.MapFrom(src => src.AveragePriceBuy.ToString("F3")));
+        }
     }
 }

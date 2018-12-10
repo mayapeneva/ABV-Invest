@@ -2,8 +2,11 @@
 {
     using ABV_Invest.Models;
     using AutoMapper;
+    using BindingModels;
     using Common;
     using Data;
+    using DTOs;
+    using Mapping;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Hosting;
@@ -14,6 +17,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Services;
     using Services.Contracts;
+    using ViewModels;
 
     public class Startup
     {
@@ -27,6 +31,12 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AutoMapperConfig.RegisterMappings(
+                typeof(Deal).Assembly,
+                typeof(DealsDto).Assembly,
+                typeof(DealsViewModel).Assembly,
+                typeof(DateChosenBindingModel).Assembly);
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -44,9 +54,9 @@
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
-            services.AddAutoMapper(conf => conf.AddProfile<ABV_InvestProfile>());
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAutoMapper();
 
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();

@@ -1,10 +1,11 @@
 ﻿namespace ABV_Invest.ViewModels
 {
-    using System.Collections.Generic;
+    using DTOs;
+    using Mapping.Contracts;
 
-    public class PortfolioViewModel
+    public class PortfolioViewModel : IMapTo<PortfolioDto>
     {
-        public string SecurityIssuer { get; set; }
+        public string SecurityIssuerName { get; set; }
 
         public string SecurityBfbCode { get; set; }
 

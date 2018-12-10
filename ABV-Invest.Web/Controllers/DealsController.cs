@@ -17,13 +17,11 @@
     {
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IDealsService dealsService;
-        private readonly IMapper mapper;
 
-        public DealsController(UserManager<AbvInvestUser> userManager, IDealsService dealsService, IMapper mapper)
+        public DealsController(UserManager<AbvInvestUser> userManager, IDealsService dealsService)
         {
             this.userManager = userManager;
             this.dealsService = dealsService;
-            this.mapper = mapper;
         }
 
         [Authorize]
@@ -61,7 +59,7 @@
                 return this.View("ChooseDate");
             }
 
-            var dealsViewModel = this.mapper.Map<DealsDto[], IEnumerable<DealsViewModel>>(deals);
+            var dealsViewModel = Mapper.Map<DealsDto[], IEnumerable<DealsViewModel>>(deals);
 
             return this.View(dealsViewModel);
         }

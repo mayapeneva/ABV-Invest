@@ -1,12 +1,13 @@
 ﻿namespace ABV_Invest.ViewModels
 {
-    using System;
+    using DTOs;
+    using Mapping.Contracts;
 
-    public class DealsViewModel
+    public class DealsViewModel : IMapFrom<DealsDto>
     {
         public string DealType { get; set; }
 
-        public string SecurityIssuer { get; set; }
+        public string SecurityIssuerName { get; set; }
 
         public string SecurityBfbCode { get; set; }
 
@@ -18,10 +19,10 @@
 
         public decimal Fee { get; set; }
 
-        public string Currency { get; set; }
+        public string CurrencyCode { get; set; }
 
         public string Settlement { get; set; }
 
-        public string Market { get; set; }
+        public string MarketName { get; set; }
     }
 }

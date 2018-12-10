@@ -18,13 +18,11 @@
     {
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IPortfoliosService portfoliosService;
-        private readonly IMapper mapper;
 
-        public PortfoliosController(UserManager<AbvInvestUser> userManager, IPortfoliosService portfoliosService, IMapper mapper)
+        public PortfoliosController(UserManager<AbvInvestUser> userManager, IPortfoliosService portfoliosService)
         {
             this.userManager = userManager;
             this.portfoliosService = portfoliosService;
-            this.mapper = mapper;
         }
 
         [Authorize]
@@ -62,7 +60,7 @@
                 return this.View("ChooseDate");
             }
 
-            var portfolioViewModel = this.mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);
+            var portfolioViewModel = Mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);
 
             return this.View(portfolioViewModel);
         }

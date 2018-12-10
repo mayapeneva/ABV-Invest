@@ -13,8 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.0.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="CloudinaryDotNet" Version="1.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
@@ -28,6 +26,7 @@
     <ProjectReference Include="..\ABV_Invest.BindingModels\ABV_Invest.BindingModels.csproj" />
     <ProjectReference Include="..\ABV_Invest.Common\ABV_Invest.Common.csproj" />
     <ProjectReference Include="..\ABV_Invest.DTOs\ABV_Invest.DTOs.csproj" />
+    <ProjectReference Include="..\ABV_Invest.Mapping\ABV_Invest.Mapping.csproj" />
     <ProjectReference Include="..\ABV_Invest.Services\ABV_Invest.Services.csproj" />
     <ProjectReference Include="..\ABV_Invest.ViewModels\ABV_Invest.ViewModels.csproj" />
   </ItemGroup>

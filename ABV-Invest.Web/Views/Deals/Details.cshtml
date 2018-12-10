@@ -30,14 +30,14 @@
                 <tr>
                     <td class="text-left">@Html.DisplayFor(model => deal.DealType)</td>
                     <td class="text-left">@Html.DisplayFor(model => deal.SecurityBfbCode)</td>
-                    <td class="text-left align-text-bottom">@Html.DisplayFor(model => deal.SecurityIssuer)</td>
+                    <td class="text-left align-text-bottom">@Html.DisplayFor(model => deal.SecurityIssuerName)</td>
                     <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => deal.Quantity)</td>
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Price)</td>
+                    <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => deal.Price)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.TotalPrice)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Fee)</td>
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Currency)</td>
+                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.CurrencyCode)</td>
                     <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Settlement)</td>
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Market)</td>
+                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.MarketName)</td>
                 </tr>
             }
         </tbody>

@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ABV_Invest.DTOs\ABV_Invest.DTOs.csproj" />
+    <ProjectReference Include="..\ABV_Invest.Mapping\ABV_Invest.Mapping.csproj" />
+  </ItemGroup>
+
 </Project>
