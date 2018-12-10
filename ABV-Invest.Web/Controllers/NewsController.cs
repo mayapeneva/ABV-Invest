@@ -57,16 +57,32 @@
                 if (feed.Name == "item")
                 {
                     var summaryRaw = feed["description"].InnerText;
-                    var startingIndex = summaryRaw.IndexOf("<br />", StringComparison.InvariantCulture) + " <br />".Length - 1;
-                    var lenght = summaryRaw.IndexOf(". ", StringComparison.InvariantCulture);
+                    var startingIndex = summaryRaw.IndexOf(" /><br />", StringComparison.InvariantCulture) + " /><br />".Length - 1;
+                    var lenght = summaryRaw.LastIndexOf("https://", StringComparison.InvariantCulture);
 
                     if (lenght == -1)
                     {
-                        lenght = summaryRaw.IndexOf(".<", StringComparison.InvariantCulture);
+                        lenght = summaryRaw.LastIndexOf(".<", StringComparison.InvariantCulture);
+                    }
+
+                    if (lenght == -1)
+                    {
+                        lenght = summaryRaw.LastIndexOf(".", StringComparison.InvariantCulture);
                     }
 
                     var summary = summaryRaw.Substring(startingIndex, lenght - startingIndex);
-                    summary = summary.Replace("<br /><br />", " ");
+                    if (summary.StartsWith("<img"))
+                    {
+                        var len = summary.IndexOf(" />", StringComparison.InvariantCulture);
+                        summary = summary.Substring(len);
+                    }
+
+                    summary = summary.Replace("<br />", "");
+                    if (summary.Length > 200)
+                    {
+                        summary = summaryRaw.Substring(0, 200) + "...";
+                    }
+
                     rssModels.Add(new RSSFeedViewModel
                     {
                         Title = feed["title"].InnerText,
