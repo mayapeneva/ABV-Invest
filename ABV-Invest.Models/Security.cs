@@ -1,8 +1,9 @@
 ﻿namespace ABV_Invest.Models
 {
+    using Base;
     using Enums;
 
-    public class Security : BaseEntity
+    public class Security : BaseEntity<int>
     {
         public virtual Issuer Issuer { get; set; }
         public int IssuerId { get; set; }

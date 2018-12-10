@@ -1,9 +1,10 @@
 ﻿namespace ABV_Invest.Models
 {
     using System;
+    using Base;
     using Enums;
 
-    public class Deal : BaseEntity
+    public class Deal : BaseEntity<int>
     {
         public virtual DailyDeals DailyDeals { get; set; }
         public int DailyDealsId { get; set; }

@@ -1,6 +1,8 @@
 ﻿namespace ABV_Invest.Models
 {
-    public class SecuritiesPerClient : BaseEntity
+    using Base;
+
+    public class SecuritiesPerClient : BaseEntity<int>
     {
         public virtual DailySecuritiesPerClient DailySecuritiesPerClient { get; set; }
         public int DailySecuritiesPerClientId { get; set; }

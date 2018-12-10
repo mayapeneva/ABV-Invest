@@ -2,8 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using Base;
 
-    public class DailySecuritiesPerClient : BaseEntity
+    public class DailySecuritiesPerClient : BaseEntity<int>
     {
         public DailySecuritiesPerClient()
         {

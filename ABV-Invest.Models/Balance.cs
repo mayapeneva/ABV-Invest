@@ -1,6 +1,8 @@
 ﻿namespace ABV_Invest.Models
 {
-    public class Balance : BaseEntity
+    using Base;
+
+    public class Balance : BaseEntity<int>
     {
         public virtual AbvInvestUser AbvInvestUser { get; set; }
         public string AbvInvestUserId { get; set; }

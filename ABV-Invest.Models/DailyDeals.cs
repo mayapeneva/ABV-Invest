@@ -2,8 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using Base;
 
-    public class DailyDeals : BaseEntity
+    public class DailyDeals : BaseEntity<int>
     {
         public DailyDeals()
         {

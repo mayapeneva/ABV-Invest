@@ -1,6 +1,8 @@
 ﻿namespace ABV_Invest.Models
 {
-    public class Currency : BaseEntity
+    using Base;
+
+    public class Currency : BaseEntity<int>
     {
         public string Code { get; set; }
 

@@ -1,6 +1,8 @@
 ﻿namespace ABV_Invest.Models
 {
-    public class Market : BaseEntity
+    using Base;
+
+    public class Market : BaseEntity<int>
     {
         public string Name { get; set; }
     }
