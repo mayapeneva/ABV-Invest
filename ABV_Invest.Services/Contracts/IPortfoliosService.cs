@@ -6,6 +6,6 @@
 
     public interface IPortfoliosService
     {
-        PortfolioDto[] GetUserDailyPortfolio(string userId, string chosenDate);
+        T[] GetUserDailyPortfolio<T>(string userId, string chosenDate);
     }
 }

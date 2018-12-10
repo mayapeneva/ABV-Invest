@@ -51,7 +51,7 @@
         public IActionResult Details(string date)
         {
             var userId = this.userManager.GetUserId(this.User);
-            var deals = this.dealsService.GetUserDailyDeals(userId, date);
+            var deals = this.dealsService.GetUserDailyDeals<DealsDto>(userId, date);
 
             if (deals == null)
             {

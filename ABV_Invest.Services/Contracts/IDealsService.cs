@@ -4,6 +4,6 @@
 
     public interface IDealsService
     {
-        DealsDto[] GetUserDailyDeals(string userId, string chosenDate);
+        T[] GetUserDailyDeals<T>(string userId, string chosenDate);
     }
 }

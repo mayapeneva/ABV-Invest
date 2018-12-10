@@ -18,7 +18,7 @@
             this.db = db;
         }
 
-        public PortfolioDto[] GetUserDailyPortfolio(string userId, string chosenDate)
+        public T[] GetUserDailyPortfolio<T>(string userId, string chosenDate)
         {
             var ifParsed = DateTime.TryParse(chosenDate, out DateTime date);
             if (!ifParsed)
@@ -29,7 +29,7 @@
             var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>
                 p.AbvInvestUserId == userId && p.Date == date);
 
-            var collection = portfolio?.SecuritiesPerIssuerCollection.Select(Mapper.Map<PortfolioDto>).ToArray();
+            var collection = portfolio?.SecuritiesPerIssuerCollection.Select(Mapper.Map<T>).ToArray();
 
             return collection;
         }

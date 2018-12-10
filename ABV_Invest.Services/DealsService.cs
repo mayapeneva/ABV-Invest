@@ -16,7 +16,7 @@
             this.db = db;
         }
 
-        public DealsDto[] GetUserDailyDeals(string userId, string chosenDate)
+        public T[] GetUserDailyDeals<T>(string userId, string chosenDate)
         {
             var ifParsed = DateTime.TryParse(chosenDate, out DateTime date);
             if (!ifParsed)
@@ -27,7 +27,7 @@
             var deals = this.db.DailyDeals.SingleOrDefault(p =>
                 p.AbvInvestUserId == userId && p.Date == date);
 
-            var collection = deals?.Deals.Select(Mapper.Map<DealsDto>).ToArray();
+            var collection = deals?.Deals.Select(Mapper.Map<T>).ToArray();
 
             return collection;
         }
