@@ -1,6 +1,7 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
     using System.Diagnostics;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models;
 
@@ -21,6 +22,7 @@
             return this.View();
         }
 
+        [Authorize]
         public IActionResult Privacy()
         {
             return this.View();

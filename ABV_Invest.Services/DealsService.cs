@@ -20,23 +20,18 @@
 
         public DealsDto[] GetUserDailyDeals(string userId, string chosenDate)
         {
-            var date = DateTime.Parse(chosenDate);
-            var deals = this.db.DailyDeals.SingleOrDefault(p =>
-                p.AbvInvestUserId == userId && p.Date == date);
-            if (deals == null)
+            var ifParsed = DateTime.TryParse(chosenDate, out DateTime date);
+            if (!ifParsed)
             {
                 return null;
             }
 
-            var collection = deals.Deals.ToArray();
-            var collectionCount = deals.Deals.Count;
-            var dealsDtos = new DealsDto[collectionCount];
-            for (int i = 0; i < collectionCount; i++)
-            {
-                dealsDtos[i] = this.mapper.Map<DealsDto>(collection[i]);
-            }
+            var deals = this.db.DailyDeals.SingleOrDefault(p =>
+                p.AbvInvestUserId == userId && p.Date == date);
 
-            return dealsDtos;
+            var collection = deals?.Deals.Select(d => this.mapper.Map<DealsDto>(d)).ToArray();
+
+            return collection;
         }
     }
 }

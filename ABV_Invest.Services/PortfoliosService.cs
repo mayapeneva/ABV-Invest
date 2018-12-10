@@ -22,23 +22,18 @@
 
         public PortfolioDto[] GetUserDailyPortfolio(string userId, string chosenDate)
         {
-            var date = DateTime.Parse(chosenDate);
-            var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>
-                p.AbvInvestUserId == userId && p.Date == date);
-            if (portfolio == null)
+            var ifParsed = DateTime.TryParse(chosenDate, out DateTime date);
+            if (!ifParsed)
             {
                 return null;
             }
 
-            var collection = portfolio.SecuritiesPerIssuerCollection.ToArray();
-            var collectionCount = portfolio.SecuritiesPerIssuerCollection.Count;
-            var portfolioDtos = new PortfolioDto[collectionCount];
-            for (int i = 0; i < collectionCount; i++)
-            {
-                portfolioDtos[i] = this.mapper.Map<PortfolioDto>(collection[i]);
-            }
+            var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>
+                p.AbvInvestUserId == userId && p.Date == date);
 
-            return portfolioDtos;
+            var collection = portfolio?.SecuritiesPerIssuerCollection.Select(p => this.mapper.Map<PortfolioDto>(p)).ToArray();
+
+            return collection;
         }
     }
 }

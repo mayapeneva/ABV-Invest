@@ -27,6 +27,7 @@
             this.mapper = mapper;
         }
 
+        [Authorize]
         public IActionResult ChooseDate()
         {
             return this.View();
@@ -40,7 +41,7 @@
                 || dateChosen.Date > DateTime.UtcNow
                 || dateChosen.Date < DateTime.Parse("01/01/2016"))
             {
-                this.ViewBag.ErrorMessage = Messages.NoPortfolio;
+                this.ViewBag.ErrorMessage = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View();
             }
 
@@ -49,6 +50,7 @@
             return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
         }
 
+        [Authorize]
         public IActionResult Details(string date)
         {
             var userId = this.userManager.GetUserId(this.User);
@@ -56,7 +58,7 @@
 
             if (portfolio == null)
             {
-                this.ViewBag.ErrorMessage = Messages.NoPortfolio;
+                this.ViewBag.ErrorMessage = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View("ChooseDate");
             }
 
