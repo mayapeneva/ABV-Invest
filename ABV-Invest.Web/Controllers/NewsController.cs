@@ -4,7 +4,9 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System.Net;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Xml;
     using Common;
     using Microsoft.AspNetCore.Mvc;
@@ -57,30 +59,26 @@
                 if (feed.Name == "item")
                 {
                     var summaryRaw = feed["description"].InnerText;
-                    var startingIndex = summaryRaw.IndexOf(" /><br />", StringComparison.InvariantCulture) + " /><br />".Length - 1;
-                    var lenght = summaryRaw.LastIndexOf("https://", StringComparison.InvariantCulture);
 
-                    if (lenght == -1)
-                    {
-                        lenght = summaryRaw.LastIndexOf(".<", StringComparison.InvariantCulture);
-                    }
+                    var startingIndex = summaryRaw.IndexOf(" /><br />", StringComparison.InvariantCulture) + " /><br />".Length;
+                    var lenght = summaryRaw.LastIndexOf("<br />", StringComparison.InvariantCulture);
 
                     if (lenght == -1)
                     {
                         lenght = summaryRaw.LastIndexOf(".", StringComparison.InvariantCulture);
                     }
 
-                    var summary = summaryRaw.Substring(startingIndex, lenght - startingIndex);
-                    if (summary.StartsWith("<img"))
+                    if (lenght == -1 || lenght < startingIndex)
                     {
-                        var len = summary.IndexOf(" />", StringComparison.InvariantCulture);
-                        summary = summary.Substring(len);
+                        lenght = summaryRaw.Length - 1;
                     }
 
-                    summary = summary.Replace("<br />", "");
+                    var subSummary = summaryRaw.Substring(startingIndex, lenght - startingIndex);
+
+                    var summary = subSummary.Replace("<br />", " ");
                     if (summary.Length > 200)
                     {
-                        summary = summaryRaw.Substring(0, 200) + "...";
+                        summary = summary.Substring(0, 200) + "...";
                     }
 
                     rssModels.Add(new RSSFeedViewModel
