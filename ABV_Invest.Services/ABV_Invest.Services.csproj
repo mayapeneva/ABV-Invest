@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ABV-Invest.Data\ABV_Invest.Data.csproj" />
+    <ProjectReference Include="..\ABV_Invest.Common\ABV_Invest.Common.csproj" />
     <ProjectReference Include="..\ABV_Invest.DTOs\ABV_Invest.DTOs.csproj" />
     <ProjectReference Include="..\ABV_Invest.Mapping\ABV_Invest.Mapping.csproj" />
   </ItemGroup>
@@ -13,6 +18,9 @@
   <ItemGroup>
     <Reference Include="AutoMapper">
       <HintPath>..\..\..\..\Users\User\.nuget\packages\automapper\8.0.0\lib\netstandard2.0\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages">
+      <HintPath>..\..\..\..\Users\User\.nuget\packages\system.text.encoding.codepages\4.5.0\ref\netstandard2.0\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
   </ItemGroup>
 
