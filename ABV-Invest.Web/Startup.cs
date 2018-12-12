@@ -61,6 +61,7 @@
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();
             services.AddScoped<IDealsService, DealsService>();
+            services.AddScoped<INewsService, NewsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +83,14 @@
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
 
             app.UseMvc(routes =>
             {
