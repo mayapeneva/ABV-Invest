@@ -6,6 +6,7 @@
     using Common;
     using Data;
     using DTOs;
+    using Extensions;
     using Mapping;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
@@ -50,7 +51,6 @@
 
             services.AddIdentity<AbvInvestUser, IdentityRole>()
                 .AddEntityFrameworkStores<AbvDbContext>()
-                .AddRoles<IdentityRole>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
@@ -78,6 +78,7 @@
                 app.UseHsts();
             }
 
+            app.UseSeedRolesMiddleware();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -88,12 +89,9 @@
             {
                 routes.MapRoute(
                     name: "areas",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    template: "{area:exists}/{controller=Uploading}/{action=Index}/{id?}"
                 );
-            });
 
-            app.UseMvc(routes =>
-            {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

@@ -13,6 +13,7 @@
     using Services.Contracts;
     using ViewModels;
 
+    [Authorize]
     public class DealsController : Controller
     {
         private readonly UserManager<AbvInvestUser> userManager;
@@ -24,13 +25,11 @@
             this.dealsService = dealsService;
         }
 
-        [Authorize]
         public IActionResult ChooseDate()
         {
             return this.View();
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult ChooseDate(DateChosenBindingModel dateChosen)
         {
@@ -47,7 +46,6 @@
             return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
         }
 
-        [Authorize]
         public IActionResult Details(string date)
         {
             var userId = this.userManager.GetUserId(this.User);

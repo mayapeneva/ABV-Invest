@@ -10,5 +10,10 @@
         public const string CapitalRSS2 = "https://www.capital.bg/rss/?rubrid=3060";
         public const string InvestorRSS = "https://www.investor.bg/news/rss/last/10/";
         public const string X3NewsRSS = "http://www.x3news.com/?page=RSSFeed";
+
+        public const string Admin = "Admin";
+        public const string User = "User";
+        public const string AdminEmail = "admin@gmail.com";
+        public const string AdminPass = "789Admin";
     }
 }

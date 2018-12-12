@@ -31,6 +31,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Areas\Administration\Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Administration\Views\Uploads\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Administration\Views\_ValidationScriptsPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Administration\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Administration\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Identity\Pages\Account\Manage\_Layout.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -43,10 +58,6 @@
     <Content Update="wwwroot\css\site.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Administration\Views\Home\" />
   </ItemGroup>
 
 </Project>
