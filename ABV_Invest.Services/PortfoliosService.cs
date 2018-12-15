@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using BindingModels.Uploads.Portfolios;
     using Contracts;
     using Data;
     using DTOs;
@@ -32,6 +33,11 @@
             var collection = portfolio?.SecuritiesPerIssuerCollection.Select(Mapper.Map<T>).ToArray();
 
             return collection;
+        }
+
+        public bool SeedPortfolios(PortfolioRowBindingModel[] objPortfolios)
+        {
+            return true;
         }
     }
 }

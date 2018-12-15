@@ -2,13 +2,73 @@
 
 namespace ABV_Invest.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
+    using System.Xml.Serialization;
+    using AutoMapper;
+    using BindingModels;
+    using BindingModels.Uploads.Portfolios;
+    using Common;
     using Microsoft.AspNetCore.Authorization;
+    using Services.Contracts;
 
+    [Area("Administration")]
     [Authorize(Roles = "Admin")]
     public class UploadsController : Controller
     {
-        public IActionResult Index()
+        private readonly IPortfoliosService portfolioService;
+
+        public UploadsController(IPortfoliosService portfolioService)
         {
+            this.portfolioService = portfolioService;
+        }
+
+        public IActionResult PortfoliosInfo()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PortfoliosInfo(FilesUploadedBindingModel model)
+        {
+            // Validation
+            if (!this.ModelState.IsValid
+                || model.Date > DateTime.UtcNow
+                || model.Date < DateTime.Parse("01/01/2016"))
+            {
+                this.ViewBag.ErrorMessage = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                return this.View();
+            }
+
+            // Saving file and deserialing the XML file
+            var xmlFile = model.XMLFile;
+            if (xmlFile.ContentType.EndsWith(".xml"))
+            {
+                var filePath = Path.GetTempPath();
+                if (xmlFile.Length > 0)
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await xmlFile.CopyToAsync(stream);
+                    }
+
+                    var xmlFileContent = System.IO.File.ReadAllText(filePath + xmlFile.FileName);
+                    var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+                    var objPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+                    var result = this.portfolioService.SeedPortfolios(objPortfolios);
+                    if (!result)
+                    {
+                        this.ViewBag.Error = Messages.CouldNotUploadInformation;
+                        return this.View();
+                    }
+                }
+            }
+
             return this.View();
         }
     }

@@ -12,6 +12,9 @@
     {
         private readonly RequestDelegate next;
 
+        private const string AdminEmail = "admin@gmail.com";
+        private const string AdminPass = "789-Admin";
+
         public RolesSeedMiddleware(RequestDelegate next)
         {
             this.next = next;
@@ -36,12 +39,12 @@
             var user = new AbvInvestUser
             {
                 UserName = Constants.Admin,
-                Email = Constants.AdminEmail,
+                Email = AdminEmail,
                 FullName = Constants.Admin,
                 SecurityStamp = Guid.NewGuid().ToString("D")
             };
 
-            var result = await userManager.CreateAsync(user, Constants.AdminPass);
+            var result = await userManager.CreateAsync(user, AdminPass);
             if (result.Succeeded)
             {
                 await userManager.AddToRoleAsync(user, Constants.Admin);

@@ -1,22 +1,15 @@
-﻿@using ABV_Invest.Models
-@using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<AbvInvestUser> SignInManager
+﻿@inject SignInManager<AbvInvestUser> SignInManager
 @inject UserManager<AbvInvestUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
+    <partial name="_UserPartial" />
+    <partial name="_AdminPartial" />
+
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li><a asp-area="" asp-controller="Portfolios" asp-action="ChooseDate" class="bg-abvlightgreen">Портфолио</a></li>
-            <li><a asp-area="" asp-controller="Deals" asp-action="ChooseDate" class="bg-abvlightgreen">Сделки</a></li>
-            <li><a asp-area="" asp-controller="Balances" asp-action="Index" class="bg-abvlightgreen">Баланс</a></li>
-            <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="bg-abvlightgreen">Профил</a>
-            </li>
-            <li>
-                <button type="submit" class="btn navbar-btn bg-bg-abvdarkgreen bg-abvlightgreen">Изход</button>
-            </li>
+            <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="bg-abvlightgreen">Профил</a></li>
+            <li><button type="submit" class="btn navbar-btn bg-bg-abvdarkgreen bg-abvlightgreen">Изход</button></li>
         </ul>
     </form>
 }

@@ -84,6 +84,11 @@ body {
     background-color: white;
 }
 
+.hr-2 {
+    line-height: 2;
+    color: #89bf32
+}
+
 /* QR code generator */
 #qrCode {
     margin: 15px;

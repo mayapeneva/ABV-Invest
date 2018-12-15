@@ -54,9 +54,10 @@
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             services.AddAutoMapper();
+            services.AddAntiforgery();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();
@@ -78,18 +79,18 @@
                 app.UseHsts();
             }
 
-            app.UseSeedRolesMiddleware();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseSeedRolesMiddleware();
             app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "areas",
-                    template: "{area:exists}/{controller=Uploading}/{action=Index}/{id?}"
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
 
                 routes.MapRoute(
