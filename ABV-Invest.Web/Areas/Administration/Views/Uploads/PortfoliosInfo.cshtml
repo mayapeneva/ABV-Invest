@@ -1,0 +1,29 @@
+﻿@model ABV_Invest.BindingModels.FilesUploadedBindingModel
+
+@{
+    ViewData["Title"] = "Качване на информация за портфолиа";
+}
+
+<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
+<hr class="hr-2" />
+
+<div class="container">
+    <partial name="_ErrorPartial" />
+    <form method="post" asp-area="Administration" asp-controller="Uploads" asp-action="PortfoliosInfo" enctype="multipart/form-data">
+        <h4>Тук можете да качите файлът с клиентските портофолиа:</h4>
+        <br />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group col-md-3 my-auto" name="Date">
+            <partial name="_DatePartialAdmin" />
+        </div>
+        <div class="form-group col-md-4 my-auto" name="XMLFile">
+            <label asp-for="@Model.XMLFile" class="control-label">Клиентски портфолиа</label>
+            <input asp-for="@Model.XMLFile" type="file" class="form-control" style="height: auto" />
+            <span asp-validation-for="@Model.XMLFile" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4 my-auto">
+            <br />
+            <input type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen" value="Качи" />
+        </div>
+    </form>
+</div>

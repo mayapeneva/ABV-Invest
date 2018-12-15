@@ -1,0 +1,10 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Възникна грешка:";
+}
+
+@if (ViewBag.Error != null)
+{
+<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
+<h4 class="bg-abvmiddlegreen text-center">@ViewBag.Error</h4>
+}

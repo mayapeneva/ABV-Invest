@@ -44,6 +44,7 @@
                 {
                     var summaryRaw = feed["description"].InnerText;
 
+                    // Clean the feedDescription from html tags, which should not be part of it
                     var startingIndex = summaryRaw.IndexOf(" /><br />", StringComparison.InvariantCulture) + " /><br />".Length;
                     var lenght = summaryRaw.LastIndexOf("<br />", StringComparison.InvariantCulture);
 
@@ -59,12 +60,14 @@
 
                     var subSummary = summaryRaw.Substring(startingIndex, lenght - startingIndex);
 
+                    // Replace the unnecessary symbols and shorten the description length
                     var summary = subSummary.Replace("<br />", " ");
-                    if (summary.Length > 200)
+                    if (summary.Length > 150)
                     {
-                        summary = summary.Substring(0, 200) + "...";
+                        summary = summary.Substring(0, 150) + "...";
                     }
 
+                    // Create the RSSModel
                     rssModels.Add(new RSSFeedViewModel
                     {
                         Title = feed["title"].InnerText,

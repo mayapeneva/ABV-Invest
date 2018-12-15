@@ -2,13 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using BindingModels.Uploads.Portfolios;
-    using DTOs;
 
     public interface IPortfoliosService
     {
         T[] GetUserDailyPortfolio<T>(string userId, string chosenDate);
 
-        bool SeedPortfolios(PortfolioRowBindingModel[] objPortfolios);
+        Task SeedPortfolios(IEnumerable<PortfolioRowBindingModel> objPortfolios, DateTime date);
     }
 }

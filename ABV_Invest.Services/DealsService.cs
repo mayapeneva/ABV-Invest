@@ -5,7 +5,6 @@
     using AutoMapper;
     using Contracts;
     using Data;
-    using DTOs;
 
     public class DealsService : IDealsService
     {

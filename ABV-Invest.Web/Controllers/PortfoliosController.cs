@@ -10,7 +10,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Models;
     using Services.Contracts;
     using ViewModels;
 
@@ -38,7 +37,7 @@
                 || dateChosen.Date > DateTime.UtcNow
                 || dateChosen.Date < DateTime.Parse("01/01/2016"))
             {
-                this.ViewBag.ErrorMessage = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewBag.Error = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View();
             }
 
@@ -54,7 +53,7 @@
 
             if (portfolio == null)
             {
-                this.ViewBag.ErrorMessage = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewBag.Error = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View("ChooseDate");
             }
 

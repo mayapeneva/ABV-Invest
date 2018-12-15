@@ -3,13 +3,10 @@
 namespace ABV_Invest.Web.Areas.Administration.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.Xml.Linq;
     using System.Xml.Serialization;
-    using AutoMapper;
     using BindingModels;
     using BindingModels.Uploads.Portfolios;
     using Common;
@@ -40,7 +37,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                 || model.Date > DateTime.UtcNow
                 || model.Date < DateTime.Parse("01/01/2016"))
             {
-                this.ViewBag.ErrorMessage = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewBag.Error = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View();
             }
 
@@ -60,7 +57,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                     var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
                     var objPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-                    var result = this.portfolioService.SeedPortfolios(objPortfolios);
+                    var result = this.portfolioService.SeedPortfolios(objPortfolios.ToList(), model.Date);
                     if (!result)
                     {
                         this.ViewBag.Error = Messages.CouldNotUploadInformation;

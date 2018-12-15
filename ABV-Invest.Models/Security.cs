@@ -10,8 +10,10 @@
 
         public SecuritiesType SecuritiesType { get; set; }
 
-        public string Isin { get; set; }
+        public string ISIN { get; set; }
 
         public string BfbCode { get; set; }
+
+        public Currency Currency { get; set; }
     }
 }
