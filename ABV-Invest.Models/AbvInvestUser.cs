@@ -1,6 +1,7 @@
 ﻿namespace ABV_Invest.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using Microsoft.AspNetCore.Identity;
 
     public class AbvInvestUser : IdentityUser
@@ -9,15 +10,22 @@
         {
             this.Portfolio = new HashSet<DailySecuritiesPerClient>();
             this.Deals = new HashSet<DailyDeals>();
+            this.Balances = new HashSet<DailyBalance>();
         }
 
+        [Required]
+        [RegularExpression("^[/d]{5}$")]
+        public string PIN { get; set; }
+
+        [DataType(DataType.Text)]
+        [MinLength(4)]
         public string FullName { get; set; }
 
         public virtual ICollection<DailySecuritiesPerClient> Portfolio { get; set; }
 
         public virtual ICollection<DailyDeals> Deals { get; set; }
 
-        public virtual Balance Balance { get; set; }
+        public virtual ICollection<DailyBalance> Balances { get; set; }
 
         public int BalanceId { get; set; }
     }

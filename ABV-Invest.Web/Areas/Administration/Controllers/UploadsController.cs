@@ -41,7 +41,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                 return this.View();
             }
 
-            // Saving file and deserialing the XML file
+            // Saving the uploaded file and deserialing the XML file
             var xmlFile = model.XMLFile;
             if (xmlFile.ContentType.EndsWith(".xml"))
             {
@@ -58,7 +58,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                     var objPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
                     var result = this.portfolioService.SeedPortfolios(objPortfolios.ToList(), model.Date);
-                    if (!result)
+                    if (!result.IsCompleted)
                     {
                         this.ViewBag.Error = Messages.CouldNotUploadInformation;
                         return this.View();

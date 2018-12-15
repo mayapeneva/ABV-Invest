@@ -14,6 +14,7 @@
 
         private const string AdminEmail = "admin@gmail.com";
         private const string AdminPass = "789-Admin";
+        private const string PIN = "00000";
 
         public RolesSeedMiddleware(RequestDelegate next)
         {
@@ -40,6 +41,7 @@
             {
                 UserName = Constants.Admin,
                 Email = AdminEmail,
+                PIN = PIN,
                 FullName = Constants.Admin,
                 SecurityStamp = Guid.NewGuid().ToString("D")
             };

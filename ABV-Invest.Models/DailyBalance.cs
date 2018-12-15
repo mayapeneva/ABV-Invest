@@ -3,15 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Base;
 
-    public class DailyDeals : BaseEntity<int>
+    public class DailyBalance
     {
-        public DailyDeals()
-        {
-            this.Deals = new HashSet<Deal>();
-        }
-
         public virtual AbvInvestUser AbvInvestUser { get; set; }
         public string AbvInvestUserId { get; set; }
 
@@ -19,6 +13,7 @@
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        public virtual ICollection<Deal> Deals { get; set; }
+        public virtual Balance Balance { get; set; }
+        public int BalanceId { get; set; }
     }
 }

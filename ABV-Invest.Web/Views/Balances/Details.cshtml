@@ -1,0 +1,35 @@
+﻿@model ABV_Invest.ViewModels.BalanceViewModel
+
+@{
+    ViewData["Title"] = "Баланс";
+}
+
+<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
+<hr />
+
+<div>
+    <table class="table table-hover table-responsive">
+        <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
+            <tr>
+                <th class="text-left" scope="col">Пари в брой</th>
+                <th class="text-left" scope="col">Пазарна стойност на ценните книжа</th>
+                <th class="text-left" scope="col">Обща доходност</th>
+                <th class="text-right" scope="col">Обща доходност %</th>
+            </tr>
+        </thead>
+        <tbody class="bg-abvdarkgreen">
+            <tr>
+                <td class="text-left">BGN @Model.Cash</td>
+                <td class="text-left">@Model.AllSecuritiesMarketPrice</td>
+                <td class="text-left">@Model.VirtualProfit</td>
+                <td class="text-right">@Model.VirtualProfitPercentage</td>
+            </tr>
+        </tbody>
+    </table>
+</div><br />
+
+<div class="text-center">
+    <span class="glyphicon glyphicon-arrow-left bg-abvmiddlegreen"></span>
+    &nbsp;
+    <a asp-action="ChooseDate" class="bg-abvmiddlegreen large-fontsize">Обратно</a>
+</div>

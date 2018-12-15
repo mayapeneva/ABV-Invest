@@ -44,6 +44,11 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             public string Username { get; set; }
 
             [Required]
+            [RegularExpression("^[/d]{5}$")]
+            [Display(Name = "PIN")]
+            public string PIN { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -70,7 +75,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? this.Url.Content("~/");
             if (this.ModelState.IsValid)
             {
-                var user = new AbvInvestUser { UserName = this.Input.Username, Email = this.Input.Email };
+                var user = new AbvInvestUser { UserName = this.Input.Username, PIN = this.Input.PIN, Email = this.Input.Email };
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {

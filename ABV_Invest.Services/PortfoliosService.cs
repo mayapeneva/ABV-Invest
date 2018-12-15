@@ -17,11 +17,13 @@
 
         private readonly AbvDbContext db;
         private readonly UserManager<AbvInvestUser> userManager;
+        private readonly IBalancesService balancesService;
 
-        public PortfoliosService(AbvDbContext db, UserManager<AbvInvestUser> userManager)
+        public PortfoliosService(AbvDbContext db, UserManager<AbvInvestUser> userManager, IBalancesService balancesService)
         {
             this.db = db;
             this.userManager = userManager;
+            this.balancesService = balancesService;
         }
 
         public T[] GetUserDailyPortfolio<T>(string userId, string chosenDate)
@@ -151,6 +153,8 @@
                 user.Portfolio.Add(dbPortfolio);
 
                 await this.db.SaveChangesAsync();
+
+                this.balancesService.CreateBalanceForUser(user, date);
             }
         }
     }

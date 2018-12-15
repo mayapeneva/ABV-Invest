@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Изберете дата за сделки";
+    ViewData["Title"] = "Изберете дата за баланс";
 }
 @model ABV_Invest.BindingModels.DateChosenBindingModel
 
@@ -12,18 +12,18 @@
     <div class=" col-md-6 bg-abvdarkgreen large-fontsize">
         @if (ViewBag.ErrorMessage != null)
         {
-        <p>
-            @ViewBag.ErrorMessage
-        </p>
+            <p>
+                @ViewBag.ErrorMessage
+            </p>
         }
         else
         {
-        <p>
-            Изберете дата, за да можете да получите информация за сделките, сключени на тази дата:
-        </p>
+            <p>
+                Изберете дата, за да можете да получите информация за баланса си към тази дата:
+            </p>
         }
         <br />
-        <form asp-controller="Deals" asp-action="ChooseDate" method="post">
+        <form asp-controller="Balances" asp-action="ChooseDate" method="post">
             <partial name="_DatePartial" />
         </form>
     </div>
