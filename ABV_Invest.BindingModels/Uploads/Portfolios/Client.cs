@@ -5,7 +5,7 @@
     public class Client
     {
         [Required]
-        [RegularExpression(@"^[A-Z0-9]{5,10}$")]
+        [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$")]
         public string CDNNumber { get; set; }
 
         [Required]

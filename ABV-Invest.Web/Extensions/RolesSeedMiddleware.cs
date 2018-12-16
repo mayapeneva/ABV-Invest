@@ -12,6 +12,7 @@
     {
         private readonly RequestDelegate next;
 
+        private const string AdminUserName = "ADMIN";
         private const string AdminEmail = "admin@gmail.com";
         private const string AdminPass = "789-Admin";
         private const string PIN = "00000";
@@ -39,17 +40,17 @@
 
             var user = new AbvInvestUser
             {
-                UserName = Constants.Admin,
+                UserName = AdminUserName,
                 Email = AdminEmail,
                 PIN = PIN,
-                FullName = Constants.Admin,
+                FullName = AdminUserName,
                 SecurityStamp = Guid.NewGuid().ToString("D")
             };
 
             var result = await userManager.CreateAsync(user, AdminPass);
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(user, Constants.Admin);
+                await userManager.AddToRoleAsync(user, AdminUserName);
             }
         }
     }

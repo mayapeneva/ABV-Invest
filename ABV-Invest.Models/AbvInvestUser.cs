@@ -14,7 +14,7 @@
         }
 
         [Required]
-        [RegularExpression("^[/d]{5}$")]
+        [RegularExpression(@"^\d{5}$")]
         public string PIN { get; set; }
 
         [DataType(DataType.Text)]

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using Common;
+
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
@@ -44,7 +46,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             public string Username { get; set; }
 
             [Required]
-            [RegularExpression("^[/d]{5}$")]
+            [RegularExpression(@"^\d{5}$")]
             [Display(Name = "PIN")]
             public string PIN { get; set; }
 
@@ -79,6 +81,8 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
+                    await this._userManager.AddToRoleAsync(user, Constants.User);
+
                     this._logger.LogInformation("User created a new account with password.");
 
                     var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);

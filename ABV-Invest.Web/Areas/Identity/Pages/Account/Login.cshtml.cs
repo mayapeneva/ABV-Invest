@@ -42,11 +42,11 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [MinLength(4)]
-            public string Username { get; set; }
+            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$")]
+            public string UserName { get; set; }
 
             [Required]
-            [RegularExpression("^[/d]{5}$")]
+            [RegularExpression(@"^\d{5}$")]
             [Display(Name = "PIN")]
             public string PIN { get; set; }
 
@@ -83,10 +83,10 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await this._signInManager.PasswordSignInAsync(this.Input.Username, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: true);
+                var result = await this._signInManager.PasswordSignInAsync(this.Input.UserName, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
-                    var dbUser = this.usersService.GetUserByUserName(this.Input.Username);
+                    var dbUser = this.usersService.GetUserByUserName(this.Input.UserName);
                     if (dbUser == null || this.Input.PIN != dbUser.PIN)
                     {
                         this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
