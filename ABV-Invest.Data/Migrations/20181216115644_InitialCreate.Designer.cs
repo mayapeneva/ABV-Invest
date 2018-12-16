@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABV_Invest.Data.Migrations
 {
     [DbContext(typeof(AbvDbContext))]
-    [Migration("20181129201833_ChangeEnumsToBgLang")]
-    partial class ChangeEnumsToBgLang
+    [Migration("20181216115644_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,9 @@ namespace ABV_Invest.Data.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
 
+                    b.Property<string>("PIN")
+                        .IsRequired();
+
                     b.Property<string>("PasswordHash");
 
                     b.Property<string>("PhoneNumber");
@@ -82,25 +85,11 @@ namespace ABV_Invest.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AbvInvestUserId");
-
-                    b.Property<decimal>("ActualProfit");
-
-                    b.Property<decimal>("ActualProfitPercentage");
+                    b.Property<int>("BalanceId");
 
                     b.Property<decimal>("Cash");
 
-                    b.Property<decimal>("MoneyInvested");
-
-                    b.Property<decimal>("PossibleProfit");
-
-                    b.Property<decimal>("TotalSecuritiesMarketPrice");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AbvInvestUserId")
-                        .IsUnique()
-                        .HasFilter("[AbvInvestUserId] IS NOT NULL");
 
                     b.ToTable("Balances");
                 });
@@ -111,13 +100,34 @@ namespace ABV_Invest.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Abbreviation");
-
-                    b.Property<string>("Code");
+                    b.Property<string>("Code")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("Currencies");
+                });
+
+            modelBuilder.Entity("ABV_Invest.Models.DailyBalance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AbvInvestUserId");
+
+                    b.Property<int>("BalanceId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AbvInvestUserId");
+
+                    b.HasIndex("BalanceId")
+                        .IsUnique();
+
+                    b.ToTable("DailyBalance");
                 });
 
             modelBuilder.Entity("ABV_Invest.Models.DailyDeals", b =>
@@ -162,7 +172,7 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<int>("CurrencyId");
 
-                    b.Property<int?>("DailyDealsId");
+                    b.Property<int>("DailyDealsId");
 
                     b.Property<string>("DealType")
                         .IsRequired();
@@ -173,7 +183,7 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("Quantity");
+                    b.Property<decimal>("Quantity");
 
                     b.Property<int>("SecurityId");
 
@@ -200,7 +210,8 @@ namespace ABV_Invest.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -213,7 +224,8 @@ namespace ABV_Invest.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -228,7 +240,7 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<decimal>("AveragePriceBuy");
 
-                    b.Property<int?>("DailySecuritiesPerClientId");
+                    b.Property<int>("DailySecuritiesPerClientId");
 
                     b.Property<decimal>("MarketPrice");
 
@@ -236,15 +248,15 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<decimal>("Profit");
 
+                    b.Property<decimal>("ProfitInBGN");
+
                     b.Property<decimal>("ProfitPercentаge");
 
-                    b.Property<int>("Quantity");
+                    b.Property<decimal>("Quantity");
 
                     b.Property<int>("SecurityId");
 
                     b.Property<decimal>("TotalMarketPrice");
-
-                    b.Property<decimal>("TotalPriceBuy");
 
                     b.HasKey("Id");
 
@@ -263,14 +275,18 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<string>("BfbCode");
 
-                    b.Property<string>("Isin");
+                    b.Property<int?>("CurrencyId");
+
+                    b.Property<string>("ISIN")
+                        .IsRequired();
 
                     b.Property<int>("IssuerId");
 
-                    b.Property<string>("SecuritiesType")
-                        .IsRequired();
+                    b.Property<string>("SecuritiesType");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrencyId");
 
                     b.HasIndex("IssuerId");
 
@@ -387,11 +403,16 @@ namespace ABV_Invest.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ABV_Invest.Models.Balance", b =>
+            modelBuilder.Entity("ABV_Invest.Models.DailyBalance", b =>
                 {
                     b.HasOne("ABV_Invest.Models.AbvInvestUser", "AbvInvestUser")
-                        .WithOne("Balance")
-                        .HasForeignKey("ABV_Invest.Models.Balance", "AbvInvestUserId");
+                        .WithMany("Balances")
+                        .HasForeignKey("AbvInvestUserId");
+
+                    b.HasOne("ABV_Invest.Models.Balance", "Balance")
+                        .WithOne("DaiyBalance")
+                        .HasForeignKey("ABV_Invest.Models.DailyBalance", "BalanceId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ABV_Invest.Models.DailyDeals", b =>
@@ -415,9 +436,10 @@ namespace ABV_Invest.Data.Migrations
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ABV_Invest.Models.DailyDeals")
+                    b.HasOne("ABV_Invest.Models.DailyDeals", "DailyDeals")
                         .WithMany("Deals")
-                        .HasForeignKey("DailyDealsId");
+                        .HasForeignKey("DailyDealsId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ABV_Invest.Models.Market", "Market")
                         .WithMany()
@@ -432,9 +454,10 @@ namespace ABV_Invest.Data.Migrations
 
             modelBuilder.Entity("ABV_Invest.Models.SecuritiesPerClient", b =>
                 {
-                    b.HasOne("ABV_Invest.Models.DailySecuritiesPerClient")
+                    b.HasOne("ABV_Invest.Models.DailySecuritiesPerClient", "DailySecuritiesPerClient")
                         .WithMany("SecuritiesPerIssuerCollection")
-                        .HasForeignKey("DailySecuritiesPerClientId");
+                        .HasForeignKey("DailySecuritiesPerClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ABV_Invest.Models.Security", "Security")
                         .WithMany()
@@ -444,6 +467,10 @@ namespace ABV_Invest.Data.Migrations
 
             modelBuilder.Entity("ABV_Invest.Models.Security", b =>
                 {
+                    b.HasOne("ABV_Invest.Models.Currency", "Currency")
+                        .WithMany()
+                        .HasForeignKey("CurrencyId");
+
                     b.HasOne("ABV_Invest.Models.Issuer", "Issuer")
                         .WithMany("Securities")
                         .HasForeignKey("IssuerId")

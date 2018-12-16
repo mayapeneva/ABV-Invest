@@ -8,8 +8,5 @@
         [Required]
         [DataType(DataType.Text)]
         public string Name { get; set; }
-
-        public Currency Currency { get; set; }
-        public int CurrencyId { get; set; }
     }
 }

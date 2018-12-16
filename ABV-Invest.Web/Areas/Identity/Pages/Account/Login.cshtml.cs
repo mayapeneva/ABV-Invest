@@ -12,16 +12,21 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using Data;
+    using Services.Contracts;
+
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
         private readonly SignInManager<AbvInvestUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IUsersService usersService;
 
-        public LoginModel(SignInManager<AbvInvestUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<AbvInvestUser> signInManager, ILogger<LoginModel> logger, AbvDbContext db, IUsersService usersService)
         {
             this._signInManager = signInManager;
             this._logger = logger;
+            this.usersService = usersService;
         }
 
         [BindProperty]
@@ -81,6 +86,13 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                 var result = await this._signInManager.PasswordSignInAsync(this.Input.Username, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
+                    var dbUser = this.usersService.GetUserByUserName(this.Input.Username);
+                    if (dbUser == null || this.Input.PIN != dbUser.PIN)
+                    {
+                        this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        return this.Page();
+                    }
+
                     this._logger.LogInformation("User logged in.");
                     return this.LocalRedirect(returnUrl);
                 }

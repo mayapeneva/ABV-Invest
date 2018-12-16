@@ -57,6 +57,6 @@
         [RegularExpression(@"^[A-Z0-9]{3,4}$")]
         public string BfbCode { get; set; }
 
-        public Currency Currency { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

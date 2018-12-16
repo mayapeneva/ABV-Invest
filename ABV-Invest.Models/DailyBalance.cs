@@ -3,8 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Base;
 
-    public class DailyBalance
+    public class DailyBalance : BaseEntity<int>
     {
         public virtual AbvInvestUser AbvInvestUser { get; set; }
         public string AbvInvestUserId { get; set; }
