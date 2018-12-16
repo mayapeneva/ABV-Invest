@@ -41,6 +41,11 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             public string Username { get; set; }
 
             [Required]
+            [RegularExpression("^[/d]{5}$")]
+            [Display(Name = "PIN")]
+            public string PIN { get; set; }
+
+            [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
