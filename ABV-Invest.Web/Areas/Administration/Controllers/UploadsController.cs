@@ -68,5 +68,16 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
 
             return this.View();
         }
+
+        public IActionResult DealsInfo()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DealsInfo(FilesUploadedBindingModel model)
+        {
+            return this.View();
+        }
     }
 }

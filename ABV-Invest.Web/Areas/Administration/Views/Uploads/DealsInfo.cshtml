@@ -7,26 +7,23 @@
 <h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
 <hr class="hr-2" />
 
-<form asp-area="Administration" asp-controller="Uploads" asp-action="Info" method="post">
-    <div class="container">
-        <br />
-        <hr />
+<div class="container">
+    <partial name="_ErrorPartial" />
+    <form method="post" asp-area="Administration" asp-controller="Uploads" asp-action="DealsInfo" enctype="multipart/form-data">
         <h4>Тук можете да качите файлът с клиентските сделки:</h4>
         <br />
         <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="row d-flex justify-content-around">
-            <div class="col-md-4" name="DealsDate">
-                <br />
-                <partial name="_DatePartialAdmin" />
-            </div>
-            <div class="col-md-4" name="Deals">
-                <label asp-for="@Model.XMLFile">Клиентски сделки</label>
-                <input asp-for="@Model.XMLFile" type="file" class="form-control" />
-            </div>
-            <div class="col-md-4">
-                <button type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen">Качи</button>
-            </div>
+        <div class="form-group col-md-3 my-auto" name="Date">
+            <partial name="_DatePartialAdmin" />
         </div>
-        <br />
-    </div>
-</form>
+        <div class="form-group col-md-4 my-auto" name="XMLFile">
+            <label asp-for="@Model.XMLFile" class="control-label">Клиентски сделки</label>
+            <input asp-for="@Model.XMLFile" type="file" class="form-control" style="height: auto" />
+            <span asp-validation-for="@Model.XMLFile" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4 my-auto">
+            <br />
+            <input type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen" value="Качи" />
+        </div>
+    </form>
+</div>

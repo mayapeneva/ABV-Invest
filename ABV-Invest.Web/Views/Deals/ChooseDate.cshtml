@@ -10,18 +10,9 @@
     <partial name="_ErrorPartial" />
     <div class="col-md-3"></div>
     <div class=" col-md-6 bg-abvdarkgreen large-fontsize">
-        @if (ViewBag.ErrorMessage != null)
-        {
-        <p>
-            @ViewBag.ErrorMessage
-        </p>
-        }
-        else
-        {
         <p>
             Изберете дата, за да можете да получите информация за сделките, сключени на тази дата:
         </p>
-        }
         <br />
         <form asp-controller="Deals" asp-action="ChooseDate" method="post">
             <partial name="_DatePartial" />
