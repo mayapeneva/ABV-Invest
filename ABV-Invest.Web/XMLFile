@@ -1,0 +1,4707 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<WebData>
+  <New>
+    <Client>
+      <ClientID>221</ClientID>
+      <CDNumber>0000000001</CDNumber>
+      <Name>ХОЛДИНГ "СВЕТА СОФИЯ" АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1001</ShareID>
+      <ISIN>BG11POSOAT12</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>БИО АГРО КЪМПАНИ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>4 359.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>0</Result>
+      <ResultBGN>0</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>221</ClientID>
+      <CDNumber>0000000001</CDNumber>
+      <Name>ХОЛДИНГ "СВЕТА СОФИЯ" АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1376</ShareID>
+      <ISIN>BG1100058988</ISIN>
+      <StockCode>HNVEK</StockCode>
+      <NewCode>6N3</NewCode>
+      <Issuer>Холдинг Нов век АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6 300.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>15.0000</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>94 500.00</MarketValue>
+      <Result>94500</Result>
+      <ResultBGN>94500</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>3.885</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>221</ClientID>
+      <CDNumber>0000000001</CDNumber>
+      <Name>ХОЛДИНГ "СВЕТА СОФИЯ" АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5382</ShareID>
+      <ISIN>BG11EMTOAT16</ISIN>
+      <StockCode>EMPI</StockCode>
+      <NewCode>58E</NewCode>
+      <Issuer>Химснаб България АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>49.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>42.6000</MarketPrice>
+      <MarketDate>15.11.2018</MarketDate>
+      <MarketValue>2 087.40</MarketValue>
+      <Result>2087.4</Result>
+      <ResultBGN>2087.4</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.086</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>221</ClientID>
+      <CDNumber>0000000001</CDNumber>
+      <Name>ХОЛДИНГ "СВЕТА СОФИЯ" АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5751</ShareID>
+      <ISIN>BG11FUDVAT14</ISIN>
+      <StockCode>FURA</StockCode>
+      <NewCode />
+      <Issuer>ФУРАЖИ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6 502.00</Quantity>
+      <OpenPrice>3.0150</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-19603.53</Result>
+      <ResultBGN>-19603.53</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>221</ClientID>
+      <CDNumber>0000000001</CDNumber>
+      <Name>ХОЛДИНГ "СВЕТА СОФИЯ" АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>4 650.00</Quantity>
+      <OpenPrice>14.5817</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>73 005.00</MarketValue>
+      <Result>5200.25</Result>
+      <ResultBGN>5200.25</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>7.669</YieldPercent>
+      <RelativePart>3.001</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>227</ClientID>
+      <CDNumber>0000000008</CDNumber>
+      <Name>ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6108</ShareID>
+      <ISIN>BG1100019048</ISIN>
+      <StockCode>IBG</StockCode>
+      <NewCode>4IN</NewCode>
+      <Issuer>Инвестор БГ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>3 397.00</Quantity>
+      <OpenPrice>12.6281</OpenPrice>
+      <MarketPrice>14.5000</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>49 256.50</MarketValue>
+      <Result>6358.68</Result>
+      <ResultBGN>6358.68</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>14.823</YieldPercent>
+      <RelativePart>0.255</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>227</ClientID>
+      <CDNumber>0000000008</CDNumber>
+      <Name>ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>95.00</Quantity>
+      <OpenPrice>37.5122</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>3 591.00</MarketValue>
+      <Result>27.3399999999997</Result>
+      <ResultBGN>27.3399999999997</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.767</YieldPercent>
+      <RelativePart>0.019</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>227</ClientID>
+      <CDNumber>0000000008</CDNumber>
+      <Name>ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6664</ShareID>
+      <ISIN>BG1100041067</ISIN>
+      <StockCode>SBPF</StockCode>
+      <NewCode>6SB</NewCode>
+      <Issuer>Супер Боровец Пропърти Фонд АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>63 430.00</Quantity>
+      <OpenPrice>1.9022</OpenPrice>
+      <MarketPrice>1.9200</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>121 785.60</MarketValue>
+      <Result>1131.12</Result>
+      <ResultBGN>1131.12</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.937</YieldPercent>
+      <RelativePart>0.632</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>227</ClientID>
+      <CDNumber>0000000008</CDNumber>
+      <Name>ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6915</ShareID>
+      <ISIN>BG9000003087</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ДФ Конкорд Фонд-5 Централна и Източна Европа</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>5 033.22</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>7.2071</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>36 274.91</MarketValue>
+      <Result>36274.91409632</Result>
+      <ResultBGN>36274.91409632</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.188</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>227</ClientID>
+      <CDNumber>0000000008</CDNumber>
+      <Name>ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7222</ShareID>
+      <ISIN>BG1100111076</ISIN>
+      <StockCode>2AL</StockCode>
+      <NewCode>2AL</NewCode>
+      <Issuer>Алтерон АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>339 990.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>12.5091</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>4 252 968.91</MarketValue>
+      <Result>4252968.909</Result>
+      <ResultBGN>4252968.909</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>22.053</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>227</ClientID>
+      <CDNumber>0000000008</CDNumber>
+      <Name>ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7352</ShareID>
+      <ISIN>BG9000009167</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ДФ С-Микс</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>505.51</Quantity>
+      <OpenPrice>11.1711</OpenPrice>
+      <MarketPrice>11.2465</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>5 685.17</MarketValue>
+      <Result>38.1164810999999</Result>
+      <ResultBGN>38.1164810999999</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.675</YieldPercent>
+      <RelativePart>0.029</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>227</ClientID>
+      <CDNumber>0000000008</CDNumber>
+      <Name>ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7355</ShareID>
+      <ISIN>BG1100076063</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>СТРАТЕГИЯ АСЕТ МЕНИДЖМЪНТ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>245 000.00</Quantity>
+      <OpenPrice>8.0008</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-1960196</Result>
+      <ResultBGN>-1960196</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17336</ClientID>
+      <CDNumber>17336</CDNumber>
+      <Name>УЕБ МЕДИЯ ГРУП АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7448</ShareID>
+      <ISIN>BG1100004180</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>Уеб Финанс Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>18 750.00</Quantity>
+      <OpenPrice>268.5053</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-5034475</Result>
+      <ResultBGN>-5034475</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>884</ShareID>
+      <ISIN>BG1100026985</ISIN>
+      <StockCode>GAMZA</StockCode>
+      <NewCode>6S4</NewCode>
+      <Issuer>Северкооп-Гъмза Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 720.00</Quantity>
+      <OpenPrice>4.0182</OpenPrice>
+      <MarketPrice>4.2000</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>11 424.00</MarketValue>
+      <Result>494.450000000001</Result>
+      <ResultBGN>494.450000000001</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>4.524</YieldPercent>
+      <RelativePart>0.049</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>885</ShareID>
+      <ISIN>BG1100019980</ISIN>
+      <StockCode>IHLBL</StockCode>
+      <NewCode>4ID</NewCode>
+      <Issuer>Индустриален холдинг България АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 300.00</Quantity>
+      <OpenPrice>1.0102</OpenPrice>
+      <MarketPrice>1.0100</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>2 323.00</MarketValue>
+      <Result>-0.389999999999873</Result>
+      <ResultBGN>-0.389999999999873</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.017</YieldPercent>
+      <RelativePart>0.010</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>904</ShareID>
+      <ISIN>BG1100008983</ISIN>
+      <StockCode>HSOF</StockCode>
+      <NewCode>4HS</NewCode>
+      <Issuer>Холдинг Света София АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>600.00</Quantity>
+      <OpenPrice>3.7711</OpenPrice>
+      <MarketPrice>3.5200</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>2 112.00</MarketValue>
+      <Result>-150.64</Result>
+      <ResultBGN>-150.64</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 6.658</YieldPercent>
+      <RelativePart>0.009</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1234</ShareID>
+      <ISIN>BG1100014973</ISIN>
+      <StockCode>CCB</StockCode>
+      <NewCode>4CF</NewCode>
+      <Issuer>ТБ Централна кооперативна банка АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>10 000.00</Quantity>
+      <OpenPrice>2.0591</OpenPrice>
+      <MarketPrice>1.4300</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>14 300.00</MarketValue>
+      <Result>-6290.91</Result>
+      <ResultBGN>-6290.91</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 30.552</YieldPercent>
+      <RelativePart>0.061</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5382</ShareID>
+      <ISIN>BG11EMTOAT16</ISIN>
+      <StockCode>EMPI</StockCode>
+      <NewCode>58E</NewCode>
+      <Issuer>Химснаб България АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>20.00</Quantity>
+      <OpenPrice>43.1500</OpenPrice>
+      <MarketPrice>42.6000</MarketPrice>
+      <MarketDate>15.11.2018</MarketDate>
+      <MarketValue>852.00</MarketValue>
+      <Result>-11</Result>
+      <ResultBGN>-11</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 1.275</YieldPercent>
+      <RelativePart>0.004</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6207</ShareID>
+      <ISIN>BG1100007985</ISIN>
+      <StockCode>HEKI</StockCode>
+      <NewCode>5EK</NewCode>
+      <Issuer>Екип-98 Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>30 164.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>10.0000</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>301 640.00</MarketValue>
+      <Result>301640</Result>
+      <ResultBGN>301640</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.289</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6373</ShareID>
+      <ISIN>BG1100003059</ISIN>
+      <StockCode>AKTIV</StockCode>
+      <NewCode>5AX</NewCode>
+      <Issuer>Актив Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>3 120.00</Quantity>
+      <OpenPrice>4.8728</OpenPrice>
+      <MarketPrice>7.5000</MarketPrice>
+      <MarketDate>28.11.2018</MarketDate>
+      <MarketValue>23 400.00</MarketValue>
+      <Result>8196.91</Result>
+      <ResultBGN>8196.91</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>53.916</YieldPercent>
+      <RelativePart>0.100</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6532</ShareID>
+      <ISIN>BG1100026068</ISIN>
+      <StockCode>FEEI</StockCode>
+      <NewCode>6EE</NewCode>
+      <Issuer>Фонд за енергетика и енергийни икономии -</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>9 020.00</Quantity>
+      <OpenPrice>0.2517</OpenPrice>
+      <MarketPrice>0.1140</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>1 028.28</MarketValue>
+      <Result>-1242.04</Result>
+      <ResultBGN>-1242.04</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 54.708</YieldPercent>
+      <RelativePart>0.004</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6664</ShareID>
+      <ISIN>BG1100041067</ISIN>
+      <StockCode>SBPF</StockCode>
+      <NewCode>6SB</NewCode>
+      <Issuer>Супер Боровец Пропърти Фонд АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>62 800.00</Quantity>
+      <OpenPrice>1.9217</OpenPrice>
+      <MarketPrice>1.9200</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>120 576.00</MarketValue>
+      <Result>-106</Result>
+      <ResultBGN>-106</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.088</YieldPercent>
+      <RelativePart>0.515</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7351</ShareID>
+      <ISIN>IM00BYQLTS50</ISIN>
+      <StockCode>BSP</StockCode>
+      <NewCode />
+      <Issuer>Black Sea Property Plc</Issuer>
+      <Currency>EUR</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6 600 000.00</Quantity>
+      <OpenPrice>0.0150</OpenPrice>
+      <MarketPrice>0.0140</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>92 400.00</MarketValue>
+      <Result>-6671.58</Result>
+      <ResultBGN>-13048.4763114</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 6.734</YieldPercent>
+      <RelativePart>0.395</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7442</ShareID>
+      <ISIN>BG4000011180</ISIN>
+      <StockCode>4HS1</StockCode>
+      <NewCode>4HS1</NewCode>
+      <Issuer>Холдинг Света София АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 212 499.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>0.0010</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>1 212.50</MarketValue>
+      <Result>1212.499</Result>
+      <ResultBGN>1212.499</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.005</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17901</ClientID>
+      <CDNumber>V000018024</CDNumber>
+      <Name>ГАМА ФИНАНС ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1041</ShareID>
+      <ISIN>BG1100104980</ISIN>
+      <StockCode>HZAG</StockCode>
+      <NewCode>5Z2</NewCode>
+      <Issuer>Зенит инвестмънт холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>11 940.00</Quantity>
+      <OpenPrice>5.2357</OpenPrice>
+      <MarketPrice>6.0000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>71 640.00</MarketValue>
+      <Result>9126.22</Result>
+      <ResultBGN>9126.22</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>14.599</YieldPercent>
+      <RelativePart>4.082</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17901</ClientID>
+      <CDNumber>V000018024</CDNumber>
+      <Name>ГАМА ФИНАНС ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1234</ShareID>
+      <ISIN>BG1100014973</ISIN>
+      <StockCode>CCB</StockCode>
+      <NewCode>4CF</NewCode>
+      <Issuer>ТБ Централна кооперативна банка АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>5 000.00</Quantity>
+      <OpenPrice>1.6907</OpenPrice>
+      <MarketPrice>1.4300</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>7 150.00</MarketValue>
+      <Result>-1303.33</Result>
+      <ResultBGN>-1303.33</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 15.418</YieldPercent>
+      <RelativePart>0.407</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17901</ClientID>
+      <CDNumber>V000018024</CDNumber>
+      <Name>ГАМА ФИНАНС ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6108</ShareID>
+      <ISIN>BG1100019048</ISIN>
+      <StockCode>IBG</StockCode>
+      <NewCode>4IN</NewCode>
+      <Issuer>Инвестор БГ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>72.00</Quantity>
+      <OpenPrice>14.0833</OpenPrice>
+      <MarketPrice>14.5000</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>1 044.00</MarketValue>
+      <Result>30</Result>
+      <ResultBGN>30</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>2.959</YieldPercent>
+      <RelativePart>0.059</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17901</ClientID>
+      <CDNumber>V000018024</CDNumber>
+      <Name>ГАМА ФИНАНС ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 400.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>21 980.00</MarketValue>
+      <Result>21980</Result>
+      <ResultBGN>21980</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.252</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17901</ClientID>
+      <CDNumber>V000018024</CDNumber>
+      <Name>ГАМА ФИНАНС ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7351</ShareID>
+      <ISIN>IM00BYQLTS50</ISIN>
+      <StockCode>BSP</StockCode>
+      <NewCode />
+      <Issuer>Black Sea Property Plc</Issuer>
+      <Currency>EUR</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>350 000.00</Quantity>
+      <OpenPrice>0.0168</OpenPrice>
+      <MarketPrice>0.0140</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>4 900.00</MarketValue>
+      <Result>-964.2</Result>
+      <ResultBGN>-1885.811286</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 16.442</YieldPercent>
+      <RelativePart>0.279</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17925</ClientID>
+      <CDNumber>17925</CDNumber>
+      <Name>ЕКИП-98 ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1001</ShareID>
+      <ISIN>BG11POSOAT12</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>БИО АГРО КЪМПАНИ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 234.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>0</Result>
+      <ResultBGN>0</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17925</ClientID>
+      <CDNumber>17925</CDNumber>
+      <Name>ЕКИП-98 ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6733</ShareID>
+      <ISIN>BG1100083069</ISIN>
+      <StockCode>EXPRO</StockCode>
+      <NewCode>5EX</NewCode>
+      <Issuer>Ексклузив Пропърти АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>874 325.00</Quantity>
+      <OpenPrice>0.9189</OpenPrice>
+      <MarketPrice>0.8800</MarketPrice>
+      <MarketDate>20.11.2018</MarketDate>
+      <MarketValue>769 406.00</MarketValue>
+      <Result>-34030.22</Result>
+      <ResultBGN>-34030.22</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 4.236</YieldPercent>
+      <RelativePart>21.944</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>852</ShareID>
+      <ISIN>BG1100080982</ISIN>
+      <StockCode>HCEN</StockCode>
+      <NewCode>6C8</NewCode>
+      <Issuer>Холдинг - Център АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>10.00</Quantity>
+      <OpenPrice>29.3000</OpenPrice>
+      <MarketPrice>29.8000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>298.00</MarketValue>
+      <Result>5</Result>
+      <ResultBGN>5</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>1.706</YieldPercent>
+      <RelativePart>0.004</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>853</ShareID>
+      <ISIN>BG11SLSTAT17</ISIN>
+      <StockCode>SUN</StockCode>
+      <NewCode>3JO</NewCode>
+      <Issuer>Слънце Стара Загора - Табак АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>749.00</Quantity>
+      <OpenPrice>7.7273</OpenPrice>
+      <MarketPrice>9.2000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>6 890.80</MarketValue>
+      <Result>1103.05</Result>
+      <ResultBGN>1103.05</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>19.058</YieldPercent>
+      <RelativePart>0.103</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>904</ShareID>
+      <ISIN>BG1100008983</ISIN>
+      <StockCode>HSOF</StockCode>
+      <NewCode>4HS</NewCode>
+      <Issuer>Холдинг Света София АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>15 767.00</Quantity>
+      <OpenPrice>3.6698</OpenPrice>
+      <MarketPrice>3.5200</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>55 499.84</MarketValue>
+      <Result>-2362.57999999999</Result>
+      <ResultBGN>-2362.57999999999</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 4.083</YieldPercent>
+      <RelativePart>0.827</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>908</ShareID>
+      <ISIN>BG11ASASBT10</ISIN>
+      <StockCode>ASKRE</StockCode>
+      <NewCode>6AN</NewCode>
+      <Issuer>Асенова крепост АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 079.00</Quantity>
+      <OpenPrice>9.0705</OpenPrice>
+      <MarketPrice>11.0000</MarketPrice>
+      <MarketDate>21.11.2018</MarketDate>
+      <MarketValue>11 869.00</MarketValue>
+      <Result>2081.92</Result>
+      <ResultBGN>2081.92</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>21.272</YieldPercent>
+      <RelativePart>0.177</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1041</ShareID>
+      <ISIN>BG1100104980</ISIN>
+      <StockCode>HZAG</StockCode>
+      <NewCode>5Z2</NewCode>
+      <Issuer>Зенит инвестмънт холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 464.00</Quantity>
+      <OpenPrice>5.2815</OpenPrice>
+      <MarketPrice>6.0000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>14 784.00</MarketValue>
+      <Result>1770.33</Result>
+      <ResultBGN>1770.33</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>13.604</YieldPercent>
+      <RelativePart>0.220</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1122</ShareID>
+      <ISIN>BG1100043980</ISIN>
+      <StockCode>RAZHL</StockCode>
+      <NewCode>6R1</NewCode>
+      <Issuer>Индъстри дивелъпмънт холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>210.00</Quantity>
+      <OpenPrice>2.0371</OpenPrice>
+      <MarketPrice>2.1600</MarketPrice>
+      <MarketDate>05.12.2018</MarketDate>
+      <MarketValue>453.60</MarketValue>
+      <Result>25.8</Result>
+      <ResultBGN>25.8</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>6.031</YieldPercent>
+      <RelativePart>0.007</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1250</ShareID>
+      <ISIN>BG11SVVAAT11</ISIN>
+      <StockCode>SKELN</StockCode>
+      <NewCode>3NJ</NewCode>
+      <Issuer>Св. св. Константин и Елена АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>610.00</Quantity>
+      <OpenPrice>18.3154</OpenPrice>
+      <MarketPrice>22.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>13 908.00</MarketValue>
+      <Result>2735.61</Result>
+      <ResultBGN>2735.61</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>24.485</YieldPercent>
+      <RelativePart>0.207</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1365</ShareID>
+      <ISIN>BG1100027983</ISIN>
+      <StockCode>HSI</StockCode>
+      <NewCode>6S5</NewCode>
+      <Issuer>Сила холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>750.00</Quantity>
+      <OpenPrice>2.6851</OpenPrice>
+      <MarketPrice>1.8000</MarketPrice>
+      <MarketDate>20.11.2018</MarketDate>
+      <MarketValue>1 350.00</MarketValue>
+      <Result>-663.81</Result>
+      <ResultBGN>-663.81</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 32.963</YieldPercent>
+      <RelativePart>0.020</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6207</ShareID>
+      <ISIN>BG1100007985</ISIN>
+      <StockCode>HEKI</StockCode>
+      <NewCode>5EK</NewCode>
+      <Issuer>Екип-98 Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>3 110.00</Quantity>
+      <OpenPrice>12.0880</OpenPrice>
+      <MarketPrice>10.0000</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>31 100.00</MarketValue>
+      <Result>-6493.67</Result>
+      <ResultBGN>-6493.67</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 17.273</YieldPercent>
+      <RelativePart>0.463</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6.00</Quantity>
+      <OpenPrice>28.5335</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>226.80</MarketValue>
+      <Result>55.6</Result>
+      <ResultBGN>55.6</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>32.477</YieldPercent>
+      <RelativePart>0.003</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6349</ShareID>
+      <ISIN>BG1100017059</ISIN>
+      <StockCode>WWW</StockCode>
+      <NewCode>45W</NewCode>
+      <Issuer>Уеб Медия Груп АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>45 400.00</Quantity>
+      <OpenPrice>1.1528</OpenPrice>
+      <MarketPrice>1.1800</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>53 572.00</MarketValue>
+      <Result>1236</Result>
+      <ResultBGN>1236</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>2.362</YieldPercent>
+      <RelativePart>0.798</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6573</ShareID>
+      <ISIN>BG1100006060</ISIN>
+      <StockCode>CEEP</StockCode>
+      <NewCode>5CG</NewCode>
+      <Issuer>СИИ Имоти АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>362 800.00</Quantity>
+      <OpenPrice>1.1859</OpenPrice>
+      <MarketPrice>1.4000</MarketPrice>
+      <MarketDate>16.11.2018</MarketDate>
+      <MarketValue>507 920.00</MarketValue>
+      <Result>77670.2199999999</Result>
+      <ResultBGN>77670.2199999999</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>18.052</YieldPercent>
+      <RelativePart>7.569</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6604</ShareID>
+      <ISIN>BG1100046066</ISIN>
+      <StockCode>CHIM</StockCode>
+      <NewCode>6C4</NewCode>
+      <Issuer>Химимпорт АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>10 814.00</Quantity>
+      <OpenPrice>1.2677</OpenPrice>
+      <MarketPrice>1.9800</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>21 411.72</MarketValue>
+      <Result>7702.37</Result>
+      <ResultBGN>7702.37</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>56.183</YieldPercent>
+      <RelativePart>0.319</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6630</ShareID>
+      <ISIN>BG1100001921</ISIN>
+      <StockCode>5CP</StockCode>
+      <NewCode>5CP</NewCode>
+      <Issuer>Тексим Банк АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>8 283.00</Quantity>
+      <OpenPrice>2.6905</OpenPrice>
+      <MarketPrice>2.7800</MarketPrice>
+      <MarketDate>10.12.2018</MarketDate>
+      <MarketValue>23 026.74</MarketValue>
+      <Result>740.98</Result>
+      <ResultBGN>740.98</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>3.325</YieldPercent>
+      <RelativePart>0.343</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>240.00</Quantity>
+      <OpenPrice>14.0110</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>3 768.00</MarketValue>
+      <Result>405.36</Result>
+      <ResultBGN>405.36</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>12.055</YieldPercent>
+      <RelativePart>0.056</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17926</ClientID>
+      <CDNumber>V000018048</CDNumber>
+      <Name>ЗАГОРА ФИНИНВЕСТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7442</ShareID>
+      <ISIN>BG4000011180</ISIN>
+      <StockCode>4HS1</StockCode>
+      <NewCode>4HS1</NewCode>
+      <Issuer>Холдинг Света София АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 700 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>0.0010</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>1 700.00</MarketValue>
+      <Result>1700</Result>
+      <ResultBGN>1700</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.025</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17928</ClientID>
+      <CDNumber>V000018050</CDNumber>
+      <Name>БУЛФИНАНС ИНВЕСТМЪНТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>904</ShareID>
+      <ISIN>BG1100008983</ISIN>
+      <StockCode>HSOF</StockCode>
+      <NewCode>4HS</NewCode>
+      <Issuer>Холдинг Света София АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>150.00</Quantity>
+      <OpenPrice>3.0259</OpenPrice>
+      <MarketPrice>3.5200</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>528.00</MarketValue>
+      <Result>74.11</Result>
+      <ResultBGN>74.11</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>16.328</YieldPercent>
+      <RelativePart>0.023</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17928</ClientID>
+      <CDNumber>V000018050</CDNumber>
+      <Name>БУЛФИНАНС ИНВЕСТМЪНТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>908</ShareID>
+      <ISIN>BG11ASASBT10</ISIN>
+      <StockCode>ASKRE</StockCode>
+      <NewCode>6AN</NewCode>
+      <Issuer>Асенова крепост АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 200.00</Quantity>
+      <OpenPrice>10.9327</OpenPrice>
+      <MarketPrice>11.0000</MarketPrice>
+      <MarketDate>21.11.2018</MarketDate>
+      <MarketValue>24 200.00</MarketValue>
+      <Result>148.060000000001</Result>
+      <ResultBGN>148.060000000001</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.616</YieldPercent>
+      <RelativePart>1.056</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17928</ClientID>
+      <CDNumber>V000018050</CDNumber>
+      <Name>БУЛФИНАНС ИНВЕСТМЪНТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1234</ShareID>
+      <ISIN>BG1100014973</ISIN>
+      <StockCode>CCB</StockCode>
+      <NewCode>4CF</NewCode>
+      <Issuer>ТБ Централна кооперативна банка АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>80 720.00</Quantity>
+      <OpenPrice>2.0078</OpenPrice>
+      <MarketPrice>1.4300</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>115 429.60</MarketValue>
+      <Result>-46641.11</Result>
+      <ResultBGN>-46641.11</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 28.778</YieldPercent>
+      <RelativePart>5.037</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17928</ClientID>
+      <CDNumber>V000018050</CDNumber>
+      <Name>БУЛФИНАНС ИНВЕСТМЪНТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6604</ShareID>
+      <ISIN>BG1100046066</ISIN>
+      <StockCode>CHIM</StockCode>
+      <NewCode>6C4</NewCode>
+      <Issuer>Химимпорт АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>4 300.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>1.9800</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>8 514.00</MarketValue>
+      <Result>8514</Result>
+      <ResultBGN>8514</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.372</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17963</ClientID>
+      <CDNumber>17963</CDNumber>
+      <Name>СИЛА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1001</ShareID>
+      <ISIN>BG11POSOAT12</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>БИО АГРО КЪМПАНИ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>560.00</Quantity>
+      <OpenPrice>850.1786</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-476100</Result>
+      <ResultBGN>-476100</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17963</ClientID>
+      <CDNumber>17963</CDNumber>
+      <Name>СИЛА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1041</ShareID>
+      <ISIN>BG1100104980</ISIN>
+      <StockCode>HZAG</StockCode>
+      <NewCode>5Z2</NewCode>
+      <Issuer>Зенит инвестмънт холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>3 650.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>6.0000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>21 900.00</MarketValue>
+      <Result>21900</Result>
+      <ResultBGN>21900</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>81.220</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17963</ClientID>
+      <CDNumber>17963</CDNumber>
+      <Name>СИЛА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6791</ShareID>
+      <ISIN>BG9000020065</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ДФ Престиж</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>656.52</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>7.7434</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>5 083.72</MarketValue>
+      <Result>5083.72097254</Result>
+      <ResultBGN>5083.72097254</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>18.854</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20029</ClientID>
+      <CDNumber>20029</CDNumber>
+      <Name>НЕКСТ ДЖЕНЕРЕЙШЪН КОНСУЛТ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7001</ShareID>
+      <ISIN>BG1100032082</ISIN>
+      <StockCode>C4P</StockCode>
+      <NewCode>C4P</NewCode>
+      <Issuer>Капман Грийн Енерджи Фонд АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 150.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>1.2000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>1 380.00</MarketValue>
+      <Result>1380</Result>
+      <ResultBGN>1380</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>100.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20037</ClientID>
+      <CDNumber>20037</CDNumber>
+      <Name>ТЕКСИМ ТРЕЙДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6630</ShareID>
+      <ISIN>BG1100001921</ISIN>
+      <StockCode>5CP</StockCode>
+      <NewCode>5CP</NewCode>
+      <Issuer>Тексим Банк АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>455 238.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>2.7800</MarketPrice>
+      <MarketDate>10.12.2018</MarketDate>
+      <MarketValue>1 265 561.64</MarketValue>
+      <Result>1265561.64</Result>
+      <ResultBGN>1265561.64</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>60.309</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20063</ClientID>
+      <CDNumber>20063</CDNumber>
+      <Name>ХОЛДИНГ ЦЕНТЪР АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>13 750.00</Quantity>
+      <OpenPrice>3.5071</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>50 875.00</MarketValue>
+      <Result>2651.79</Result>
+      <ResultBGN>2651.79</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>5.499</YieldPercent>
+      <RelativePart>99.133</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20071</ClientID>
+      <CDNumber>20071</CDNumber>
+      <Name>МЕТРО ГРУП ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1365</ShareID>
+      <ISIN>BG1100027983</ISIN>
+      <StockCode>HSI</StockCode>
+      <NewCode>6S5</NewCode>
+      <Issuer>Сила холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>10 998 359.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>1.8000</MarketPrice>
+      <MarketDate>20.11.2018</MarketDate>
+      <MarketValue>19 797 046.20</MarketValue>
+      <Result>19797046.2</Result>
+      <ResultBGN>19797046.2</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>100.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20072</ClientID>
+      <CDNumber>20072</CDNumber>
+      <Name>СЕЛЕКТ АСЕТ МЕНИДЖМЪНТ ЕАД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Дългови ФИ</ActiveID>
+      <ShareID>7263</ShareID>
+      <ISIN>BG2100019137</ISIN>
+      <StockCode>4CFB</StockCode>
+      <NewCode>4CFB</NewCode>
+      <Issuer>ТБ Централна кооперативна банка АД</Issuer>
+      <Currency>EUR</Currency>
+      <MaturityDate>10.12.2023</MaturityDate>
+    </Instrument>
+    <AccountData>
+      <Quantity>146.00</Quantity>
+      <OpenPrice>1 033.0516</OpenPrice>
+      <MarketPrice>1 022.0000</MarketPrice>
+      <MarketDate>14.11.2018</MarketDate>
+      <MarketValue>149 255.20</MarketValue>
+      <Result>-1570.34006000002</Result>
+      <ResultBGN>-3071.31819954984</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 1.041</YieldPercent>
+      <RelativePart>51.129</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20082</ClientID>
+      <CDNumber>20082</CDNumber>
+      <Name>ЕКСКЛУЗИВ ТАУЪР ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6108</ShareID>
+      <ISIN>BG1100019048</ISIN>
+      <StockCode>IBG</StockCode>
+      <NewCode>4IN</NewCode>
+      <Issuer>Инвестор БГ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>94 500.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>14.5000</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>1 370 250.00</MarketValue>
+      <Result>1370250</Result>
+      <ResultBGN>1370250</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>24.594</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20082</ClientID>
+      <CDNumber>20082</CDNumber>
+      <Name>ЕКСКЛУЗИВ ТАУЪР ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>21 800.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>824 040.00</MarketValue>
+      <Result>824040</Result>
+      <ResultBGN>824040</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>14.790</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20082</ClientID>
+      <CDNumber>20082</CDNumber>
+      <Name>ЕКСКЛУЗИВ ТАУЪР ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6733</ShareID>
+      <ISIN>BG1100083069</ISIN>
+      <StockCode>EXPRO</StockCode>
+      <NewCode>5EX</NewCode>
+      <Issuer>Ексклузив Пропърти АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 671 245.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>0.8800</MarketPrice>
+      <MarketDate>20.11.2018</MarketDate>
+      <MarketValue>1 470 695.60</MarketValue>
+      <Result>1470695.6</Result>
+      <ResultBGN>1470695.6</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>26.397</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20085</ClientID>
+      <CDNumber>20085</CDNumber>
+      <Name>ДИМЯТ 20 ООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6630</ShareID>
+      <ISIN>BG1100001921</ISIN>
+      <StockCode>5CP</StockCode>
+      <NewCode>5CP</NewCode>
+      <Issuer>Тексим Банк АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 200.00</Quantity>
+      <OpenPrice>2.6006</OpenPrice>
+      <MarketPrice>2.7800</MarketPrice>
+      <MarketDate>10.12.2018</MarketDate>
+      <MarketValue>6 116.00</MarketValue>
+      <Result>394.78</Result>
+      <ResultBGN>394.78</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>6.900</YieldPercent>
+      <RelativePart>0.825</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20090</ClientID>
+      <CDNumber>20090</CDNumber>
+      <Name>ЗОРА 2005 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>75 600.00</MarketValue>
+      <Result>75600</Result>
+      <ResultBGN>75600</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>5.800</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20095</ClientID>
+      <CDNumber>20095</CDNumber>
+      <Name>ФИН ИНВЕСТ КЪМПАНИ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1376</ShareID>
+      <ISIN>BG1100058988</ISIN>
+      <StockCode>HNVEK</StockCode>
+      <NewCode>6N3</NewCode>
+      <Issuer>Холдинг Нов век АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>249.00</Quantity>
+      <OpenPrice>14.6428</OpenPrice>
+      <MarketPrice>15.0000</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>3 735.00</MarketValue>
+      <Result>88.9499999999998</Result>
+      <ResultBGN>88.9499999999998</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>2.440</YieldPercent>
+      <RelativePart>0.197</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20095</ClientID>
+      <CDNumber>20095</CDNumber>
+      <Name>ФИН ИНВЕСТ КЪМПАНИ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>31 400.00</MarketValue>
+      <Result>31400</Result>
+      <ResultBGN>31400</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.656</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20108</ClientID>
+      <CDNumber>20108</CDNumber>
+      <Name>ОМЕГА ФИНАНС ООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>50.00</Quantity>
+      <OpenPrice>32.6076</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>1 890.00</MarketValue>
+      <Result>259.62</Result>
+      <ResultBGN>259.62</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>15.924</YieldPercent>
+      <RelativePart>72.497</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20114</ClientID>
+      <CDNumber>20114</CDNumber>
+      <Name>НЕО ЛОНДОН КАПИТАЛ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1250</ShareID>
+      <ISIN>BG11SVVAAT11</ISIN>
+      <StockCode>SKELN</StockCode>
+      <NewCode>3NJ</NewCode>
+      <Issuer>Св. св. Константин и Елена АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>16 700.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>22.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>380 760.00</MarketValue>
+      <Result>380760</Result>
+      <ResultBGN>380760</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.669</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20114</ClientID>
+      <CDNumber>20114</CDNumber>
+      <Name>НЕО ЛОНДОН КАПИТАЛ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5382</ShareID>
+      <ISIN>BG11EMTOAT16</ISIN>
+      <StockCode>EMPI</StockCode>
+      <NewCode>58E</NewCode>
+      <Issuer>Химснаб България АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>9 615.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>42.6000</MarketPrice>
+      <MarketDate>15.11.2018</MarketDate>
+      <MarketValue>409 599.00</MarketValue>
+      <Result>409599</Result>
+      <ResultBGN>409599</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.795</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20114</ClientID>
+      <CDNumber>20114</CDNumber>
+      <Name>НЕО ЛОНДОН КАПИТАЛ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6207</ShareID>
+      <ISIN>BG1100007985</ISIN>
+      <StockCode>HEKI</StockCode>
+      <NewCode>5EK</NewCode>
+      <Issuer>Екип-98 Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>25 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>10.0000</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>250 000.00</MarketValue>
+      <Result>250000</Result>
+      <ResultBGN>250000</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.096</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20114</ClientID>
+      <CDNumber>20114</CDNumber>
+      <Name>НЕО ЛОНДОН КАПИТАЛ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>29 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>455 300.00</MarketValue>
+      <Result>455300</Result>
+      <ResultBGN>455300</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.995</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20114</ClientID>
+      <CDNumber>20114</CDNumber>
+      <Name>НЕО ЛОНДОН КАПИТАЛ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 308 500.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>4 841 450.00</MarketValue>
+      <Result>4841450</Result>
+      <ResultBGN>4841450</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>21.217</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20114</ClientID>
+      <CDNumber>20114</CDNumber>
+      <Name>НЕО ЛОНДОН КАПИТАЛ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7351</ShareID>
+      <ISIN>IM00BYQLTS50</ISIN>
+      <StockCode>BSP</StockCode>
+      <NewCode />
+      <Issuer>Black Sea Property Plc</Issuer>
+      <Currency>EUR</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>276 126 806.00</Quantity>
+      <OpenPrice>0.0016</OpenPrice>
+      <MarketPrice>0.0140</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>3 865 775.28</MarketValue>
+      <Result>3434875.944</Result>
+      <ResultBGN>6718033.41755352</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>797.141</YieldPercent>
+      <RelativePart>16.942</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20115</ClientID>
+      <CDNumber>20115</CDNumber>
+      <Name>КИБУЛ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 175 700.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>4 350 090.00</MarketValue>
+      <Result>4350090</Result>
+      <ResultBGN>4350090</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>19.915</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20115</ClientID>
+      <CDNumber>20115</CDNumber>
+      <Name>КИБУЛ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7347</ShareID>
+      <ISIN>BG1100025136</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ЗД СЪГЛАСИЕ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>119 000.00</Quantity>
+      <OpenPrice>1.6758</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-199425</Result>
+      <ResultBGN>-199425</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>852</ShareID>
+      <ISIN>BG1100080982</ISIN>
+      <StockCode>HCEN</StockCode>
+      <NewCode>6C8</NewCode>
+      <Issuer>Холдинг - Център АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>280.00</Quantity>
+      <OpenPrice>27.4989</OpenPrice>
+      <MarketPrice>29.8000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>8 344.00</MarketValue>
+      <Result>644.3</Result>
+      <ResultBGN>644.3</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>8.368</YieldPercent>
+      <RelativePart>1.731</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>853</ShareID>
+      <ISIN>BG11SLSTAT17</ISIN>
+      <StockCode>SUN</StockCode>
+      <NewCode>3JO</NewCode>
+      <Issuer>Слънце Стара Загора - Табак АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>671.00</Quantity>
+      <OpenPrice>9.2276</OpenPrice>
+      <MarketPrice>9.2000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>6 173.20</MarketValue>
+      <Result>-18.5200000000004</Result>
+      <ResultBGN>-18.5200000000004</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.299</YieldPercent>
+      <RelativePart>1.281</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1041</ShareID>
+      <ISIN>BG1100104980</ISIN>
+      <StockCode>HZAG</StockCode>
+      <NewCode>5Z2</NewCode>
+      <Issuer>Зенит инвестмънт холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6 550.00</Quantity>
+      <OpenPrice>6.0183</OpenPrice>
+      <MarketPrice>6.0000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>39 300.00</MarketValue>
+      <Result>-120</Result>
+      <ResultBGN>-120</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.304</YieldPercent>
+      <RelativePart>8.155</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6215</ShareID>
+      <ISIN>BG1100100038</ISIN>
+      <StockCode>BRP</StockCode>
+      <NewCode>5BR</NewCode>
+      <Issuer>Параходство Българско речно плаване АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 500.00</Quantity>
+      <OpenPrice>0.7355</OpenPrice>
+      <MarketPrice>0.7400</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>1 110.00</MarketValue>
+      <Result>6.70000000000004</Result>
+      <ResultBGN>6.70000000000004</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.607</YieldPercent>
+      <RelativePart>0.230</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>835.00</Quantity>
+      <OpenPrice>36.6955</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>31 563.00</MarketValue>
+      <Result>922.279999999995</Result>
+      <ResultBGN>922.279999999995</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>3.010</YieldPercent>
+      <RelativePart>6.549</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6349</ShareID>
+      <ISIN>BG1100017059</ISIN>
+      <StockCode>WWW</StockCode>
+      <NewCode>45W</NewCode>
+      <Issuer>Уеб Медия Груп АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>8 930.00</Quantity>
+      <OpenPrice>1.1835</OpenPrice>
+      <MarketPrice>1.1800</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>10 537.40</MarketValue>
+      <Result>-31.6100000000006</Result>
+      <ResultBGN>-31.6100000000006</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.299</YieldPercent>
+      <RelativePart>2.186</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6604</ShareID>
+      <ISIN>BG1100046066</ISIN>
+      <StockCode>CHIM</StockCode>
+      <NewCode>6C4</NewCode>
+      <Issuer>Химимпорт АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>53.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>1.9800</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>104.94</MarketValue>
+      <Result>104.94</Result>
+      <ResultBGN>104.94</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.022</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6630</ShareID>
+      <ISIN>BG1100001921</ISIN>
+      <StockCode>5CP</StockCode>
+      <NewCode>5CP</NewCode>
+      <Issuer>Тексим Банк АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>10 700.00</Quantity>
+      <OpenPrice>2.7683</OpenPrice>
+      <MarketPrice>2.7800</MarketPrice>
+      <MarketDate>10.12.2018</MarketDate>
+      <MarketValue>29 746.00</MarketValue>
+      <Result>125.399999999998</Result>
+      <ResultBGN>125.399999999998</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.423</YieldPercent>
+      <RelativePart>6.172</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>380.00</Quantity>
+      <OpenPrice>14.7459</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>5 966.00</MarketValue>
+      <Result>362.57</Result>
+      <ResultBGN>362.57</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>6.471</YieldPercent>
+      <RelativePart>1.238</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20122</ClientID>
+      <CDNumber>20122</CDNumber>
+      <Name>НОМОКАНОН-2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>500.00</Quantity>
+      <OpenPrice>3.7109</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>1 850.00</MarketValue>
+      <Result>-5.44000000000005</Result>
+      <ResultBGN>-5.44000000000005</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.293</YieldPercent>
+      <RelativePart>0.384</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20123</ClientID>
+      <CDNumber>20123</CDNumber>
+      <Name>ПАМПОРОВО ПРОПЪРТИ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7158</ShareID>
+      <ISIN>BG9000016071</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ДФ Реал Финанс Високодоходен Фонд</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>643.00</Quantity>
+      <OpenPrice>0.9007</OpenPrice>
+      <MarketPrice>0.9189</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>590.85</MarketValue>
+      <Result>11.7227</Result>
+      <ResultBGN>11.7227</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>2.024</YieldPercent>
+      <RelativePart>100.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20128</ClientID>
+      <CDNumber>20128</CDNumber>
+      <Name>ЗЕМ ИНВЕСТ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>884</ShareID>
+      <ISIN>BG1100026985</ISIN>
+      <StockCode>GAMZA</StockCode>
+      <NewCode>6S4</NewCode>
+      <Issuer>Северкооп-Гъмза Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>272.00</Quantity>
+      <OpenPrice>0.0074</OpenPrice>
+      <MarketPrice>4.2000</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>1 142.40</MarketValue>
+      <Result>1140.4</Result>
+      <ResultBGN>1140.4</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>57 020.000</YieldPercent>
+      <RelativePart>0.007</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20128</ClientID>
+      <CDNumber>20128</CDNumber>
+      <Name>ЗЕМ ИНВЕСТ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6604</ShareID>
+      <ISIN>BG1100046066</ISIN>
+      <StockCode>CHIM</StockCode>
+      <NewCode>6C4</NewCode>
+      <Issuer>Химимпорт АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>3 260.00</Quantity>
+      <OpenPrice>2.2619</OpenPrice>
+      <MarketPrice>1.9800</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>6 454.80</MarketValue>
+      <Result>-919.08</Result>
+      <ResultBGN>-919.08</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 12.464</YieldPercent>
+      <RelativePart>0.040</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20128</ClientID>
+      <CDNumber>20128</CDNumber>
+      <Name>ЗЕМ ИНВЕСТ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>7 400.00</MarketValue>
+      <Result>7400</Result>
+      <ResultBGN>7400</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.046</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20128</ClientID>
+      <CDNumber>20128</CDNumber>
+      <Name>ЗЕМ ИНВЕСТ ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7159</ShareID>
+      <ISIN>BG9000017079</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ДФ Реал финанс Балансиран Фонд</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 835.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>0.9638</MarketPrice>
+      <MarketDate>31.03.2017</MarketDate>
+      <MarketValue>1 768.57</MarketValue>
+      <Result>1768.573</Result>
+      <ResultBGN>1768.573</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>0.011</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20130</ClientID>
+      <CDNumber>20130</CDNumber>
+      <Name>ВАРНА-ПЛОД АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>16 400.00</Quantity>
+      <OpenPrice>14.4061</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>257 480.00</MarketValue>
+      <Result>21220</Result>
+      <ResultBGN>21220</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>8.982</YieldPercent>
+      <RelativePart>100.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20132</ClientID>
+      <CDNumber>20132</CDNumber>
+      <Name>УЕБ ФИНАНС ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5965</ShareID>
+      <ISIN>BG1100019022</ISIN>
+      <StockCode>GAZ</StockCode>
+      <NewCode>4O1</NewCode>
+      <Issuer>Проучване и добив на нефт и газ АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 522.00</Quantity>
+      <OpenPrice>6.5437</OpenPrice>
+      <MarketPrice>5.7500</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>8 751.50</MarketValue>
+      <Result>-1207.99</Result>
+      <ResultBGN>-1207.99</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 12.129</YieldPercent>
+      <RelativePart>70.468</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20132</ClientID>
+      <CDNumber>20132</CDNumber>
+      <Name>УЕБ ФИНАНС ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6215</ShareID>
+      <ISIN>BG1100100038</ISIN>
+      <StockCode>BRP</StockCode>
+      <NewCode>5BR</NewCode>
+      <Issuer>Параходство Българско речно плаване АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>16 484.00</Quantity>
+      <OpenPrice>0.6842</OpenPrice>
+      <MarketPrice>0.7400</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>12 198.16</MarketValue>
+      <Result>920.110000000001</Result>
+      <ResultBGN>920.110000000001</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>8.158</YieldPercent>
+      <RelativePart>98.220</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20137</ClientID>
+      <CDNumber>20137</CDNumber>
+      <Name>ЗАСТРАХОВАТЕЛНО АКЦИОНЕРНО ДРУЖЕСТВО АРМЕЕЦ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1001</ShareID>
+      <ISIN>BG11POSOAT12</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>БИО АГРО КЪМПАНИ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>486.00</Quantity>
+      <OpenPrice>900.4115</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-437600</Result>
+      <ResultBGN>-437600</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20137</ClientID>
+      <CDNumber>20137</CDNumber>
+      <Name>ЗАСТРАХОВАТЕЛНО АКЦИОНЕРНО ДРУЖЕСТВО АРМЕЕЦ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1122</ShareID>
+      <ISIN>BG1100043980</ISIN>
+      <StockCode>RAZHL</StockCode>
+      <NewCode>6R1</NewCode>
+      <Issuer>Индъстри дивелъпмънт холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>153 987.00</Quantity>
+      <OpenPrice>2.0740</OpenPrice>
+      <MarketPrice>2.1600</MarketPrice>
+      <MarketDate>05.12.2018</MarketDate>
+      <MarketValue>332 611.92</MarketValue>
+      <Result>13238.8700000001</Result>
+      <ResultBGN>13238.8700000001</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>4.145</YieldPercent>
+      <RelativePart>10.779</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20137</ClientID>
+      <CDNumber>20137</CDNumber>
+      <Name>ЗАСТРАХОВАТЕЛНО АКЦИОНЕРНО ДРУЖЕСТВО АРМЕЕЦ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6207</ShareID>
+      <ISIN>BG1100007985</ISIN>
+      <StockCode>HEKI</StockCode>
+      <NewCode>5EK</NewCode>
+      <Issuer>Екип-98 Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>5 900.00</Quantity>
+      <OpenPrice>13.5169</OpenPrice>
+      <MarketPrice>10.0000</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>59 000.00</MarketValue>
+      <Result>-20750</Result>
+      <ResultBGN>-20750</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 26.019</YieldPercent>
+      <RelativePart>1.912</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20137</ClientID>
+      <CDNumber>20137</CDNumber>
+      <Name>ЗАСТРАХОВАТЕЛНО АКЦИОНЕРНО ДРУЖЕСТВО АРМЕЕЦ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6597</ShareID>
+      <ISIN>BG1100120051</ISIN>
+      <StockCode>CCBRE</StockCode>
+      <NewCode>5CK</NewCode>
+      <Issuer>ЦКБ РИЪЛ ИСТЕЙТ ФОНД АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>740.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>47.6000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>35 224.00</MarketValue>
+      <Result>35224</Result>
+      <ResultBGN>35224</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.141</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20137</ClientID>
+      <CDNumber>20137</CDNumber>
+      <Name>ЗАСТРАХОВАТЕЛНО АКЦИОНЕРНО ДРУЖЕСТВО АРМЕЕЦ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>260 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>962 000.00</MarketValue>
+      <Result>962000</Result>
+      <ResultBGN>962000</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>31.175</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20137</ClientID>
+      <CDNumber>20137</CDNumber>
+      <Name>ЗАСТРАХОВАТЕЛНО АКЦИОНЕРНО ДРУЖЕСТВО АРМЕЕЦ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7259</ShareID>
+      <ISIN>BG1100035135</ISIN>
+      <StockCode>GTH</StockCode>
+      <NewCode>GTH</NewCode>
+      <Issuer>Инвестиционна Компания Галата АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>127 500.00</Quantity>
+      <OpenPrice>1.7518</OpenPrice>
+      <MarketPrice>1.7500</MarketPrice>
+      <MarketDate>26.11.2018</MarketDate>
+      <MarketValue>223 125.00</MarketValue>
+      <Result>-223.130000000005</Result>
+      <ResultBGN>-223.130000000005</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.100</YieldPercent>
+      <RelativePart>7.231</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20137</ClientID>
+      <CDNumber>20137</CDNumber>
+      <Name>ЗАСТРАХОВАТЕЛНО АКЦИОНЕРНО ДРУЖЕСТВО АРМЕЕЦ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7416</ShareID>
+      <ISIN>BG9000005132</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ДФ ЗЛАТЕН ЛЕВ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>36 112.11</Quantity>
+      <OpenPrice>5.5472</OpenPrice>
+      <MarketPrice>5.3453</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>193 030.08</MarketValue>
+      <Result>-7289.9170358</Result>
+      <ResultBGN>-7289.9170358</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 3.639</YieldPercent>
+      <RelativePart>6.255</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20140</ClientID>
+      <CDNumber>20140</CDNumber>
+      <Name>ДАР ТРЕЙД ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7259</ShareID>
+      <ISIN>BG1100035135</ISIN>
+      <StockCode>GTH</StockCode>
+      <NewCode>GTH</NewCode>
+      <Issuer>Инвестиционна Компания Галата АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>9 600.00</Quantity>
+      <OpenPrice>1.5033</OpenPrice>
+      <MarketPrice>1.7500</MarketPrice>
+      <MarketDate>26.11.2018</MarketDate>
+      <MarketValue>16 800.00</MarketValue>
+      <Result>2368.32</Result>
+      <ResultBGN>2368.32</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>16.411</YieldPercent>
+      <RelativePart>100.599</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>884</ShareID>
+      <ISIN>BG1100026985</ISIN>
+      <StockCode>GAMZA</StockCode>
+      <NewCode>6S4</NewCode>
+      <Issuer>Северкооп-Гъмза Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>14 780.00</Quantity>
+      <OpenPrice>4.0064</OpenPrice>
+      <MarketPrice>4.2000</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>62 076.00</MarketValue>
+      <Result>2861</Result>
+      <ResultBGN>2861</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>4.832</YieldPercent>
+      <RelativePart>0.216</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>908</ShareID>
+      <ISIN>BG11ASASBT10</ISIN>
+      <StockCode>ASKRE</StockCode>
+      <NewCode>6AN</NewCode>
+      <Issuer>Асенова крепост АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>210.00</Quantity>
+      <OpenPrice>11.0067</OpenPrice>
+      <MarketPrice>11.0000</MarketPrice>
+      <MarketDate>21.11.2018</MarketDate>
+      <MarketValue>2 310.00</MarketValue>
+      <Result>-1.40000000000009</Result>
+      <ResultBGN>-1.40000000000009</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.061</YieldPercent>
+      <RelativePart>0.008</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5965</ShareID>
+      <ISIN>BG1100019022</ISIN>
+      <StockCode>GAZ</StockCode>
+      <NewCode>4O1</NewCode>
+      <Issuer>Проучване и добив на нефт и газ АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>44 972.00</Quantity>
+      <OpenPrice>7.6044</OpenPrice>
+      <MarketPrice>5.7500</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>258 589.00</MarketValue>
+      <Result>-83394.68</Result>
+      <ResultBGN>-83394.68</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 24.386</YieldPercent>
+      <RelativePart>0.900</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6108</ShareID>
+      <ISIN>BG1100019048</ISIN>
+      <StockCode>IBG</StockCode>
+      <NewCode>4IN</NewCode>
+      <Issuer>Инвестор БГ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>202 300.00</Quantity>
+      <OpenPrice>14.5050</OpenPrice>
+      <MarketPrice>14.5000</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>2 933 350.00</MarketValue>
+      <Result>-1011.5</Result>
+      <ResultBGN>-1011.5</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.034</YieldPercent>
+      <RelativePart>10.210</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6220</ShareID>
+      <ISIN>BG1100051983</ISIN>
+      <StockCode>HRZ</StockCode>
+      <NewCode>6R2</NewCode>
+      <Issuer>Родна Земя Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>24 250.00</Quantity>
+      <OpenPrice>1.6840</OpenPrice>
+      <MarketPrice>1.7800</MarketPrice>
+      <MarketDate>28.11.2018</MarketDate>
+      <MarketValue>43 165.00</MarketValue>
+      <Result>2329.2</Result>
+      <ResultBGN>2329.2</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>5.704</YieldPercent>
+      <RelativePart>0.150</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>11.00</Quantity>
+      <OpenPrice>24.0517</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>415.80</MarketValue>
+      <Result>151.23</Result>
+      <ResultBGN>151.23</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>57.161</YieldPercent>
+      <RelativePart>0.001</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6734</ShareID>
+      <ISIN>BG9000008078</ISIN>
+      <StockCode>DFCCBA</StockCode>
+      <NewCode>MF2A</NewCode>
+      <Issuer>ДФ ЦКБ Актив</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>7 430.00</Quantity>
+      <OpenPrice>10.3635</OpenPrice>
+      <MarketPrice>10.1363</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>75 312.71</MarketValue>
+      <Result>-1687.791</Result>
+      <ResultBGN>-1687.791</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 2.192</YieldPercent>
+      <RelativePart>0.262</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>49 700.00</Quantity>
+      <OpenPrice>15.0028</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>780 290.00</MarketValue>
+      <Result>34649.51</Result>
+      <ResultBGN>34649.51</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>4.647</YieldPercent>
+      <RelativePart>2.716</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6916</ShareID>
+      <ISIN>BG1100026076</ISIN>
+      <StockCode>RPR</StockCode>
+      <NewCode>RPR</NewCode>
+      <Issuer>Рой Пропърти Фънд АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>27 525.00</Quantity>
+      <OpenPrice>4.2036</OpenPrice>
+      <MarketPrice>4.6000</MarketPrice>
+      <MarketDate>06.12.2018</MarketDate>
+      <MarketValue>126 615.00</MarketValue>
+      <Result>10910</Result>
+      <ResultBGN>10910</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>9.429</YieldPercent>
+      <RelativePart>0.441</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>566 600.00</Quantity>
+      <OpenPrice>2.4021</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>2 096 420.00</MarketValue>
+      <Result>735387.58</Result>
+      <ResultBGN>735387.58</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>54.032</YieldPercent>
+      <RelativePart>7.297</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7259</ShareID>
+      <ISIN>BG1100035135</ISIN>
+      <StockCode>GTH</StockCode>
+      <NewCode>GTH</NewCode>
+      <Issuer>Инвестиционна Компания Галата АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>142 352.00</Quantity>
+      <OpenPrice>1.7533</OpenPrice>
+      <MarketPrice>1.7500</MarketPrice>
+      <MarketDate>26.11.2018</MarketDate>
+      <MarketValue>249 116.00</MarketValue>
+      <Result>-469.410000000004</Result>
+      <ResultBGN>-469.410000000004</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.188</YieldPercent>
+      <RelativePart>0.867</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7338</ShareID>
+      <ISIN>BG9000008169</ISIN>
+      <StockCode>CODA</StockCode>
+      <NewCode>CODA</NewCode>
+      <Issuer>НДФ Конкорд Фонд-7 Саут</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>44 550.00</Quantity>
+      <OpenPrice>11.4022</OpenPrice>
+      <MarketPrice>11.4000</MarketPrice>
+      <MarketDate>26.11.2018</MarketDate>
+      <MarketValue>507 870.00</MarketValue>
+      <Result>-100</Result>
+      <ResultBGN>-100</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.020</YieldPercent>
+      <RelativePart>1.768</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7342</ShareID>
+      <ISIN>BG1100004156</ISIN>
+      <StockCode>178B</StockCode>
+      <NewCode>178B</NewCode>
+      <Issuer>Нео Лондон Капитал АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>12 425.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>128.0000</MarketPrice>
+      <MarketDate>27.11.2018</MarketDate>
+      <MarketValue>1 590 400.00</MarketValue>
+      <Result>1590400</Result>
+      <ResultBGN>1590400</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>5.536</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20168</ClientID>
+      <CDNumber>20168</CDNumber>
+      <Name>ЗЕНИТ ИНВЕСТМЪНТ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Дългови ФИ</ActiveID>
+      <ShareID>7399</ShareID>
+      <ISIN>RU000A0JWCW9</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>PAO INVEST-DEVELOPMENT</Issuer>
+      <Currency>RUB</Currency>
+      <MaturityDate>02.04.2026</MaturityDate>
+    </Instrument>
+    <AccountData>
+      <Quantity>8 066.00</Quantity>
+      <OpenPrice>1 022.9829</OpenPrice>
+      <MarketPrice>1 000.0000</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>8 274 832.06</MarketValue>
+      <Result>23452.0351260016</Result>
+      <ResultBGN>609.569987402059</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.284</YieldPercent>
+      <RelativePart>28.802</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20176</ClientID>
+      <CDNumber>20176</CDNumber>
+      <Name>АДВАЙЗЪРИ СЪРВИСИС КОНСУЛТИНГ ООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6349</ShareID>
+      <ISIN>BG1100017059</ISIN>
+      <StockCode>WWW</StockCode>
+      <NewCode>45W</NewCode>
+      <Issuer>Уеб Медия Груп АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>300.00</Quantity>
+      <OpenPrice>1.1100</OpenPrice>
+      <MarketPrice>1.1800</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>354.00</MarketValue>
+      <Result>21</Result>
+      <ResultBGN>21</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>6.306</YieldPercent>
+      <RelativePart>0.007</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20176</ClientID>
+      <CDNumber>20176</CDNumber>
+      <Name>АДВАЙЗЪРИ СЪРВИСИС КОНСУЛТИНГ ООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6630</ShareID>
+      <ISIN>BG1100001921</ISIN>
+      <StockCode>5CP</StockCode>
+      <NewCode>5CP</NewCode>
+      <Issuer>Тексим Банк АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 746.00</Quantity>
+      <OpenPrice>2.7081</OpenPrice>
+      <MarketPrice>2.7800</MarketPrice>
+      <MarketDate>10.12.2018</MarketDate>
+      <MarketValue>7 633.88</MarketValue>
+      <Result>197.44</Result>
+      <ResultBGN>197.44</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>2.655</YieldPercent>
+      <RelativePart>0.146</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20176</ClientID>
+      <CDNumber>20176</CDNumber>
+      <Name>АДВАЙЗЪРИ СЪРВИСИС КОНСУЛТИНГ ООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>37 600.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>139 120.00</MarketValue>
+      <Result>139120</Result>
+      <ResultBGN>139120</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>2.656</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20176</ClientID>
+      <CDNumber>20176</CDNumber>
+      <Name>АДВАЙЗЪРИ СЪРВИСИС КОНСУЛТИНГ ООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7347</ShareID>
+      <ISIN>BG1100025136</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ЗД СЪГЛАСИЕ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>346 501.00</Quantity>
+      <OpenPrice>1.8503</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-641126.85</Result>
+      <ResultBGN>-641126.85</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20211</ClientID>
+      <CDNumber>20211</CDNumber>
+      <Name>УСТРЕМ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1250</ShareID>
+      <ISIN>BG11SVVAAT11</ISIN>
+      <StockCode>SKELN</StockCode>
+      <NewCode>3NJ</NewCode>
+      <Issuer>Св. св. Константин и Елена АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>91.00</Quantity>
+      <OpenPrice>19.4582</OpenPrice>
+      <MarketPrice>22.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>2 074.80</MarketValue>
+      <Result>304.1</Result>
+      <ResultBGN>304.1</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>17.174</YieldPercent>
+      <RelativePart>0.443</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>908</ShareID>
+      <ISIN>BG11ASASBT10</ISIN>
+      <StockCode>ASKRE</StockCode>
+      <NewCode>6AN</NewCode>
+      <Issuer>Асенова крепост АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 750.00</Quantity>
+      <OpenPrice>11.0571</OpenPrice>
+      <MarketPrice>11.0000</MarketPrice>
+      <MarketDate>21.11.2018</MarketDate>
+      <MarketValue>19 250.00</MarketValue>
+      <Result>-100</Result>
+      <ResultBGN>-100</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.517</YieldPercent>
+      <RelativePart>0.284</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1041</ShareID>
+      <ISIN>BG1100104980</ISIN>
+      <StockCode>HZAG</StockCode>
+      <NewCode>5Z2</NewCode>
+      <Issuer>Зенит инвестмънт холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6 524.00</Quantity>
+      <OpenPrice>5.6168</OpenPrice>
+      <MarketPrice>6.0000</MarketPrice>
+      <MarketDate>03.12.2018</MarketDate>
+      <MarketValue>39 144.00</MarketValue>
+      <Result>2500</Result>
+      <ResultBGN>2500</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>6.822</YieldPercent>
+      <RelativePart>0.578</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1234</ShareID>
+      <ISIN>BG1100014973</ISIN>
+      <StockCode>CCB</StockCode>
+      <NewCode>4CF</NewCode>
+      <Issuer>ТБ Централна кооперативна банка АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>55 450.00</Quantity>
+      <OpenPrice>1.9947</OpenPrice>
+      <MarketPrice>1.4300</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>79 293.50</MarketValue>
+      <Result>-31313.34</Result>
+      <ResultBGN>-31313.34</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 28.310</YieldPercent>
+      <RelativePart>1.171</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1250</ShareID>
+      <ISIN>BG11SVVAAT11</ISIN>
+      <StockCode>SKELN</StockCode>
+      <NewCode>3NJ</NewCode>
+      <Issuer>Св. св. Константин и Елена АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>47.00</Quantity>
+      <OpenPrice>22.2088</OpenPrice>
+      <MarketPrice>22.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>1 071.60</MarketValue>
+      <Result>27.7800000000002</Result>
+      <ResultBGN>27.7800000000002</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>2.661</YieldPercent>
+      <RelativePart>0.016</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1376</ShareID>
+      <ISIN>BG1100058988</ISIN>
+      <StockCode>HNVEK</StockCode>
+      <NewCode>6N3</NewCode>
+      <Issuer>Холдинг Нов век АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>219.00</Quantity>
+      <OpenPrice>14.3143</OpenPrice>
+      <MarketPrice>15.0000</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>3 285.00</MarketValue>
+      <Result>150.17</Result>
+      <ResultBGN>150.17</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>4.790</YieldPercent>
+      <RelativePart>0.049</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6 846.00</Quantity>
+      <OpenPrice>37.5175</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>258 778.80</MarketValue>
+      <Result>1934.19</Result>
+      <ResultBGN>1934.19</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.753</YieldPercent>
+      <RelativePart>3.822</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6595</ShareID>
+      <ISIN>BG1100121059</ISIN>
+      <StockCode>CAPM</StockCode>
+      <NewCode>5CQ</NewCode>
+      <Issuer>Кепитъл Мениджмънт АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>30.00</Quantity>
+      <OpenPrice>57.8000</OpenPrice>
+      <MarketPrice>58.0000</MarketPrice>
+      <MarketDate>28.11.2018</MarketDate>
+      <MarketValue>1 740.00</MarketValue>
+      <Result>6</Result>
+      <ResultBGN>6</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.346</YieldPercent>
+      <RelativePart>0.026</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6604</ShareID>
+      <ISIN>BG1100046066</ISIN>
+      <StockCode>CHIM</StockCode>
+      <NewCode>6C4</NewCode>
+      <Issuer>Химимпорт АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>114 115.00</Quantity>
+      <OpenPrice>2.3804</OpenPrice>
+      <MarketPrice>1.9800</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>225 947.70</MarketValue>
+      <Result>-45693.13</Result>
+      <ResultBGN>-45693.13</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 16.821</YieldPercent>
+      <RelativePart>3.337</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6630</ShareID>
+      <ISIN>BG1100001921</ISIN>
+      <StockCode>5CP</StockCode>
+      <NewCode>5CP</NewCode>
+      <Issuer>Тексим Банк АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>200.00</Quantity>
+      <OpenPrice>2.8000</OpenPrice>
+      <MarketPrice>2.7800</MarketPrice>
+      <MarketDate>10.12.2018</MarketDate>
+      <MarketValue>556.00</MarketValue>
+      <Result>-4</Result>
+      <ResultBGN>-4</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.714</YieldPercent>
+      <RelativePart>0.008</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6664</ShareID>
+      <ISIN>BG1100041067</ISIN>
+      <StockCode>SBPF</StockCode>
+      <NewCode>6SB</NewCode>
+      <Issuer>Супер Боровец Пропърти Фонд АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>325 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>1.9200</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>624 000.00</MarketValue>
+      <Result>624000</Result>
+      <ResultBGN>624000</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>9.216</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6775</ShareID>
+      <ISIN>BG1100099065</ISIN>
+      <StockCode>HREIT</StockCode>
+      <NewCode>5H4</NewCode>
+      <Issuer>Болкан енд Сий Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>50.00</Quantity>
+      <OpenPrice>15.2152</OpenPrice>
+      <MarketPrice>15.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>785.00</MarketValue>
+      <Result>24.24</Result>
+      <ResultBGN>24.24</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>3.186</YieldPercent>
+      <RelativePart>0.012</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7338</ShareID>
+      <ISIN>BG9000008169</ISIN>
+      <StockCode>CODA</StockCode>
+      <NewCode>CODA</NewCode>
+      <Issuer>НДФ Конкорд Фонд-7 Саут</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>3 058.00</Quantity>
+      <OpenPrice>11.4344</OpenPrice>
+      <MarketPrice>11.4000</MarketPrice>
+      <MarketDate>26.11.2018</MarketDate>
+      <MarketValue>34 861.20</MarketValue>
+      <Result>-105.199999999997</Result>
+      <ResultBGN>-105.199999999997</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.301</YieldPercent>
+      <RelativePart>0.515</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20212</ClientID>
+      <CDNumber>20212</CDNumber>
+      <Name>СЕВЕРКООП-ГЪМЗА ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7347</ShareID>
+      <ISIN>BG1100025136</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>ЗД СЪГЛАСИЕ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>328 000.00</Quantity>
+      <OpenPrice>1.6503</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-541300</Result>
+      <ResultBGN>-541300</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20218</ClientID>
+      <CDNumber>20218</CDNumber>
+      <Name>БМ ЛИЗИНГ ЕАД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1250</ShareID>
+      <ISIN>BG11SVVAAT11</ISIN>
+      <StockCode>SKELN</StockCode>
+      <NewCode>3NJ</NewCode>
+      <Issuer>Св. св. Константин и Елена АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 000.00</Quantity>
+      <OpenPrice>22.5225</OpenPrice>
+      <MarketPrice>22.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>22 800.00</MarketValue>
+      <Result>277.5</Result>
+      <ResultBGN>277.5</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>1.232</YieldPercent>
+      <RelativePart>3.412</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20218</ClientID>
+      <CDNumber>20218</CDNumber>
+      <Name>БМ ЛИЗИНГ ЕАД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6226</ShareID>
+      <ISIN>BG1100036984</ISIN>
+      <StockCode>HVAR</StockCode>
+      <NewCode>5V2</NewCode>
+      <Issuer>Холдинг Варна AД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>25.00</Quantity>
+      <OpenPrice>37.5200</OpenPrice>
+      <MarketPrice>37.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>945.00</MarketValue>
+      <Result>6.99999999999989</Result>
+      <ResultBGN>6.99999999999989</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.746</YieldPercent>
+      <RelativePart>0.141</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20218</ClientID>
+      <CDNumber>20218</CDNumber>
+      <Name>БМ ЛИЗИНГ ЕАД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6604</ShareID>
+      <ISIN>BG1100046066</ISIN>
+      <StockCode>CHIM</StockCode>
+      <NewCode>6C4</NewCode>
+      <Issuer>Химимпорт АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>47 092.00</Quantity>
+      <OpenPrice>0.1401</OpenPrice>
+      <MarketPrice>1.9800</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>93 242.16</MarketValue>
+      <Result>86644.44</Result>
+      <ResultBGN>86644.44</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>1 313.248</YieldPercent>
+      <RelativePart>13.952</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20236</ClientID>
+      <CDNumber>20236</CDNumber>
+      <Name>ЦКБ АСЕТС МЕНИДЖМЪНТ ЕАД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Дългови ФИ</ActiveID>
+      <ShareID>7411</ShareID>
+      <ISIN>BG2100024178</ISIN>
+      <StockCode>4PRA</StockCode>
+      <NewCode>4PRA</NewCode>
+      <Issuer>Премиер Фонд АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate>15.12.2025</MaturityDate>
+    </Instrument>
+    <AccountData>
+      <Quantity>195.00</Quantity>
+      <OpenPrice>1 014.0274</OpenPrice>
+      <MarketPrice>1 000.0000</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>201 285.41</MarketValue>
+      <Result>3550.06101499998</Result>
+      <ResultBGN>3550.06101499998</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>1.795</YieldPercent>
+      <RelativePart>100.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20254</ClientID>
+      <CDNumber>20254</CDNumber>
+      <Name>ДИВЕЛЪПМЪНТ ГРУП АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6604</ShareID>
+      <ISIN>BG1100046066</ISIN>
+      <StockCode>CHIM</StockCode>
+      <NewCode>6C4</NewCode>
+      <Issuer>Химимпорт АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>4 807.00</Quantity>
+      <OpenPrice>2.1838</OpenPrice>
+      <MarketPrice>1.9800</MarketPrice>
+      <MarketDate>12.12.2018</MarketDate>
+      <MarketValue>9 517.86</MarketValue>
+      <Result>-979.859999999999</Result>
+      <ResultBGN>-979.859999999999</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 9.334</YieldPercent>
+      <RelativePart>0.088</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20254</ClientID>
+      <CDNumber>20254</CDNumber>
+      <Name>ДИВЕЛЪПМЪНТ ГРУП АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6860</ShareID>
+      <ISIN>BG1100101069</ISIN>
+      <StockCode>NIS</StockCode>
+      <NewCode>RSS</NewCode>
+      <Issuer>Недвижими имоти София АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>14 400.00</Quantity>
+      <OpenPrice>5.7069</OpenPrice>
+      <MarketPrice>5.6000</MarketPrice>
+      <MarketDate>21.11.2018</MarketDate>
+      <MarketValue>80 640.00</MarketValue>
+      <Result>-1540</Result>
+      <ResultBGN>-1540</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 1.874</YieldPercent>
+      <RelativePart>0.742</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20254</ClientID>
+      <CDNumber>20254</CDNumber>
+      <Name>ДИВЕЛЪПМЪНТ ГРУП АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6916</ShareID>
+      <ISIN>BG1100026076</ISIN>
+      <StockCode>RPR</StockCode>
+      <NewCode>RPR</NewCode>
+      <Issuer>Рой Пропърти Фънд АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>18 100.00</Quantity>
+      <OpenPrice>4.2138</OpenPrice>
+      <MarketPrice>4.6000</MarketPrice>
+      <MarketDate>06.12.2018</MarketDate>
+      <MarketValue>83 260.00</MarketValue>
+      <Result>6990.2</Result>
+      <ResultBGN>6990.2</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>9.165</YieldPercent>
+      <RelativePart>0.766</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20254</ClientID>
+      <CDNumber>20254</CDNumber>
+      <Name>ДИВЕЛЪПМЪНТ ГРУП АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7112</ShareID>
+      <ISIN>BG1100010104</ISIN>
+      <StockCode>1VX</StockCode>
+      <NewCode>1VX</NewCode>
+      <Issuer>Велграф Асет Мениджмънт АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>45 430.00</Quantity>
+      <OpenPrice>3.6640</OpenPrice>
+      <MarketPrice>3.7000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>168 091.00</MarketValue>
+      <Result>1636.20999999999</Result>
+      <ResultBGN>1636.20999999999</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.983</YieldPercent>
+      <RelativePart>1.547</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20315</ClientID>
+      <CDNumber>20315</CDNumber>
+      <Name>ФЕНИКС КАПИТАЛ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>1250</ShareID>
+      <ISIN>BG11SVVAAT11</ISIN>
+      <StockCode>SKELN</StockCode>
+      <NewCode>3NJ</NewCode>
+      <Issuer>Св. св. Константин и Елена АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>21 300.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>22.8000</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>485 640.00</MarketValue>
+      <Result>485640</Result>
+      <ResultBGN>485640</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>8.635</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20315</ClientID>
+      <CDNumber>20315</CDNumber>
+      <Name>ФЕНИКС КАПИТАЛ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6733</ShareID>
+      <ISIN>BG1100083069</ISIN>
+      <StockCode>EXPRO</StockCode>
+      <NewCode>5EX</NewCode>
+      <Issuer>Ексклузив Пропърти АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>2 280 006.00</Quantity>
+      <OpenPrice>0.9049</OpenPrice>
+      <MarketPrice>0.8800</MarketPrice>
+      <MarketDate>20.11.2018</MarketDate>
+      <MarketValue>2 006 405.28</MarketValue>
+      <Result>-56849.1299999999</Result>
+      <ResultBGN>-56849.1299999999</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 2.755</YieldPercent>
+      <RelativePart>35.674</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20315</ClientID>
+      <CDNumber>20315</CDNumber>
+      <Name>ФЕНИКС КАПИТАЛ ХОЛДИНГ АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7259</ShareID>
+      <ISIN>BG1100035135</ISIN>
+      <StockCode>GTH</StockCode>
+      <NewCode>GTH</NewCode>
+      <Issuer>Инвестиционна Компания Галата АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 470 300.00</Quantity>
+      <OpenPrice>1.7147</OpenPrice>
+      <MarketPrice>1.7500</MarketPrice>
+      <MarketDate>26.11.2018</MarketDate>
+      <MarketValue>2 573 025.00</MarketValue>
+      <Result>51974.2999999998</Result>
+      <ResultBGN>51974.2999999998</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>2.062</YieldPercent>
+      <RelativePart>45.748</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20316</ClientID>
+      <CDNumber>20316</CDNumber>
+      <Name>ПЪТИЩА И СЪОРЪЖЕНИЯ - ГМС ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7355</ShareID>
+      <ISIN>BG1100076063</ISIN>
+      <StockCode />
+      <NewCode />
+      <Issuer>СТРАТЕГИЯ АСЕТ МЕНИДЖМЪНТ АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>5 000.00</Quantity>
+      <OpenPrice>9.0200</OpenPrice>
+      <MarketPrice>0.0000</MarketPrice>
+      <MarketDate />
+      <MarketValue>0.00</MarketValue>
+      <Result>-45100</Result>
+      <ResultBGN>-45100</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 100.000</YieldPercent>
+      <RelativePart>0.000</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20322</ClientID>
+      <CDNumber>20322</CDNumber>
+      <Name>АСТЕР 2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5382</ShareID>
+      <ISIN>BG11EMTOAT16</ISIN>
+      <StockCode>EMPI</StockCode>
+      <NewCode>58E</NewCode>
+      <Issuer>Химснаб България АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 885.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>42.6000</MarketPrice>
+      <MarketDate>15.11.2018</MarketDate>
+      <MarketValue>80 301.00</MarketValue>
+      <Result>80301</Result>
+      <ResultBGN>80301</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.592</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>20322</ClientID>
+      <CDNumber>20322</CDNumber>
+      <Name>АСТЕР 2000 ЕООД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7435</ShareID>
+      <ISIN>BG1100001186</ISIN>
+      <StockCode>9BH</StockCode>
+      <NewCode>9BH</NewCode>
+      <Issuer>Български фонд за вземания АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>1 500 000.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>1.0200</MarketPrice>
+      <MarketDate>07.12.2018</MarketDate>
+      <MarketValue>1 530 000.00</MarketValue>
+      <Result>1530000</Result>
+      <ResultBGN>1530000</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>30.325</RelativePart>
+    </Other>
+  </New>
+</WebData>

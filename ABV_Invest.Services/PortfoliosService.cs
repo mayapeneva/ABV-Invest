@@ -45,7 +45,7 @@
         public async Task SeedPortfolios(IEnumerable<PortfolioRowBindingModel> objPortfolios, DateTime date)
         {
             // Group the entries by Client and process portfolios for each client
-            var portfolios = objPortfolios.GroupBy(p => p.Client.CDNNumber);
+            var portfolios = objPortfolios.GroupBy(p => p.Client.Name);
             foreach (var portfolio in portfolios)
             {
                 // Check if User exists and if not create new User
@@ -54,7 +54,7 @@
                 {
                     var result = this.userManager.CreateAsync(new AbvInvestUser
                     {
-                        UserName = portfolio.Key,
+                        UserName = portfolio.Key.Replace("\"", ""),
                     }).Result;
 
                     if (result.Succeeded)
