@@ -4,24 +4,27 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Base;
     using BindingModels.Uploads.Portfolios;
+    using Common;
     using Contracts;
     using Data;
     using Microsoft.AspNetCore.Identity;
     using Models;
     using Mapper = AutoMapper.Mapper;
 
-    public class PortfoliosService : IPortfoliosService
+    public class PortfoliosService : BaseService, IPortfoliosService
     {
         private const string initialPass = "789-Asd";
+        private const string initialPIN = "00001";
+        private const string initialEmail = "client@abv.bg";
 
-        private readonly AbvDbContext db;
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IBalancesService balancesService;
 
         public PortfoliosService(AbvDbContext db, UserManager<AbvInvestUser> userManager, IBalancesService balancesService)
+            : base(db)
         {
-            this.db = db;
             this.userManager = userManager;
             this.balancesService = balancesService;
         }
@@ -34,7 +37,7 @@
                 return null;
             }
 
-            var portfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(p =>
+            var portfolio = this.Db.DailySecuritiesPerClient.SingleOrDefault(p =>
                 p.AbvInvestUserId == userId && p.Date == date);
 
             var collection = portfolio?.SecuritiesPerIssuerCollection.Select(Mapper.Map<T>).ToArray();
@@ -45,31 +48,33 @@
         public async Task SeedPortfolios(IEnumerable<PortfolioRowBindingModel> objPortfolios, DateTime date)
         {
             // Group the entries by Client and process portfolios for each client
-            var portfolios = objPortfolios.GroupBy(p => p.Client.Name);
+            var portfolios = objPortfolios.GroupBy(p => p.Client.CDNNumber);
             foreach (var portfolio in portfolios)
             {
                 // Check if User exists and if not create new User
-                var user = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
+                var user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
                 if (user == null)
                 {
-                    var result = this.userManager.CreateAsync(new AbvInvestUser
+                    user = new AbvInvestUser
                     {
-                        UserName = portfolio.Key.Replace("\"", ""),
-                    }).Result;
+                        UserName = portfolio.Key,
+                        PIN = initialPIN,
+                        Email = initialEmail
+                    };
 
-                    if (result.Succeeded)
-                    {
-                        user = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
-                        await this.userManager.HasPasswordAsync(user);
-                    }
-                    else
+                    var result = await this.userManager.CreateAsync(user, initialPass);
+                    if (!result.Succeeded)
                     {
                         continue;
                     }
+
+                    await this.userManager.AddToRoleAsync(user, Constants.User);
+
+                    user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
                 }
 
                 // Check if there is a DailySecuritiesEntity created for this User and date already
-                if (this.db.DailySecuritiesPerClient.Any(ds => ds.AbvInvestUserId == user.Id && ds.Date == date))
+                if (this.Db.DailySecuritiesPerClient.Any(ds => ds.AbvInvestUserId == user.Id && ds.Date == date))
                 {
                     continue;
                 }
@@ -91,11 +96,11 @@
 
                     // Check if such security exists and if not - create new one
                     var security =
-                        this.db.Securities.SingleOrDefault(s => s.BfbCode == portfolioRow.Instrument.NewCode);
+                        this.Db.Securities.SingleOrDefault(s => s.BfbCode == portfolioRow.Instrument.NewCode);
                     if (security == null)
                     {
                         // Check if issuer exists and if not - create new one
-                        var issuer = this.db.Issuers.SingleOrDefault(i =>
+                        var issuer = this.Db.Issuers.SingleOrDefault(i =>
                             i.Securities.Any(s => s.ISIN == portfolioRow.Instrument.ISIN));
                         if (issuer == null)
                         {
@@ -104,18 +109,30 @@
                                 Name = portfolioRow.Instrument.Issuer,
                                 Securities = new HashSet<Security>()
                             };
-                            await this.db.Issuers.AddAsync(issuer);
+
+                            if (!IsValid(issuer))
+                            {
+                                continue;
+                            }
+
+                            await this.Db.Issuers.AddAsync(issuer);
 
                             // Check if currency exists and if not - create new one
                             var currency =
-                                this.db.Currencies.SingleOrDefault(c => c.Code == portfolioRow.Instrument.Currency);
+                                this.Db.Currencies.SingleOrDefault(c => c.Code == portfolioRow.Instrument.Currency);
                             if (currency == null)
                             {
                                 currency = new Currency
                                 {
                                     Code = portfolioRow.Instrument.Currency
                                 };
-                                await this.db.Currencies.AddAsync(currency);
+
+                                if (!IsValid(currency))
+                                {
+                                    continue;
+                                }
+
+                                await this.Db.Currencies.AddAsync(currency);
                             }
 
                             security = new Security
@@ -147,12 +164,17 @@
                         PortfolioShare = portfolioRow.Other.RelativePart
                     });
 
-                    await this.db.SaveChangesAsync();
+                    if (!IsValid(dbPortfolio))
+                    {
+                        continue;
+                    }
+
+                    await this.Db.SaveChangesAsync();
                 }
 
                 user.Portfolio.Add(dbPortfolio);
 
-                await this.db.SaveChangesAsync();
+                await this.Db.SaveChangesAsync();
 
                 this.balancesService.CreateBalanceForUser(user, date);
             }

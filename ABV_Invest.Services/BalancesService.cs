@@ -3,17 +3,16 @@
     using System;
     using System.Linq;
     using AutoMapper;
+    using Base;
     using Contracts;
     using Data;
     using Models;
 
-    public class BalancesService : IBalancesService
+    public class BalancesService : BaseService, IBalancesService
     {
-        private readonly AbvDbContext db;
-
         public BalancesService(AbvDbContext db)
+        : base(db)
         {
-            this.db = db;
         }
 
         public async void CreateBalanceForUser(AbvInvestUser user, DateTime date)
@@ -24,8 +23,13 @@
                 Balance = new Balance()
             };
 
+            if (!IsValid(balance))
+            {
+                return;
+            }
+
             user.Balances.Add(balance);
-            await this.db.SaveChangesAsync();
+            await this.Db.SaveChangesAsync();
         }
 
         public T GetUserDailyBalance<T>(string userId, string chosenDate)
@@ -36,7 +40,7 @@
                 return default(T);
             }
 
-            var balance = this.db.Balances.SingleOrDefault(b =>
+            var balance = this.Db.Balances.SingleOrDefault(b =>
                 b.DaiyBalance.AbvInvestUserId == userId && b.DaiyBalance.Date == date);
 
             return Mapper.Map<T>(balance);

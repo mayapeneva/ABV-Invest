@@ -2,22 +2,21 @@
 {
     using System.Linq;
     using AutoMapper;
+    using Base;
     using Contracts;
     using Data;
     using DTOs;
 
-    public class UsersService : IUsersService
+    public class UsersService : BaseService, IUsersService
     {
-        private readonly AbvDbContext db;
-
         public UsersService(AbvDbContext db)
+            : base(db)
         {
-            this.db = db;
         }
 
         public UserDto GetUserByUserName(string username)
         {
-            var user = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == username);
+            var user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == username);
             if (user == null)
             {
                 return null;

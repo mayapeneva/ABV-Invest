@@ -13,7 +13,6 @@
             this.Balances = new HashSet<DailyBalance>();
         }
 
-        [Required]
         [RegularExpression(@"^\d{5}$")]
         public string PIN { get; set; }
 
