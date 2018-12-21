@@ -59,16 +59,21 @@
                     {
                         UserName = portfolio.Key,
                         PIN = initialPIN,
-                        Email = initialEmail
+                        Email = initialEmail,
+                        SecurityStamp = Guid.NewGuid().ToString("D")
                     };
 
-                    var result = await this.userManager.CreateAsync(user, initialPass);
+                    var result = this.userManager.CreateAsync(user, initialPass).GetAwaiter().GetResult();
                     if (!result.Succeeded)
                     {
                         continue;
                     }
 
-                    await this.userManager.AddToRoleAsync(user, Constants.User);
+                    result = this.userManager.AddToRoleAsync(user, Constants.User).GetAwaiter().GetResult();
+                    if (!result.Succeeded)
+                    {
+                        continue;
+                    }
 
                     user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
                 }
@@ -115,7 +120,7 @@
                                 continue;
                             }
 
-                            await this.Db.Issuers.AddAsync(issuer);
+                            this.Db.Issuers.AddAsync(issuer).GetAwaiter().GetResult();
 
                             // Check if currency exists and if not - create new one
                             var currency =
@@ -132,7 +137,7 @@
                                     continue;
                                 }
 
-                                await this.Db.Currencies.AddAsync(currency);
+                                this.Db.Currencies.AddAsync(currency).GetAwaiter().GetResult();
                             }
 
                             security = new Security
@@ -168,14 +173,15 @@
                     {
                         continue;
                     }
-
-                    await this.Db.SaveChangesAsync();
                 }
 
                 user.Portfolio.Add(dbPortfolio);
 
-                await this.Db.SaveChangesAsync();
-
+                var result2 = this.Db.SaveChangesAsync().GetAwaiter().GetResult();
+                if (result2 == 0)
+                {
+                    continue;
+                }
                 this.balancesService.CreateBalanceForUser(user, date);
             }
         }

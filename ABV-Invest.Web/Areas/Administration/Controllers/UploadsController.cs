@@ -150,6 +150,8 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                 }
             }
 
+            this.ViewBag.Error = Messages.UploadingSuccessfull;
+            return this.View();
             return this.View();
         }
 
