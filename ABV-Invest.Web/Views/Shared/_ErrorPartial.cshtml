@@ -3,9 +3,9 @@
     ViewData["Title"] = "Възникна грешка:";
 }
 
-@if (ViewBag.Error != null)
+@if (ViewData.ContainsKey("Error"))
 {
     <h3 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h3>
-    <h4 class="bg-abvmiddlegreen text-center">@ViewBag.Error</h4>
+    <h4 class="bg-abvmiddlegreen text-center">@ViewData["Error"]</h4>
     <br />
 }

@@ -1,24 +1,24 @@
 ﻿@page
 @model PersonalDataModel
 @{
-    ViewData["Title"] = "Лична инфорация";
+    ViewData["Title"] = "Лична информация";
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
+<h3 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h3>
 <hr />
 
 <div class="row">
     <div class="col-md-6">
-        <p>При регистрацията си на този уебсайт вие сте предоставили своите лични данни. На тази страница можете да свалите или да изтриете тези данни.</p>
-        <p>
-            <strong>Изтриването на тази информация ще изтрие регистрацията Ви в този уебсайт и няма да имате достъп до системата.</strong>
-        </p>
+        <p class="bg-abvdarkgreen">При регистрацията си на този уебсайт Вие сте предоставили своите лични данни. На тази страница можете да свалите или да изтриете тези данни.</p>
+        <p class="bg-abvdarkgreen">
+            <strong>Изтриването на личната Ви информация ще изтрие регистрацията Ви в този уебсайт и няма да имате достъп до системата.</strong>
+        </p> <br />
         <form asp-page="DownloadPersonalData" method="post" class="form-group">
-            <button class="btn btn-default" type="submit">Сваляне на данни</button>
+            <button class="btn btn-default  bg-bg-abvdarkgreen bg-abvlightgreen" type="submit">Сваляне на данни</button>
         </form>
         <p>
-            <a asp-page="DeletePersonalData" class="btn btn-default">Изтриване на регистрация</a>
+            <a asp-page="DeletePersonalData" class="btn btn-default bg-bg-abvlightgreen bg-abvdarkgreen">Изтриване на регистрация</a>
         </p>
     </div>
 </div>

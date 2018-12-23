@@ -9,6 +9,10 @@
 
     public class AbvDbContext : IdentityDbContext<AbvInvestUser>
     {
+        public AbvDbContext()
+        {
+        }
+
         public AbvDbContext(DbContextOptions<AbvDbContext> options)
             : base(options)
         {

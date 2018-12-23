@@ -38,7 +38,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                 || model.Date > DateTime.UtcNow
                 || model.Date < DateTime.Parse("01/01/2016"))
             {
-                this.ViewBag.Error = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewData["Error"] = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View();
             }
 
@@ -100,16 +100,16 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
 
                             if (element.Name == "AccountData")
                             {
-                                var number = element.SelectSingleNode("Quantity").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                var number = element.SelectSingleNode("Quantity").InnerText.Replace(" ", "");
                                 portfolio.AccountData.Quantity = decimal.Parse(number);
 
-                                number = element.SelectSingleNode("OpenPrice").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                number = element.SelectSingleNode("OpenPrice").InnerText.Replace(" ", "");
                                 portfolio.AccountData.OpenPrice = decimal.Parse(number);
 
-                                number = element.SelectSingleNode("MarketPrice").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                number = element.SelectSingleNode("MarketPrice").InnerText.Replace(" ", "");
                                 portfolio.AccountData.MarketPrice = decimal.Parse(number);
 
-                                number = element.SelectSingleNode("MarketValue").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                number = element.SelectSingleNode("MarketValue").InnerText.Replace(" ", "");
                                 portfolio.AccountData.MarketValue = decimal.Parse(number);
 
                                 var date = element.SelectSingleNode("MarketDate").InnerText;
@@ -121,19 +121,19 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                                 }
                                 portfolio.AccountData.MarketDate = marketDate;
 
-                                number = element.SelectSingleNode("Result").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                number = element.SelectSingleNode("Result").InnerText.Replace(" ", "");
                                 portfolio.AccountData.Result = decimal.Parse(number);
 
-                                number = element.SelectSingleNode("ResultBGN").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                number = element.SelectSingleNode("ResultBGN").InnerText.Replace(" ", "");
                                 portfolio.AccountData.ResultBGN = decimal.Parse(number);
                             }
 
                             if (element.Name == "Other")
                             {
-                                var number = element.SelectSingleNode("YieldPercent").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                var number = element.SelectSingleNode("YieldPercent").InnerText.Replace(" ", "");
                                 portfolio.Other.YieldPercent = decimal.Parse(number);
 
-                                number = element.SelectSingleNode("RelativePart").InnerText.Replace(".00000).00000.0000", "").Replace(" ", "");
+                                number = element.SelectSingleNode("RelativePart").InnerText.Replace(" ", "");
                                 portfolio.Other.RelativePart = decimal.Parse(number);
                             }
                         }
@@ -144,13 +144,13 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                     var result = this.portfolioService.SeedPortfolios(deserializedPortfolios, model.Date);
                     if (!result.IsCompleted)
                     {
-                        this.ViewBag.Error = Messages.CouldNotUploadInformation;
+                        this.ViewData["Error"] = Messages.CouldNotUploadInformation;
                         return this.View();
                     }
                 }
             }
 
-            this.ViewBag.Error = Messages.UploadingSuccessfull;
+            this.ViewData["Error"] = Messages.UploadingSuccessfull;
             return this.View();
             return this.View();
         }

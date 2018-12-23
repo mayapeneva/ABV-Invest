@@ -12,25 +12,30 @@ using Microsoft.Extensions.Logging;
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
     using Common;
+    using Services.Contracts;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+        private const string UserExists = "This username is already taken";
+
         private readonly SignInManager<AbvInvestUser> _signInManager;
         private readonly UserManager<AbvInvestUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUsersService userService;
 
         public RegisterModel(
             UserManager<AbvInvestUser> userManager,
             SignInManager<AbvInvestUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender, IUsersService userService)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._logger = logger;
             this._emailSender = emailSender;
+            this.userService = userService;
         }
 
         [BindProperty]
@@ -50,7 +55,6 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             [Display(Name = "PIN")]
             public string PIN { get; set; }
 
-            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -77,6 +81,13 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? this.Url.Content("~/");
             if (this.ModelState.IsValid)
             {
+                var dbUser = this.userService.GetUserByUserName(this.Input.Username);
+                if (dbUser != null)
+                {
+                    this.ViewData["Error"] = "";
+                    return this.RedirectToAction("Register", "Users", this.Input);
+                }
+
                 var user = new AbvInvestUser { UserName = this.Input.Username, PIN = this.Input.PIN, Email = this.Input.Email };
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)

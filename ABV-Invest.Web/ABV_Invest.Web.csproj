@@ -59,6 +59,14 @@
     <Content Update="Views\Deals\Details.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\_NotLoggedIndexPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_AdminIndexPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\_ErrorPartial.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
@@ -70,7 +78,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Shared\_AdminPartial.cshtml">
+    <Content Update="Views\Shared\_AdminLayoutPartial.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -90,7 +98,11 @@
     <Content Update="Views\Shared\_LoginPartial.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\Shared\_UserPartial.cshtml">
+    <Content Update="Views\Shared\_UserIndexPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_UserLayoutPartial.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

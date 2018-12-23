@@ -38,13 +38,6 @@ body {
     width: 100%;
 }
 
-.bg-abv-hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    line-height: 5px;
-    color: #89bf32;
-}
-
 /* Font-sizes*/
 .large-fontsize {
     font-size: 20px !important;
@@ -59,7 +52,7 @@ body {
     color: #89BF32;
 }
 
-.bg-abvlightgreen {
+.abvlightgreen {
     color: #D2DB34;
 }
 
@@ -76,12 +69,8 @@ body {
     background-color: #89BF32;
 }
 
-.bg-bg-abvlightgreen {
+.bg-abvlightgreen {
     background-color: #D2DB34;
-}
-
-.bg-bg-abvwhite {
-    background-color: white;
 }
 
 .hr-2 {

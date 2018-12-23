@@ -51,31 +51,11 @@
             var portfolios = objPortfolios.GroupBy(p => p.Client.CDNNumber);
             foreach (var portfolio in portfolios)
             {
-                // Check if User exists and if not create new User
+                // Check if User exists
                 var user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
                 if (user == null)
                 {
-                    user = new AbvInvestUser
-                    {
-                        UserName = portfolio.Key,
-                        PIN = initialPIN,
-                        Email = initialEmail,
-                        SecurityStamp = Guid.NewGuid().ToString("D")
-                    };
-
-                    var result = this.userManager.CreateAsync(user, initialPass).GetAwaiter().GetResult();
-                    if (!result.Succeeded)
-                    {
-                        continue;
-                    }
-
-                    result = this.userManager.AddToRoleAsync(user, Constants.User).GetAwaiter().GetResult();
-                    if (!result.Succeeded)
-                    {
-                        continue;
-                    }
-
-                    user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
+                    continue;
                 }
 
                 // Check if there is a DailySecuritiesEntity created for this User and date already
@@ -94,69 +74,16 @@
                 // Create all SecuritiesPerClient for this User
                 foreach (var portfolioRow in portfolio)
                 {
-                    if (user.FullName == string.Empty)
-                    {
-                        user.FullName = portfolioRow.Client.Name;
-                    }
-
-                    // Check if such security exists and if not - create new one
+                    // Check if such security exists
                     var security =
                         this.Db.Securities.SingleOrDefault(s => s.BfbCode == portfolioRow.Instrument.NewCode);
                     if (security == null)
                     {
-                        // Check if issuer exists and if not - create new one
-                        var issuer = this.Db.Issuers.SingleOrDefault(i =>
-                            i.Securities.Any(s => s.ISIN == portfolioRow.Instrument.ISIN));
-                        if (issuer == null)
-                        {
-                            issuer = new Issuer
-                            {
-                                Name = portfolioRow.Instrument.Issuer,
-                                Securities = new HashSet<Security>()
-                            };
-
-                            if (!IsValid(issuer))
-                            {
-                                continue;
-                            }
-
-                            this.Db.Issuers.AddAsync(issuer).GetAwaiter().GetResult();
-
-                            // Check if currency exists and if not - create new one
-                            var currency =
-                                this.Db.Currencies.SingleOrDefault(c => c.Code == portfolioRow.Instrument.Currency);
-                            if (currency == null)
-                            {
-                                currency = new Currency
-                                {
-                                    Code = portfolioRow.Instrument.Currency
-                                };
-
-                                if (!IsValid(currency))
-                                {
-                                    continue;
-                                }
-
-                                this.Db.Currencies.AddAsync(currency).GetAwaiter().GetResult();
-                            }
-
-                            security = new Security
-                            {
-                                Issuer = issuer,
-                                ISIN = portfolioRow.Instrument.ISIN,
-                                BfbCode = portfolioRow.Instrument.NewCode,
-                                Currency = currency
-                            };
-
-                            if (issuer.Securities.All(s => s.ISIN != security.ISIN))
-                            {
-                                issuer.Securities.Add(security);
-                            }
-                        }
+                        continue;
                     }
 
                     // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
-                    dbPortfolio.SecuritiesPerIssuerCollection.Add(new SecuritiesPerClient
+                    var securitiesPerClient = new SecuritiesPerClient
                     {
                         Security = security,
                         Quantity = portfolioRow.AccountData.Quantity,
@@ -167,8 +94,13 @@
                         ProfitInBGN = portfolioRow.AccountData.ResultBGN,
                         ProfitPercentаge = portfolioRow.Other.YieldPercent,
                         PortfolioShare = portfolioRow.Other.RelativePart
-                    });
+                    };
+                    if (!IsValid(securitiesPerClient))
+                    {
+                        continue;
+                    }
 
+                    dbPortfolio.SecuritiesPerIssuerCollection.Add(securitiesPerClient);
                     if (!IsValid(dbPortfolio))
                     {
                         continue;
@@ -177,11 +109,8 @@
 
                 user.Portfolio.Add(dbPortfolio);
 
-                var result2 = this.Db.SaveChangesAsync().GetAwaiter().GetResult();
-                if (result2 == 0)
-                {
-                    continue;
-                }
+                await this.Db.SaveChangesAsync();
+
                 this.balancesService.CreateBalanceForUser(user, date);
             }
         }

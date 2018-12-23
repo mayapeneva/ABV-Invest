@@ -1,17 +1,16 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Управление на профила";
 }
 
-<h2 class="bg-abvmiddlegreen text-center">Управление на профила</h2>
+<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
 <hr />
 
 <div>
-    <h4 class="bg-abvdarkgreen">Промени настройките на профила си</h4>
-    <hr />
     <div class="row">
         <partial name="_ManageNav" />
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 20px">
         @RenderBody()
     </div>
 </div>

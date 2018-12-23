@@ -36,7 +36,7 @@
                 || dateChosen.Date > DateTime.UtcNow
                 || dateChosen.Date < DateTime.Parse("01/01/2016"))
             {
-                this.ViewBag.Error = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewData["Error"] = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View();
             }
 
@@ -52,7 +52,7 @@
 
             if (balance == null)
             {
-                this.ViewBag.Error = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewData["Error"] = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString("dd/MM/yyyy"));
                 return this.View("ChooseDate");
             }
 

@@ -1,5 +1,4 @@
 ﻿@inject SignInManager<AbvInvestUser> SignInManager
-@inject UserManager<AbvInvestUser> UserManager
 
 @{
     ViewData["Title"] = "Начало";
@@ -9,100 +8,14 @@
 {
     if (User.IsInRole("Admin"))
     {
-        <div clas="row" style="margin-top: 50px">
-            <div class="col-md-2"></div>
-            <div class="col-md-8" id="logo">
-                <img src="https://res.cloudinary.com/mausha/image/upload/v1543241400/ABV/ABVlogo.jpg" alt="ABV-logo" class="img-responsive">
-            </div>
-        </div>
-        <div class="row">
-            <div class="bg-bg-abvmiddlegreen col-md-4 text-center">
-                <a asp-area="Administration" asp-controller="Uploads" asp-action="PortfoliosInfo" class="bg-abvdarkgreen"><h3>Качи портфолиа</h3></a>
-            </div>
-        </div> <br />
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="bg-bg-abvlightgreen col-md-4 text-center">
-                <a asp-area="Administration" asp-controller="Uploads" asp-action="DealsInfo" class="bg-abvdarkgreen"><h3>Качи сделки</h3></a>
-            </div>
-        </div> <br />
-        <div class="row">
-            <div class="col-md-8"></div>
-            <div class="bg-bg-abvmiddlegreen col-md-4 text-center">
-                <a asp-area="Administration" asp-controller="Users" asp-action="Maintenance" class="bg-abvdarkgreen"><h3>Потребители</h3></a>
-            </div>
-        </div>
+        <partial name="_AdminIndexPartial" />
     }
     else if (User.IsInRole("User"))
     {
-        <div clas="row" style="margin-top: 50px">
-            <div class="col-md-2"></div>
-            <div class="col-md-8" id="index-menu">
-                <img src="https://res.cloudinary.com/mausha/image/upload/v1543241400/ABV/ABVlogo.jpg" alt="ABV-logo" class="img-responsive">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="bg-bg-abvmiddlegreen col-md-4 text-center">
-                <a asp-controller="Portfolios" asp-action="ChooseDate" class="bg-abvdarkgreen"><h3>Портфолио</h3></a>
-            </div>
-        </div> <br />
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="bg-bg-abvlightgreen col-md-4 text-center">
-                <a asp-controller="Deals" asp-action="ChooseDate" class="bg-abvdarkgreen"><h3>Сделки</h3></a>
-            </div>
-        </div> <br />
-        <div class="row">
-            <div class="col-md-8"></div>
-            <div class="bg-bg-abvmiddlegreen col-md-4 text-center">
-                <a asp-controller="Balances" asp-action="Index" class="bg-abvdarkgreen"><h3>Баланс</h3></a>
-            </div>
-        </div>
+        <partial name="_UserIndexPartial" />
     }
 }
 else
 {
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="https://res.cloudinary.com/mausha/image/upload/v1543241497/ABV/bullandbear.png" alt="Bull and Bear" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <h2><strong>АБВ Инвестиции - Вашият партньор на фондовата борса.</strong></h2>
-                </div>
-            </div>
-            <div class="item">
-                <img src="https://res.cloudinary.com/mausha/image/upload/v1543241446/ABV/business.jpg" alt="Business" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <h2><strong>Инвестирайте парите си с нас!</strong></h2>
-                </div>
-            </div>
-            <div class="item">
-                <img src="https://res.cloudinary.com/mausha/image/upload/v1543241449/ABV/buysellgreen.jpg" alt="Buy Sell" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <h2><strong>Покупка и продажба на акции.</strong></h2>
-                </div>
-            </div>
-        </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="fas fa-angle-double-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="fas fa-angle-double-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
-    <div class="row">
-        <div class="bg-bg-abvmiddlegreen col-md-4 text-center">
-            <a asp-area="Identity" asp-page="/Account/Register" class="bg-abvdarkgreen"><h3>Регистрация</h3></a>
-        </div>
-        <div class="bg-bg-abvlightgreen col-md-4 text-center">
-            <a asp-area="Identity" asp-page="/Account/Login" class="bg-abvdarkgreen"><h3>Вход</h3></a>
-        </div>
-        <div class="bg-bg-abvmiddlegreen col-md-4 text-center">
-            <a asp-controller="News" asp-action="Load" class="bg-abvdarkgreen"><h3>Новини</h3></a>
-        </div>
-    </div>
+    <partial name="_NotLoggedIndexPartial" />
 }
