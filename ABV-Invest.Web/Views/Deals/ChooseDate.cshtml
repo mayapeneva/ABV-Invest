@@ -1,21 +1,26 @@
-﻿@{
+﻿@model DateChosenBindingModel
+@{
     ViewData["Title"] = "Сделки";
 }
-@model ABV_Invest.BindingModels.DateChosenBindingModel
 
 <h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
 <hr />
 
 <div class="container">
     <partial name="_ErrorPartial" />
-    <div class="col-md-3"></div>
     <div class=" col-md-6 bg-abvdarkgreen large-fontsize">
-        <p>
+        <h4>
             Изберете дата, за да можете да получите информация за сделките, сключени на тази дата:
-        </p>
+        </h4>
         <br />
-        <form asp-controller="Deals" asp-action="ChooseDate" method="post">
-            <partial name="_DatePartial" />
-        </form>
+        <section>
+            <form asp-controller="Deals" asp-action="ChooseDate" method="post">
+                <partial name="_DatePartial" />
+            </form>
+        </section>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

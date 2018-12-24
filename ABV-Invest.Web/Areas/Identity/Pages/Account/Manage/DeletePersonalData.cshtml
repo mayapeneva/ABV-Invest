@@ -5,29 +5,31 @@
     ViewData["ActivePage"] = ManageNavPages.DeletePersonalData;
 }
 
-<h3 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h3>
+<h4 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h4>
 <hr />
 
-<div class="alert alert-warning" role="alert">
-    <p class="bg-abvmiddlegreen">
-        <span class="glyphicon glyphicon-warning-sign"></span>
-        <strong> Изтриването на личните Ви данни ще изтрие регистрацията Ви в този уебсайт и няма да имате достъп до системата.</strong>
-    </p>
-</div>
-<form id="delete-user" method="post" class="form-group">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    @if (Model.RequirePassword)
-    {
-        <div class=" row form-group col-md-4">
-            <label asp-for="Input.Password" class="bg-abvdarkgreen">Парола</label>
-            <input asp-for="Input.Password" class="form-control" />
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-        </div>
-    }
-    <div class="row">
-        <button class="btn btn-danger" type="submit">Изтриване на данните и прекратяване на регистрацията</button>
+<div class="d-flex justify-content-center">
+    <div class="alert alert-warning" role="alert">
+        <p class="bg-abvmiddlegreen">
+            <span class="glyphicon glyphicon-warning-sign"></span>
+            <strong> Изтриването на личните Ви данни ще изтрие регистрацията Ви в този уебсайт и няма да имате достъп до системата.</strong>
+        </p>
     </div>
-</form>
+    <form id="delete-user" method="post" class="form-group">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        @if (Model.RequirePassword)
+        {
+            <div class=" row form-group col-md-4">
+                <label asp-for="Input.Password" class="bg-abvdarkgreen">Парола</label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+        }
+        <div class="row">
+            <button class="btn btn-danger" type="submit">Изтриване на данните и прекратяване на регистрацията</button>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

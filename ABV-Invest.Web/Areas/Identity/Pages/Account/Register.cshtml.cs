@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
     using Common;
+    using Models;
     using Services.Contracts;
 
     [AllowAnonymous]
@@ -46,7 +47,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [MinLength(4)]
+            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$")]
             [Display(Name = "Username")]
             public string Username { get; set; }
 
@@ -84,8 +85,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                 var dbUser = this.userService.GetUserByUserName(this.Input.Username);
                 if (dbUser != null)
                 {
-                    this.ViewData["Error"] = "";
-                    return this.RedirectToAction("Register", "Users", this.Input);
+                    return this.Page();
                 }
 
                 var user = new AbvInvestUser { UserName = this.Input.Username, PIN = this.Input.PIN, Email = this.Input.Email };
