@@ -1,0 +1,30 @@
+﻿@model MarketBindingModel
+@{
+    ViewData["Title"] = "Добавяне на пазар";
+}
+
+<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="container bg-abvdarkgreen">
+    <div class="col-md-6">
+        <h4>Попълнете името на пазара, която искате да добавите.</h4>
+        <br />
+        <section>
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Name">Пазар</label>
+                    <input asp-for="@Model.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+                <br />
+                <button type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen">Добави</button>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

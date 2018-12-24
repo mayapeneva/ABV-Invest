@@ -1,0 +1,45 @@
+﻿@model SecurityBindingModel
+@{
+    ViewData["Title"] = "Добавяне на ценни книжа";
+}
+
+<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="container bg-abvdarkgreen">
+    <div class="col-md-6">
+        <h4>Попълнете данните на ценните книжа, които искате да добавите.</h4>
+        <br />
+        <section>
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Issuer">Емитент</label>
+                    <input asp-for="@Model.Issuer" class="form-control" />
+                    <span asp-validation-for="@Model.Issuer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.ISIN">ISIN</label>
+                    <input asp-for="@Model.ISIN" class="form-control" />
+                    <span asp-validation-for="@Model.ISIN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.BfbCode">БФБ код</label>
+                    <input asp-for="@Model.BfbCode" class="form-control" />
+                    <span asp-validation-for="@Model.BfbCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Currency">Валута</label>
+                    <input asp-for="@Model.Currency" class="form-control" />
+                    <span asp-validation-for="@Model.Currency" class="text-danger"></span>
+                </div>
+                <br />
+                <button type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen">Добави</button>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
