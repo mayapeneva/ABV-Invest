@@ -13,8 +13,6 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
-    using Microsoft.EntityFrameworkCore.Storage;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Services;
@@ -66,6 +64,7 @@
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IBalancesService, BalancesService>();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IDataService, DataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

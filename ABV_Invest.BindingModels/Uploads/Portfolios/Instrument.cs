@@ -9,7 +9,7 @@
     {
         [XmlAttribute("ISIN")]
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9]{12}$")]
+        [RegularExpression(@"^[A-Z0-9]{12}$")]
         public string ISIN { get; set; }
 
         [XmlAttribute("NewCode")]

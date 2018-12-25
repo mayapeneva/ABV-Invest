@@ -9,7 +9,7 @@
         public string Issuer { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9]{12}$")]
+        [RegularExpression(@"^[A-Z0-9]{12}$")]
         public string ISIN { get; set; }
 
         [RegularExpression(@"^[A-Z0-9]{3,4}$")]

@@ -14,15 +14,15 @@
         {
         }
 
-        public UserDto GetUserByUserName(string username)
+        public T GetUserByUserName<T>(string username)
         {
             var user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == username);
             if (user == null)
             {
-                return null;
+                return default(T);
             }
 
-            return Mapper.Map<UserDto>(user);
+            return Mapper.Map<T>(user);
         }
     }
 }

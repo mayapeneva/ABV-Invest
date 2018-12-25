@@ -15,7 +15,7 @@
         public const string NoPortfolio = "Няма налична информация за портфолиото Ви към тази дата. Моля, изберете дата след 01/01/2016г. и не по-късна от {0}г.";
 
         // UploadingController
-        public const string CouldNotUploadInformation = "Файлът, който качихте е с неправилен формат.";
+        public const string CouldNotUploadInformation = "Файлът, който качихте е празен или е с неправилен формат.";
 
         public const string UploadingSuccessfull = "Качването на информация приключи успешно.";
     }

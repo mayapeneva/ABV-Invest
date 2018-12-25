@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
     using Common;
-    using Models;
+    using DTOs;
     using Services.Contracts;
 
     [AllowAnonymous]
@@ -82,7 +82,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? this.Url.Content("~/");
             if (this.ModelState.IsValid)
             {
-                var dbUser = this.userService.GetUserByUserName(this.Input.Username);
+                var dbUser = this.userService.GetUserByUserName<UserDto>(this.Input.Username);
                 if (dbUser != null)
                 {
                     return this.Page();

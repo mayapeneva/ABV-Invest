@@ -4,6 +4,6 @@
 
     public interface IUsersService
     {
-        UserDto GetUserByUserName(string username);
+        T GetUserByUserName<T>(string username);
     }
 }

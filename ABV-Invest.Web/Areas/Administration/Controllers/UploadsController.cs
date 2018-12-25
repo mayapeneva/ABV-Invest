@@ -7,7 +7,6 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
     using System.IO;
     using System.Threading.Tasks;
     using System.Xml;
-    using System.Xml.Serialization;
     using BindingModels;
     using BindingModels.Uploads.Portfolios;
     using Common;
@@ -49,12 +48,12 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                 var filePath = Path.GetFullPath("XMLFile");
                 if (xmlFile.Length > 0)
                 {
-                    //Unfortunatelly this way did not work :(
-                    //using (var stream = new FileStream(filePath, FileMode.Create))
-                    //{
-                    //    await xmlFile.CopyToAsync(stream);
-                    //}
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await xmlFile.CopyToAsync(stream);
+                    }
 
+                    //Unfortunatelly this way did not work :(
                     //var xmlFileContent = System.IO.File.ReadAllText(filePath);
                     //var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
                     //var deserializedPortfolioss = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -147,11 +146,13 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                         this.ViewData["Error"] = Messages.CouldNotUploadInformation;
                         return this.View();
                     }
+
+                    this.ViewData["Error"] = Messages.UploadingSuccessfull;
+                    return this.View();
                 }
             }
 
-            this.ViewData["Error"] = Messages.UploadingSuccessfull;
-            return this.View();
+            this.ViewData["Error"] = Messages.CouldNotUploadInformation;
             return this.View();
         }
 

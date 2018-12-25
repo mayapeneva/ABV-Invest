@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
     using Base;
     using BindingModels.Uploads.Portfolios;
-    using Common;
     using Contracts;
     using Data;
     using Microsoft.AspNetCore.Identity;
@@ -76,7 +75,7 @@
                 {
                     // Check if such security exists
                     var security =
-                        this.Db.Securities.SingleOrDefault(s => s.BfbCode == portfolioRow.Instrument.NewCode);
+                        this.Db.Securities.SingleOrDefault(s => s.ISIN == portfolioRow.Instrument.ISIN);
                     if (security == null)
                     {
                         continue;

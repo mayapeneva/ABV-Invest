@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
     using Data;
+    using DTOs;
     using Services.Contracts;
 
     [AllowAnonymous]
@@ -86,7 +87,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                 var result = await this._signInManager.PasswordSignInAsync(this.Input.UserName, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
-                    var dbUser = this.usersService.GetUserByUserName(this.Input.UserName);
+                    var dbUser = this.usersService.GetUserByUserName<UserDto>(this.Input.UserName);
                     if (dbUser == null || this.Input.PIN != dbUser.PIN)
                     {
                         this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
