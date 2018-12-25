@@ -43,11 +43,11 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$")]
+            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$", ErrorMessage = "Потребителското име трябва да е дълго 5 или 10 символа и да съдържа цифри и/или главни латински букви.")]
             public string UserName { get; set; }
 
             [Required]
-            [RegularExpression(@"^\d{5}$")]
+            [RegularExpression(@"^\d{5}$", ErrorMessage = "ПИН кодът трябва да е дълъг 5 символа и да съдържа само цифри.")]
             [Display(Name = "PIN")]
             public string PIN { get; set; }
 

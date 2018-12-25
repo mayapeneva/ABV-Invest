@@ -29,7 +29,7 @@
 
         [XmlAttribute("MarketDate")]
         [Required]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Моля, въведете дата с правилен формат.")]
         public DateTime MarketDate { get; set; }
 
         [XmlAttribute("Result")]

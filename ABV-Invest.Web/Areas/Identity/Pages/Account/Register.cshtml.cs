@@ -11,8 +11,10 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using CloudinaryDotNet.Actions;
     using Common;
     using DTOs;
+    using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
     using Services.Contracts;
 
     [AllowAnonymous]
@@ -47,28 +49,28 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$")]
+            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$", ErrorMessage = "Потребителското име трябва да е дълго 5 или 10 символа и да съдържа цифри и/или главни латински букви.")]
             [Display(Name = "Username")]
             public string Username { get; set; }
 
             [Required]
-            [RegularExpression(@"^\d{5}$")]
+            [RegularExpression(@"^\d{5}$", ErrorMessage = "ПИН кодът трябва да е дълъг 5 символа и да съдържа само цифри.")]
             [Display(Name = "PIN")]
             public string PIN { get; set; }
 
-            [EmailAddress]
+            [DataType(DataType.EmailAddress, ErrorMessage = "Моля въведете валиден имейл адрес.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
+            [StringLength(100, ErrorMessage = "Паролата трябва да е дълга поне {2} и не повече от {1} символа.", MinimumLength = 6)]
+            [DataType(DataType.Password, ErrorMessage = "Паролата трябва да съдържа поне по една малка, една голяма буква, цифра и символ.")]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Двете въведени пароли не са еднакви.")]
             public string ConfirmPassword { get; set; }
         }
 

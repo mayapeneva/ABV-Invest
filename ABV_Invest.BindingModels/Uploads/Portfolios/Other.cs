@@ -8,12 +8,12 @@
     {
         [XmlAttribute("YieldPercent")]
         [Required]
-        [Range(0, 79228162514264337593543950.000)]
+        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
         public decimal YieldPercent { get; set; }
 
         [XmlAttribute("RelativePart")]
         [Required]
-        [Range(0, 79228162514264337593543950.000)]
+        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
         public decimal RelativePart { get; set; }
     }
 }

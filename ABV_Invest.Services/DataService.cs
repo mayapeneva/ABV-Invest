@@ -65,6 +65,7 @@
                 };
 
                 await this.Db.Issuers.AddAsync(issuer);
+                await this.Db.SaveChangesAsync();
             }
 
             var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == currencyCode);
@@ -76,11 +77,12 @@
                 };
 
                 await this.Db.Currencies.AddAsync(currency);
+                await this.Db.SaveChangesAsync();
             }
 
             var security = new Security
             {
-                Issuer = issuer,
+                IssuerId = issuer.Id,
                 ISIN = ISIN,
                 BfbCode = bfbCode,
                 Currency = currency
