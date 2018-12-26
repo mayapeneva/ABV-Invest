@@ -1,12 +1,13 @@
 ﻿namespace ABV_Invest.Web.Areas.Administration.Controllers
 {
     using BindingModels.Data;
+    using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services.Contracts;
 
-    [Area("Administration")]
-    [Authorize(Roles = "Admin")]
+    [Area(Constants.Administration)]
+    [Authorize(Roles = Constants.Admin)]
     public class DataController : Controller
     {
         private const string WrongCurrencyData = "Валутният код се състои от 3 главни латински букви.";

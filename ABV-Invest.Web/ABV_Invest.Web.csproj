@@ -138,12 +138,7 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="XMLFile.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
 </Project>

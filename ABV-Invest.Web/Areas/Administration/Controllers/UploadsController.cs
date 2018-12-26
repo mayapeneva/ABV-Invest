@@ -11,17 +11,20 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
     using BindingModels.Uploads.Portfolios;
     using Common;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Services.Contracts;
 
-    [Area("Administration")]
-    [Authorize(Roles = "Admin")]
+    [Area(Constants.Administration)]
+    [Authorize(Roles = Constants.Admin)]
     public class UploadsController : Controller
     {
         private readonly IPortfoliosService portfolioService;
+        private readonly IHostingEnvironment environment;
 
-        public UploadsController(IPortfoliosService portfolioService)
+        public UploadsController(IPortfoliosService portfolioService, IHostingEnvironment environment)
         {
             this.portfolioService = portfolioService;
+            this.environment = environment;
         }
 
         public IActionResult PortfoliosInfo()
@@ -45,10 +48,10 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
             var xmlFile = model.XMLFile;
             if (xmlFile.ContentType.EndsWith("xml"))
             {
-                var filePath = Path.GetFullPath("XMLFile");
+                var fileName = this.environment.WebRootPath + "/files/" + "Upload.xml";
                 if (xmlFile.Length > 0)
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    using (var stream = new FileStream(fileName, FileMode.Create))
                     {
                         await xmlFile.CopyToAsync(stream);
                     }
@@ -59,7 +62,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                     //var deserializedPortfolioss = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
                     var xmlDoc = new XmlDocument();
-                    xmlDoc.Load(filePath);
+                    xmlDoc.Load(fileName);
 
                     XmlNodeList portfoliosNodeList = xmlDoc.SelectNodes("/WebData/New");
                     var deserializedPortfolios = new List<PortfolioRowBindingModel>();
