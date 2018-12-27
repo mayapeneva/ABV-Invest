@@ -26,6 +26,11 @@
             this.newsService.LoadNewsFromCapital(rssModels, Constants.CapitalRSS2);
 
             this.newsService.LoadNewsFromX3News(rssModels);
+            if (!rssModels.Any())
+            {
+                this.ViewData["Error"] = Messages.NoNews;
+                return this.View();
+            }
 
             return this.View(rssModels.OrderByDescending(m => m.PublishedDate));
         }

@@ -40,8 +40,6 @@
                 return this.View();
             }
 
-            this.TempData["DateChosen"] = dateChosen.Date;
-
             return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
         }
 

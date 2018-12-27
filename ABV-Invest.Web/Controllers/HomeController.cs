@@ -31,16 +31,6 @@
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            //string message =
-            //    this.TempData.ContainsKey("Message")
-            //        ? this.TempData["Message"].ToString() : null;
-
-            //this.ViewData["message"] = string.IsNullOrWhiteSpace(message)
-            //    ? "Unhadled"
-            //    : message;
-
-            //return this.View();
-
             return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
     }

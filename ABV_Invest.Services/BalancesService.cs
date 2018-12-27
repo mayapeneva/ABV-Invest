@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
     using AutoMapper;
     using Base;
     using Contracts;
@@ -15,7 +16,7 @@
         {
         }
 
-        public async void CreateBalanceForUser(AbvInvestUser user, DateTime date)
+        public async Task<bool> CreateBalanceForUser(AbvInvestUser user, DateTime date)
         {
             var balance = new DailyBalance
             {
@@ -25,11 +26,12 @@
 
             if (!IsValid(balance))
             {
-                return;
+                return false;
             }
 
             user.Balances.Add(balance);
             await this.Db.SaveChangesAsync();
+            return true;
         }
 
         public T GetUserDailyBalance<T>(string userId, string chosenDate)
@@ -42,6 +44,10 @@
 
             var balance = this.Db.Balances.SingleOrDefault(b =>
                 b.DaiyBalance.AbvInvestUserId == userId && b.DaiyBalance.Date == date);
+            if (balance == null)
+            {
+                return default(T);
+            }
 
             return Mapper.Map<T>(balance);
         }

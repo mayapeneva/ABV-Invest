@@ -43,11 +43,13 @@
             </div>
         </div>
     </nav>
-
     <partial name="_CookieConsentPartial" />
-
     <div>
         <div class="container body-content">
+            @if (ViewData.ContainsKey("Error"))
+            {
+                <partial name="_ErrorPartial" />
+            }
             @RenderBody()
             <hr />
             <footer>

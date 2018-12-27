@@ -20,7 +20,6 @@ body {
 
 .navbar-nav > li a {
     background-color: #2a833f;
-    backface-visibility: hidden;
     color: #d2db34;
 }
 

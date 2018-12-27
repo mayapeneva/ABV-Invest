@@ -144,7 +144,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
                     }
 
                     var result = this.portfolioService.SeedPortfolios(deserializedPortfolios, model.Date);
-                    if (!result.IsCompleted)
+                    if (!result.Result)
                     {
                         this.ViewData["Error"] = Messages.CouldNotUploadInformation;
                         return this.View();

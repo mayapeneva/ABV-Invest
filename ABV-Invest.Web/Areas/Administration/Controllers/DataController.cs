@@ -10,16 +10,6 @@
     [Authorize(Roles = Constants.Admin)]
     public class DataController : Controller
     {
-        private const string WrongCurrencyData = "Валутният код се състои от 3 главни латински букви.";
-        private const string CurrencyExists = "Валута с този код вече съществува.";
-        private const string WrongMarketData = "Името на пазара е неправилно.";
-        private const string MarketExists = "Пазар с това име вече съществува.";
-
-        private const string WrongSecurityData =
-            "ISIN кодът се състои от 12 цифри или главни латински букви. БФБ кодът се състои от 3 или 4 цифри или главни латински букви.";
-
-        private const string SecurityExists = "Ценни книжа с този ISIN код вече съществуват.";
-
         private readonly IDataService dataService;
 
         public DataController(IDataService dataService)
@@ -42,14 +32,14 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ViewData["Error"] = WrongCurrencyData;
+                this.ViewData["Error"] = Messages.WrongCurrencyData;
                 return this.View();
             }
 
             var result = this.dataService.CreateCurrency(bindingModel.Code);
             if (!result.Result)
             {
-                this.ViewData["Error"] = CurrencyExists;
+                this.ViewData["Error"] = Messages.CurrencyExists;
                 return this.View();
             }
 
@@ -66,14 +56,14 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ViewData["Error"] = WrongMarketData;
+                this.ViewData["Error"] = Messages.WrongMarketData;
                 return this.View();
             }
 
             var result = this.dataService.CreateMarket(bindingModel.Name);
             if (!result.Result)
             {
-                this.ViewData["Error"] = MarketExists;
+                this.ViewData["Error"] = Messages.MarketExists;
                 return this.View();
             }
 
@@ -90,14 +80,14 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ViewData["Error"] = WrongSecurityData;
+                this.ViewData["Error"] = Messages.WrongSecurityData;
                 return this.View();
             }
 
             var result = this.dataService.CreateSecurity(bindingModel.Issuer, bindingModel.ISIN, bindingModel.BfbCode, bindingModel.Currency);
             if (!result.Result)
             {
-                this.ViewData["Error"] = SecurityExists;
+                this.ViewData["Error"] = Messages.SecurityExists;
                 return this.View();
             }
 

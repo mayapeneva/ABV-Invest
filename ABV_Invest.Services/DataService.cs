@@ -26,6 +26,7 @@
             {
                 Code = code
             };
+
             await this.Db.Currencies.AddAsync(currency);
             await this.Db.SaveChangesAsync();
 

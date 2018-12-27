@@ -44,8 +44,10 @@
             return collection;
         }
 
-        public async Task SeedPortfolios(IEnumerable<PortfolioRowBindingModel> objPortfolios, DateTime date)
+        public async Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> objPortfolios, DateTime date)
         {
+            var changedCounter = 0;
+
             // Group the entries by Client and process portfolios for each client
             var portfolios = objPortfolios.GroupBy(p => p.Client.CDNNumber);
             foreach (var portfolio in portfolios)
@@ -107,11 +109,26 @@
                 }
 
                 user.Portfolio.Add(dbPortfolio);
+                var result = await this.Db.SaveChangesAsync();
 
-                await this.Db.SaveChangesAsync();
+                if (result > 0)
+                {
+                    var balanceResult = this.balancesService.CreateBalanceForUser(user, date);
+                    if (!balanceResult.Result)
+                    {
+                        return false;
+                    }
 
-                this.balancesService.CreateBalanceForUser(user, date);
+                    changedCounter += result;
+                }
             }
+
+            if (changedCounter == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
