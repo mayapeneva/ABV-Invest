@@ -1,11 +1,13 @@
 ﻿namespace ABV_Invest.Web
 {
+    using System.Collections.Generic;
     using ABV_Invest.Models;
     using AutoMapper;
     using BindingModels;
     using Data;
     using DTOs;
     using Extensions;
+    using Firewall;
     using Mapping;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
@@ -84,6 +86,12 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseFirewall(
+                FirewallRulesEngine
+                .DenyAllAccess()
+                .ExceptFromLocalhost()
+                .ExceptFromCountries(new List<CountryCode> { CountryCode.BG }));
 
             app.UseSeedRolesMiddleware();
             app.UseAuthentication();

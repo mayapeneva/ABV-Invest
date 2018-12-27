@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.5.0" />
+    <PackageReference Include="Firewall" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
@@ -137,7 +138,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 

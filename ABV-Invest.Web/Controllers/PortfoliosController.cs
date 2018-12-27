@@ -41,13 +41,14 @@
                 return this.View();
             }
 
-            this.TempData["DateChosen"] = dateChosen.Date;
+            this.TempData["DateChosen"] = dateChosen.Date.ToString("dd/MM/yyyy");
 
-            return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
+            return this.RedirectToAction("Details");
         }
 
-        public IActionResult Details(string date)
+        public IActionResult Details()
         {
+            var date = this.TempData["DateChosen"].ToString();
             var userId = this.userManager.GetUserId(this.User);
             var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(userId, date);
 

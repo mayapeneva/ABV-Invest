@@ -3,6 +3,15 @@
     <ul class="nav navbar-nav">
         <li><a asp-area="Administration" asp-controller="Uploads" asp-action="PortfoliosInfo" class="bg-abvlightgreen">Качи портфолиа</a></li>
         <li><a asp-area="Administration" asp-controller="Uploads" asp-action="DealsInfo" class="bg-abvlightgreen">Качи сделки</a></li>
-        <li><a asp-area="Administration" asp-controller="Data" asp-action="Add" class="bg-abvlightgreen">Добавяне на данни</a></li>
+        <li role="presentation" class="dropdown">
+            <a asp-area="Administration" asp-controller="Data" asp-action="Add" class="dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Добавяне на данни&nbsp;<span class="caret"></span>
+            </a>
+            <ul class="nav dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a asp-area="Administration" asp-controller="Data" asp-action="AddCurrency">Добави валута</a></li>
+                <li><a asp-area="Administration" asp-controller="Data" asp-action="AddMarket">Добави пазар</a></li>
+                <li><a asp-area="Administration" asp-controller="Data" asp-action="AddSecurity">Добави ценни книжа</a></li>
+            </ul>
+        </li>
     </ul>
 }

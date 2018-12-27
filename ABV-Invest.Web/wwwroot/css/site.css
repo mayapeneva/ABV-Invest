@@ -12,12 +12,23 @@ body {
     padding-right: 15px;
 }
 
-/* Layout*/
+/* Navbar*/
 .navbar {
     color: #d2db34;
     background-color: #2a833f;
 }
 
+.navbar-nav > li a {
+    background-color: #2a833f;
+    backface-visibility: hidden;
+    color: #d2db34;
+}
+
+.navbar-nav > li > .dropdown-menu a {
+    color: #d2db34;
+}
+
+/* Carousel*/
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
