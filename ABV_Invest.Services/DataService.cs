@@ -6,6 +6,7 @@
     using Contracts;
     using Data;
     using Models;
+    using Models.Enums;
 
     public class DataService : BaseService, IDataService
 
@@ -88,6 +89,8 @@
                 BfbCode = bfbCode,
                 Currency = currency
             };
+            security.SetSecuritiesType();
+
             await this.Db.Securities.AddAsync(security);
             await this.Db.SaveChangesAsync();
 

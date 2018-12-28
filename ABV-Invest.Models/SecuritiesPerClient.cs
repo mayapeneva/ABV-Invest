@@ -30,15 +30,15 @@
         public decimal TotalMarketPrice { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Range(typeof(decimal), "-79228162514264337593543950335", "79228162514264337593543950335")]
         public decimal Profit { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Range(typeof(decimal), "-79228162514264337593543950335", "79228162514264337593543950335")]
         public decimal ProfitInBGN { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Range(typeof(decimal), "-79228162514264337593543950335", "79228162514264337593543950335")]
         public decimal ProfitPercentаge { get; set; }
 
         [Required]

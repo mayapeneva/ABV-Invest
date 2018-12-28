@@ -3,7 +3,7 @@
     using DTOs;
     using Mapping.Contracts;
 
-    public class PortfolioViewModel : IMapTo<PortfolioDto>
+    public class PortfolioViewModel : IMapFrom<PortfolioDto>
     {
         public string SecurityIssuerName { get; set; }
 

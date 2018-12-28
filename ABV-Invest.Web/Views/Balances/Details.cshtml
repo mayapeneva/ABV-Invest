@@ -19,9 +19,9 @@
         <tbody class="bg-abvdarkgreen">
             <tr>
                 <td class="text-left">BGN @Model.Cash</td>
-                <td class="text-left">@Model.AllSecuritiesMarketPrice</td>
-                <td class="text-left">@Model.VirtualProfit</td>
-                <td class="text-right">@Model.VirtualProfitPercentage</td>
+                <td class="text-left">BGN @Model.AllSecuritiesMarketPrice.ToString("F3")</td>
+                <td class="text-left">BGN @Model.VirtualProfit.ToString("F3")</td>
+                <td class="text-right">@Model.VirtualProfitPercentage.ToString("F2") %</td>
             </tr>
         </tbody>
     </table>
