@@ -2,7 +2,7 @@
 
 namespace ABV_Invest.Data.Migrations
 {
-    public partial class User_PIN : Migration
+    public partial class SecuritiesTypeSettingChange : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

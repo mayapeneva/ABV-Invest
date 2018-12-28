@@ -4,7 +4,7 @@
     using Mapping.Contracts;
     using Models;
 
-    public class PortfolioDto : IMapFrom<SecuritiesPerClient>, ICustomMap
+    public class PortfolioDto : IMapFrom<SecuritiesPerClient>
     {
         public string SecurityIssuerName { get; set; }
 
@@ -14,7 +14,9 @@
 
         public int Quantity { get; set; }
 
-        public string AveragePriceBuy { get; set; }
+        public string CurrencyCode { get; set; }
+
+        public decimal AveragePriceBuy { get; set; }
 
         public decimal TotalPriceBuy { get; set; }
 
@@ -27,11 +29,5 @@
         public decimal ProfitPercentаge { get; set; }
 
         public decimal PortfolioShare { get; set; }
-
-        public void CreateMappings(IMapperConfigurationExpression configuration)
-        {
-            configuration.CreateMap<SecuritiesPerClient, PortfolioDto>()
-                .ForMember(dest => dest.AveragePriceBuy, opt => opt.MapFrom(src => src.AveragePriceBuy.ToString("F3")));
-        }
     }
 }

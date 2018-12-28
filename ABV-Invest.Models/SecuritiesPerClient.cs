@@ -1,6 +1,7 @@
 ﻿namespace ABV_Invest.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Base;
 
     public class SecuritiesPerClient : BaseEntity<int>
@@ -12,37 +13,40 @@
         public int SecurityId { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Quantity { get; set; }
 
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        public virtual Currency Currency { get; set; }
+        public int CurrencyId { get; set; }
+
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal AveragePriceBuy { get; set; }
 
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal TotalPriceBuy => this.Quantity * this.AveragePriceBuy;
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal MarketPrice { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal TotalMarketPrice { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "-79228162514264337593543950335", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal Profit { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "-79228162514264337593543950335", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal ProfitInBGN { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "-79228162514264337593543950335", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal ProfitPercentаge { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal PortfolioShare { get; set; }
     }
 }

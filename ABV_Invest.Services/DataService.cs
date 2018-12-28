@@ -50,7 +50,7 @@
             {
                 Name = name
             };
-            if (DataValidator.IsValid(market))
+            if (!DataValidator.IsValid(market))
             {
                 return false;
             }
@@ -75,7 +75,7 @@
                 {
                     Name = issuerName
                 };
-                if (DataValidator.IsValid(issuer))
+                if (!DataValidator.IsValid(issuer))
                 {
                     return false;
                 }
@@ -91,7 +91,7 @@
                 {
                     Code = currencyCode
                 };
-                if (DataValidator.IsValid(currency))
+                if (!DataValidator.IsValid(currency))
                 {
                     return false;
                 }
@@ -108,7 +108,7 @@
                 Currency = currency
             };
             security.SetSecuritiesType();
-            if (DataValidator.IsValid(security))
+            if (!DataValidator.IsValid(security))
             {
                 return false;
             }

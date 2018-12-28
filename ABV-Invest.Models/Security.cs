@@ -12,7 +12,7 @@
         public virtual Issuer Issuer { get; set; }
         public int IssuerId { get; set; }
 
-        public SecuritiesType? SecuritiesType { get; set; }
+        public SecuritiesType? SecuritiesType { get; private set; }
 
         [Required]
         [RegularExpression(@"^[A-Z0-9]{12}$")]

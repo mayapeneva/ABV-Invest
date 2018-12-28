@@ -11,26 +11,35 @@
         public virtual DailyBalance DaiyBalance { get; set; }
         public int BalanceId { get; set; }
 
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Cash { get; set; }
 
         [NotMapped]
-        public ICollection<SecuritiesPerClient> UsersLatestPortfolio => this.DaiyBalance.AbvInvestUser.Portfolio.OrderByDescending(p => p.Date)
-            .First().SecuritiesPerIssuerCollection;
+        public ICollection<SecuritiesPerClient> UsersLatestPortfolio { get; private set; }
 
         [NotMapped]
-        public decimal AllSecuritiesAveragePriceBuy => this.UsersLatestPortfolio.Sum(s => s.AveragePriceBuy);
+        public decimal AllSecuritiesAveragePriceBuy { get; private set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal AllSecuritiesMarketPrice => this.UsersLatestPortfolio.Sum(s => s.TotalPriceBuy);
+        [Column(TypeName = "decimal(18, 4)")]
+        public decimal AllSecuritiesMarketPrice { get; private set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal VirtualProfit => this.UsersLatestPortfolio.Sum(s => s.ProfitPercentаge);
+        [Column(TypeName = "decimal(18, 4)")]
+        public decimal VirtualProfit { get; private set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal VirtualProfitPercentage => this.VirtualProfit * 100 / this.AllSecuritiesAveragePriceBuy;
+        [Column(TypeName = "decimal(18, 4)")]
+        public decimal VirtualProfitPercentage { get; private set; }
+
+        public void SetBalanceFigures()
+        {
+            this.UsersLatestPortfolio = this.DaiyBalance.AbvInvestUser.Portfolio.OrderByDescending(p => p.Date)
+                .First().SecuritiesPerIssuerCollection;
+            this.AllSecuritiesAveragePriceBuy = this.UsersLatestPortfolio.Sum(s => s.AveragePriceBuy);
+            this.AllSecuritiesMarketPrice = this.UsersLatestPortfolio.Sum(s => s.TotalPriceBuy);
+            this.VirtualProfit = this.UsersLatestPortfolio.Sum(s => s.ProfitPercentаge);
+            this.VirtualProfitPercentage = this.VirtualProfit * 100 / this.AllSecuritiesAveragePriceBuy;
+        }
     }
 }

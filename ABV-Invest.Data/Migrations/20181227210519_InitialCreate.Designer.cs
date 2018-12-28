@@ -4,14 +4,16 @@ using ABV_Invest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ABV_Invest.Data.Migrations
 {
     [DbContext(typeof(AbvDbContext))]
-    partial class AbvDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181227210519_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,19 +84,9 @@ namespace ABV_Invest.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("AllSecuritiesMarketPrice")
-                        .HasColumnType("decimal(18, 4)");
-
                     b.Property<int>("BalanceId");
 
-                    b.Property<decimal>("Cash")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<decimal>("VirtualProfit")
-                        .HasColumnType("decimal(18, 4)");
-
-                    b.Property<decimal>("VirtualProfitPercentage")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("Cash");
 
                     b.HasKey("Id");
 
@@ -184,23 +176,19 @@ namespace ABV_Invest.Data.Migrations
                     b.Property<string>("DealType")
                         .IsRequired();
 
-                    b.Property<decimal>("Fee")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("Fee");
 
                     b.Property<int>("MarketId");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("Price");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<decimal>("Quantity");
 
                     b.Property<int>("SecurityId");
 
                     b.Property<DateTime>("Settlement");
 
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("TotalPrice");
 
                     b.HasKey("Id");
 
@@ -249,39 +237,27 @@ namespace ABV_Invest.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("AveragePriceBuy")
-                        .HasColumnType("decimal(18, 4)");
-
-                    b.Property<int>("CurrencyId");
+                    b.Property<decimal>("AveragePriceBuy");
 
                     b.Property<int>("DailySecuritiesPerClientId");
 
-                    b.Property<decimal>("MarketPrice")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("MarketPrice");
 
-                    b.Property<decimal>("PortfolioShare")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("PortfolioShare");
 
-                    b.Property<decimal>("Profit")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("Profit");
 
-                    b.Property<decimal>("ProfitInBGN")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("ProfitInBGN");
 
-                    b.Property<decimal>("ProfitPercentаge")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("ProfitPercentаge");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<decimal>("Quantity");
 
                     b.Property<int>("SecurityId");
 
-                    b.Property<decimal>("TotalMarketPrice")
-                        .HasColumnType("decimal(18, 4)");
+                    b.Property<decimal>("TotalMarketPrice");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CurrencyId");
 
                     b.HasIndex("DailySecuritiesPerClientId");
 
@@ -477,11 +453,6 @@ namespace ABV_Invest.Data.Migrations
 
             modelBuilder.Entity("ABV_Invest.Models.SecuritiesPerClient", b =>
                 {
-                    b.HasOne("ABV_Invest.Models.Currency", "Currency")
-                        .WithMany()
-                        .HasForeignKey("CurrencyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("ABV_Invest.Models.DailySecuritiesPerClient", "DailySecuritiesPerClient")
                         .WithMany("SecuritiesPerIssuerCollection")
                         .HasForeignKey("DailySecuritiesPerClientId")

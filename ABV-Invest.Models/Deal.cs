@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Base;
     using Enums;
 
@@ -17,19 +18,19 @@
         public int SecurityId { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Quantity { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal Price { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal TotalPrice { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal Fee { get; set; }
 
         public virtual Currency Currency { get; set; }

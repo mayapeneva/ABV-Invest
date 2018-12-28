@@ -27,7 +27,7 @@ namespace ABV_Invest.Data.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    PIN = table.Column<string>(nullable: false),
+                    PIN = table.Column<string>(nullable: true),
                     FullName = table.Column<string>(nullable: true),
                     BalanceId = table.Column<int>(nullable: false)
                 },
@@ -360,6 +360,7 @@ namespace ABV_Invest.Data.Migrations
                     DailySecuritiesPerClientId = table.Column<int>(nullable: false),
                     SecurityId = table.Column<int>(nullable: false),
                     Quantity = table.Column<decimal>(nullable: false),
+                    CurrencyId = table.Column<int>(nullable: false),
                     AveragePriceBuy = table.Column<decimal>(nullable: false),
                     MarketPrice = table.Column<decimal>(nullable: false),
                     TotalMarketPrice = table.Column<decimal>(nullable: false),
@@ -371,6 +372,12 @@ namespace ABV_Invest.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SecuritiesPerClient", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SecuritiesPerClient_Currencies_CurrencyId",
+                        column: x => x.CurrencyId,
+                        principalTable: "Currencies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_SecuritiesPerClient_DailySecuritiesPerClient_DailySecuritiesPerClientId",
                         column: x => x.DailySecuritiesPerClientId,
@@ -474,6 +481,11 @@ namespace ABV_Invest.Data.Migrations
                 name: "IX_Securities_IssuerId",
                 table: "Securities",
                 column: "IssuerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SecuritiesPerClient_CurrencyId",
+                table: "SecuritiesPerClient",
+                column: "CurrencyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SecuritiesPerClient_DailySecuritiesPerClientId",

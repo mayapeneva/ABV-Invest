@@ -17,7 +17,7 @@
         {
         }
 
-        public async Task<bool> CreateBalanceForUser(AbvInvestUser user, DateTime date)
+        public async Task CreateBalanceForUser(AbvInvestUser user, DateTime date)
         {
             var balance = new DailyBalance
             {
@@ -25,14 +25,11 @@
                 Balance = new Balance()
             };
 
-            if (!DataValidator.IsValid(balance))
-            {
-                return false;
-            }
-
             user.Balances.Add(balance);
             await this.Db.SaveChangesAsync();
-            return true;
+
+            balance.Balance.SetBalanceFigures();
+            await this.Db.SaveChangesAsync();
         }
 
         public T GetUserDailyBalance<T>(string userId, string chosenDate)

@@ -6,7 +6,7 @@
 
     public interface IBalancesService
     {
-        Task<bool> CreateBalanceForUser(AbvInvestUser user, DateTime date);
+        Task CreateBalanceForUser(AbvInvestUser user, DateTime date);
 
         T GetUserDailyBalance<T>(string userId, string chosenDate);
     }

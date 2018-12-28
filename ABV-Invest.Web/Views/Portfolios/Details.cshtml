@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PortfolioViewModel>
+﻿@using System.Globalization
+@model IEnumerable<PortfolioViewModel>
 @{
     ViewData["Title"] = "Портфолио";
 }
@@ -6,76 +7,77 @@
 <h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
 <hr />
 
-<div>
-    <table class="table table-hover table-responsive">
-        <caption class="bg-abvdarkgreen">Списък с ценни книжа</caption>
-        <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
+<table class="table table-hover table-responsive">
+    <caption class="bg-abvdarkgreen">Списък с ценни книжа</caption>
+    <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
+        <tr>
+            <th class="text-left" scope="col">Емитент</th>
+            <th class="text-left" scope="col">БФБ Код</th>
+            <th class="text-left" scope="col">ISIN</th>
+            <th class="text-right" scope="col">Наличност</th>
+            <th class="text-right" scope="col">Валута</th>
+            <th class="text-right" scope="col">Средна цена</th>
+            <th class="text-right" scope="col">Стойност на придобиване</th>
+            <th class="text-right" scope="col">Пазарна цена</th>
+            <th class="text-right" scope="col">Пазарна стойност</th>
+            <th class="text-right" scope="col">Доходност</th>
+            <th class="text-right" scope="col">Доходност(%)</th>
+            <th class="text-right" scope="col">Тегло в портфейла(%)</th>
+        </tr>
+    </thead>
+    <tbody class="bg-abvdarkgreen">
+        @foreach (var security in Model)
+        {
+            var profit = security.Profit.ToString("N1", CultureInfo.CreateSpecificCulture("sv-SE"));
             <tr>
-                <th class="text-left" scope="col">Емитент</th>
-                <th class="text-left" scope="col">БФБ Код</th>
-                <th class="text-left" scope="col">ISIN</th>
-                <th class="text-right" scope="col">Наличност</th>
-                <th class="text-right" scope="col">Средна цена</th>
-                <th class="text-right" scope="col">Стойност на придобиване</th>
-                <th class="text-right" scope="col">Пазарна цена</th>
-                <th class="text-right" scope="col">Пазарна стойност</th>
-                <th class="text-right" scope="col">Доходност</th>
-                <th class="text-right" scope="col">Доходност(%)</th>
-                <th class="text-right" scope="col">Тегло в портфейла(%)</th>
-            </tr>
-        </thead>
-        <tbody class="bg-abvdarkgreen">
-            @foreach (var security in Model)
-            {
-                <tr>
-                    <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuerName)</td>
-                    <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
-                    <td class="text-left">@Html.DisplayFor(model => security.SecurityIsin)</td>
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.Quantity)</td>
-                    <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.TotalPriceBuy)</td>
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.MarketPrice)</td>
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.TotalMarketPrice)</td>
-                    @if (security.Profit > 0)
-                    {
-                        <td class="text-right bg-abvmiddlegreen">
-                            @Html.DisplayFor(model => security.Profit)<br />
-                            <span class="glyphicon glyphicon-triangle-top"></span>
-                        </td>
-                        <td class="text-right bg-abvmiddlegreen">
-                            @Html.DisplayFor(model => security.ProfitPercentаge)<br />
-                            <span class="glyphicon glyphicon-triangle-top"></span>
-                        </td>
-                    }
-                    else if (security.Profit < 0)
-                    {
-                        <td class="text-right bg-abvred">
-                            @Html.DisplayFor(model => security.Profit)<br />
-                            <span class="glyphicon glyphicon-triangle-bottom"></span>
-                        </td>
-                        <td class="text-right bg-abvred">
-                            @Html.DisplayFor(model => security.ProfitPercentаge)<br />
-                            <span class="glyphicon glyphicon-triangle-bottom"></span>
-                        </td>
-                    }
-                    else
-                    {
-                        <td class="text-right">
-                            @Html.DisplayFor(model => security.Profit)<br />
-                            <span class="glyphicon glyphicon-option-horizontal"></span>
-                        </td>
-                        <td class="text-right">
-                            @Html.DisplayFor(model => security.ProfitPercentаge)<br />
-                            <span class="glyphicon glyphicon-option-horizontal"></span>
-                        </td>
-                    }
+                <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuerName)</td>
+                <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
+                <td class="text-left">@Html.DisplayFor(model => security.SecurityIsin)</td>
+                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.Quantity)</td>
+                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.CurrencyCode)</td>
+                <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
+                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.TotalPriceBuy)</td>
+                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.MarketPrice)</td>
+                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.TotalMarketPrice)</td>
+                @if (security.Profit > 0)
+                {
+                    <td class="text-right bg-abvmiddlegreen">
+                        @profit<br />
+                        <span class="glyphicon glyphicon-triangle-top"></span>
+                    </td>
+                    <td class="text-right bg-abvmiddlegreen">
+                        @Html.DisplayFor(model => security.ProfitPercentаge)<br />
+                        <span class="glyphicon glyphicon-triangle-top"></span>
+                    </td>
+                }
+                else if (security.Profit < 0)
+                {
+                    <td class="text-right bg-abvred">
+                        @profit<br />
+                        <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    </td>
+                    <td class="text-right bg-abvred">
+                        @Html.DisplayFor(model => security.ProfitPercentаge)<br />
+                        <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    </td>
+                }
+                else
+                {
+                    <td class="text-right">
+                        @Html.DisplayFor(model => security.Profit)<br />
+                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </td>
+                    <td class="text-right">
+                        @Html.DisplayFor(model => security.ProfitPercentаge)<br />
+                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </td>
+                }
 
-                    <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.PortfolioShare)</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div><br />
+                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.PortfolioShare)</td>
+            </tr>
+        }
+    </tbody>
+</table><br />
 
 <div class="text-center">
     <span class="glyphicon glyphicon-arrow-left bg-abvmiddlegreen"></span>

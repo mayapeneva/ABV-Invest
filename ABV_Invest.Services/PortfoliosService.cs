@@ -92,6 +92,12 @@
 
                     // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
                     var quantity = decimal.Parse(portfolioRow.AccountData.Quantity.Replace(" ", ""));
+                    var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == portfolioRow.Instrument.Currency);
+                    if (currency == null)
+                    {
+                        continue;
+                    }
+
                     var openPrice = decimal.Parse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""));
                     var marketPrice = decimal.Parse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""));
                     var marketValue = decimal.Parse(portfolioRow.AccountData.MarketValue.Replace(" ", ""));
@@ -103,6 +109,7 @@
                     {
                         Security = security,
                         Quantity = quantity,
+                        Currency = currency,
                         AveragePriceBuy = openPrice,
                         MarketPrice = marketPrice,
                         TotalMarketPrice = marketValue,
@@ -131,11 +138,7 @@
                 // Creating balance for this user and this date
                 if (result > 0)
                 {
-                    var balanceResult = this.balancesService.CreateBalanceForUser(user, date);
-                    if (!balanceResult.Result)
-                    {
-                        return false;
-                    }
+                    await this.balancesService.CreateBalanceForUser(user, date);
 
                     changesCounter += result;
                 }

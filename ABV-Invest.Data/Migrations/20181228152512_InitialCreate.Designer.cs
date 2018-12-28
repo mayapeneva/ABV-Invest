@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABV_Invest.Data.Migrations
 {
     [DbContext(typeof(AbvDbContext))]
-    [Migration("20181216123242_InitialCreate")]
+    [Migration("20181228152512_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,8 +50,7 @@ namespace ABV_Invest.Data.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
 
-                    b.Property<string>("PIN")
-                        .IsRequired();
+                    b.Property<string>("PIN");
 
                     b.Property<string>("PasswordHash");
 
@@ -240,6 +239,8 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<decimal>("AveragePriceBuy");
 
+                    b.Property<int>("CurrencyId");
+
                     b.Property<int>("DailySecuritiesPerClientId");
 
                     b.Property<decimal>("MarketPrice");
@@ -259,6 +260,8 @@ namespace ABV_Invest.Data.Migrations
                     b.Property<decimal>("TotalMarketPrice");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrencyId");
 
                     b.HasIndex("DailySecuritiesPerClientId");
 
@@ -454,6 +457,11 @@ namespace ABV_Invest.Data.Migrations
 
             modelBuilder.Entity("ABV_Invest.Models.SecuritiesPerClient", b =>
                 {
+                    b.HasOne("ABV_Invest.Models.Currency", "Currency")
+                        .WithMany()
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ABV_Invest.Models.DailySecuritiesPerClient", "DailySecuritiesPerClient")
                         .WithMany("SecuritiesPerIssuerCollection")
                         .HasForeignKey("DailySecuritiesPerClientId")

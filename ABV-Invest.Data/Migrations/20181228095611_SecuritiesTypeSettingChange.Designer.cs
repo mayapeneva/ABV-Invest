@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABV_Invest.Data.Migrations
 {
     [DbContext(typeof(AbvDbContext))]
-    [Migration("20181224205903_User_PIN")]
-    partial class User_PIN
+    [Migration("20181228095611_SecuritiesTypeSettingChange")]
+    partial class SecuritiesTypeSettingChange
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
