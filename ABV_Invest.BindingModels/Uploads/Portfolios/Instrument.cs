@@ -7,28 +7,27 @@
     [XmlType("Instrument")]
     public class Instrument
     {
-        [XmlAttribute("ISIN")]
+        [XmlElement("ISIN")]
         [Required]
         [RegularExpression(@"^[A-Z0-9]{12}$")]
         public string ISIN { get; set; }
 
-        [XmlAttribute("NewCode")]
+        [XmlElement("NewCode")]
         [RegularExpression(@"^[A-Z0-9]{3,4}$")]
         public string NewCode { get; set; }
 
-        [XmlAttribute("Issuer")]
+        [XmlElement("Issuer")]
         [Required]
         [DataType(DataType.Text)]
         public string Issuer { get; set; }
 
-        [XmlAttribute("Currency")]
+        [XmlElement("Currency")]
         [Required]
         [RegularExpression(@"^[A-Z]{3}$")]
         public string Currency { get; set; }
 
-        [XmlAttribute("MaturityDate")]
+        [XmlElement("MaturityDate")]
         [Required]
-        [DataType(DataType.Date, ErrorMessage = "Моля, въведете дата с правилен формат.")]
-        public DateTime MaturityDate { get; set; }
+        public string MaturityDate { get; set; }
     }
 }

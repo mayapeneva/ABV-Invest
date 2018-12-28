@@ -7,39 +7,32 @@
     [XmlType("AccountData")]
     public class AccountData
     {
-        [XmlAttribute("Quantity")]
+        [XmlElement("Quantity")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal Quantity { get; set; }
+        public string Quantity { get; set; }
 
-        [XmlAttribute("OpenPrice")]
+        [XmlElement("OpenPrice")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal OpenPrice { get; set; }
+        public string OpenPrice { get; set; }
 
-        [XmlAttribute("MarketPrice")]
+        [XmlElement("MarketPrice")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal MarketPrice { get; set; }
+        public string MarketPrice { get; set; }
 
-        [XmlAttribute("MarketValue")]
+        [XmlElement("MarketValue")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal MarketValue { get; set; }
+        public string MarketValue { get; set; }
 
-        [XmlAttribute("MarketDate")]
+        [XmlElement("MarketDate")]
         [Required]
-        [DataType(DataType.Date, ErrorMessage = "Моля, въведете дата с правилен формат.")]
-        public DateTime MarketDate { get; set; }
+        public string MarketDate { get; set; }
 
-        [XmlAttribute("Result")]
+        [XmlElement("Result")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal Result { get; set; }
+        public string Result { get; set; }
 
-        [XmlAttribute("ResultBGN")]
+        [XmlElement("ResultBGN")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal ResultBGN { get; set; }
+        public string ResultBGN { get; set; }
     }
 }

@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Xml.Serialization;
 
-    [XmlType("New")]
+    [XmlType("New", IncludeInSchema = true)]
     public class PortfolioRowBindingModel
     {
         [XmlElement("Client")]

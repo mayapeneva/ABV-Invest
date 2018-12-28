@@ -6,14 +6,12 @@
     [XmlType("Other")]
     public class Other
     {
-        [XmlAttribute("YieldPercent")]
+        [XmlElement("YieldPercent")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal YieldPercent { get; set; }
+        public string YieldPercent { get; set; }
 
-        [XmlAttribute("RelativePart")]
+        [XmlElement("RelativePart")]
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal RelativePart { get; set; }
+        public string RelativePart { get; set; }
     }
 }
