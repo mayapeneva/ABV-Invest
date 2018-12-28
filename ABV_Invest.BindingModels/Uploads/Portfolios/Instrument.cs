@@ -25,9 +25,5 @@
         [Required]
         [RegularExpression(@"^[A-Z]{3}$")]
         public string Currency { get; set; }
-
-        [XmlElement("MaturityDate")]
-        [Required]
-        public string MaturityDate { get; set; }
     }
 }

@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Base;
+    using Common;
     using Contracts;
     using Data;
     using Models;
@@ -27,6 +28,10 @@
             {
                 Code = code
             };
+            if (!DataValidator.IsValid(currency))
+            {
+                return false;
+            }
 
             await this.Db.Currencies.AddAsync(currency);
             await this.Db.SaveChangesAsync();
@@ -45,6 +50,11 @@
             {
                 Name = name
             };
+            if (DataValidator.IsValid(market))
+            {
+                return false;
+            }
+
             await this.Db.Markets.AddAsync(market);
             await this.Db.SaveChangesAsync();
 
@@ -65,6 +75,10 @@
                 {
                     Name = issuerName
                 };
+                if (DataValidator.IsValid(issuer))
+                {
+                    return false;
+                }
 
                 await this.Db.Issuers.AddAsync(issuer);
                 await this.Db.SaveChangesAsync();
@@ -77,6 +91,10 @@
                 {
                     Code = currencyCode
                 };
+                if (DataValidator.IsValid(currency))
+                {
+                    return false;
+                }
 
                 await this.Db.Currencies.AddAsync(currency);
                 await this.Db.SaveChangesAsync();
@@ -90,6 +108,10 @@
                 Currency = currency
             };
             security.SetSecuritiesType();
+            if (DataValidator.IsValid(security))
+            {
+                return false;
+            }
 
             await this.Db.Securities.AddAsync(security);
             await this.Db.SaveChangesAsync();

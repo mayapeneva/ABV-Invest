@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using Base;
+    using Common;
     using Contracts;
     using Data;
     using Models;
@@ -24,7 +25,7 @@
                 Balance = new Balance()
             };
 
-            if (!IsValid(balance))
+            if (!DataValidator.IsValid(balance))
             {
                 return false;
             }

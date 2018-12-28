@@ -12,13 +12,5 @@
         }
 
         protected AbvDbContext Db { get; set; }
-
-        protected static bool IsValid(object obj)
-        {
-            var validationContext = new DataAnotations.ValidationContext(obj);
-            var validationResult = new List<DataAnotations.ValidationResult>();
-
-            return DataAnotations.Validator.TryValidateObject(obj, validationContext, validationResult, true);
-        }
     }
 }

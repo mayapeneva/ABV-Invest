@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using Base;
     using BindingModels.Uploads.Portfolios;
+    using Common;
     using Contracts;
     using Data;
     using Microsoft.AspNetCore.Identity;
@@ -46,7 +47,7 @@
 
         public async Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> objPortfolios, DateTime date)
         {
-            var changedCounter = 0;
+            var changesCounter = 0;
 
             // Group the entries by Client and process portfolios for each client
             var portfolios = objPortfolios.GroupBy(p => p.Client.CDNNumber);
@@ -75,6 +76,12 @@
                 // Create all SecuritiesPerClient for this User
                 foreach (var portfolioRow in portfolio)
                 {
+                    // Fill in user's FullName if empty
+                    if (String.IsNullOrWhiteSpace(user.FullName))
+                    {
+                        user.FullName = portfolioRow.Client.Name;
+                    }
+
                     // Check if such security exists
                     var security =
                         this.Db.Securities.SingleOrDefault(s => s.ISIN == portfolioRow.Instrument.ISIN);
@@ -84,33 +91,44 @@
                     }
 
                     // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
+                    var quantity = decimal.Parse(portfolioRow.AccountData.Quantity.Replace(" ", ""));
+                    var openPrice = decimal.Parse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""));
+                    var marketPrice = decimal.Parse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""));
+                    var marketValue = decimal.Parse(portfolioRow.AccountData.MarketValue.Replace(" ", ""));
+                    var profit = decimal.Parse(portfolioRow.AccountData.Result.Replace(" ", ""));
+                    var profitBGN = decimal.Parse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""));
+                    var yieldPercent = decimal.Parse(portfolioRow.Other.YieldPercent.Replace(" ", ""));
+                    var relativePart = decimal.Parse(portfolioRow.Other.RelativePart.Replace(" ", ""));
                     var securitiesPerClient = new SecuritiesPerClient
                     {
                         Security = security,
-                        Quantity = portfolioRow.AccountData.Quantity,
-                        AveragePriceBuy = portfolioRow.AccountData.OpenPrice,
-                        MarketPrice = portfolioRow.AccountData.MarketPrice,
-                        TotalMarketPrice = portfolioRow.AccountData.MarketValue,
-                        Profit = portfolioRow.AccountData.Result,
-                        ProfitInBGN = portfolioRow.AccountData.ResultBGN,
-                        ProfitPercentаge = portfolioRow.Other.YieldPercent,
-                        PortfolioShare = portfolioRow.Other.RelativePart
+                        Quantity = quantity,
+                        AveragePriceBuy = openPrice,
+                        MarketPrice = marketPrice,
+                        TotalMarketPrice = marketValue,
+                        Profit = profit,
+                        ProfitInBGN = profitBGN,
+                        ProfitPercentаge = yieldPercent,
+                        PortfolioShare = relativePart
                     };
-                    if (!IsValid(securitiesPerClient))
-                    {
-                        continue;
-                    }
 
-                    dbPortfolio.SecuritiesPerIssuerCollection.Add(securitiesPerClient);
-                    if (!IsValid(dbPortfolio))
+                    // Validate SecuritiesPerClient and add them in the portfolio
+                    if (!DataValidator.IsValid(securitiesPerClient))
                     {
                         continue;
                     }
+                    dbPortfolio.SecuritiesPerIssuerCollection.Add(securitiesPerClient);
                 }
 
+                // Validate portfolio and add it to user's Portfolios
+                if (!DataValidator.IsValid(dbPortfolio))
+                {
+                    continue;
+                }
                 user.Portfolio.Add(dbPortfolio);
                 var result = await this.Db.SaveChangesAsync();
 
+                // Creating balance for this user and this date
                 if (result > 0)
                 {
                     var balanceResult = this.balancesService.CreateBalanceForUser(user, date);
@@ -119,11 +137,11 @@
                         return false;
                     }
 
-                    changedCounter += result;
+                    changesCounter += result;
                 }
             }
 
-            if (changedCounter == 0)
+            if (changesCounter == 0)
             {
                 return false;
             }
