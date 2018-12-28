@@ -51,20 +51,6 @@ namespace ABV_Invest.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Balances",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BalanceId = table.Column<int>(nullable: false),
-                    Cash = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Balances", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Currencies",
                 columns: table => new
                 {
@@ -250,28 +236,25 @@ namespace ABV_Invest.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DailyBalance",
+                name: "Balances",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AbvInvestUserId = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    BalanceId = table.Column<int>(nullable: false)
+                    BalanceId = table.Column<int>(nullable: false),
+                    CurrencyId = table.Column<int>(nullable: false),
+                    Cash = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    AllSecuritiesMarketPrice = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    VirtualProfit = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    VirtualProfitPercentage = table.Column<decimal>(type: "decimal(18, 4)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DailyBalance", x => x.Id);
+                    table.PrimaryKey("PK_Balances", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DailyBalance_AbvInvestUsers_AbvInvestUserId",
-                        column: x => x.AbvInvestUserId,
-                        principalTable: "AbvInvestUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_DailyBalance_Balances_BalanceId",
-                        column: x => x.BalanceId,
-                        principalTable: "Balances",
+                        name: "FK_Balances_Currencies_CurrencyId",
+                        column: x => x.CurrencyId,
+                        principalTable: "Currencies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -306,6 +289,33 @@ namespace ABV_Invest.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DailyBalance",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AbvInvestUserId = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    BalanceId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DailyBalance", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DailyBalance_AbvInvestUsers_AbvInvestUserId",
+                        column: x => x.AbvInvestUserId,
+                        principalTable: "AbvInvestUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DailyBalance_Balances_BalanceId",
+                        column: x => x.BalanceId,
+                        principalTable: "Balances",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Deals",
                 columns: table => new
                 {
@@ -314,10 +324,10 @@ namespace ABV_Invest.Data.Migrations
                     DailyDealsId = table.Column<int>(nullable: false),
                     DealType = table.Column<string>(nullable: false),
                     SecurityId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<decimal>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
-                    TotalPrice = table.Column<decimal>(nullable: false),
-                    Fee = table.Column<decimal>(nullable: false),
+                    Quantity = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    Fee = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
                     CurrencyId = table.Column<int>(nullable: false),
                     Settlement = table.Column<DateTime>(nullable: false),
                     MarketId = table.Column<int>(nullable: false)
@@ -359,15 +369,15 @@ namespace ABV_Invest.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DailySecuritiesPerClientId = table.Column<int>(nullable: false),
                     SecurityId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<decimal>(nullable: false),
+                    Quantity = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     CurrencyId = table.Column<int>(nullable: false),
-                    AveragePriceBuy = table.Column<decimal>(nullable: false),
-                    MarketPrice = table.Column<decimal>(nullable: false),
-                    TotalMarketPrice = table.Column<decimal>(nullable: false),
-                    Profit = table.Column<decimal>(nullable: false),
-                    ProfitInBGN = table.Column<decimal>(nullable: false),
-                    ProfitPercentаge = table.Column<decimal>(nullable: false),
-                    PortfolioShare = table.Column<decimal>(nullable: false)
+                    AveragePriceBuy = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    MarketPrice = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    TotalMarketPrice = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    Profit = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    ProfitInBGN = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    ProfitPercentаge = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    PortfolioShare = table.Column<decimal>(type: "decimal(18, 4)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -430,6 +440,11 @@ namespace ABV_Invest.Data.Migrations
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Balances_CurrencyId",
+                table: "Balances",
+                column: "CurrencyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DailyBalance_AbvInvestUserId",

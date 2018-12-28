@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABV_Invest.Data.Migrations
 {
     [DbContext(typeof(AbvDbContext))]
-    [Migration("20181228171532_DecimalDataTypeColumnChange")]
-    partial class DecimalDataTypeColumnChange
+    [Migration("20181228214936_AddCurrencyCodeInBalanceTable")]
+    partial class AddCurrencyCodeInBalanceTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,6 +91,8 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<decimal>("Cash")
                         .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("CurrencyCode");
 
                     b.Property<decimal>("VirtualProfit")
                         .HasColumnType("decimal(18, 4)");

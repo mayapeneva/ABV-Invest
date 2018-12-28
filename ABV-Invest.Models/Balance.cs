@@ -1,5 +1,6 @@
 ﻿namespace ABV_Invest.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -11,35 +12,40 @@
         public virtual DailyBalance DaiyBalance { get; set; }
         public int BalanceId { get; set; }
 
+        public string CurrencyCode { get; set; }
+
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Cash { get; set; }
 
         [NotMapped]
-        public ICollection<SecuritiesPerClient> UsersLatestPortfolio { get; private set; }
+        public ICollection<SecuritiesPerClient> UsersPortfolio { get; private set; }
 
         [NotMapped]
-        public decimal AllSecuritiesAveragePriceBuy { get; private set; }
+        public decimal AllSecuritiesTotalPriceBuy { get; private set; }
 
-        [Required]
         [Column(TypeName = "decimal(18, 4)")]
-        public decimal AllSecuritiesMarketPrice { get; private set; }
+        public decimal AllSecuritiesTotalMarketPrice { get; private set; }
 
-        [Required]
         [Column(TypeName = "decimal(18, 4)")]
         public decimal VirtualProfit { get; private set; }
 
-        [Required]
         [Column(TypeName = "decimal(18, 4)")]
         public decimal VirtualProfitPercentage { get; private set; }
 
-        public void SetBalanceFigures()
+        public void SetBalanceFigures(DateTime date)
         {
-            this.UsersLatestPortfolio = this.DaiyBalance.AbvInvestUser.Portfolio.OrderByDescending(p => p.Date)
-                .First().SecuritiesPerIssuerCollection;
-            this.AllSecuritiesAveragePriceBuy = this.UsersLatestPortfolio.Sum(s => s.AveragePriceBuy);
-            this.AllSecuritiesMarketPrice = this.UsersLatestPortfolio.Sum(s => s.TotalPriceBuy);
-            this.VirtualProfit = this.UsersLatestPortfolio.Sum(s => s.ProfitPercentаge);
-            this.VirtualProfitPercentage = this.VirtualProfit * 100 / this.AllSecuritiesAveragePriceBuy;
+            this.UsersPortfolio = this.DaiyBalance.AbvInvestUser.Portfolio.SingleOrDefault(p => p.Date == date)?.SecuritiesPerIssuerCollection;
+
+            if (this.UsersPortfolio != null)
+            {
+                this.AllSecuritiesTotalPriceBuy = this.UsersPortfolio.Sum(s => s.TotalPriceBuy);
+                this.AllSecuritiesTotalMarketPrice = this.UsersPortfolio.Sum(s => s.TotalMarketPrice);
+
+                this.VirtualProfit = this.UsersPortfolio.Sum(s => s.ProfitInBGN);
+                this.VirtualProfitPercentage = (this.VirtualProfit * 100) / (this.AllSecuritiesTotalPriceBuy + this.Cash);
+
+                this.CurrencyCode = "BGN";
+            }
         }
     }
 }

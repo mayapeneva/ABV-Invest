@@ -82,13 +82,15 @@ namespace ABV_Invest.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("AllSecuritiesMarketPrice")
+                    b.Property<decimal>("AllSecuritiesTotalMarketPrice")
                         .HasColumnType("decimal(18, 4)");
 
                     b.Property<int>("BalanceId");
 
                     b.Property<decimal>("Cash")
                         .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("CurrencyCode");
 
                     b.Property<decimal>("VirtualProfit")
                         .HasColumnType("decimal(18, 4)");

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.2.1" />
     <PackageReference Include="CloudinaryDotNet" Version="1.5.0" />
     <PackageReference Include="Firewall" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />

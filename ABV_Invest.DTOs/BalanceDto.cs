@@ -5,9 +5,11 @@
 
     public class BalanceDto : IMapFrom<Balance>
     {
+        public string CurrencyCode { get; set; }
+
         public decimal Cash { get; set; }
 
-        public decimal AllSecuritiesMarketPrice { get; set; }
+        public decimal AllSecuritiesTotalMarketPrice { get; set; }
 
         public decimal VirtualProfit { get; set; }
 

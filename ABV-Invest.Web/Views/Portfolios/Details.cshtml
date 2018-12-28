@@ -11,18 +11,18 @@
     <caption class="bg-abvdarkgreen">Списък с ценни книжа</caption>
     <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
         <tr>
-            <th class="text-left" scope="col">Емитент</th>
-            <th class="text-left" scope="col">БФБ Код</th>
-            <th class="text-left" scope="col">ISIN</th>
-            <th class="text-right" scope="col">Наличност</th>
-            <th class="text-right" scope="col">Валута</th>
-            <th class="text-right" scope="col">Средна цена</th>
-            <th class="text-right" scope="col">Стойност на придобиване</th>
-            <th class="text-right" scope="col">Пазарна цена</th>
-            <th class="text-right" scope="col">Пазарна стойност</th>
-            <th class="text-right" scope="col">Доходност</th>
-            <th class="text-right" scope="col">Доходност(%)</th>
-            <th class="text-right" scope="col">Тегло в портфейла(%)</th>
+            <th class="text-center" scope="col">Емитент</th>
+            <th class="text-center" scope="col">БФБ Код</th>
+            <th class="text-center" scope="col">ISIN</th>
+            <th class="text-center" scope="col">Наличност</th>
+            <th class="text-center" scope="col">Валута</th>
+            <th class="text-center" scope="col">Средна цена</th>
+            <th class="text-center" scope="col">Стойност на придобиване</th>
+            <th class="text-center" scope="col">Пазарна цена</th>
+            <th class="text-center" scope="col">Пазарна стойност</th>
+            <th class="text-center" scope="col">Доходност</th>
+            <th class="text-center" scope="col">Доходност(%)</th>
+            <th class="text-center" scope="col">Тегло в портфейла(%)</th>
         </tr>
     </thead>
     <tbody class="bg-abvdarkgreen">
@@ -46,7 +46,7 @@
                         <span class="glyphicon glyphicon-triangle-top"></span>
                     </td>
                     <td class="text-right bg-abvmiddlegreen">
-                        @Html.DisplayFor(model => security.ProfitPercentаge)<br />
+                        @Html.DisplayFor(model => security.ProfitPercentаge)%<br />
                         <span class="glyphicon glyphicon-triangle-top"></span>
                     </td>
                 }
@@ -57,7 +57,7 @@
                         <span class="glyphicon glyphicon-triangle-bottom"></span>
                     </td>
                     <td class="text-right bg-abvred">
-                        @Html.DisplayFor(model => security.ProfitPercentаge)<br />
+                        @Html.DisplayFor(model => security.ProfitPercentаge)%<br />
                         <span class="glyphicon glyphicon-triangle-bottom"></span>
                     </td>
                 }
@@ -68,12 +68,12 @@
                         <span class="glyphicon glyphicon-option-horizontal"></span>
                     </td>
                     <td class="text-right">
-                        @Html.DisplayFor(model => security.ProfitPercentаge)<br />
+                        @Html.DisplayFor(model => security.ProfitPercentаge)%<br />
                         <span class="glyphicon glyphicon-option-horizontal"></span>
                     </td>
                 }
 
-                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.PortfolioShare)</td>
+                <td class="text-right align-text-bottom">@Html.DisplayFor(model => security.PortfolioShare)%</td>
             </tr>
         }
     </tbody>

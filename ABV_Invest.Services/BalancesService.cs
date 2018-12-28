@@ -28,7 +28,7 @@
             user.Balances.Add(balance);
             await this.Db.SaveChangesAsync();
 
-            balance.Balance.SetBalanceFigures();
+            balance.Balance.SetBalanceFigures(date);
             await this.Db.SaveChangesAsync();
         }
 
