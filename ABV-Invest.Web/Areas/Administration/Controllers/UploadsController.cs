@@ -3,10 +3,8 @@
 namespace ABV_Invest.Web.Areas.Administration.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
-    using System.Xml;
     using System.Xml.Serialization;
     using BindingModels;
     using BindingModels.Uploads.Portfolios;

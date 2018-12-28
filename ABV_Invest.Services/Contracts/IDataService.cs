@@ -1,7 +1,6 @@
 ﻿namespace ABV_Invest.Services.Contracts
 {
     using System.Threading.Tasks;
-    using BindingModels.Data;
 
     public interface IDataService
     {

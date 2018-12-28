@@ -4,7 +4,6 @@
     using AutoMapper;
     using DTOs;
     using Mapping.Contracts;
-    using Models;
 
     public class BalanceViewModel : IMapFrom<BalanceDto>, ICustomMap
     {

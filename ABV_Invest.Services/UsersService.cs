@@ -5,7 +5,6 @@
     using Base;
     using Contracts;
     using Data;
-    using DTOs;
 
     public class UsersService : BaseService, IUsersService
     {

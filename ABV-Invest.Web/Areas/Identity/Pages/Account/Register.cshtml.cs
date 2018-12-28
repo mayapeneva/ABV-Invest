@@ -11,10 +11,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
-    using CloudinaryDotNet.Actions;
     using Common;
     using DTOs;
-    using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
     using Services.Contracts;
 
     [AllowAnonymous]

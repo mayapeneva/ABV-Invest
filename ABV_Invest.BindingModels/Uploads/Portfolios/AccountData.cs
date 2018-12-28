@@ -1,6 +1,5 @@
 ﻿namespace ABV_Invest.BindingModels.Uploads.Portfolios
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
     using System.Xml.Serialization;
 

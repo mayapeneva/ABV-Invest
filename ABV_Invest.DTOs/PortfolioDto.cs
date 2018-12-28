@@ -1,6 +1,5 @@
 ﻿namespace ABV_Invest.DTOs
 {
-    using AutoMapper;
     using Mapping.Contracts;
     using Models;
 

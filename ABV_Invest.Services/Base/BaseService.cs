@@ -2,7 +2,6 @@
 {
     using Data;
     using DataAnotations = System.ComponentModel.DataAnnotations;
-    using System.Collections.Generic;
 
     public abstract class BaseService
     {

@@ -7,7 +7,6 @@
     using Contracts;
     using Data;
     using Models;
-    using Models.Enums;
 
     public class DataService : BaseService, IDataService
 
