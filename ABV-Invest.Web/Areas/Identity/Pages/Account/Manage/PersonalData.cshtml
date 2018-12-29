@@ -5,20 +5,19 @@
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<h4 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h4>
-<hr />
-
-<div class="container">
+<div class="container bg-abvdarkgreen">
     <div class="col-md-6">
-        <p class="bg-abvdarkgreen">При регистрацията си на този уебсайт Вие сте предоставили своите лични данни. На тази страница можете да свалите или да изтриете тези данни.</p>
-        <p class="bg-abvdarkgreen">
+        <h4 class="bg-abvmiddlegreen">@ViewData["Title"]</h4>
+        <hr />
+        <p>При регистрацията си на този уебсайт Вие сте предоставили своите лични данни. На тази страница можете да свалите или да изтриете тези данни.</p>
+        <p>
             <strong>Изтриването на личната Ви информация ще изтрие регистрацията Ви в този уебсайт и няма да имате достъп до системата.</strong>
         </p> <br />
         <form asp-page="DownloadPersonalData" method="post" class="form-group">
-            <button class="btn btn-default  bg-bg-abvdarkgreen bg-abvlightgreen" type="submit">Сваляне на данни</button>
+            <button class="btn bg-bg-abvdarkgreen bg-abvlightgreen" type="submit">Сваляне на данни</button>
         </form>
         <p>
-            <a asp-page="DeletePersonalData" class="btn btn-default bg-bg-abvlightgreen bg-abvdarkgreen">Изтриване на регистрация</a>
+            <a asp-page="DeletePersonalData" class="btn btn-danger">Изтриване на регистрация</a>
         </p>
     </div>
 </div>

@@ -1,5 +1,4 @@
-﻿@using System.Globalization
-@model IEnumerable<PortfolioViewModel>
+﻿@model IEnumerable<PortfolioViewModel>
 @{
     ViewData["Title"] = "Портфолио";
 }
@@ -28,7 +27,7 @@
     <tbody class="bg-abvdarkgreen">
         @foreach (var security in Model)
         {
-            var profit = security.Profit.ToString("N1", CultureInfo.CreateSpecificCulture("sv-SE"));
+            var profit = security.Profit.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"));
             <tr>
                 <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuerName)</td>
                 <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
