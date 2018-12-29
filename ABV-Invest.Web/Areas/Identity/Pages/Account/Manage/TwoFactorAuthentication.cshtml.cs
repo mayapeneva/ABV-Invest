@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using Common;
+
     public class TwoFactorAuthenticationModel : PageModel
     {
         private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}";
@@ -42,7 +44,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             this.HasAuthenticator = await this._userManager.GetAuthenticatorKeyAsync(user) != null;
@@ -58,7 +60,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             await this._signInManager.ForgetTwoFactorClientAsync();

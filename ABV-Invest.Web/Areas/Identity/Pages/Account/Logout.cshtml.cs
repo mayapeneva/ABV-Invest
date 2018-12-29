@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using Common;
+
     [AllowAnonymous]
     public class LogoutModel : PageModel
     {
@@ -27,7 +29,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await this._signInManager.SignOutAsync();
-            this._logger.LogInformation("User logged out.");
+            this._logger.LogInformation(Messages.UserLoggedOut);
             if (returnUrl != null)
             {
                 return this.LocalRedirect(returnUrl);

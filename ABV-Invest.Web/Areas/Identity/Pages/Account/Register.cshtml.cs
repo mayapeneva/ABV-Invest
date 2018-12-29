@@ -18,8 +18,6 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private const string UserExists = "This username is already taken";
-
         private readonly SignInManager<AbvInvestUser> _signInManager;
         private readonly UserManager<AbvInvestUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
@@ -94,7 +92,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                 {
                     await this._userManager.AddToRoleAsync(user, Constants.User);
 
-                    this._logger.LogInformation("User created a new account with password.");
+                    this._logger.LogInformation("Потребителят създаде нова регистрация с парола.");
 
                     var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = this.Url.Page(
@@ -103,8 +101,8 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                         values: new { userId = user.Id, code = code },
                         protocol: this.Request.Scheme);
 
-                    await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await this._emailSender.SendEmailAsync(this.Input.Email, "Потвърдете имейла си.",
+                        $"Моля потвърдете регистрацията си като кликнете <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>тук</a>.");
 
                     await this._signInManager.SignInAsync(user, isPersistent: false);
                     return this.LocalRedirect(returnUrl);

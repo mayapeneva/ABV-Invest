@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using Common;
+
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
@@ -28,13 +30,13 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             var user = await this._userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{userId}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, userId));
             }
 
             var result = await this._userManager.ConfirmEmailAsync(user, code);
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Error confirming email for user with ID '{userId}':");
+                throw new InvalidOperationException($"Възникна грешка при потвърждаването на имейл за потребител с ID '{userId}':");
             }
 
             return this.Page();

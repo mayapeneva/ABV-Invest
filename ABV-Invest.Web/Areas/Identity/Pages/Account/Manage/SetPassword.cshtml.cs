@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using Common;
+
     public class SetPasswordModel : PageModel
     {
         private readonly UserManager<AbvInvestUser> _userManager;
@@ -45,7 +47,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             var hasPassword = await this._userManager.HasPasswordAsync(user);
@@ -68,7 +70,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             var addPasswordResult = await this._userManager.AddPasswordAsync(user, this.Input.NewPassword);
@@ -82,7 +84,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             }
 
             await this._signInManager.RefreshSignInAsync(user);
-            this.StatusMessage = "Your password has been set.";
+            this.StatusMessage = "Паролата ви е приета успешно.";
 
             return this.RedirectToPage();
         }

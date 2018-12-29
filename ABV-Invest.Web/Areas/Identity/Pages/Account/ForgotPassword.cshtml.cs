@@ -53,8 +53,8 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                     protocol: this.Request.Scheme);
 
                 await this._emailSender.SendEmailAsync(this.Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Промяна на парола",
+                    $"Моля променете паролата си като кликнете <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>тук</a>.");
 
                 return this.RedirectToPage("./ForgotPasswordConfirmation");
             }

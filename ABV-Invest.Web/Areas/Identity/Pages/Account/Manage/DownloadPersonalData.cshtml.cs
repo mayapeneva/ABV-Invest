@@ -12,6 +12,8 @@ using Newtonsoft.Json;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using Common;
+
     public class DownloadPersonalDataModel : PageModel
     {
         private readonly UserManager<AbvInvestUser> _userManager;
@@ -30,10 +32,10 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
-            this._logger.LogInformation("User with ID '{UserId}' asked for their personal data.", this._userManager.GetUserId(this.User));
+            this._logger.LogInformation("Потребител с ID '{UserId}' поиска личните си данни.", this._userManager.GetUserId(this.User));
 
             // Only include personal data for download
             var personalData = new Dictionary<string, string>();

@@ -15,6 +15,7 @@
         public const string CurrencyExists = "Валута с този код вече съществува или въведените данни не са правилни.";
 
         public const string WrongMarketData = "Името на пазара е неправилно.";
+
         public const string MarketExists = "Пазар с това име вече съществува или въведените данни не са правилни.";
 
         public const string WrongSecurityData =
@@ -35,5 +36,23 @@
         public const string CouldNotUploadInformation = "Файлът, който качихте е празен или информацията в него е с неправилен формат.";
 
         public const string UploadingSuccessfull = "Качването на информация приключи успешно.";
+
+        // Identity
+        public const string CantLoadUser = "Не беше възможно да заредим данните на потребител с ID '{0}'.";
+
+        public const string MistakeWhenSaving =
+            "Възникна грешка при запазването на {0} за потребител с ID '{1}'.";
+
+        public const string ProfileChanged = "Профилът ви беше успешно променен.";
+
+        public const string MistakeWhenDeleting =
+            "Възникна грешка при изтриването на потребител с ID '{0}'.";
+
+        public const string InvalidLogInAttempt = "Неуспешен опит за влизане в сайта.";
+        public const string LockedAccount = "Регистрацията на потребителя е блокирана.";
+        public const string UserLoggedIn = "Потребителят вече е влязъл в сайта.";
+
+        public const string UserLoggedOut = "Потребителят е излязъл от сайта.";
+        public const string UserExists = "This username is already taken";
     }
 }

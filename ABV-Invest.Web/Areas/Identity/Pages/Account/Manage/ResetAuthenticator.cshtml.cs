@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using Common;
+
     public class ResetAuthenticatorModel : PageModel
     {
         private UserManager<AbvInvestUser> _userManager;
@@ -31,7 +33,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             return this.Page();
@@ -42,7 +44,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             await this._userManager.SetTwoFactorEnabledAsync(user, false);

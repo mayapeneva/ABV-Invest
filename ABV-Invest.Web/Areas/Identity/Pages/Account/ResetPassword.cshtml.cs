@@ -44,7 +44,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
         {
             if (code == null)
             {
-                return this.BadRequest("A code must be supplied for password reset.");
+                return this.BadRequest("Трябва да предоставите код, за да можете да промените паролата.");
             }
             else
             {

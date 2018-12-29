@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using Common;
     using Data;
     using DTOs;
     using Services.Contracts;
@@ -90,11 +91,11 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                     var dbUser = this.usersService.GetUserByUserName<UserDto>(this.Input.UserName);
                     if (dbUser == null || this.Input.PIN != dbUser.PIN)
                     {
-                        this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        this.ModelState.AddModelError(string.Empty, Messages.InvalidLogInAttempt);
                         return this.Page();
                     }
 
-                    this._logger.LogInformation("User logged in.");
+                    this._logger.LogInformation(Messages.UserLoggedIn);
                     return this.LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -103,12 +104,12 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    this._logger.LogWarning("User account locked out.");
+                    this._logger.LogWarning(Messages.LockedAccount);
                     return this.RedirectToPage("./Lockout");
                 }
                 else
                 {
-                    this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    this.ModelState.AddModelError(string.Empty, Messages.InvalidLogInAttempt);
                     return this.Page();
                 }
             }

@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using Common;
+
     public class DeletePersonalDataModel : PageModel
     {
         private readonly UserManager<AbvInvestUser> _userManager;
@@ -42,7 +44,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             this.RequirePassword = await this._userManager.HasPasswordAsync(user);
@@ -54,7 +56,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var user = await this._userManager.GetUserAsync(this.User);
             if (user == null)
             {
-                return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+                return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
             this.RequirePassword = await this._userManager.HasPasswordAsync(user);
@@ -62,7 +64,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             {
                 if (!await this._userManager.CheckPasswordAsync(user, this.Input.Password))
                 {
-                    this.ModelState.AddModelError(string.Empty, "Password not correct.");
+                    this.ModelState.AddModelError(string.Empty, "Неправилна парола.");
                     return this.Page();
                 }
             }
@@ -71,12 +73,12 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
             var userId = await this._userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred deleteing user with ID '{userId}'.");
+                throw new InvalidOperationException(string.Format(Messages.MistakeWhenDeleting, userId));
             }
 
             await this._signInManager.SignOutAsync();
 
-            this._logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
+            this._logger.LogInformation("Потребител с ID '{UserId}' изтри регистрацията си.", userId);
 
             return this.Redirect("~/");
         }
