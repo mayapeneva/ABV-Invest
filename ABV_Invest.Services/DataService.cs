@@ -38,16 +38,17 @@
             return true;
         }
 
-        public async Task<bool> CreateMarket(string name)
+        public async Task<bool> CreateMarket(string name, string mic)
         {
-            if (this.Db.Markets.Any(m => m.Name == name))
+            if (this.Db.Markets.Any(m => m.Name == name || m.MIC == mic))
             {
                 return false;
             }
 
             var market = new Market
             {
-                Name = name
+                Name = name,
+                MIC = mic
             };
             if (!DataValidator.IsValid(market))
             {

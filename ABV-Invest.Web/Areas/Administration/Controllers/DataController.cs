@@ -60,7 +60,7 @@
                 return this.View();
             }
 
-            var result = this.dataService.CreateMarket(bindingModel.Name);
+            var result = this.dataService.CreateMarket(bindingModel.Name, bindingModel.MIC);
             if (!result.Result)
             {
                 this.ViewData["Error"] = Messages.MarketExists;

@@ -45,12 +45,12 @@
             return collection;
         }
 
-        public async Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> objPortfolios, DateTime date)
+        public async Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date)
         {
             var changesCounter = 0;
 
             // Group the entries by Client and process portfolios for each client
-            var portfolios = objPortfolios.GroupBy(p => p.Client.CDNNumber);
+            var portfolios = deserializedPortfolios.GroupBy(p => p.Client.CDNNumber);
             foreach (var portfolio in portfolios)
             {
                 // Check if User exists
@@ -98,28 +98,28 @@
                         continue;
                     }
 
-                    var openPrice = decimal.Parse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""));
+                    var averagePriceBuy = decimal.Parse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""));
                     var marketPrice = decimal.Parse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""));
-                    var marketValue = decimal.Parse(portfolioRow.AccountData.MarketValue.Replace(" ", ""));
+                    var totalMarketPrice = decimal.Parse(portfolioRow.AccountData.MarketValue.Replace(" ", ""));
                     var profit = decimal.Parse(portfolioRow.AccountData.Result.Replace(" ", ""));
-                    var profitBGN = decimal.Parse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""));
-                    var yieldPercent = decimal.Parse(portfolioRow.Other.YieldPercent.Replace(" ", ""));
-                    var relativePart = decimal.Parse(portfolioRow.Other.RelativePart.Replace(" ", ""));
+                    var profitInBGN = decimal.Parse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""));
+                    var profitPercent = decimal.Parse(portfolioRow.Other.YieldPercent.Replace(" ", ""));
+                    var portfolioShare = decimal.Parse(portfolioRow.Other.RelativePart.Replace(" ", ""));
                     var securitiesPerClient = new SecuritiesPerClient
                     {
                         Security = security,
                         Quantity = quantity,
                         Currency = currency,
-                        AveragePriceBuy = openPrice,
+                        AveragePriceBuy = averagePriceBuy,
                         MarketPrice = marketPrice,
-                        TotalMarketPrice = marketValue,
+                        TotalMarketPrice = totalMarketPrice,
                         Profit = profit,
-                        ProfitInBGN = profitBGN,
-                        ProfitPercentаge = yieldPercent,
-                        PortfolioShare = relativePart
+                        ProfitInBGN = profitInBGN,
+                        ProfitPercentаge = profitPercent,
+                        PortfolioShare = portfolioShare
                     };
 
-                    // Validate SecuritiesPerClient and add them in the portfolio
+                    // Validate SecuritiesPerClient and add them to the portfolio
                     if (!DataValidator.IsValid(securitiesPerClient))
                     {
                         continue;
