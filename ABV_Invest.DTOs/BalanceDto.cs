@@ -9,6 +9,8 @@
 
         public decimal Cash { get; set; }
 
+        public decimal AllSecuritiesTotalPriceBuy { get; set; }
+
         public decimal AllSecuritiesTotalMarketPrice { get; set; }
 
         public decimal VirtualProfit { get; set; }

@@ -7,29 +7,28 @@
 <hr />
 
 <div class="row text-center">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <table class="table table-hover table-responsive">
-            <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
-                <tr>
-                    <th class="text-center" scope="col">Валута</th>
-                    <th class="text-center" scope="col">Пари в брой</th>
-                    <th class="text-center" scope="col">Пазарна стойност на ценните книжа</th>
-                    <th class="text-center" scope="col">Обща доходност</th>
-                    <th class="text-center" scope="col">Обща доходност(%)</th>
-                </tr>
-            </thead>
-            <tbody class="bg-abvdarkgreen">
-                <tr>
-                    <td class="text-center">@Model.CurrencyCode</td>
-                    <td class="text-center">@Model.Cash</td>
-                    <td class="text-center">@Model.AllSecuritiesTotalMarketPrice</td>
-                    <td class="text-center">@Model.VirtualProfit</td>
-                    <td class="text-center">@Model.VirtualProfitPercentage%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-hover table-responsive">
+        <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
+            <tr>
+                <th class="text-center" scope="col">Валута</th>
+                <th class="text-center" scope="col">Пари в брой</th>
+                <th class="text-center" scope="col">Стойност на придобиване на ценните книжа</th>
+                <th class="text-center" scope="col">Пазарна стойност на ценните книжа</th>
+                <th class="text-center" scope="col">Обща доходност</th>
+                <th class="text-center" scope="col">Обща доходност(%)</th>
+            </tr>
+        </thead>
+        <tbody class="bg-abvdarkgreen">
+            <tr>
+                <td class="text-center">@Model.CurrencyCode</td>
+                <td class="text-center">@Model.Cash</td>
+                <td class="text-center">@Model.AllSecuritiesTotalPriceBuy</td>
+                <td class="text-center">@Model.AllSecuritiesTotalMarketPrice</td>
+                <td class="text-center">@Model.VirtualProfit</td>
+                <td class="text-center">@Model.VirtualProfitPercentage%</td>
+            </tr>
+        </tbody>
+    </table>
 </div><br />
 
 <div class="text-center">
