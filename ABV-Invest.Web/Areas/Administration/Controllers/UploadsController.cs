@@ -7,6 +7,7 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
     using System.Threading.Tasks;
     using System.Xml.Serialization;
     using BindingModels;
+    using BindingModels.Uploads.Deals;
     using BindingModels.Uploads.Portfolios;
     using Common;
     using Microsoft.AspNetCore.Authorization;
@@ -18,12 +19,14 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
     public class UploadsController : Controller
     {
         private readonly IPortfoliosService portfolioService;
+        private readonly IDealsService dealsService;
         private readonly IHostingEnvironment environment;
 
-        public UploadsController(IPortfoliosService portfolioService, IHostingEnvironment environment)
+        public UploadsController(IPortfoliosService portfolioService, IHostingEnvironment environment, IDealsService dealsService)
         {
             this.portfolioService = portfolioService;
             this.environment = environment;
+            this.dealsService = dealsService;
         }
 
         public IActionResult PortfoliosInfo()
@@ -95,6 +98,56 @@ namespace ABV_Invest.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> DealsInfo(FilesUploadedBindingModel model)
         {
+            // Initial data validation
+            if (!this.ModelState.IsValid
+                || model.Date > DateTime.UtcNow
+                || model.Date < DateTime.Parse("01/01/2016"))
+            {
+                this.ViewData["Error"] = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                return this.View();
+            }
+
+            // Processing the XML file
+            var xmlFile = model.XMLFile;
+            if (xmlFile.ContentType.EndsWith("xml"))
+            {
+                var fileName = this.environment.WebRootPath + "/files/" + "Upload.xml";
+                if (xmlFile.Length > 0)
+                {
+                    // Saving the uploaded file
+                    using (var stream = new FileStream(fileName, FileMode.Create))
+                    {
+                        await xmlFile.CopyToAsync(stream);
+                    }
+
+                    // Deserialising the uploaded file data
+                    var xmlFileContent = System.IO.File.ReadAllText(fileName);
+                    var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
+                    var deserializedDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+                    // Validating the deserialised data
+                    if (!DataValidator.IsValid(deserializedDeals))
+                    {
+                        this.ViewData["Error"] = Messages.CouldNotUploadInformation;
+                        return this.View();
+                    }
+
+                    // Seeding the data from the deserialised file
+                    var result = this.dealsService.SeedDeals(deserializedDeals, model.Date);
+                    if (!result.Result)
+                    {
+                        this.ViewData["Error"] = Messages.CouldNotUploadInformation;
+                        return this.View();
+                    }
+
+                    // Successful upload
+                    this.ViewData["Error"] = Messages.UploadingSuccessfull;
+                    return this.View();
+                }
+            }
+
+            // Unsuccessful upload
+            this.ViewData["Error"] = Messages.CouldNotUploadInformation;
             return this.View();
         }
     }
