@@ -19,7 +19,7 @@
         [NotMapped]
         public ICollection<SecuritiesPerClient> UsersPortfolio { get; private set; }
 
-        [NotMapped]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal AllSecuritiesTotalPriceBuy { get; private set; }
 
         [Column(TypeName = "decimal(18, 4)")]

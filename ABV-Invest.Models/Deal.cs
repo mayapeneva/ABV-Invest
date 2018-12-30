@@ -27,7 +27,15 @@
 
         [Required]
         [Column(TypeName = "decimal(18, 4)")]
+        public decimal Coupon { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(18, 4)")]
         public decimal TotalPrice { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(18, 4)")]
+        public decimal TotalPriceInBGN { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(18, 4)")]
