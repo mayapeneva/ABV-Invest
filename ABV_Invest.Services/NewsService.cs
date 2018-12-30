@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Text;
     using System.Xml;
     using Common;
     using Contracts;
@@ -81,13 +80,21 @@
 
         public void LoadNewsFromX3News(List<RSSFeedViewModel> rssModels)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Encoding.GetEncoding("windows-1251");
-
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(Constants.X3NewsRSS);
-            var feeds = xmlDoc.DocumentElement.FirstChild.ChildNodes;
+            if (xmlDoc.FirstChild.NodeType == XmlNodeType.XmlDeclaration)
+            {
+                XmlDeclaration dec = (XmlDeclaration)xmlDoc.FirstChild;
+                dec.Encoding = "windows-1251";
+            }
+            else
+            {
+                var xmlDecl = xmlDoc.CreateXmlDeclaration("1.0", null, null);
+                xmlDecl.Encoding = "windows-1251";
+                xmlDoc.InsertBefore(xmlDecl, xmlDoc.DocumentElement);
+            }
 
+            var feeds = xmlDoc.DocumentElement.FirstChild.ChildNodes;
             foreach (XmlNode feed in feeds)
             {
                 if (feed.Name == "item")
@@ -99,7 +106,7 @@
                         Summary = feed["description"].InnerText
                     };
 
-                    var ifParsed = DateTime.TryParseExact(feed["pubDate"].InnerText, Constants.DateTimeParseFormat, CultureInfo.GetCultureInfo("bg-BG"), DateTimeStyles.AssumeLocal, out DateTime pubDate);
+                    var ifParsed = DateTime.TryParseExact(feed["pubDate"].InnerText.ToLower(), Constants.DateTimeParseFormat, CultureInfo.GetCultureInfo("bg-BG"), DateTimeStyles.AssumeLocal, out DateTime pubDate);
                     if (ifParsed)
                     {
                         model.PublishedDate = pubDate;

@@ -7,17 +7,18 @@
 <hr />
 
 <div class="container">
-    if (Model != null)
+    @if (Model != null)
     {
-    @foreach (var item in Model)
-    {
-        <a class="bg-abvdarkgreen" href="@item.Uri" target="_blank">@Html.DisplayFor(modelItem => item.Title)</a>
-        <div class="bg-abvmiddlegreen">
-            @Html.DisplayFor(modelItem => item.Summary)
-        </div>
-        <div class="bg-abvlightgreen">
-            @Html.DisplayFor(modelItem => item.PublishedDate)
-        </div>
-        <hr />
-    }}
+        foreach (var item in Model)
+        {
+            <a class="bg-abvdarkgreen" href="@item.Uri" target="_blank">@Html.DisplayFor(modelItem => item.Title)</a>
+            <div class="bg-abvmiddlegreen">
+                @Html.DisplayFor(modelItem => item.Summary)
+            </div>
+            <div class="bg-abvlightgreen">
+                @Html.DisplayFor(modelItem => item.PublishedDate)
+            </div>
+            <hr />
+        }
+    }
 </div>
