@@ -4,14 +4,16 @@ using ABV_Invest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ABV_Invest.Data.Migrations
 {
     [DbContext(typeof(AbvDbContext))]
-    partial class AbvDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181231104117_AddDailyBalancesDbSet")]
+    partial class AddDailyBalancesDbSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,6 +89,8 @@ namespace ABV_Invest.Data.Migrations
 
                     b.Property<decimal>("AllSecuritiesTotalPriceBuy")
                         .HasColumnType("decimal(18, 4)");
+
+                    b.Property<int>("BalanceId");
 
                     b.Property<decimal>("Cash")
                         .HasColumnType("decimal(18, 2)");

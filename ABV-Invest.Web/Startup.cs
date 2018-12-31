@@ -67,7 +67,6 @@
             services.AddScoped<IDealsService, DealsService>();
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IBalancesService, BalancesService>();
-            services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IDataService, DataService>();
 
             services.AddSingleton<IEmailSender, EmailSender>();

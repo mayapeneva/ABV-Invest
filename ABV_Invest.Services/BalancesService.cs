@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using Base;
+    using Common;
     using Contracts;
     using Data;
     using Models;
@@ -18,16 +19,20 @@
 
         public async Task CreateBalanceForUser(AbvInvestUser user, DateTime date)
         {
-            var balance = new DailyBalance
+            var dailyBalance = new DailyBalance
             {
                 Date = date,
                 Balance = new Balance()
             };
+            if (!DataValidator.IsValid(dailyBalance))
+            {
+                return;
+            }
 
-            user.Balances.Add(balance);
+            user.Balances.Add(dailyBalance);
             await this.Db.SaveChangesAsync();
 
-            balance.Balance.SetBalanceFigures(date);
+            dailyBalance.Balance.SetBalanceFigures(date);
             await this.Db.SaveChangesAsync();
         }
 

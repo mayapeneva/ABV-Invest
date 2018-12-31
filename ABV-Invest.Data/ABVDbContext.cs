@@ -9,10 +9,6 @@
 
     public class AbvDbContext : IdentityDbContext<AbvInvestUser>
     {
-        public AbvDbContext()
-        {
-        }
-
         public AbvDbContext(DbContextOptions<AbvDbContext> options)
             : base(options)
         {
@@ -29,6 +25,8 @@
         public DbSet<DailyDeals> DailyDeals { get; set; }
 
         public DbSet<Deal> Deals { get; set; }
+
+        public DbSet<DailyBalance> DailyBalances { get; set; }
 
         public DbSet<Balance> Balances { get; set; }
 

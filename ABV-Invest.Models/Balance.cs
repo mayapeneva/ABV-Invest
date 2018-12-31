@@ -8,8 +8,12 @@
 
     public class Balance : BaseEntity<int>
     {
+        public Balance()
+        {
+            this.UsersPortfolio = new HashSet<SecuritiesPerClient>();
+        }
+
         public virtual DailyBalance DaiyBalance { get; set; }
-        public int BalanceId { get; set; }
 
         public string CurrencyCode { get; set; }
 
@@ -33,7 +37,7 @@
 
         public void SetBalanceFigures(DateTime date)
         {
-            this.UsersPortfolio = this.DaiyBalance.AbvInvestUser.Portfolio.SingleOrDefault(p => p.Date == date)?.SecuritiesPerIssuerCollection;
+            this.UsersPortfolio = this.DaiyBalance.AbvInvestUser.Portfolio.SingleOrDefault(p => p.Date.ToString("dd/MM/yyyy") == date.ToString("dd/MM/yyyy"))?.SecuritiesPerIssuerCollection;
 
             if (this.UsersPortfolio != null)
             {

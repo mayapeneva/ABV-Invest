@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABV_Invest.Common", "ABV_In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABV_Invest.Mapping", "ABV_Invest.Mapping\ABV_Invest.Mapping.csproj", "{54144FB2-8F70-408F-ACBE-841858A4E46D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABV_Invest.Tests", "ABV_Invest.Tests\ABV_Invest.Tests.csproj", "{0DDB1FE1-47DD-4263-B8BC-87989009CC12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABV_Invest.Services.Tests", "ABV_Invest.Services.Tests\ABV_Invest.Services.Tests.csproj", "{A7219988-8574-4FB8-968F-11232FE4F423}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,10 @@ Global
 		{54144FB2-8F70-408F-ACBE-841858A4E46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54144FB2-8F70-408F-ACBE-841858A4E46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54144FB2-8F70-408F-ACBE-841858A4E46D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DDB1FE1-47DD-4263-B8BC-87989009CC12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DDB1FE1-47DD-4263-B8BC-87989009CC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DDB1FE1-47DD-4263-B8BC-87989009CC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DDB1FE1-47DD-4263-B8BC-87989009CC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7219988-8574-4FB8-968F-11232FE4F423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7219988-8574-4FB8-968F-11232FE4F423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7219988-8574-4FB8-968F-11232FE4F423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7219988-8574-4FB8-968F-11232FE4F423}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
