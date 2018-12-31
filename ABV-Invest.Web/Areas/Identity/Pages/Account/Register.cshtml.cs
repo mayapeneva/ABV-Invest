@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using System.Linq;
     using Common;
     using DTOs;
     using Services.Contracts;
@@ -22,19 +23,17 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
         private readonly UserManager<AbvInvestUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly IUsersService userService;
 
         public RegisterModel(
             UserManager<AbvInvestUser> userManager,
             SignInManager<AbvInvestUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender, IUsersService userService)
+            IEmailSender emailSender)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._logger = logger;
             this._emailSender = emailSender;
-            this.userService = userService;
         }
 
         [BindProperty]
@@ -80,7 +79,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? this.Url.Content("~/");
             if (this.ModelState.IsValid)
             {
-                var dbUser = this.userService.GetUserByUserName<UserDto>(this.Input.Username);
+                var dbUser = this._userManager.Users.SingleOrDefault(u => u.UserName == this.Input.Username);
                 if (dbUser != null)
                 {
                     return this.Page();

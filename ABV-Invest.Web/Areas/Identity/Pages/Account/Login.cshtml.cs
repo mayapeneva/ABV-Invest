@@ -21,14 +21,14 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<AbvInvestUser> _signInManager;
+        private readonly UserManager<AbvInvestUser> userManager;
         private readonly ILogger<LoginModel> _logger;
-        private readonly IUsersService usersService;
 
-        public LoginModel(SignInManager<AbvInvestUser> signInManager, ILogger<LoginModel> logger, AbvDbContext db, IUsersService usersService)
+        public LoginModel(SignInManager<AbvInvestUser> signInManager, UserManager<AbvInvestUser> userManager, ILogger<LoginModel> logger, AbvDbContext db)
         {
             this._signInManager = signInManager;
+            this.userManager = userManager;
             this._logger = logger;
-            this.usersService = usersService;
         }
 
         [BindProperty]
@@ -88,7 +88,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
                 var result = await this._signInManager.PasswordSignInAsync(this.Input.UserName, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
-                    var dbUser = this.usersService.GetUserByUserName<UserDto>(this.Input.UserName);
+                    var dbUser = this.userManager.Users.SingleOrDefault(u => u.UserName == this.Input.UserName);
                     if (dbUser == null || this.Input.PIN != dbUser.PIN)
                     {
                         this.ModelState.AddModelError(string.Empty, Messages.InvalidLogInAttempt);
