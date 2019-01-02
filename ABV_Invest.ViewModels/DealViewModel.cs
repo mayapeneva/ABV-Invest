@@ -3,7 +3,7 @@
     using DTOs;
     using Mapping.Contracts;
 
-    public class DealsViewModel : IMapFrom<DealsDto>
+    public class DealViewModel : IMapFrom<DealDto>
     {
         public string DealType { get; set; }
 

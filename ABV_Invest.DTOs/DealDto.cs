@@ -4,7 +4,7 @@
     using Mapping.Contracts;
     using Models;
 
-    public class DealsDto : IMapFrom<Deal>, ICustomMap
+    public class DealDto : IMapFrom<Deal>, ICustomMap
     {
         public string DealType { get; set; }
 
@@ -28,7 +28,7 @@
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Deal, DealsDto>()
+            configuration.CreateMap<Deal, DealDto>()
                 .ForMember(dest => dest.DealType, opt => opt.MapFrom(src => src.DealType.ToString()))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price.ToString("F3")))
                 .ForMember(dest => dest.Settlement, opt => opt.MapFrom(src => src.Settlement.ToString("dd/MM/yyyy")));

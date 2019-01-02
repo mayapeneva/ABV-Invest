@@ -47,7 +47,7 @@
         public IActionResult Details(string date)
         {
             var userId = this.userManager.GetUserId(this.User);
-            var deals = this.dealsService.GetUserDailyDeals<DealsDto>(userId, date);
+            var deals = this.dealsService.GetUserDailyDeals<DealDto>(userId, date);
 
             if (deals == null)
             {
@@ -55,7 +55,7 @@
                 return this.View("ChooseDate");
             }
 
-            var dealsViewModel = Mapper.Map<DealsDto[], IEnumerable<DealsViewModel>>(deals);
+            var dealsViewModel = Mapper.Map<DealDto[], IEnumerable<DealViewModel>>(deals);
 
             return this.View(dealsViewModel);
         }
