@@ -4,7 +4,6 @@ namespace ABV_Invest.Services.Tests
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using BindingModels;
     using Contracts;
     using Data;
     using DTOs;
@@ -12,7 +11,6 @@ namespace ABV_Invest.Services.Tests
     using Microsoft.EntityFrameworkCore;
     using Models;
     using Moq;
-    using ViewModels;
     using Xunit;
 
     public class BalancesServiceTests
@@ -56,11 +54,14 @@ namespace ABV_Invest.Services.Tests
         [Fact]
         public async Task CreateBalanceForUser_ShouldCreateDailyBalanceForUser()
         {
+            // Arrange
             var expectedUserBalancesCount = 1;
 
+            // Act
             await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
             var actualUserBalancesCount = this.MoqUser.Object.Balances.Count;
 
+            // Assert
             Assert.Equal(expectedUserBalancesCount, actualUserBalancesCount);
             Assert.Contains(this.MoqUser.Object.Balances, b => b.Date == this.Date);
         }
@@ -68,56 +69,60 @@ namespace ABV_Invest.Services.Tests
         [Fact]
         public async Task CreateBalanceForUser_ShouldCreateBalanceForUser()
         {
+            // Act
             await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
 
+            // Assert
             Assert.NotNull(this.MoqUser.Object.Balances.SingleOrDefault(b => b.Date == this.Date)?.Balance);
         }
 
         [Fact]
         public async Task CreateBalanceForUser_ShouldReturnBalanceWithCorrectVirtualProfit()
         {
+            // Arrange
             var expectedVirtualProfit = 10000;
 
+            // Act
             await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
             var balance = this.MoqUser.Object.Balances.SingleOrDefault(b => b.Date == this.Date)?.Balance;
             var actualVirtualProfit = balance?.VirtualProfit;
 
+            // Assert
             Assert.Equal(expectedVirtualProfit, actualVirtualProfit);
         }
 
         [Fact]
         public async Task CreateBalanceForUser_ShouldReturnBalanceWithCorrectVirtualProfitPercentage()
         {
+            // Arrange
             var expectedVirtualProfitPercentage = 100;
 
+            // Act
             await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
             var balance = this.MoqUser.Object.Balances.SingleOrDefault(b => b.Date == this.Date)?.Balance;
             var actualVirtualProfitPercentage = balance?.VirtualProfitPercentage;
 
+            // Assert
             Assert.Equal(expectedVirtualProfitPercentage, actualVirtualProfitPercentage);
         }
 
         [Fact]
         public async Task GetUserDailyBalance_ShouldReturnBalance()
         {
+            // Arrange
             await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
-            var expectedUserBalance = new BalanceDto
-            {
-                AllSecuritiesTotalPriceBuy = 10000,
-                AllSecuritiesTotalMarketPrice = 20000,
-                VirtualProfit = 10000,
-                VirtualProfitPercentage = 100,
-                CurrencyCode = "BGN"
-            };
 
+            // Act
             var actualUserBalance = this.BalanacesService.GetUserDailyBalance<BalanceDto>(this.MoqUser.Object, this.Date);
 
+            // Assert
             Assert.NotNull(actualUserBalance);
         }
 
         [Fact]
         public async Task GetUserDailyBalance_ShouldReturnBalanceWithCorrectProfitFigures()
         {
+            // Arrange
             await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
             var expectedUserBalance = new BalanceDto
             {
@@ -128,10 +133,22 @@ namespace ABV_Invest.Services.Tests
                 CurrencyCode = "BGN"
             };
 
+            // Act
             var actualUserBalance = this.BalanacesService.GetUserDailyBalance<BalanceDto>(this.MoqUser.Object, this.Date);
 
+            // Assert
             Assert.Equal(expectedUserBalance.VirtualProfit, actualUserBalance.VirtualProfit);
             Assert.Equal(expectedUserBalance.VirtualProfitPercentage, actualUserBalance.VirtualProfitPercentage);
+        }
+
+        [Fact]
+        public void GetUserDailyBalance_ShouldNotReturnBalanceIfSuchDoesNotExist()
+        {
+            // Act
+            var actualUserBalance = this.BalanacesService.GetUserDailyBalance<BalanceDto>(this.MoqUser.Object, this.Date);
+
+            // Assert
+            Assert.Null(actualUserBalance);
         }
     }
 }

@@ -63,41 +63,23 @@
 
         public async Task<bool> CreateSecurity(string issuerName, string ISIN, string bfbCode, string currencyCode)
         {
-            if (this.Db.Securities.Any(s => s.ISIN == ISIN))
+            if (this.Db.Securities.Any(s => s.ISIN == ISIN || s.BfbCode == bfbCode))
             {
                 return false;
             }
 
-            var issuer = this.Db.Issuers.SingleOrDefault(i => i.Name == issuerName);
-            if (issuer == null)
-            {
-                issuer = new Issuer
-                {
-                    Name = issuerName
-                };
-                if (!DataValidator.IsValid(issuer))
-                {
-                    return false;
-                }
-
-                await this.Db.Issuers.AddAsync(issuer);
-                await this.Db.SaveChangesAsync();
-            }
+            var issuer = this.Db.Issuers.SingleOrDefault(i => i.Name == issuerName) ?? this.CreateIssuer(issuerName).GetAwaiter().GetResult();
 
             var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == currencyCode);
             if (currency == null)
             {
-                currency = new Currency
-                {
-                    Code = currencyCode
-                };
-                if (!DataValidator.IsValid(currency))
+                var result = this.CreateCurrency(currencyCode);
+                if (!result.Result)
                 {
                     return false;
                 }
 
-                await this.Db.Currencies.AddAsync(currency);
-                await this.Db.SaveChangesAsync();
+                currency = this.Db.Currencies.SingleOrDefault(c => c.Code == currencyCode);
             }
 
             var security = new Security
@@ -117,6 +99,23 @@
             await this.Db.SaveChangesAsync();
 
             return true;
+        }
+
+        private async Task<Issuer> CreateIssuer(string issuerName)
+        {
+            var issuer = new Issuer
+            {
+                Name = issuerName
+            };
+            if (!DataValidator.IsValid(issuer))
+            {
+                return null;
+            }
+
+            await this.Db.Issuers.AddAsync(issuer);
+            await this.Db.SaveChangesAsync();
+
+            return issuer;
         }
     }
 }

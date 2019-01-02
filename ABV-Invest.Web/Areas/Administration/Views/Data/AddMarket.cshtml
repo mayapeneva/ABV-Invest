@@ -8,7 +8,7 @@
 
 <div class="container bg-abvdarkgreen">
     <div class="col-md-6">
-        <h4>Попълнете името на пазара, който искате да добавите:</h4>
+        <h4>Попълнете името и MIC на пазара, който искате да добавите:</h4>
         <br />
         <section>
             <form method="post">
@@ -17,6 +17,11 @@
                     <label asp-for="@Model.Name">Пазар</label>
                     <input asp-for="@Model.Name" class="form-control" />
                     <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.MIC">Market Identifier Code</label>
+                    <input asp-for="@Model.MIC" class="form-control" />
+                    <span asp-validation-for="@Model.MIC" class="text-danger"></span>
                 </div>
                 <br />
                 <button type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen">Добави</button>
