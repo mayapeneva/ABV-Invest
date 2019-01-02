@@ -45,8 +45,9 @@
 
         public IActionResult Details(string date)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var balance = this.balancesService.GetUserDailyBalance<BalanceDto>(userId, date);
+            var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
+            var parsedDate = DateTime.Parse(date);
+            var balance = this.balancesService.GetUserDailyBalance<BalanceDto>(user, parsedDate);
 
             if (balance == null)
             {

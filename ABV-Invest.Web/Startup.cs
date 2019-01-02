@@ -36,9 +36,12 @@
         public void ConfigureServices(IServiceCollection services)
         {
             AutoMapperConfig.RegisterMappings(
-                typeof(Deal).Assembly,
-                typeof(DealsDto).Assembly,
-                typeof(DealsViewModel).Assembly,
+                typeof(PortfolioDto).Assembly,
+                typeof(PortfolioViewModel).Assembly,
+                typeof(DealDto).Assembly,
+                typeof(DealViewModel).Assembly,
+                typeof(BalanceDto).Assembly,
+                typeof(BalanceViewModel).Assembly,
                 typeof(DateChosenBindingModel).Assembly);
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -57,8 +60,7 @@
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
-            services.AddAutoMapper();
-            services.AddAntiforgery();
+            services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

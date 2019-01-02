@@ -35,9 +35,9 @@
         [Column(TypeName = "decimal(18, 4)")]
         public decimal VirtualProfitPercentage { get; private set; }
 
-        public void SetBalanceFigures(DateTime date)
+        public void SetBalanceFigures(AbvInvestUser user, DateTime date)
         {
-            this.UsersPortfolio = this.DaiyBalance.AbvInvestUser.Portfolio.SingleOrDefault(p => p.Date.ToString("dd/MM/yyyy") == date.ToString("dd/MM/yyyy"))?.SecuritiesPerIssuerCollection;
+            this.UsersPortfolio = user.Portfolio.SingleOrDefault(p => p.Date.ToString("dd/MM/yyyy") == date.ToString("dd/MM/yyyy"))?.SecuritiesPerIssuerCollection;
 
             if (this.UsersPortfolio != null)
             {

@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using Base;
-    using Common;
     using Contracts;
     using Data;
     using Models;
@@ -24,34 +23,23 @@
                 Date = date,
                 Balance = new Balance()
             };
-            if (!DataValidator.IsValid(dailyBalance))
-            {
-                return;
-            }
 
             user.Balances.Add(dailyBalance);
             await this.Db.SaveChangesAsync();
 
-            dailyBalance.Balance.SetBalanceFigures(date);
+            dailyBalance.Balance.SetBalanceFigures(user, date);
             await this.Db.SaveChangesAsync();
         }
 
-        public T GetUserDailyBalance<T>(string userId, string chosenDate)
+        public T GetUserDailyBalance<T>(AbvInvestUser user, DateTime date)
         {
-            var ifParsed = DateTime.TryParse(chosenDate, out DateTime date);
-            if (!ifParsed)
+            var dailyBalance = user.Balances.SingleOrDefault(b => b.Date == date);
+            if (dailyBalance == null)
             {
                 return default(T);
             }
 
-            var balance = this.Db.Balances.SingleOrDefault(b =>
-                b.DaiyBalance.AbvInvestUserId == userId && b.DaiyBalance.Date == date);
-            if (balance == null)
-            {
-                return default(T);
-            }
-
-            return Mapper.Map<T>(balance);
+            return Mapper.Map<T>(dailyBalance.Balance);
         }
     }
 }

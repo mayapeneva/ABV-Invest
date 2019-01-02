@@ -8,6 +8,6 @@
     {
         Task CreateBalanceForUser(AbvInvestUser user, DateTime date);
 
-        T GetUserDailyBalance<T>(string userId, string chosenDate);
+        T GetUserDailyBalance<T>(AbvInvestUser user, DateTime date);
     }
 }
