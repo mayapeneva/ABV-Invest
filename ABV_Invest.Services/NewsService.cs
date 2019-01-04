@@ -106,7 +106,7 @@
                         Summary = feed["description"].InnerText
                     };
 
-                    var ifParsed = DateTime.TryParseExact(feed["pubDate"].InnerText.ToLower(), Constants.DateTimeParseFormat, CultureInfo.GetCultureInfo("bg-BG"), DateTimeStyles.AssumeLocal, out DateTime pubDate);
+                    var ifParsed = DateTime.TryParseExact(feed["pubDate"].InnerText.ToLower(), Constants.DateTimeParseFormat, CultureInfo.GetCultureInfo("bg-BG"), DateTimeStyles.AdjustToUniversal, out DateTime pubDate);
                     if (ifParsed)
                     {
                         model.PublishedDate = pubDate;

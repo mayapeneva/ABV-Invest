@@ -15,28 +15,28 @@ namespace ABV_Invest.Services.Tests
 
     public class BalancesServiceTests
     {
-        private readonly AbvDbContext Db;
-        private readonly IBalancesService BalanacesService;
-        private readonly Mock<AbvInvestUser> MoqUser;
-        private readonly DateTime Date = new DateTime(2018, 12, 28);
+        private readonly AbvDbContext db;
+        private readonly IBalancesService balanacesService;
+
+        private readonly Mock<AbvInvestUser> moqUser;
+        private readonly DateTime date = new DateTime(2018, 12, 28);
 
         public BalancesServiceTests()
         {
             var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABV")
                 .Options;
-            this.Db = new AbvDbContext(options);
+            this.db = new AbvDbContext(options);
 
             AutoMapperConfig.RegisterMappings(
                 typeof(BalanceDto).Assembly);
 
-            this.BalanacesService = new BalancesService(this.Db);
+            this.balanacesService = new BalancesService(this.db);
 
-            var date = new DateTime(2018, 12, 28);
-            this.MoqUser = new Mock<AbvInvestUser>();
-            this.MoqUser.Setup(u => u.Balances).Returns(new HashSet<DailyBalance>());
-            this.MoqUser.Setup(u => u.Portfolio).Returns(new HashSet<DailySecuritiesPerClient> { new DailySecuritiesPerClient
+            this.moqUser = new Mock<AbvInvestUser>();
+            this.moqUser.Setup(u => u.Balances).Returns(new HashSet<DailyBalance>());
+            this.moqUser.Setup(u => u.Portfolio).Returns(new HashSet<DailySecuritiesPerClient> { new DailySecuritiesPerClient
             {
-                Date = date,
+                Date = this.date,
                 SecuritiesPerIssuerCollection = new HashSet<SecuritiesPerClient> { new SecuritiesPerClient
                     {
                         Quantity = 100,
@@ -48,7 +48,18 @@ namespace ABV_Invest.Services.Tests
                         ProfitPercentàge = 100,
                         PortfolioShare = 10
                     }
-                }}});
+                }
+            }});
+        }
+
+        [Fact]
+        public async Task CreateBalanceForUser_ShouldNotCreateDailyBalanceForUserForSameDate()
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
         }
 
         [Fact]
@@ -58,22 +69,22 @@ namespace ABV_Invest.Services.Tests
             var expectedUserBalancesCount = 1;
 
             // Act
-            await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
-            var actualUserBalancesCount = this.MoqUser.Object.Balances.Count;
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            var actualUserBalancesCount = this.moqUser.Object.Balances.Count;
 
             // Assert
             Assert.Equal(expectedUserBalancesCount, actualUserBalancesCount);
-            Assert.Contains(this.MoqUser.Object.Balances, b => b.Date == this.Date);
+            Assert.Contains(this.moqUser.Object.Balances, b => b.Date == this.date);
         }
 
         [Fact]
         public async Task CreateBalanceForUser_ShouldCreateBalanceForUser()
         {
             // Act
-            await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
 
             // Assert
-            Assert.NotNull(this.MoqUser.Object.Balances.SingleOrDefault(b => b.Date == this.Date)?.Balance);
+            Assert.NotNull(this.moqUser.Object.Balances.SingleOrDefault(b => b.Date == this.date)?.Balance);
         }
 
         [Fact]
@@ -83,8 +94,8 @@ namespace ABV_Invest.Services.Tests
             var expectedVirtualProfit = 10000;
 
             // Act
-            await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
-            var balance = this.MoqUser.Object.Balances.SingleOrDefault(b => b.Date == this.Date)?.Balance;
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            var balance = this.moqUser.Object.Balances.SingleOrDefault(b => b.Date == this.date)?.Balance;
             var actualVirtualProfit = balance?.VirtualProfit;
 
             // Assert
@@ -98,8 +109,8 @@ namespace ABV_Invest.Services.Tests
             var expectedVirtualProfitPercentage = 100;
 
             // Act
-            await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
-            var balance = this.MoqUser.Object.Balances.SingleOrDefault(b => b.Date == this.Date)?.Balance;
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            var balance = this.moqUser.Object.Balances.SingleOrDefault(b => b.Date == this.date)?.Balance;
             var actualVirtualProfitPercentage = balance?.VirtualProfitPercentage;
 
             // Assert
@@ -110,10 +121,10 @@ namespace ABV_Invest.Services.Tests
         public async Task GetUserDailyBalance_ShouldReturnBalance()
         {
             // Arrange
-            await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
 
             // Act
-            var actualUserBalance = this.BalanacesService.GetUserDailyBalance<BalanceDto>(this.MoqUser.Object, this.Date);
+            var actualUserBalance = this.balanacesService.GetUserDailyBalance<BalanceDto>(this.moqUser.Object, this.date);
 
             // Assert
             Assert.NotNull(actualUserBalance);
@@ -123,18 +134,15 @@ namespace ABV_Invest.Services.Tests
         public async Task GetUserDailyBalance_ShouldReturnBalanceWithCorrectProfitFigures()
         {
             // Arrange
-            await this.BalanacesService.CreateBalanceForUser(this.MoqUser.Object, this.Date);
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
             var expectedUserBalance = new BalanceDto
             {
-                AllSecuritiesTotalPriceBuy = 10000,
-                AllSecuritiesTotalMarketPrice = 20000,
                 VirtualProfit = 10000,
                 VirtualProfitPercentage = 100,
-                CurrencyCode = "BGN"
             };
 
             // Act
-            var actualUserBalance = this.BalanacesService.GetUserDailyBalance<BalanceDto>(this.MoqUser.Object, this.Date);
+            var actualUserBalance = this.balanacesService.GetUserDailyBalance<BalanceDto>(this.moqUser.Object, this.date);
 
             // Assert
             Assert.Equal(expectedUserBalance.VirtualProfit, actualUserBalance.VirtualProfit);
@@ -145,7 +153,7 @@ namespace ABV_Invest.Services.Tests
         public void GetUserDailyBalance_ShouldNotReturnBalanceIfSuchDoesNotExist()
         {
             // Act
-            var actualUserBalance = this.BalanacesService.GetUserDailyBalance<BalanceDto>(this.MoqUser.Object, this.Date);
+            var actualUserBalance = this.balanacesService.GetUserDailyBalance<BalanceDto>(this.moqUser.Object, this.date);
 
             // Assert
             Assert.Null(actualUserBalance);

@@ -5,21 +5,20 @@
     using Contracts;
     using Data;
     using Microsoft.EntityFrameworkCore;
-    using Models;
     using Xunit;
 
     public class DataServiceTests
     {
-        private readonly AbvDbContext Db;
-        private readonly IDataService DataService;
+        private readonly AbvDbContext db;
+        private readonly IDataService dataService;
 
         public DataServiceTests()
         {
             var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABV")
                 .Options;
-            this.Db = new AbvDbContext(options);
+            this.db = new AbvDbContext(options);
 
-            this.DataService = new DataService(this.Db);
+            this.dataService = new DataService(this.db);
         }
 
         [Fact]
@@ -30,12 +29,12 @@
             var expectedCurrenciesCount = 1;
 
             // Act
-            await this.DataService.CreateCurrency(currencyCode);
-            var actualCurrenciesCount = this.Db.Currencies.Count();
+            await this.dataService.CreateCurrency(currencyCode);
+            var actualCurrenciesCount = this.db.Currencies.Count();
 
             // Assert
             Assert.Equal(expectedCurrenciesCount, actualCurrenciesCount);
-            Assert.Contains(this.Db.Currencies, c => c.Code == currencyCode);
+            Assert.Contains(this.db.Currencies, c => c.Code == currencyCode);
         }
 
         [Fact]
@@ -43,11 +42,11 @@
         {
             // Arrange
             var currencyCode = "USD";
-            await this.DataService.CreateCurrency(currencyCode);
+            await this.dataService.CreateCurrency(currencyCode);
             var expected = false;
 
             // Act
-            var actual = this.DataService.CreateCurrency(currencyCode).GetAwaiter().GetResult();
+            var actual = this.dataService.CreateCurrency(currencyCode).GetAwaiter().GetResult();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -61,7 +60,7 @@
             var expected = false;
 
             // Act
-            var actual = this.DataService.CreateCurrency(currencyCode).GetAwaiter().GetResult();
+            var actual = this.dataService.CreateCurrency(currencyCode).GetAwaiter().GetResult();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -76,12 +75,12 @@
             var expectedMarketsCount = 1;
 
             // Act
-            await this.DataService.CreateMarket(marketName, marketCode);
-            var actualMarketsCount = this.Db.Markets.Count();
+            await this.dataService.CreateMarket(marketName, marketCode);
+            var actualMarketsCount = this.db.Markets.Count();
 
             // Assert
             Assert.Equal(expectedMarketsCount, actualMarketsCount);
-            Assert.Contains(this.Db.Markets, c => c.MIC == marketCode);
+            Assert.Contains(this.db.Markets, c => c.MIC == marketCode);
         }
 
         [Fact]
@@ -90,11 +89,11 @@
             // Arrange
             var marketName = "БФБ";
             var marketCode = "XBUL";
-            await this.DataService.CreateMarket(marketName, marketCode);
+            await this.dataService.CreateMarket(marketName, marketCode);
             var expected = false;
 
             // Act
-            var actual = this.DataService.CreateMarket(marketName, marketName).GetAwaiter().GetResult();
+            var actual = this.dataService.CreateMarket(marketName, marketName).GetAwaiter().GetResult();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -109,7 +108,7 @@
             var expected = false;
 
             // Act
-            var actual = this.DataService.CreateMarket(marketName, marketCode).GetAwaiter().GetResult();
+            var actual = this.dataService.CreateMarket(marketName, marketCode).GetAwaiter().GetResult();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -126,13 +125,13 @@
             var expectedSecuritiesCount = 1;
 
             // Act
-            await this.DataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
-            var actualSecuritiesCount = this.Db.Securities.Count();
+            await this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
+            var actualSecuritiesCount = this.db.Securities.Count();
 
             // Assert
             Assert.Equal(expectedSecuritiesCount, actualSecuritiesCount);
-            Assert.Contains(this.Db.Securities, c => c.ISIN == ISIN);
-            Assert.Contains(this.Db.Securities, c => c.BfbCode == bfbCode);
+            Assert.Contains(this.db.Securities, c => c.ISIN == ISIN);
+            Assert.Contains(this.db.Securities, c => c.BfbCode == bfbCode);
         }
 
         [Fact]
@@ -143,11 +142,11 @@
             var ISIN = "BG1100008983";
             var bfbCode = "HSOF";
             var currencyCode = "USD";
-            await this.DataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
+            await this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
             var expected = false;
 
             // Act
-            var actual = this.DataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode).GetAwaiter().GetResult();
+            var actual = this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode).GetAwaiter().GetResult();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -163,10 +162,10 @@
             var currencyCode = "USD";
 
             // Act
-            await this.DataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
+            await this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
 
             // Assert
-            Assert.Contains(this.Db.Issuers, i => i.Name == issuerName);
+            Assert.Contains(this.db.Issuers, i => i.Name == issuerName);
         }
 
         [Fact]
@@ -179,10 +178,10 @@
             var currencyCode = "USD";
 
             // Act
-            await this.DataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
+            await this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
 
             // Assert
-            Assert.Contains(this.Db.Currencies, i => i.Code == currencyCode);
+            Assert.Contains(this.db.Currencies, i => i.Code == currencyCode);
         }
 
         [Fact]
@@ -196,7 +195,7 @@
             var expected = false;
 
             // Act
-            var actual = this.DataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode).GetAwaiter().GetResult();
+            var actual = this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode).GetAwaiter().GetResult();
 
             // Assert
             Assert.Equal(expected, actual);

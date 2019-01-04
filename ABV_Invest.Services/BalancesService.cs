@@ -16,8 +16,13 @@
         {
         }
 
-        public async Task CreateBalanceForUser(AbvInvestUser user, DateTime date)
+        public async Task<bool> CreateBalanceForUser(AbvInvestUser user, DateTime date)
         {
+            if (user.Balances.Any(b => b.Date == date))
+            {
+                return false;
+            }
+
             var dailyBalance = new DailyBalance
             {
                 Date = date,
@@ -29,6 +34,8 @@
 
             dailyBalance.Balance.SetBalanceFigures(user, date);
             await this.Db.SaveChangesAsync();
+
+            return true;
         }
 
         public T GetUserDailyBalance<T>(AbvInvestUser user, DateTime date)
