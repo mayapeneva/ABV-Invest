@@ -14,8 +14,6 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
     using Common;
     using Data;
-    using DTOs;
-    using Services.Contracts;
 
     [AllowAnonymous]
     public class LoginModel : PageModel

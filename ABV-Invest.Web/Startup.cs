@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using ABV_Invest.Models;
-    using AutoMapper;
     using BindingModels;
     using Data;
     using DTOs;

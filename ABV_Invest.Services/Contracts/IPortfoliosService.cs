@@ -4,10 +4,11 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using BindingModels.Uploads.Portfolios;
+    using Models;
 
     public interface IPortfoliosService
     {
-        T[] GetUserDailyPortfolio<T>(string userId, string chosenDate);
+        T[] GetUserDailyPortfolio<T>(AbvInvestUser user, string chosenDate);
 
         Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date);
     }

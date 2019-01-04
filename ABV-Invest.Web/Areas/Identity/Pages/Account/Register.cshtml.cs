@@ -13,8 +13,6 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
     using System.Linq;
     using Common;
-    using DTOs;
-    using Services.Contracts;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel

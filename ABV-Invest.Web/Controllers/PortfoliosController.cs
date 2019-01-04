@@ -46,8 +46,8 @@
 
         public IActionResult Details(string date)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(userId, date);
+            var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
+            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(user, date);
 
             if (portfolio == null)
             {
