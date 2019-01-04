@@ -9,7 +9,6 @@
     using Common;
     using Contracts;
     using Data;
-    using Microsoft.AspNetCore.Identity;
     using Models;
     using Mapper = AutoMapper.Mapper;
 
@@ -19,30 +18,24 @@
         private const string initialPIN = "00001";
         private const string initialEmail = "client@abv.bg";
 
-        private readonly UserManager<AbvInvestUser> userManager;
         private readonly IBalancesService balancesService;
+        private readonly IDataService dataService;
 
-        public PortfoliosService(AbvDbContext db, UserManager<AbvInvestUser> userManager, IBalancesService balancesService)
+        public PortfoliosService(AbvDbContext db, IBalancesService balancesService, IDataService dataService)
             : base(db)
         {
-            this.userManager = userManager;
             this.balancesService = balancesService;
+            this.dataService = dataService;
         }
 
-        public T[] GetUserDailyPortfolio<T>(string userId, string chosenDate)
+        public T[] GetUserDailyPortfolio<T>(AbvInvestUser user, string chosenDate)
         {
-            var ifParsed = DateTime.TryParse(chosenDate, out DateTime date);
-            if (!ifParsed)
-            {
-                return null;
-            }
-
-            var portfolio = this.Db.DailySecuritiesPerClient.SingleOrDefault(p =>
-                p.AbvInvestUserId == userId && p.Date == date);
-
-            var collection = portfolio?.SecuritiesPerIssuerCollection.Select(Mapper.Map<T>).ToArray();
-
-            return collection;
+            var date = DateTime.Parse(chosenDate);
+            return user.Portfolio
+                .SingleOrDefault(p => p.Date == date)?
+                .SecuritiesPerIssuerCollection
+                .Select(Mapper.Map<T>)
+                .ToArray();
         }
 
         public async Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date)
@@ -60,18 +53,18 @@
                     continue;
                 }
 
-                // Check if there is a DailySecuritiesEntity created for this User and date already
-                if (this.Db.DailySecuritiesPerClient.Any(ds => ds.AbvInvestUserId == user.Id && ds.Date == date))
-                {
-                    continue;
-                }
-
                 // Create new DailySecuritiesEntity
                 var dbPortfolio = new DailySecuritiesPerClient
                 {
                     Date = date,
                     SecuritiesPerIssuerCollection = new HashSet<SecuritiesPerClient>()
                 };
+
+                // Check if there is a DailySecuritiesEntity created for this User and date already
+                if (this.Db.DailySecuritiesPerClient.Any(ds => ds.AbvInvestUserId == user.Id && ds.Date == date))
+                {
+                    dbPortfolio = this.Db.DailySecuritiesPerClient.Single(ds => ds.AbvInvestUserId == user.Id && ds.Date == date);
+                }
 
                 // Create all SecuritiesPerClient for this User
                 foreach (var portfolioRow in portfolio)
@@ -82,22 +75,43 @@
                         user.FullName = portfolioRow.Client.Name;
                     }
 
-                    // Check if such security exists
+                    // Check if such security exists and if not create it
                     var security =
                         this.Db.Securities.SingleOrDefault(s => s.ISIN == portfolioRow.Instrument.ISIN);
                     if (security == null)
                     {
-                        continue;
+                        var securityInfo = portfolioRow.Instrument;
+                        var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode,
+                            securityInfo.Currency);
+                        if (!securityResult.Result)
+                        {
+                            continue;
+                        }
+
+                        security = this.Db.Securities.Single(s => s.ISIN == portfolioRow.Instrument.ISIN);
                     }
 
-                    // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
-                    var quantity = decimal.Parse(portfolioRow.AccountData.Quantity.Replace(" ", ""));
-                    var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == portfolioRow.Instrument.Currency);
-                    if (currency == null)
+                    // Check if such portfolioRow already exists in the usersPortfolio for this date
+                    if (dbPortfolio.SecuritiesPerIssuerCollection.Any(sc => sc.Security.ISIN == security.ISIN))
                     {
                         continue;
                     }
 
+                    // Check if such currency exists and if not create it
+                    var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == portfolioRow.Instrument.Currency);
+                    if (currency == null)
+                    {
+                        var currencyResult = this.dataService.CreateCurrency(portfolioRow.Instrument.Currency);
+                        if (!currencyResult.Result)
+                        {
+                            continue;
+                        }
+
+                        currency = this.Db.Currencies.Single(c => c.Code == portfolioRow.Instrument.Currency);
+                    }
+
+                    // Parse all decimal figures in order to create the SecuritiesPerClient
+                    var quantity = decimal.Parse(portfolioRow.AccountData.Quantity.Replace(" ", ""));
                     var averagePriceBuy = decimal.Parse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""));
                     var marketPrice = decimal.Parse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""));
                     var totalMarketPrice = decimal.Parse(portfolioRow.AccountData.MarketValue.Replace(" ", ""));
@@ -105,6 +119,8 @@
                     var profitInBGN = decimal.Parse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""));
                     var profitPercent = decimal.Parse(portfolioRow.Other.YieldPercent.Replace(" ", ""));
                     var portfolioShare = decimal.Parse(portfolioRow.Other.RelativePart.Replace(" ", ""));
+
+                    // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
                     var securitiesPerClient = new SecuritiesPerClient
                     {
                         Security = security,
@@ -128,7 +144,7 @@
                 }
 
                 // Validate portfolio and add it to user's Portfolios
-                if (!DataValidator.IsValid(dbPortfolio))
+                if (!DataValidator.IsValid(dbPortfolio) || !dbPortfolio.SecuritiesPerIssuerCollection.Any())
                 {
                     continue;
                 }
