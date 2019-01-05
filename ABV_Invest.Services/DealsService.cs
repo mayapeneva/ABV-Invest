@@ -18,10 +18,12 @@
     public class DealsService : BaseService, IDealsService
     {
         private readonly UserManager<AbvInvestUser> userManager;
+        private readonly IDataService dataService;
 
-        public DealsService(AbvDbContext db, UserManager<AbvInvestUser> userManager) : base(db)
+        public DealsService(AbvDbContext db, UserManager<AbvInvestUser> userManager, IDataService dataService) : base(db)
         {
             this.userManager = userManager;
+            this.dataService = dataService;
         }
 
         public T[] GetUserDailyDeals<T>(ClaimsPrincipal user, string chosenDate)
@@ -66,43 +68,65 @@
                 // Create all Deals for this User
                 foreach (var dealRow in deal)
                 {
-                    // Check if such security exists
+                    // Check if such security exists and if not create it
                     var security =
                         this.Db.Securities.SingleOrDefault(s => s.ISIN == dealRow.Instrument.ISIN);
                     if (security == null)
                     {
-                        continue;
+                        var securityInfo = dealRow.Instrument;
+                        var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode,
+                            securityInfo.Currency);
+                        if (!securityResult.Result)
+                        {
+                            continue;
+                        }
+
+                        security = this.Db.Securities.Single(s => s.ISIN == dealRow.Instrument.ISIN);
                     }
 
-                    // Create the Deal and add it to the DailyDeals
-                    var dealType = dealRow.DealData.Operation == "BUY" ? DealType.Купува : DealType.Продава;
-                    var quantity = decimal.Parse(dealRow.DealData.ShareCount.Replace(" ", ""));
-                    var price = decimal.Parse(dealRow.DealData.SinglePrice.Replace(" ", ""));
-                    var coupon = decimal.Parse(dealRow.DealData.Coupon.Replace(" ", ""));
-                    var totalPrice = decimal.Parse(dealRow.DealData.DealAmountInShareCurrency.Replace(" ", ""));
-                    var totalPriceInBGN = decimal.Parse(dealRow.DealData.DealAmountInPaymentCurrency.Replace(" ", ""));
-                    var fee = decimal.Parse(dealRow.DealData.CommissionInPaymentCurrency.Replace(" ", ""));
+                    // Check if such currency exists and if not create it
                     var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == dealRow.Instrument.Currency);
                     if (currency == null)
                     {
-                        continue;
+                        var currencyResult = this.dataService.CreateCurrency(dealRow.Instrument.Currency);
+                        if (!currencyResult.Result)
+                        {
+                            continue;
+                        }
+
+                        currency = this.Db.Currencies.Single(c => c.Code == dealRow.Instrument.Currency);
                     }
 
-                    var ifParsed = DateTime.TryParse(dealRow.DealData.DeliveryDate, out DateTime settlement);
-                    if (!ifParsed)
-                    {
-                        continue;
-                    }
-
+                    // Check if such market exists
                     var market = this.Db.Markets.SingleOrDefault(m => m.MIC == dealRow.DealData.StockExchangeMIC);
                     if (market == null)
                     {
                         continue;
                     }
 
+                    // Parse all dates, enums and decimal figures in order to create the Deal
+                    var ifDealTypeParsed = dealRow.DealData.Operation == "BUY" || dealRow.DealData.Operation == "SELL";
+                    var dealType = dealRow.DealData.Operation == "BUY" ? DealType.Купува : DealType.Продава;
+                    var ifQuantityParsed = decimal.TryParse(dealRow.DealData.ShareCount.Replace(" ", ""), out var quantity);
+                    var ifPriceParsed = decimal.TryParse(dealRow.DealData.SinglePrice.Replace(" ", ""), out var price);
+                    var ifCouponParsed = decimal.TryParse(dealRow.DealData.Coupon.Replace(" ", ""), out var coupon);
+                    var ifTotalPriceParsed = decimal.TryParse(dealRow.DealData.DealAmountInShareCurrency.Replace(" ", ""), out var totalPrice);
+                    var ifTotalPriceInBGNParsed = decimal.TryParse(dealRow.DealData.DealAmountInPaymentCurrency.Replace(" ", ""), out var totalPriceInBGN);
+                    var ifFeeParsed = decimal.TryParse(dealRow.DealData.CommissionInPaymentCurrency.Replace(" ", ""), out var fee);
+                    var ifSettlementParsed = DateTime.TryParse(dealRow.DealData.DeliveryDate, out DateTime settlement);
+
+                    if (!ifDealTypeParsed || !ifQuantityParsed ||
+                        !ifPriceParsed || !ifCouponParsed ||
+                        !ifTotalPriceParsed || !ifTotalPriceInBGNParsed ||
+                        !ifFeeParsed || !ifSettlementParsed)
+                    {
+                        continue;
+                    }
+
+                    // Create the Deal and add it to the DailyDeals
                     var dbDeal = new Deal
                     {
-                        DealType = dealType,
+                        DealType = (DealType)dealType,
                         Security = security,
                         Quantity = quantity,
                         Price = price,
@@ -124,7 +148,7 @@
                 }
 
                 // Validate dailyDeals and add them to user's Deals
-                if (!DataValidator.IsValid(dbDailyDeals))
+                if (!DataValidator.IsValid(dbDailyDeals) || !dbDailyDeals.Deals.Any())
                 {
                     continue;
                 }

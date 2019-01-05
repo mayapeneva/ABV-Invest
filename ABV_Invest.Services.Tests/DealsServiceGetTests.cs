@@ -27,7 +27,7 @@
 
         public DealsServiceGetTests()
         {
-            var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABV")
+            var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABVInvest")
                 .Options;
             this.db = new AbvDbContext(options);
 
@@ -56,7 +56,8 @@
             var userManager = new Mock<UserManager<AbvInvestUser>>(mockUserStore.Object, null, null, null, null, null, null, null, null);
             this.principal = new ClaimsPrincipal();
             userManager.Setup(um => um.GetUserAsync(this.principal)).Returns(Task.FromResult(this.moqUser.Object));
-            this.dealsService = new DealsService(this.db, userManager.Object);
+            var dataService = new DataService(this.db);
+            this.dealsService = new DealsService(this.db, userManager.Object, dataService);
         }
 
         [Fact]

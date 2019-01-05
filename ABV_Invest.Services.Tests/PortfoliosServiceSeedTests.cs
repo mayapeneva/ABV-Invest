@@ -48,12 +48,12 @@
                 this.db.SaveChanges();
             }
 
-            var balancesService = new BalancesService(this.db);
-            var dataService = new DataService(this.db);
             var mockUserStore = new Mock<IUserStore<AbvInvestUser>>();
             var userManager = new Mock<UserManager<AbvInvestUser>>(mockUserStore.Object, null, null, null, null, null, null, null, null);
             var moqUser = new Mock<AbvInvestUser>();
             userManager.Setup(um => um.GetUserAsync(new ClaimsPrincipal())).Returns(Task.FromResult(moqUser.Object));
+            var balancesService = new BalancesService(this.db);
+            var dataService = new DataService(this.db);
             this.portfoliosService = new PortfoliosService(this.db, userManager.Object, balancesService, dataService);
 
             var fileName = "../../../Files/Portfolios/Portfolios.xml";
@@ -93,10 +93,10 @@
 
             // Act
             await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var portfolioUser = this.db.DailySecuritiesPerClient.SingleOrDefault(ds => ds.AbvInvestUser.UserName == userName);
+            var usersPortfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(ds => ds.AbvInvestUser.UserName == userName);
 
             // Assert
-            Assert.Null(portfolioUser);
+            Assert.Null(usersPortfolio);
         }
 
         [Fact]
@@ -208,7 +208,6 @@
 
             var date = new DateTime(2018, 12, 08);
             var currencyCode = "EUR";
-            var cur = this.db.Currencies;
 
             // Act
             await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
