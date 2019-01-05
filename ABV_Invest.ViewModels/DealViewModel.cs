@@ -1,9 +1,12 @@
 ﻿namespace ABV_Invest.ViewModels
 {
+    using System.Globalization;
+    using AutoMapper;
     using DTOs;
     using Mapping.Contracts;
+    using Models;
 
-    public class DealViewModel : IMapFrom<DealDto>
+    public class DealViewModel : IMapFrom<DealDto>, ICustomMap
     {
         public string DealType { get; set; }
 
@@ -11,18 +14,29 @@
 
         public string SecurityBfbCode { get; set; }
 
-        public int Quantity { get; set; }
+        public string Quantity { get; set; }
 
         public string Price { get; set; }
 
-        public decimal TotalPrice { get; set; }
+        public string TotalPrice { get; set; }
 
-        public decimal Fee { get; set; }
+        public string Fee { get; set; }
 
         public string CurrencyCode { get; set; }
 
         public string Settlement { get; set; }
 
         public string MarketName { get; set; }
+
+        public void CreateMappings(IMapperConfigurationExpression configuration)
+        {
+            configuration.CreateMap<DealDto, DealViewModel>()
+                .ForMember(dest => dest.DealType, opt => opt.MapFrom(src => src.DealType.ToString()))
+                .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity.ToString("N", CultureInfo.CreateSpecificCulture("sv-SE"))))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price.ToString("N3", CultureInfo.CreateSpecificCulture("sv-SE"))))
+                .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.TotalPrice.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"))))
+                .ForMember(dest => dest.Fee, opt => opt.MapFrom(src => src.Fee.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"))))
+                .ForMember(dest => dest.Settlement, opt => opt.MapFrom(src => src.Settlement.ToString("dd/MM/yyyy")));
+        }
     }
 }
