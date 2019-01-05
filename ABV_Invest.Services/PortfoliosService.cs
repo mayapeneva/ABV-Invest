@@ -3,12 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
     using Base;
     using BindingModels.Uploads.Portfolios;
     using Common;
     using Contracts;
     using Data;
+    using Microsoft.AspNetCore.Identity;
     using Models;
     using Mapper = AutoMapper.Mapper;
 
@@ -18,20 +20,22 @@
         private const string initialPIN = "00001";
         private const string initialEmail = "client@abv.bg";
 
+        private readonly UserManager<AbvInvestUser> userManager;
         private readonly IBalancesService balancesService;
         private readonly IDataService dataService;
 
-        public PortfoliosService(AbvDbContext db, IBalancesService balancesService, IDataService dataService)
-            : base(db)
+        public PortfoliosService(AbvDbContext db, UserManager<AbvInvestUser> userManager, IBalancesService balancesService, IDataService dataService) : base(db)
         {
+            this.userManager = userManager;
             this.balancesService = balancesService;
             this.dataService = dataService;
         }
 
-        public T[] GetUserDailyPortfolio<T>(AbvInvestUser user, string chosenDate)
+        public T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, string chosenDate)
         {
             var date = DateTime.Parse(chosenDate);
-            return user.Portfolio
+            var dbUser = this.userManager.GetUserAsync(user).GetAwaiter().GetResult();
+            return dbUser?.Portfolio
                 .SingleOrDefault(p => p.Date == date)?
                 .SecuritiesPerIssuerCollection
                 .Select(Mapper.Map<T>)

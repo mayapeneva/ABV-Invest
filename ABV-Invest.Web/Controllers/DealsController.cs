@@ -2,13 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using ABV_Invest.Models;
     using AutoMapper;
     using BindingModels;
     using Common;
     using DTOs;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Services.Contracts;
     using ViewModels;
@@ -16,12 +14,10 @@
     [Authorize]
     public class DealsController : Controller
     {
-        private readonly UserManager<AbvInvestUser> userManager;
         private readonly IDealsService dealsService;
 
-        public DealsController(UserManager<AbvInvestUser> userManager, IDealsService dealsService)
+        public DealsController(IDealsService dealsService)
         {
-            this.userManager = userManager;
             this.dealsService = dealsService;
         }
 
@@ -46,8 +42,7 @@
 
         public IActionResult Details(string date)
         {
-            var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
-            var deals = this.dealsService.GetUserDailyDeals<DealDto>(user, date);
+            var deals = this.dealsService.GetUserDailyDeals<DealDto>(this.User, date);
 
             if (deals == null)
             {

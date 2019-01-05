@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
     using AutoMapper;
     using Base;
@@ -10,22 +11,26 @@
     using Common;
     using Contracts;
     using Data;
+    using Microsoft.AspNetCore.Identity;
     using Models;
     using Models.Enums;
 
     public class DealsService : BaseService, IDealsService
     {
-        public DealsService(AbvDbContext db)
-            : base(db)
+        private readonly UserManager<AbvInvestUser> userManager;
+
+        public DealsService(AbvDbContext db, UserManager<AbvInvestUser> userManager) : base(db)
         {
+            this.userManager = userManager;
         }
 
-        public T[] GetUserDailyDeals<T>(AbvInvestUser user, string chosenDate)
+        public T[] GetUserDailyDeals<T>(ClaimsPrincipal user, string chosenDate)
         {
             var date = DateTime.Parse(chosenDate);
-            return user.Deals
-                .SingleOrDefault(p => p.Date == date)?
-                .Deals
+            var dbUser = this.userManager.GetUserAsync(user).GetAwaiter().GetResult();
+            return dbUser?.Deals
+                .SingleOrDefault(p => p.Date == date)
+                ?.Deals
                 .Select(Mapper.Map<T>)
                 .ToArray();
         }

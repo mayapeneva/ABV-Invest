@@ -1,16 +1,18 @@
 ﻿namespace ABV_Invest.Services.Tests
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
     using System.Xml.Serialization;
     using BindingModels.Uploads.Portfolios;
     using Contracts;
     using Data;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Models;
+    using Moq;
     using Xunit;
 
     public class PortfoliosServiceSeedTests
@@ -48,7 +50,11 @@
 
             var balancesService = new BalancesService(this.db);
             var dataService = new DataService(this.db);
-            this.portfoliosService = new PortfoliosService(this.db, balancesService, dataService);
+            var mockUserStore = new Mock<IUserStore<AbvInvestUser>>();
+            var userManager = new Mock<UserManager<AbvInvestUser>>(mockUserStore.Object, null, null, null, null, null, null, null, null);
+            var moqUser = new Mock<AbvInvestUser>();
+            userManager.Setup(um => um.GetUserAsync(new ClaimsPrincipal())).Returns(Task.FromResult(moqUser.Object));
+            this.portfoliosService = new PortfoliosService(this.db, userManager.Object, balancesService, dataService);
 
             var fileName = "../../../Files/Portfolios/Portfolios.xml";
             var xmlFileContent = File.ReadAllText(fileName);

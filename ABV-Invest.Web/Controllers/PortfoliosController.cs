@@ -2,13 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using ABV_Invest.Models;
     using AutoMapper;
     using BindingModels;
     using Common;
     using DTOs;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Services.Contracts;
     using ViewModels;
@@ -16,12 +14,10 @@
     [Authorize]
     public class PortfoliosController : Controller
     {
-        private readonly UserManager<AbvInvestUser> userManager;
         private readonly IPortfoliosService portfoliosService;
 
-        public PortfoliosController(UserManager<AbvInvestUser> userManager, IPortfoliosService portfoliosService)
+        public PortfoliosController(IPortfoliosService portfoliosService)
         {
-            this.userManager = userManager;
             this.portfoliosService = portfoliosService;
         }
 
@@ -46,9 +42,7 @@
 
         public IActionResult Details(string date)
         {
-            var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
-            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(user, date);
-
+            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, date);
             if (portfolio == null)
             {
                 this.ViewData["Error"] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
