@@ -50,7 +50,7 @@
             var dataService = new DataService(this.db);
             this.portfoliosService = new PortfoliosService(this.db, balancesService, dataService);
 
-            var fileName = "../../../Files/Portfolios.xml";
+            var fileName = "../../../Files/Portfolios/Portfolios.xml";
             var xmlFileContent = File.ReadAllText(fileName);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             this.deserializedPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -77,7 +77,7 @@
         public async Task _2_SeedPortfolios_ShouldNotCreatePortfolioForNonExistingUser()
         {
             // Arrange
-            var fileName2 = "../../../Files/Portfolios2.xml";
+            var fileName2 = "../../../Files/Portfolios/Portfolios2.xml";
             var xmlFileContent = File.ReadAllText(fileName2);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -120,7 +120,7 @@
             });
             this.db.SaveChanges();
 
-            var fileName3 = "../../../Files/Portfolios3.xml";
+            var fileName3 = "../../../Files/Portfolios/Portfolios3.xml";
             var xmlFileContent = File.ReadAllText(fileName3);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -140,7 +140,7 @@
         public async Task _5_SeedPortfolios_ShouldCreateSecurityIfItDoesNotExist()
         {
             // Arange
-            var fileName4 = "../../../Files/Portfolios4.xml";
+            var fileName4 = "../../../Files/Portfolios/Portfolios4.xml";
             var xmlFileContent = File.ReadAllText(fileName4);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -160,7 +160,7 @@
         public async Task _6_SeedPortfolios_ShouldNotCreateEntryIfSecurityHasWrongISIN()
         {
             // Arange
-            var fileName5 = "../../../Files/Portfolios5.xml";
+            var fileName5 = "../../../Files/Portfolios/Portfolios5.xml";
             var xmlFileContent = File.ReadAllText(fileName5);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -195,7 +195,7 @@
         public async Task _8_SeedPortfolios_ShouldCreateCurrencyIfItDoesNotExist()
         {
             // Arange
-            var fileName6 = "../../../Files/Portfolios6.xml";
+            var fileName6 = "../../../Files/Portfolios/Portfolios6.xml";
             var xmlFileContent = File.ReadAllText(fileName6);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -216,7 +216,7 @@
         public async Task _9_SeedPortfolios_ShouldNotCreateEntryIfCurrencyHasWrongCode()
         {
             // Arange
-            var fileName7 = "../../../Files/Portfolios7.xml";
+            var fileName7 = "../../../Files/Portfolios/Portfolios7.xml";
             var xmlFileContent = File.ReadAllText(fileName7);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
@@ -235,7 +235,7 @@
         public async Task _10_SeedPortfolios_ShouldNotCreateEntryIfAnyOfTheDecimalFiguresCoultNotBeParsed()
         {
             // Arange
-            var fileName8 = "../../../Files/Portfolios8.xml";
+            var fileName8 = "../../../Files/Portfolios/Portfolios8.xml";
             var xmlFileContent = File.ReadAllText(fileName8);
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));

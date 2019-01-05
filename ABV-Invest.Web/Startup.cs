@@ -66,7 +66,7 @@
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();
             services.AddScoped<IDealsService, DealsService>();
-            services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<RSSFeedParser, RSSFeedParser>();
             services.AddScoped<IBalancesService, BalancesService>();
             services.AddScoped<IDataService, DataService>();
 

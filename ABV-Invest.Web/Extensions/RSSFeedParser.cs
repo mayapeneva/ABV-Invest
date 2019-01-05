@@ -1,14 +1,13 @@
-﻿namespace ABV_Invest.Services
+﻿namespace ABV_Invest.Web.Extensions
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Xml;
     using Common;
-    using Contracts;
     using ViewModels;
 
-    public class NewsService : INewsService
+    public class RSSFeedParser
     {
         public void LoadNewsFromInvestor(List<RSSFeedViewModel> rssModels)
         {

@@ -3,29 +3,29 @@
     using System.Collections.Generic;
     using System.Linq;
     using Common;
+    using Extensions;
     using Microsoft.AspNetCore.Mvc;
-    using Services.Contracts;
     using ViewModels;
 
     public class NewsController : Controller
     {
-        private readonly INewsService newsService;
+        private readonly RSSFeedParser rssFeedParser;
 
-        public NewsController(INewsService newsService)
+        public NewsController(RSSFeedParser rssFeedParser)
         {
-            this.newsService = newsService;
+            this.rssFeedParser = rssFeedParser;
         }
 
         public IActionResult Load()
         {
             var rssModels = new List<RSSFeedViewModel>();
 
-            this.newsService.LoadNewsFromInvestor(rssModels);
+            this.rssFeedParser.LoadNewsFromInvestor(rssModels);
 
-            this.newsService.LoadNewsFromCapital(rssModels, Constants.CapitalRSS1);
-            this.newsService.LoadNewsFromCapital(rssModels, Constants.CapitalRSS2);
+            this.rssFeedParser.LoadNewsFromCapital(rssModels, Constants.CapitalRSS1);
+            this.rssFeedParser.LoadNewsFromCapital(rssModels, Constants.CapitalRSS2);
 
-            this.newsService.LoadNewsFromX3News(rssModels);
+            this.rssFeedParser.LoadNewsFromX3News(rssModels);
             if (!rssModels.Any())
             {
                 this.ViewData["Error"] = Messages.NoNews;
