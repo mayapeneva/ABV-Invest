@@ -111,14 +111,21 @@
                     }
 
                     // Parse all decimal figures in order to create the SecuritiesPerClient
-                    var quantity = decimal.Parse(portfolioRow.AccountData.Quantity.Replace(" ", ""));
-                    var averagePriceBuy = decimal.Parse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""));
-                    var marketPrice = decimal.Parse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""));
-                    var totalMarketPrice = decimal.Parse(portfolioRow.AccountData.MarketValue.Replace(" ", ""));
-                    var profit = decimal.Parse(portfolioRow.AccountData.Result.Replace(" ", ""));
-                    var profitInBGN = decimal.Parse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""));
-                    var profitPercent = decimal.Parse(portfolioRow.Other.YieldPercent.Replace(" ", ""));
-                    var portfolioShare = decimal.Parse(portfolioRow.Other.RelativePart.Replace(" ", ""));
+                    var ifQuantityParsed = decimal.TryParse(portfolioRow.AccountData.Quantity.Replace(" ", ""), out var quantity);
+                    var ifAveragePriceBuyParsed = decimal.TryParse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""), out var averagePriceBuy);
+                    var ifMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""), out var marketPrice);
+                    var ifTotalMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketValue.Replace(" ", ""), out var totalMarketPrice);
+                    var ifProfitParsed = decimal.TryParse(portfolioRow.AccountData.Result.Replace(" ", ""), out var profit);
+                    var ifProfitInBGNParsed = decimal.TryParse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""), out var profitInBGN);
+                    var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", ""), out var profitPercent);
+                    var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", ""), out var portfolioShare);
+                    if (!ifQuantityParsed || !ifAveragePriceBuyParsed ||
+                        !ifMarketPriceParsed || !ifTotalMarketPriceParsed ||
+                        !ifProfitParsed || !ifProfitInBGNParsed ||
+                        !ifProfitPercentParsed || !ifPortfolioShareParsed)
+                    {
+                        continue;
+                    }
 
                     // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
                     var securitiesPerClient = new SecuritiesPerClient

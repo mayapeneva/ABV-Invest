@@ -202,6 +202,7 @@
 
             var date = new DateTime(2018, 12, 08);
             var currencyCode = "EUR";
+            var cur = this.db.Currencies;
 
             // Act
             await this.portfoliosService.SeedPortfolios(deserPortfolios, date);

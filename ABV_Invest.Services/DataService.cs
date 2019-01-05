@@ -63,7 +63,7 @@
 
         public async Task<bool> CreateSecurity(string issuerName, string ISIN, string bfbCode, string currencyCode)
         {
-            if (this.Db.Securities.Any(s => s.ISIN == ISIN || s.BfbCode == bfbCode))
+            if (this.Db.Securities.Any(s => s.ISIN == ISIN))
             {
                 return false;
             }
