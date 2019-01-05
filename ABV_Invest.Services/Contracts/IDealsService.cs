@@ -3,10 +3,11 @@
     using System;
     using System.Threading.Tasks;
     using BindingModels.Uploads.Deals;
+    using Models;
 
     public interface IDealsService
     {
-        T[] GetUserDailyDeals<T>(string userId, string chosenDate);
+        T[] GetUserDailyDeals<T>(AbvInvestUser user, string chosenDate);
 
         Task<bool> SeedDeals(DealRowBindingModel[] deserializedDeals, DateTime date);
     }

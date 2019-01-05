@@ -20,20 +20,14 @@
         {
         }
 
-        public T[] GetUserDailyDeals<T>(string userId, string chosenDate)
+        public T[] GetUserDailyDeals<T>(AbvInvestUser user, string chosenDate)
         {
-            var ifParsed = DateTime.TryParse(chosenDate, out DateTime date);
-            if (!ifParsed)
-            {
-                return null;
-            }
-
-            var deals = this.Db.DailyDeals.SingleOrDefault(p =>
-                p.AbvInvestUserId == userId && p.Date == date);
-
-            var collection = deals?.Deals.Select(Mapper.Map<T>).ToArray();
-
-            return collection;
+            var date = DateTime.Parse(chosenDate);
+            return user.Deals
+                .SingleOrDefault(p => p.Date == date)?
+                .Deals
+                .Select(Mapper.Map<T>)
+                .ToArray();
         }
 
         public async Task<bool> SeedDeals(DealRowBindingModel[] deserializedDeals, DateTime date)

@@ -46,8 +46,8 @@
 
         public IActionResult Details(string date)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var deals = this.dealsService.GetUserDailyDeals<DealDto>(userId, date);
+            var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
+            var deals = this.dealsService.GetUserDailyDeals<DealDto>(user, date);
 
             if (deals == null)
             {

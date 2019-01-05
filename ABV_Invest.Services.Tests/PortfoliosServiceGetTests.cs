@@ -14,7 +14,7 @@
 
     public class PortfoliosServiceGetTests
     {
-        private const string Date = "28/12/2018";
+        private const string Date = "15/12/2018";
 
         private readonly AbvDbContext db;
         private readonly IPortfoliosService portfoliosService;
