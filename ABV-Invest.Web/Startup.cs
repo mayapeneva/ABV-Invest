@@ -19,7 +19,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Services;
     using Services.Contracts;
-    using Services.EmailSender;
+    using Common.EmailSender;
     using ViewModels;
 
     public class Startup

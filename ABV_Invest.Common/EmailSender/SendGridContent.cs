@@ -1,4 +1,4 @@
-﻿namespace ABV_Invest.Services.EmailSender
+﻿namespace ABV_Invest.Common.EmailSender
 {
     using Newtonsoft.Json;
 

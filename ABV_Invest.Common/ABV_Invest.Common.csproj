@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ABV-Invest.Models\ABV_Invest.Models.csproj" />
     <ProjectReference Include="..\ABV_Invest.DTOs\ABV_Invest.DTOs.csproj" />
     <ProjectReference Include="..\ABV_Invest.ViewModels\ABV_Invest.ViewModels.csproj" />
@@ -13,6 +17,9 @@
   <ItemGroup>
     <Reference Include="AutoMapper">
       <HintPath>..\..\..\..\Users\User\.nuget\packages\automapper\8.0.0\lib\netstandard2.0\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Identity.UI">
+      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.identity.ui\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Identity.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
 
