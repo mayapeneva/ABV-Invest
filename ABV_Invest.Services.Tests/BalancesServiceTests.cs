@@ -56,10 +56,15 @@ namespace ABV_Invest.Services.Tests
         public async Task CreateBalanceForUser_ShouldNotCreateDailyBalanceForUserForSameDate()
         {
             // Arrange
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            var expectedUserBalancesCount = 1;
 
             // Act
+            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            var actualUserBalancesCount = this.moqUser.Object.Balances.Count(b => b.Date == this.date);
 
             // Assert
+            Assert.Equal(expectedUserBalancesCount, actualUserBalancesCount);
         }
 
         [Fact]
