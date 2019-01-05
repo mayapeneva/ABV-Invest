@@ -1,7 +1,6 @@
 ﻿namespace ABV_Invest.Services.Base
 {
     using Data;
-    using DataAnotations = System.ComponentModel.DataAnnotations;
 
     public abstract class BaseService
     {

@@ -1,18 +1,19 @@
 ﻿namespace ABV_Invest.Services.Tests
 {
+    using BindingModels.Uploads.Portfolios;
+    using Contracts;
+    using Data;
+    using Models;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using Moq;
     using System;
     using System.IO;
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
     using System.Xml.Serialization;
-    using BindingModels.Uploads.Portfolios;
-    using Contracts;
-    using Data;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
-    using Models;
-    using Moq;
     using Xunit;
 
     public class PortfoliosServiceSeedTests

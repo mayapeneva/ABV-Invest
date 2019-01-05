@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace ABV_Invest.Web.Areas.Identity.Pages.Account
+﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+
     [AllowAnonymous]
     public class ForgotPasswordConfirmation : PageModel
     {

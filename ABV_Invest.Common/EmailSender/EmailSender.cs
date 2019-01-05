@@ -1,12 +1,12 @@
 ﻿namespace ABV_Invest.Common.EmailSender
 {
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Newtonsoft.Json;
     using System;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Newtonsoft.Json;
 
     public class EmailSender : IEmailSender
     {

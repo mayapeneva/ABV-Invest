@@ -1,10 +1,11 @@
 ﻿namespace ABV_Invest.Models
 {
+    using Base;
+
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using Base;
 
     public class Balance : BaseEntity<int>
     {

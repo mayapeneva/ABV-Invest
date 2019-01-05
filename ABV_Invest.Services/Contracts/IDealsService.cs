@@ -1,9 +1,10 @@
 ﻿namespace ABV_Invest.Services.Contracts
 {
+    using BindingModels.Uploads.Deals;
+
     using System;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using BindingModels.Uploads.Deals;
 
     public interface IDealsService
     {

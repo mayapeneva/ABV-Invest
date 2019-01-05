@@ -1,10 +1,10 @@
 ﻿namespace ABV_Invest.DTOs
 {
-    using System;
-    using AutoMapper;
     using Mapping.Contracts;
     using Models;
     using Models.Enums;
+
+    using System;
 
     public class DealDto : IMapFrom<Deal>
     {

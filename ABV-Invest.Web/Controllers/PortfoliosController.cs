@@ -1,15 +1,16 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using AutoMapper;
     using BindingModels;
     using Common;
     using DTOs;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
     using Services.Contracts;
     using ViewModels;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.Collections.Generic;
 
     [Authorize]
     public class PortfoliosController : Controller

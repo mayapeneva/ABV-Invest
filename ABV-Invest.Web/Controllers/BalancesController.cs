@@ -1,16 +1,17 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
-    using System;
     using ABV_Invest.Models;
     using AutoMapper;
     using BindingModels;
     using Common;
     using DTOs;
+    using Services.Contracts;
+    using ViewModels;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Services.Contracts;
-    using ViewModels;
+    using System;
 
     [Authorize]
     public class BalancesController : Controller

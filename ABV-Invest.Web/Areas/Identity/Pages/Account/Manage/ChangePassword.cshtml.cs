@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using ABV_Invest.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-
-namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
+﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using ABV_Invest.Models;
     using Common;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.Extensions.Logging;
+    using System.ComponentModel.DataAnnotations;
+    using System.Threading.Tasks;
 
     public class ChangePasswordModel : PageModel
     {

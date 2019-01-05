@@ -1,26 +1,27 @@
 ﻿namespace ABV_Invest.Web
 {
-    using System.Collections.Generic;
     using ABV_Invest.Models;
     using BindingModels;
+    using Common.EmailSender;
     using Data;
     using DTOs;
     using Extensions;
     using Firewall;
     using Mapping;
+    using Services;
+    using Services.Contracts;
+    using ViewModels;
+
     using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Services;
-    using Services.Contracts;
-    using Common.EmailSender;
-    using ViewModels;
+    using System.Collections.Generic;
 
     public class Startup
     {

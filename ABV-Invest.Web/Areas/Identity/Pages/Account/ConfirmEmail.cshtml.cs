@@ -1,14 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using ABV_Invest.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace ABV_Invest.Web.Areas.Identity.Pages.Account
+﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using ABV_Invest.Models;
     using Common;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using System;
+    using System.Threading.Tasks;
 
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel

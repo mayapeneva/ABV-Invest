@@ -1,8 +1,9 @@
 ﻿namespace ABV_Invest.Models
 {
-    using System.ComponentModel.DataAnnotations;
     using Base;
     using Enums;
+
+    using System.ComponentModel.DataAnnotations;
 
     public class Security : BaseEntity<int>
     {

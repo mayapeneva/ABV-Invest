@@ -1,10 +1,10 @@
 ﻿namespace ABV_Invest.ViewModels
 {
-    using System.Globalization;
     using AutoMapper;
     using DTOs;
     using Mapping.Contracts;
-    using Models;
+
+    using System.Globalization;
 
     public class DealViewModel : IMapFrom<DealDto>, ICustomMap
     {

@@ -1,13 +1,14 @@
 ﻿namespace ABV_Invest.Services
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
     using AutoMapper;
     using Base;
     using Contracts;
     using Data;
     using Models;
+
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class BalancesService : BaseService, IBalancesService
     {

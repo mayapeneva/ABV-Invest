@@ -1,9 +1,10 @@
 ﻿namespace ABV_Invest.ViewModels
 {
-    using System.Globalization;
     using AutoMapper;
     using DTOs;
     using Mapping.Contracts;
+
+    using System.Globalization;
 
     public class PortfolioViewModel : IMapFrom<PortfolioDto>, ICustomMap
     {

@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace ABV_Invest.Data.Migrations
+﻿namespace ABV_Invest.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddDailyBalancesDbSet : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

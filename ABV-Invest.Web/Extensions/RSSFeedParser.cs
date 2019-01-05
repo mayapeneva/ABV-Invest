@@ -1,11 +1,12 @@
 ﻿namespace ABV_Invest.Web.Extensions
 {
+    using Common;
+    using ViewModels;
+
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Xml;
-    using Common;
-    using ViewModels;
 
     public class RSSFeedParser
     {

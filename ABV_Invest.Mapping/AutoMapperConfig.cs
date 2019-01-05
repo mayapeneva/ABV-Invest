@@ -1,11 +1,12 @@
 ﻿namespace ABV_Invest.Mapping
 {
+    using AutoMapper;
+    using Contracts;
+
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using AutoMapper;
-    using Contracts;
 
     public static class AutoMapperConfig
     {

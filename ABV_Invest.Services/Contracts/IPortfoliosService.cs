@@ -1,10 +1,11 @@
 ﻿namespace ABV_Invest.Services.Contracts
 {
+    using BindingModels.Uploads.Portfolios;
+
     using System;
     using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using BindingModels.Uploads.Portfolios;
 
     public interface IPortfoliosService
     {

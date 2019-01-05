@@ -1,10 +1,11 @@
 ﻿namespace ABV_Invest.Services.Tests
 {
-    using System.Linq;
-    using System.Threading.Tasks;
     using Contracts;
     using Data;
+
     using Microsoft.EntityFrameworkCore;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class DataServiceTests

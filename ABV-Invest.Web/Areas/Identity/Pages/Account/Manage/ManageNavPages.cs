@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
+﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+
     public static class ManageNavPages
     {
         public static string Index => "Index";
@@ -13,11 +13,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 
         public static string DeletePersonalData => "DeletePersonalData";
 
-        public static string ExternalLogins => "ExternalLogins";
-
         public static string PersonalData => "PersonalData";
-
-        public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
@@ -27,11 +23,7 @@ namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 
         public static string DeletePersonalDataNavClass(ViewContext viewContext) => PageNavClass(viewContext, DeletePersonalData);
 
-        public static string ExternalLoginsNavClass(ViewContext viewContext) => PageNavClass(viewContext, ExternalLogins);
-
         public static string PersonalDataNavClass(ViewContext viewContext) => PageNavClass(viewContext, PersonalData);
-
-        public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
 
         public static string PageNavClass(ViewContext viewContext, string page)
         {

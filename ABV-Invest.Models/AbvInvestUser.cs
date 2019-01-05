@@ -1,8 +1,8 @@
 ﻿namespace ABV_Invest.Models
 {
+    using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Microsoft.AspNetCore.Identity;
 
     public class AbvInvestUser : IdentityUser
     {

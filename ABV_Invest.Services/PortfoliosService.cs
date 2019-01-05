@@ -1,17 +1,19 @@
 ﻿namespace ABV_Invest.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
     using Base;
     using BindingModels.Uploads.Portfolios;
     using Common;
     using Contracts;
     using Data;
-    using Microsoft.AspNetCore.Identity;
     using Models;
+
+    using Microsoft.AspNetCore.Identity;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
     using Mapper = AutoMapper.Mapper;
 
     public class PortfoliosService : BaseService, IPortfoliosService

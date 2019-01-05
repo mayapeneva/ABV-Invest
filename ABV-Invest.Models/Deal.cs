@@ -1,10 +1,11 @@
 ﻿namespace ABV_Invest.Models
 {
+    using Base;
+    using Enums;
+
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Base;
-    using Enums;
 
     public class Deal : BaseEntity<int>
     {

@@ -1,8 +1,9 @@
 ﻿namespace ABV_Invest.Services.Contracts
 {
+    using Models;
+
     using System;
     using System.Threading.Tasks;
-    using Models;
 
     public interface IBalancesService
     {

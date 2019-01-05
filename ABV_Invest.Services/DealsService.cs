@@ -1,19 +1,20 @@
 ﻿namespace ABV_Invest.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
     using AutoMapper;
     using Base;
     using BindingModels.Uploads.Deals;
     using Common;
     using Contracts;
     using Data;
-    using Microsoft.AspNetCore.Identity;
     using Models;
     using Models.Enums;
+
+    using Microsoft.AspNetCore.Identity;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
     public class DealsService : BaseService, IDealsService
     {

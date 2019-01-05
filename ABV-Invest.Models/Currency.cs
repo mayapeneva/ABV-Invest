@@ -1,7 +1,8 @@
 ﻿namespace ABV_Invest.Models
 {
-    using System.ComponentModel.DataAnnotations;
     using Base;
+
+    using System.ComponentModel.DataAnnotations;
 
     public class Currency : BaseEntity<int>
     {

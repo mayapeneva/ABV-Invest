@@ -1,16 +1,16 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using ABV_Invest.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
+﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account.Manage
 {
+    using ABV_Invest.Models;
     using Common;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text.Encodings.Web;
+    using System.Threading.Tasks;
 
     public partial class IndexModel : PageModel
     {

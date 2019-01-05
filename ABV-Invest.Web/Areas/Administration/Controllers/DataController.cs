@@ -2,9 +2,10 @@
 {
     using BindingModels.Data;
     using Common;
+    using Services.Contracts;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Services.Contracts;
 
     [Area(Constants.Administration)]
     [Authorize(Roles = Constants.Admin)]

@@ -1,12 +1,13 @@
 ﻿namespace ABV_Invest.Services
 {
-    using System.Linq;
-    using System.Threading.Tasks;
     using Base;
     using Common;
     using Contracts;
     using Data;
     using Models;
+
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class DataService : BaseService, IDataService
 

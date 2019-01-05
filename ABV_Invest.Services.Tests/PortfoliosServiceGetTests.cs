@@ -1,18 +1,19 @@
 ﻿namespace ABV_Invest.Services.Tests
 {
+    using Contracts;
+    using Data;
+    using DTOs;
+    using Mapping;
+    using Models;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using Moq;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using Contracts;
-    using Data;
-    using DTOs;
-    using Mapping;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
-    using Models;
-    using Moq;
     using Xunit;
 
     public class PortfoliosServiceGetTests

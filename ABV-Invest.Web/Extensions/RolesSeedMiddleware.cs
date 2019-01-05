@@ -1,12 +1,13 @@
 ﻿namespace ABV_Invest.Web.Extensions
 {
-    using System;
-    using System.Threading.Tasks;
     using ABV_Invest.Models;
     using Common;
+
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore.Internal;
+    using System;
+    using System.Threading.Tasks;
 
     public class RolesSeedMiddleware
     {

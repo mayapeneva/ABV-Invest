@@ -1,11 +1,12 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Common;
     using Extensions;
-    using Microsoft.AspNetCore.Mvc;
     using ViewModels;
+
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class NewsController : Controller
     {

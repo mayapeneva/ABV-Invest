@@ -1,8 +1,9 @@
 ﻿namespace ABV_Invest.Models
 {
+    using Base;
+
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Base;
 
     public class Issuer : BaseEntity<int>
     {

@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace ABV_Invest.Web.Areas.Administration.Controllers
+﻿namespace ABV_Invest.Web.Areas.Administration.Controllers
 {
-    using System;
-    using System.IO;
-    using System.Threading.Tasks;
-    using System.Xml.Serialization;
     using BindingModels;
     using BindingModels.Uploads.Deals;
     using BindingModels.Uploads.Portfolios;
     using Common;
+    using Services.Contracts;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
-    using Services.Contracts;
+    using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using System.Xml.Serialization;
 
     [Area(Constants.Administration)]
     [Authorize(Roles = Constants.Admin)]

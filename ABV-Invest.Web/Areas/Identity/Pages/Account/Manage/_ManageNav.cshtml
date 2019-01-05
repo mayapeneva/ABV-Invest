@@ -5,10 +5,13 @@
 <ul class="nav nav-tabs">
     <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a class="bg-abvdarkgreen" asp-page="./Index"><strong>Личен профил</strong></a></li>
     <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a class="bg-abvdarkgreen" id="change-password" asp-page="./ChangePassword"><strong>Парола</strong></a></li>
-    @if (hasExternalLogins)
-    {
-        <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)"><a class="bg-abvdarkgreen" id="external-login" asp-page="./ExternalLogins"><strong>Вход през други апликации</strong></a></li>
-    }
-    <li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)"><a class="bg-abvdarkgreen" asp-page="./TwoFactorAuthentication"><strong>Аутентикация чрез два фактора</strong></a></li>
+    @*@if (hasExternalLogins)
+        {
+            <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)"><a class="bg-abvdarkgreen" id="external-login" asp-page="./ExternalLogins"><strong>Вход през други апликации</strong></a></li>
+        }
+        @if (hasExternalLogins)
+        {
+            <li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)"><a class="bg-abvdarkgreen" asp-page="./TwoFactorAuthentication"><strong>Аутентикация чрез два фактора</strong></a></li>
+        }*@
     <li class="@ManageNavPages.PersonalDataNavClass(ViewContext)"><a class="bg-abvdarkgreen" asp-page="./PersonalData"><strong>Лични данни</strong></a></li>
 </ul>

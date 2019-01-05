@@ -1,8 +1,9 @@
 ﻿namespace ABV_Invest.Models
 {
+    using Base;
+
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Base;
 
     public class DailyBalance : BaseEntity<int>
     {

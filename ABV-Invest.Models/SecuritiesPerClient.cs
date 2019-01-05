@@ -1,8 +1,9 @@
 ﻿namespace ABV_Invest.Models
 {
+    using Base;
+
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Base;
 
     public class SecuritiesPerClient : BaseEntity<int>
     {
