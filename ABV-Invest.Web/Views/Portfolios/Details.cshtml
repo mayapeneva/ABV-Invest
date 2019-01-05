@@ -42,33 +42,33 @@
                 {
                     <td class="text-right bg-abvmiddlegreen">
                         @profit<br />
-                        <span class="glyphicon glyphicon-triangle-top"></span>
+                        <span class="fas fa-plus"></span>
                     </td>
                     <td class="text-right bg-abvmiddlegreen">
                         @Html.DisplayFor(model => security.ProfitPercentаge)%<br />
-                        <span class="glyphicon glyphicon-triangle-top"></span>
+                        <span class="fas fa-plus"></span>
                     </td>
                 }
                 else if (security.Profit < 0)
                 {
                     <td class="text-right bg-abvred">
                         @profit<br />
-                        <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        <span class="fas fa-minus"></span>
                     </td>
                     <td class="text-right bg-abvred">
                         @Html.DisplayFor(model => security.ProfitPercentаge)%<br />
-                        <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        <span class="fas fa-minus"></span>
                     </td>
                 }
                 else
                 {
                     <td class="text-right">
                         @Html.DisplayFor(model => security.Profit)<br />
-                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                        <span class="fas fa-equals"></span>
                     </td>
                     <td class="text-right">
                         @Html.DisplayFor(model => security.ProfitPercentаge)%<br />
-                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                        <span class="fas fa-equals"></span>
                     </td>
                 }
 
