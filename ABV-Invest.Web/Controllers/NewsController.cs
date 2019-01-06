@@ -2,6 +2,7 @@
 {
     using Common;
     using Extensions;
+    using Extensions.Contracts;
     using ViewModels;
 
     using Microsoft.AspNetCore.Mvc;
@@ -10,9 +11,9 @@
 
     public class NewsController : Controller
     {
-        private readonly RSSFeedParser rssFeedParser;
+        private readonly IRSSFeedParser rssFeedParser;
 
-        public NewsController(RSSFeedParser rssFeedParser)
+        public NewsController(IRSSFeedParser rssFeedParser)
         {
             this.rssFeedParser = rssFeedParser;
         }

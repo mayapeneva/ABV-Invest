@@ -1,6 +1,7 @@
 ﻿namespace ABV_Invest.Web.Extensions
 {
     using Common;
+    using Contracts;
     using ViewModels;
 
     using System;
@@ -8,7 +9,7 @@
     using System.Globalization;
     using System.Xml;
 
-    public class RSSFeedParser
+    public class RSSFeedParser : IRSSFeedParser
     {
         public void LoadNewsFromInvestor(List<RSSFeedViewModel> rssModels)
         {

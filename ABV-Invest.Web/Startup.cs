@@ -22,6 +22,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using System.Collections.Generic;
+    using Extensions.Contracts;
 
     public class Startup
     {
@@ -67,10 +68,10 @@
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();
             services.AddScoped<IDealsService, DealsService>();
-            services.AddScoped<RSSFeedParser, RSSFeedParser>();
             services.AddScoped<IBalancesService, BalancesService>();
             services.AddScoped<IDataService, DataService>();
 
+            services.AddScoped<IRSSFeedParser, RSSFeedParser>();
             services.AddSingleton<IEmailSender, EmailSender>();
         }
 
