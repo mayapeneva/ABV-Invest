@@ -11,6 +11,6 @@
     {
         T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, string chosenDate);
 
-        Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date);
+        Task<string> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date);
     }
 }

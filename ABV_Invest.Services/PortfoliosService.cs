@@ -12,6 +12,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;
+    using System.Text;
     using System.Threading.Tasks;
 
     using Mapper = AutoMapper.Mapper;
@@ -44,9 +45,10 @@
                 .ToArray();
         }
 
-        public async Task<bool> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date)
+        public async Task<string> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date)
         {
             var changesCounter = 0;
+            var mistakes = new StringBuilder();
 
             // Group the entries by Client and process portfolios for each client
             var portfolios = deserializedPortfolios.GroupBy(p => p.Client.CDNNumber);
@@ -56,6 +58,7 @@
                 var user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
                 if (user == null)
                 {
+                    mistakes.AppendLine(string.Format(Messages.UserDoesNotExist, portfolio.Key));
                     continue;
                 }
 
@@ -91,6 +94,7 @@
                             securityInfo.Currency);
                         if (!securityResult.Result)
                         {
+                            mistakes.AppendLine(string.Format(Messages.SecurityCannotBeCreated, portfolio.Key, securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode, securityInfo.Currency));
                             continue;
                         }
 
@@ -100,6 +104,7 @@
                     // Check if such portfolioRow already exists in the usersPortfolio for this date
                     if (dbPortfolio.SecuritiesPerIssuerCollection.Any(sc => sc.Security.ISIN == security.ISIN))
                     {
+                        mistakes.AppendLine(string.Format(Messages.SecurityExistsInThisPortfolio, portfolio.Key, date, portfolioRow.Instrument.Issuer, portfolioRow.Instrument.ISIN, portfolioRow.Instrument.NewCode, portfolioRow.Instrument.Currency));
                         continue;
                     }
 
@@ -110,6 +115,7 @@
                         var currencyResult = this.dataService.CreateCurrency(portfolioRow.Instrument.Currency);
                         if (!currencyResult.Result)
                         {
+                            mistakes.AppendLine(string.Format(Messages.CurrencyCannotBeCreated, portfolioRow.Instrument.Currency, portfolio.Key, portfolioRow.Instrument.Issuer, portfolioRow.Instrument.ISIN, portfolioRow.Instrument.NewCode));
                             continue;
                         }
 
@@ -118,18 +124,58 @@
 
                     // Parse all decimal figures in order to create the SecuritiesPerClient
                     var ifQuantityParsed = decimal.TryParse(portfolioRow.AccountData.Quantity.Replace(" ", ""), out var quantity);
-                    var ifAveragePriceBuyParsed = decimal.TryParse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""), out var averagePriceBuy);
-                    var ifMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""), out var marketPrice);
-                    var ifTotalMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketValue.Replace(" ", ""), out var totalMarketPrice);
-                    var ifProfitParsed = decimal.TryParse(portfolioRow.AccountData.Result.Replace(" ", ""), out var profit);
-                    var ifProfitInBGNParsed = decimal.TryParse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""), out var profitInBGN);
-                    var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", ""), out var profitPercent);
-                    var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", ""), out var portfolioShare);
-                    if (!ifQuantityParsed || !ifAveragePriceBuyParsed ||
-                        !ifMarketPriceParsed || !ifTotalMarketPriceParsed ||
-                        !ifProfitParsed || !ifProfitInBGNParsed ||
-                        !ifProfitPercentParsed || !ifPortfolioShareParsed)
+                    if (!ifQuantityParsed)
                     {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Наличност", portfolioRow.AccountData.Quantity));
+                        continue;
+                    }
+
+                    var ifAveragePriceBuyParsed = decimal.TryParse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""), out var averagePriceBuy);
+                    if (!ifAveragePriceBuyParsed)
+                    {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Средна цена", portfolioRow.AccountData.OpenPrice));
+                        continue;
+                    }
+
+                    var ifMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""), out var marketPrice);
+                    if (!ifMarketPriceParsed)
+                    {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Пазарна цена", portfolioRow.AccountData.MarketPrice));
+                        continue;
+                    }
+
+                    var ifTotalMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketValue.Replace(" ", ""), out var totalMarketPrice);
+                    if (!ifTotalMarketPriceParsed)
+                    {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Пазарна стойност", portfolioRow.AccountData.MarketValue));
+                        continue;
+                    }
+
+                    var ifProfitParsed = decimal.TryParse(portfolioRow.AccountData.Result.Replace(" ", ""), out var profit);
+                    if (!ifProfitParsed)
+                    {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Доходност", portfolioRow.AccountData.Result));
+                        continue;
+                    }
+
+                    var ifProfitInBGNParsed = decimal.TryParse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""), out var profitInBGN);
+                    if (!ifProfitInBGNParsed)
+                    {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Доходност в лева", portfolioRow.AccountData.ResultBGN));
+                        continue;
+                    }
+
+                    var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", ""), out var profitPercent);
+                    if (!ifProfitPercentParsed)
+                    {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Доходност в %", portfolioRow.Other.YieldPercent));
+                        continue;
+                    }
+
+                    var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", ""), out var portfolioShare);
+                    if (!ifPortfolioShareParsed)
+                    {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Тегло в портфейла", portfolioRow.Other.RelativePart));
                         continue;
                     }
 
@@ -151,6 +197,7 @@
                     // Validate SecuritiesPerClient and add them to the portfolio
                     if (!DataValidator.IsValid(securitiesPerClient))
                     {
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeCreated, portfolio.Key, portfolioRow.Instrument.Issuer, portfolioRow.Instrument.ISIN, portfolioRow.Instrument.NewCode, portfolioRow.Instrument.Currency));
                         continue;
                     }
                     dbPortfolio.SecuritiesPerIssuerCollection.Add(securitiesPerClient);
@@ -159,6 +206,7 @@
                 // Validate portfolio and add it to user's Portfolios
                 if (!DataValidator.IsValid(dbPortfolio) || !dbPortfolio.SecuritiesPerIssuerCollection.Any())
                 {
+                    mistakes.AppendLine(string.Format(Messages.PortfolioCannotBeCreated, portfolio.Key, date));
                     continue;
                 }
                 user.Portfolio.Add(dbPortfolio);
@@ -173,12 +221,9 @@
                 }
             }
 
-            if (changesCounter == 0)
-            {
-                return false;
-            }
+            var finalResult = changesCounter == 0 ? Messages.CouldNotUploadInformation : Messages.UploadingSuccessfull;
 
-            return true;
+            return finalResult + Environment.NewLine + mistakes;
         }
     }
 }
