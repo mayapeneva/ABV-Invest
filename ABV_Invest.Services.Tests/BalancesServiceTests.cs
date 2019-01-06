@@ -54,7 +54,7 @@ namespace ABV_Invest.Services.Tests
         }
 
         [Fact]
-        public async Task CreateBalanceForUser_ShouldNotCreateDailyBalanceForUserForSameDate()
+        public async Task CreateBalanceForUser_ShouldNotCreateSecondDailyBalanceForUserForSameDate()
         {
             // Arrange
             await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
