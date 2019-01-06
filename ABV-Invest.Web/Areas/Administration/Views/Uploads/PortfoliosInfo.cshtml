@@ -14,7 +14,7 @@
         <form method="post" asp-area="Administration" asp-controller="Uploads" asp-action="PortfoliosInfo" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group col-md-3 my-auto" name="Date">
-                <partial name="_DatePartialAdmin" />
+                <partial name="_AdminDatePartial" />
             </div>
             <div class="form-group col-md-4 my-auto" name="XMLFile">
                 <label asp-for="@Model.XMLFile" class="control-label">Клиентски портфолиа</label>

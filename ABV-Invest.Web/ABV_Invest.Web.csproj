@@ -78,6 +78,10 @@
     <Content Update="Views\Deals\Details.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\_PageReloadPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\_NotLoggedIndexPartial.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
@@ -104,7 +108,7 @@
     <Content Update="Views\Shared\_CookieConsentPartial.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\Shared\_DatePartialAdmin.cshtml">
+    <Content Update="Views\Shared\_AdminDatePartial.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
