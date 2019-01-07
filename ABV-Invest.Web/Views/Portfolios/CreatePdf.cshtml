@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PortfolioViewModel>
+@{
+    Layout = null;
+    ViewData["Title"] = "Портфолио";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+    <script src="script.js"></script>
+    <link href="~/css/demo.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>@ViewData["Title"] към дата  @Model.First().DailySecuritiesPerClientDate</h1>
+        <hr />
+    </header>
+    <article>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">БФБ Код</th>
+                    <th class="text-center" scope="col">ISIN</th>
+                    <th class="text-center" scope="col">Наличност</th>
+                    <th class="text-center" scope="col">Валута</th>
+                    <th class="text-center" scope="col">Средна цена</th>
+                    <th class="text-center" scope="col">Стойност на придобиване</th>
+                    <th class="text-center" scope="col">Пазарна цена</th>
+                    <th class="text-center" scope="col">Пазарна стойност</th>
+                    <th class="text-center" scope="col">Доходност</th>
+                    <th class="text-center" scope="col">Доходност(%)</th>
+                    <th class="text-center" scope="col">Тегло в портфейла(%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var security in Model)
+                {
+                    var profit = security.Profit.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"));
+                    <tr>
+                        <td class="text-center">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.SecurityIsin)</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.Quantity)</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.CurrencyCode)</td>
+                        <td class="text-center" type="number">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.TotalPriceBuy)</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.MarketPrice)</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.TotalMarketPrice)</td>
+                        <td class="text-center">@profit</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.ProfitPercentаge)%</td>
+                        <td class="text-center">@Html.DisplayFor(model => security.PortfolioShare)%</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+    <aside>
+        <p class="text-center">АБВ Инвестиции. Всички права запазени.</p>
+        <p class="text-center">&copy; 2018</p>
+    </aside>
+</body>
+</html>

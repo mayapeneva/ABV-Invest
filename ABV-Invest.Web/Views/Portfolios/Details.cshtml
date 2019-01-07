@@ -7,7 +7,7 @@
 <hr />
 
 <table class="table table-hover table-responsive">
-    <caption class="bg-abvdarkgreen">Списък с ценни книжа</caption>
+    <caption class="bg-abvdarkgreen large-fontsize">Списък с ценни книжа към дата @Model.First().DailySecuritiesPerClientDate</caption>
     <thead class="bg-abvdarkgreen bg-bg-abvlightgreen">
         <tr>
             <th class="text-center" scope="col">Емитент</th>
@@ -76,7 +76,12 @@
             </tr>
         }
     </tbody>
-</table><br />
+</table>
+
+<form asp-controller="Portfolios" asp-action="CreatePdf" method="post">
+    <input type="hidden" name="date" value="@Model.First().DailySecuritiesPerClientDate" />
+    <button type="submit" class="btn bg-bg-abvdarkgreen bg-abvlightgreen">Експорт в PDF</button>
+</form><br /><br />
 
 <div class="text-center">
     <span class="glyphicon glyphicon-arrow-left bg-abvmiddlegreen"></span>

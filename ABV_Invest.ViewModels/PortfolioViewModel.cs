@@ -14,6 +14,8 @@
 
         public string SecurityIsin { get; set; }
 
+        public string DailySecuritiesPerClientDate { get; set; }
+
         public string Quantity { get; set; }
 
         public string CurrencyCode { get; set; }
@@ -35,6 +37,7 @@
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<PortfolioDto, PortfolioViewModel>()
+                .ForMember(dest => dest.DailySecuritiesPerClientDate, opt => opt.MapFrom(src => src.DailySecuritiesPerClientDate.ToString("dd/MM/yyyy")))
                 .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity.ToString("N", CultureInfo.CreateSpecificCulture("sv-SE"))))
                 .ForMember(dest => dest.AveragePriceBuy, opt => opt.MapFrom(src => src.AveragePriceBuy.ToString("N3", CultureInfo.CreateSpecificCulture("sv-SE"))))
                 .ForMember(dest => dest.TotalPriceBuy, opt => opt.MapFrom(src => src.TotalPriceBuy.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"))))

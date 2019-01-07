@@ -1,5 +1,6 @@
 ﻿namespace ABV_Invest.DTOs
 {
+    using System;
     using Mapping.Contracts;
     using Models;
 
@@ -10,6 +11,8 @@
         public string SecurityBfbCode { get; set; }
 
         public string SecurityIsin { get; set; }
+
+        public DateTime DailySecuritiesPerClientDate { get; set; }
 
         public int Quantity { get; set; }
 
