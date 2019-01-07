@@ -8,6 +8,7 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.Xml;
+    using Enums;
 
     public class RSSFeedParser : IRSSFeedParser
     {
@@ -107,10 +108,21 @@
                         Summary = feed["description"].InnerText
                     };
 
-                    var ifParsed = DateTime.TryParseExact(feed["pubDate"].InnerText.ToLower(), Constants.DateTimeParseFormat, CultureInfo.GetCultureInfo("bg-BG"), DateTimeStyles.AdjustToUniversal, out DateTime pubDate);
-                    if (ifParsed)
+                    var notParsedDate = feed["pubDate"].InnerText.ToLower().Replace(" ", "");
+                    var dayStartIndex = notParsedDate.IndexOf(",", StringComparison.InvariantCulture) + 1;
+                    var ifDayParsed = int.TryParse(notParsedDate.Substring(dayStartIndex, 2), out int day);
+
+                    var monthStartIndex = dayStartIndex + 2;
+                    var monthString = notParsedDate.Substring(monthStartIndex, 3).Trim('.');
+                    var ifMonthParsed = Enum.TryParse(typeof(Month), monthString, out var monthEnum);
+
+                    var yearStartIndex = notParsedDate.IndexOf(".", StringComparison.InvariantCulture) + 1;
+                    var ifYearParsed = int.TryParse(notParsedDate.Substring(yearStartIndex, 4), out int year);
+
+                    if (ifDayParsed && ifMonthParsed && ifYearParsed)
                     {
-                        model.PublishedDate = pubDate;
+                        var month = (Month)monthEnum;
+                        model.PublishedDate = new DateTime(year, (int)month, day);
                     }
 
                     rssModels.Add(model);
