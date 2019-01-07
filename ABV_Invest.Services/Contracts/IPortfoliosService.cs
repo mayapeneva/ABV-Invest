@@ -5,12 +5,13 @@
     using System;
     using System.Collections.Generic;
     using System.Security.Claims;
+    using System.Text;
     using System.Threading.Tasks;
 
     public interface IPortfoliosService
     {
         T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, string chosenDate);
 
-        Task<string> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date);
+        Task<StringBuilder> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date);
     }
 }

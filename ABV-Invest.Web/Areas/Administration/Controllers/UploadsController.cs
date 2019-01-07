@@ -128,14 +128,8 @@
 
                     // Seeding the data from the deserialised file
                     var result = this.dealsService.SeedDeals(deserializedDeals, model.Date);
-                    if (!result.Result)
-                    {
-                        this.ViewData["Error"] = Messages.CouldNotUploadInformation;
-                        return this.View();
-                    }
+                    this.ViewData["Error"] = result.Result;
 
-                    // Successful upload
-                    this.ViewData["Error"] = Messages.UploadingSuccessfull;
                     return this.View();
                 }
             }

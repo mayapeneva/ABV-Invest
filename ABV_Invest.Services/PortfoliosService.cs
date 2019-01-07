@@ -7,6 +7,7 @@
     using Data;
     using Models;
 
+    using Mapper = AutoMapper.Mapper;
     using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
@@ -14,8 +15,6 @@
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
-
-    using Mapper = AutoMapper.Mapper;
 
     public class PortfoliosService : BaseService, IPortfoliosService
     {
@@ -45,7 +44,7 @@
                 .ToArray();
         }
 
-        public async Task<string> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date)
+        public async Task<StringBuilder> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date)
         {
             var changesCounter = 0;
             var mistakes = new StringBuilder();
@@ -221,9 +220,11 @@
                 }
             }
 
-            var finalResult = changesCounter == 0 ? Messages.CouldNotUploadInformation : Messages.UploadingSuccessfull;
+            var finalResult = new StringBuilder();
+            finalResult.AppendLine(changesCounter == 0 ? Messages.CouldNotUploadInformation : Messages.UploadingSuccessfull);
+            finalResult.Append(mistakes);
 
-            return finalResult + Environment.NewLine + mistakes;
+            return finalResult;
         }
     }
 }

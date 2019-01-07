@@ -46,20 +46,30 @@
         public const string UserLoggedOut = "Потребителят е излязъл от сайта.";
         public const string UserExists = "Това потребителско име е вече заето.";
 
-        // PortfoliosService
-        public const string UserDoesNotExist = "- Клиент с потребителско име {0} не е регистриран и всички записи за този клиент са пропуснати.";
-
-        public const string SecurityCannotBeCreated = "- Ценни книжа за клиент с потребителско име {0} не могат да бъдат регистрирани поради неправилни данни: Емитент: {1}, ISIN: {2}, БФБ код {3}, Валута: {4}.";
-
-        public const string SecurityExistsInThisPortfolio = "- Ценни книжа за клиент с потребителско име {0} не могат да бъдат регистрирани повторно за дата {1}: Емитент: {2}, ISIN: {3}, БФБ код {4}, Валута: {5}.";
+        // PortfoliosService and DealsServie
+        public const string CouldNotUploadInformation = "Файлът, който качихте е празен или информацията в него е с неправилен формат.";
 
         public const string CurrencyCannotBeCreated = "- Валута с код {0} за клиент с потребителско име {1} не може да бъдат регистрирана поради неправилен код. Валутата е за ценни книжа с Емитент: {2}, ISIN: {3}, БФБ код {4}.";
 
-        public const string SecurityCannotBeRegistered = "- Ценни книжа за клиент с потребителско име {0} не могат да бъдат регистрирани поради неправилно подадени данни: {1}: {2}.";
+        public const string DailyDealsAlredyExist = "- Сделките за клиент с потребителско име {0} за дата {1} вече са регистрирани.";
 
-        public const string PortfolioCannotBeCreated = "- Портфолио за клиент с потребителско име {0} не може да бъдат създадено за {1} г. поради неправилни данни.";
+        public const string DailyDealsCannotBeCreated = "- Сделките за клиент с потребителско име {0} не могат да бъдат регистрирани за дата {1} поради неправилни данни.";
 
-        public const string CouldNotUploadInformation = "Файлът, който качихте е празен или информацията в него е с неправилен формат.";
+        public const string DealCannotBeRegistered = "Сделка {0} с ценни книжа с ISIN: {1} за клиент с потребителско име {2} не може да бъде регистрирана поради неправилни данни: {3}: {4}.";
+
+        public const string DealRowCannotBeCreated = "- Сделка {0} с ценни книжа с ISIN: {1} за клиент с потребителско име {2} не може да бъде регистрирана поради неправилни данни: Количество: {3}, Единична цена: {4}.";
+
+        public const string MarketDoesNotExist = "- Сделка {0} с ценни книжа с ISIN: {1} за клиент с потребителско име {2} не може да бъде регистрирана поради неправилни данни: MIC код на пазара: {3}.";
+
+        public const string PortfolioCannotBeCreated = "- Портфолио за клиент с потребителско име {0} не може да бъдат създадено за дата {1} поради неправилни данни.";
+
+        public const string SecurityCannotBeCreated = "- Ценни книжа за клиент с потребителско име {0} не могат да бъдат регистрирани поради неправилни данни: Емитент: {1}, ISIN: {2}, БФБ код {3}, Валута: {4}.";
+
+        public const string SecurityCannotBeRegistered = "- Ценни книжа за клиент с потребителско име {0} не могат да бъдат регистрирани поради неправилни данни: {1}: {2}.";
+
+        public const string SecurityExistsInThisPortfolio = "- Ценни книжа за клиент с потребителско име {0} не могат да бъдат регистрирани повторно за дата {1}: Емитент: {2}, ISIN: {3}, БФБ код {4}, Валута: {5}.";
+
+        public const string UserDoesNotExist = "- Клиент с потребителско име {0} не е регистриран и всички записи за този клиент са пропуснати.";
 
         public const string UploadingSuccessfull = "Качването на информация приключи успешно.";
     }
