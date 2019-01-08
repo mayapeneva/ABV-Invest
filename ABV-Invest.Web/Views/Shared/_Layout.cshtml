@@ -1,4 +1,5 @@
 ﻿@inject SignInManager<AbvInvestUser> SignInManager
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
 
 <!DOCTYPE xmins="http://www.w3.org/1999/xhtml">
 <html>
@@ -20,6 +21,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
     <nav class="navbar navbar-fixed-top ">
