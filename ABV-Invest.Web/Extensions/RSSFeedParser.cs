@@ -2,13 +2,12 @@
 {
     using Common;
     using Contracts;
+    using Enums;
     using ViewModels;
 
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Xml;
-    using Enums;
 
     public class RSSFeedParser : IRSSFeedParser
     {

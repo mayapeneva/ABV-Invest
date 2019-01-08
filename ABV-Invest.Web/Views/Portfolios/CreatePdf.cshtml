@@ -6,22 +6,24 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8-BOM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
-    <script src="script.js"></script>
-    <link href="~/css/demo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/reset.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body>
-    <header>
-        <h1>@ViewData["Title"] към дата  @Model.First().DailySecuritiesPerClientDate</h1>
-        <hr />
-    </header>
+<body class="bg-abvdarkgreen">
+    @*<header>
+            <h2 class="bg-abvmiddlegreen">@ViewData["Title"] към дата  @Model.First().DailySecuritiesPerClientDate</h2>
+        </header>*@
     <article>
         <table class="table table-bordered">
-            <thead>
+            <caption class="bg-abvmiddlegreen large-fontsize">@ViewData["Title"] към дата  @Model.First().DailySecuritiesPerClientDate</caption>
+            <thead class="bg-bg-abvlightgreen">
                 <tr>
+                    <th class="text-center" scope="col">Емитент</th>
                     <th class="text-center" scope="col">БФБ Код</th>
                     <th class="text-center" scope="col">ISIN</th>
                     <th class="text-center" scope="col">Наличност</th>
@@ -31,8 +33,8 @@
                     <th class="text-center" scope="col">Пазарна цена</th>
                     <th class="text-center" scope="col">Пазарна стойност</th>
                     <th class="text-center" scope="col">Доходност</th>
-                    <th class="text-center" scope="col">Доходност(%)</th>
-                    <th class="text-center" scope="col">Тегло в портфейла(%)</th>
+                    <th class="text-center" scope="col">Доходност (%)</th>
+                    <th class="text-center" scope="col">Тегло в портфейла (%)</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,25 +42,26 @@
                 {
                     var profit = security.Profit.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"));
                     <tr>
-                        <td class="text-center">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.SecurityIsin)</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.Quantity)</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.CurrencyCode)</td>
-                        <td class="text-center" type="number">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.TotalPriceBuy)</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.MarketPrice)</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.TotalMarketPrice)</td>
-                        <td class="text-center">@profit</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.ProfitPercentаge)%</td>
-                        <td class="text-center">@Html.DisplayFor(model => security.PortfolioShare)%</td>
+                        <td class="text-left">@Html.DisplayFor(model => security.SecurityIssuerName)</td>
+                        <td class="text-left">@Html.DisplayFor(model => security.SecurityBfbCode)</td>
+                        <td class="text-left">@Html.DisplayFor(model => security.SecurityIsin)</td>
+                        <td class="text-right">@Html.DisplayFor(model => security.Quantity)</td>
+                        <td class="text-right">@Html.DisplayFor(model => security.CurrencyCode)</td>
+                        <td class="text-right" type="number">@Html.DisplayFor(model => security.AveragePriceBuy)</td>
+                        <td class="text-right">@Html.DisplayFor(model => security.TotalPriceBuy)</td>
+                        <td class="text-right">@Html.DisplayFor(model => security.MarketPrice)</td>
+                        <td class="text-right">@Html.DisplayFor(model => security.TotalMarketPrice)</td>
+                        <td class="text-right">@profit</td>
+                        <td class="text-right">@Html.DisplayFor(model => security.ProfitPercentаge)%</td>
+                        <td class="text-right">@Html.DisplayFor(model => security.PortfolioShare)%</td>
                     </tr>
                 }
             </tbody>
         </table>
     </article>
-    <aside>
-        <p class="text-center">АБВ Инвестиции. Всички права запазени.</p>
-        <p class="text-center">&copy; 2018</p>
-    </aside>
+    <footer class="text-center bg-abvmiddlegreen">
+        <p>АБВ Инвестиции. Всички права запазени.</p>
+        <p>&copy; 2018</p>
+    </footer>
 </body>
 </html>

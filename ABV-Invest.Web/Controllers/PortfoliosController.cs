@@ -9,13 +9,10 @@
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Syncfusion.Drawing;
-    using Syncfusion.Pdf;
-    using Syncfusion.Pdf.Graphics;
+    using Rotativa.AspNetCore;
     using System;
     using System.Collections.Generic;
-    using System.IO;
-    using Rotativa.AspNetCore;
+    using Rotativa.AspNetCore.Options;
 
     [Authorize]
     public class PortfoliosController : Controller
@@ -74,10 +71,10 @@
 
             return new ViewAsPdf("CreatePdf", portfolioViewModel)
             {
-                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape,
-                PageSize = Rotativa.AspNetCore.Options.Size.A6,
-                PageMargins = { Left = 10, Bottom = 10, Right = 10, Top = 10 },
-                CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 12"
+                PageOrientation = Orientation.Landscape,
+                PageSize = Size.A4,
+                PageMargins = { Left = 15, Bottom = 10, Right = 15, Top = 10 },
+                CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 6"
             };
         }
     }

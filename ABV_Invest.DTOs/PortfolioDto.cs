@@ -1,8 +1,9 @@
 ﻿namespace ABV_Invest.DTOs
 {
-    using System;
     using Mapping.Contracts;
     using Models;
+
+    using System;
 
     public class PortfolioDto : IMapFrom<SecuritiesPerClient>
     {
