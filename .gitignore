@@ -330,3 +330,4 @@ ASALocalRun/
 .mfractor/
 
 /ABV-Invest.Web/appsettings.json
+/ABV-Invest.Web/wwwroot/files
