@@ -329,7 +329,4 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
-/ABV-Invest.Web/wwwroot/files
-/ABV-Invest.Web/Files
-/ABV-Invest.Web/Files
 /ABV-Invest.Web/appsettings.json
