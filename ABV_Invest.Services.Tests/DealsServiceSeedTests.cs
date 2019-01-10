@@ -259,13 +259,10 @@
 
             // Assert
             Assert.Null(dailyDeals);
-            // Act
-
-            // Assert
         }
 
         [Fact]
-        public async Task _11_SeedDeals_ShouldNotCreateEntryIfAnyOfTheDecimalFiguresCoultNotBeParsed()
+        public async Task _11_SeedDeals_ShouldNotCreateEntryIfSinglePriceCoultNotBeParsed()
         {
             // Arrange
             var fileName10 = "../../../Files/Deals/Deals10.xml";
@@ -274,6 +271,101 @@
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
             var date = new DateTime(2018, 12, 11);
+
+            // Act
+            await this.dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyDeals);
+        }
+
+        [Fact]
+        public async Task _12_SeedDeals_ShouldNotCreateEntryIfShareCountCoultNotBeParsed()
+        {
+            // Arrange
+            var fileName11 = "../../../Files/Deals/Deals11.xml";
+            var xmlFileContent = File.ReadAllText(fileName11);
+            var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 12);
+
+            // Act
+            await this.dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyDeals);
+        }
+
+        [Fact]
+        public async Task _13_SeedDeals_ShouldNotCreateEntryIfCouponCoultNotBeParsed()
+        {
+            // Arrange
+            var fileName12 = "../../../Files/Deals/Deals12.xml";
+            var xmlFileContent = File.ReadAllText(fileName12);
+            var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 13);
+
+            // Act
+            await this.dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyDeals);
+        }
+
+        [Fact]
+        public async Task _14_SeedDeals_ShouldNotCreateEntryIfAmountInShareCurrencyCoultNotBeParsed()
+        {
+            // Arrange
+            var fileName13 = "../../../Files/Deals/Deals13.xml";
+            var xmlFileContent = File.ReadAllText(fileName13);
+            var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 14);
+
+            // Act
+            await this.dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyDeals);
+        }
+
+        [Fact]
+        public async Task _15_SeedDeals_ShouldNotCreateEntryIfAmountInPaymentCurrencyCoultNotBeParsed()
+        {
+            // Arrange
+            var fileName14 = "../../../Files/Deals/Deals14.xml";
+            var xmlFileContent = File.ReadAllText(fileName14);
+            var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 15);
+
+            // Act
+            await this.dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyDeals);
+        }
+
+        [Fact]
+        public async Task _16_SeedDeals_ShouldNotCreateEntryIfCommissionCoultNotBeParsed()
+        {
+            // Arrange
+            var fileName15 = "../../../Files/Deals/Deals15.xml";
+            var xmlFileContent = File.ReadAllText(fileName15);
+            var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 16);
 
             // Act
             await this.dealsService.SeedDeals(deserDeals, date);

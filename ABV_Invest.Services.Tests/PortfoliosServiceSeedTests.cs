@@ -238,7 +238,7 @@
         }
 
         [Fact]
-        public async Task _10_SeedPortfolios_ShouldNotCreateEntryIfAnyOfTheDecimalFiguresCoultNotBeParsed()
+        public async Task _10_SeedPortfolios_ShouldNotCreateEntryIfQuantityCoultNotBeParsed()
         {
             // Arange
             var fileName8 = "../../../Files/Portfolios/Portfolios8.xml";
@@ -247,6 +247,139 @@
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
             var date = new DateTime(2018, 12, 10);
+
+            // Act
+            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyPortfolio);
+        }
+
+        [Fact]
+        public async Task _11_SeedPortfolios_ShouldNotCreateEntryIfOpenPriceCoultNotBeParsed()
+        {
+            // Arange
+            var fileName9 = "../../../Files/Portfolios/Portfolios9.xml";
+            var xmlFileContent = File.ReadAllText(fileName9);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 11);
+
+            // Act
+            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyPortfolio);
+        }
+
+        [Fact]
+        public async Task _12_SeedPortfolios_ShouldNotCreateEntryIfMarketPriceCoultNotBeParsed()
+        {
+            // Arange
+            var fileName10 = "../../../Files/Portfolios/Portfolios10.xml";
+            var xmlFileContent = File.ReadAllText(fileName10);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 12);
+
+            // Act
+            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyPortfolio);
+        }
+
+        [Fact]
+        public async Task _13_SeedPortfolios_ShouldNotCreateEntryIfMarketValueCoultNotBeParsed()
+        {
+            // Arange
+            var fileName11 = "../../../Files/Portfolios/Portfolios11.xml";
+            var xmlFileContent = File.ReadAllText(fileName11);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 13);
+
+            // Act
+            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyPortfolio);
+        }
+
+        [Fact]
+        public async Task _14_SeedPortfolios_ShouldNotCreateEntryIfResultCoultNotBeParsed()
+        {
+            // Arange
+            var fileName12 = "../../../Files/Portfolios/Portfolios12.xml";
+            var xmlFileContent = File.ReadAllText(fileName12);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 14);
+
+            // Act
+            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyPortfolio);
+        }
+
+        [Fact]
+        public async Task _15_SeedPortfolios_ShouldNotCreateEntryIfResultBGNCoultNotBeParsed()
+        {
+            // Arange
+            var fileName13 = "../../../Files/Portfolios/Portfolios13.xml";
+            var xmlFileContent = File.ReadAllText(fileName13);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 15);
+
+            // Act
+            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyPortfolio);
+        }
+
+        [Fact]
+        public async Task _16_SeedPortfolios_ShouldNotCreateEntryIfYieldPercentCoultNotBeParsed()
+        {
+            // Arange
+            var fileName14 = "../../../Files/Portfolios/Portfolios14.xml";
+            var xmlFileContent = File.ReadAllText(fileName14);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 16);
+
+            // Act
+            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+
+            // Assert
+            Assert.Null(dailyPortfolio);
+        }
+
+        [Fact]
+        public async Task _17_SeedPortfolios_ShouldNotCreateEntryIfRelativePartCoultNotBeParsed()
+        {
+            // Arange
+            var fileName15 = "../../../Files/Portfolios/Portfolios15.xml";
+            var xmlFileContent = File.ReadAllText(fileName15);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+
+            var date = new DateTime(2018, 12, 17);
 
             // Act
             await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
