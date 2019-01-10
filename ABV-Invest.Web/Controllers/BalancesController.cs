@@ -41,14 +41,16 @@
                 return this.View();
             }
 
-            return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
+            this.TempData["Date"] = dateChosen.Date;
+
+            return this.RedirectToAction("Details");
         }
 
-        public IActionResult Details(string date)
+        public IActionResult Details()
         {
+            var date = (DateTime)this.TempData["Date"];
             var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
-            var parsedDate = DateTime.Parse(date);
-            var balance = this.balancesService.GetUserDailyBalance<BalanceDto>(user, parsedDate);
+            var balance = this.balancesService.GetUserDailyBalance<BalanceDto>(user, date);
 
             if (balance == null)
             {

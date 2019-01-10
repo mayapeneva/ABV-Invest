@@ -33,9 +33,8 @@
             this.dataService = dataService;
         }
 
-        public T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, string chosenDate)
+        public T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, DateTime date)
         {
-            var date = DateTime.Parse(chosenDate);
             var dbUser = this.userManager.GetUserAsync(user).GetAwaiter().GetResult();
             return dbUser?.Portfolio
                 .SingleOrDefault(p => p.Date == date)?

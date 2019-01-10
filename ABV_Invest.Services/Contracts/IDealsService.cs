@@ -9,7 +9,7 @@
 
     public interface IDealsService
     {
-        T[] GetUserDailyDeals<T>(ClaimsPrincipal user, string chosenDate);
+        T[] GetUserDailyDeals<T>(ClaimsPrincipal user, DateTime date);
 
         Task<StringBuilder> SeedDeals(DealRowBindingModel[] deserializedDeals, DateTime date);
     }

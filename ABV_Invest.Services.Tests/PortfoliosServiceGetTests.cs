@@ -18,12 +18,12 @@
 
     public class PortfoliosServiceGetTests
     {
-        private const string Date = "15/12/2018";
-
         private readonly AbvDbContext db;
         private readonly IPortfoliosService portfoliosService;
         private readonly Mock<AbvInvestUser> moqUser;
         private readonly ClaimsPrincipal principal;
+
+        private DateTime Date = new DateTime(2018, 12, 15);
 
         public PortfoliosServiceGetTests()
         {
@@ -34,11 +34,10 @@
             AutoMapperConfig.RegisterMappings(
                 typeof(PortfolioDto).Assembly);
 
-            var date = new DateTime(2018, 12, 15);
             this.moqUser = new Mock<AbvInvestUser>();
             this.moqUser.Setup(u => u.Portfolio).Returns(new HashSet<DailySecuritiesPerClient> { new DailySecuritiesPerClient
             {
-                Date = date,
+                Date = this.Date,
                 SecuritiesPerIssuerCollection = new HashSet<SecuritiesPerClient> { new SecuritiesPerClient
                     {
                         Quantity = 100,
@@ -66,7 +65,7 @@
         public void GetUserDailyPortfolio_ShouldReturnDailyPortfolio()
         {
             // Act
-            var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, Date);
+            var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, this.Date);
 
             // Assert
             Assert.NotNull(result);
@@ -80,7 +79,7 @@
                 this.moqUser.Object.Portfolio.Select(p => p.SecuritiesPerIssuerCollection.Sum(s => s.TotalMarketPrice));
 
             // Act
-            var actualTotalMarketPrice = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, Date).Select(p => p.TotalMarketPrice);
+            var actualTotalMarketPrice = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, this.Date).Select(p => p.TotalMarketPrice);
 
             // Assert
             Assert.Equal(expectedTotalMarketPrice, actualTotalMarketPrice);
@@ -90,7 +89,7 @@
         public void GetUserDailyPortfolio_ShouldReturnNullIfThereIsNoPortfolioForThisDate()
         {
             // Arange
-            var date = "27/12/2018";
+            var date = new DateTime(2018, 12, 27);
 
             // Act
             var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, date);
@@ -106,7 +105,7 @@
             var user = new ClaimsPrincipal();
 
             // Act
-            var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(user, Date);
+            var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(user, this.Date);
 
             // Assert
             Assert.Null(result);

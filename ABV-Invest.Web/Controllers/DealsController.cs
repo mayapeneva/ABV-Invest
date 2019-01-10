@@ -38,11 +38,14 @@
                 return this.View();
             }
 
-            return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
+            this.TempData["Date"] = dateChosen.Date;
+
+            return this.RedirectToAction("Details");
         }
 
-        public IActionResult Details(string date)
+        public IActionResult Details()
         {
+            var date = (DateTime)this.TempData["Date"];
             var deals = this.dealsService.GetUserDailyDeals<DealDto>(this.User, date);
 
             if (deals == null)

@@ -19,12 +19,12 @@
 
     public class DealsServiceGetTests
     {
-        private const string Date = "16/12/2018";
-
         private readonly AbvDbContext db;
         private readonly IDealsService dealsService;
         private readonly Mock<AbvInvestUser> moqUser;
         private readonly ClaimsPrincipal principal;
+
+        private DateTime Date = new DateTime(2018, 12, 16);
 
         public DealsServiceGetTests()
         {
@@ -35,11 +35,10 @@
             AutoMapperConfig.RegisterMappings(
                 typeof(DealDto).Assembly);
 
-            var date = new DateTime(2018, 12, 16);
             this.moqUser = new Mock<AbvInvestUser>();
             this.moqUser.Setup(u => u.Deals).Returns(new HashSet<DailyDeals> { new DailyDeals
             {
-                Date = date,
+                Date = this.Date,
                 Deals = new HashSet<Deal> { new Deal
                     {
                         DealType = DealType.Купува,
@@ -65,7 +64,7 @@
         public void GetUserDailyDeals_ShouldReturnDailyDeals()
         {
             // Act
-            var result = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, Date);
+            var result = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, this.Date);
 
             // Assert
             Assert.NotNull(result);
@@ -79,7 +78,7 @@
                 this.moqUser.Object.Deals.Select(dd => dd.Deals.Sum(d => d.TotalPrice));
 
             // Act
-            var actualTotalPrice = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, Date).Select(d => d.TotalPrice);
+            var actualTotalPrice = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, this.Date).Select(d => d.TotalPrice);
 
             // Assert
             Assert.Equal(expectedTotalPrice, actualTotalPrice);
@@ -89,7 +88,7 @@
         public void GetUserDailyDeals_ShouldReturnNullIfThereIsNoDealsForThisDate()
         {
             // Arange
-            var date = "27/12/2018";
+            var date = new DateTime(2018, 12, 27);
 
             // Act
             var result = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, date);
@@ -105,7 +104,7 @@
             var user = new ClaimsPrincipal();
 
             // Act
-            var result = this.dealsService.GetUserDailyDeals<DealDto>(user, Date);
+            var result = this.dealsService.GetUserDailyDeals<DealDto>(user, this.Date);
 
             // Assert
             Assert.Null(result);

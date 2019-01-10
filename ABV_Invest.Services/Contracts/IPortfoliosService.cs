@@ -10,7 +10,7 @@
 
     public interface IPortfoliosService
     {
-        T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, string chosenDate);
+        T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, DateTime date);
 
         Task<StringBuilder> SeedPortfolios(IEnumerable<PortfolioRowBindingModel> deserializedPortfolios, DateTime date);
     }

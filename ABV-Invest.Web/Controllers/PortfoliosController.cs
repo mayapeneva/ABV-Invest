@@ -40,11 +40,14 @@
                 return this.View();
             }
 
-            return this.RedirectToAction("Details", new { date = dateChosen.Date.ToString("dd/MM/yyyy") });
+            this.TempData["Date"] = dateChosen.Date;
+
+            return this.RedirectToAction("Details");
         }
 
-        public IActionResult Details(string date)
+        public IActionResult Details()
         {
+            var date = (DateTime)this.TempData["Date"];
             var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, date);
             if (portfolio == null)
             {
@@ -60,7 +63,8 @@
         [HttpPost]
         public IActionResult CreatePdf(string date)
         {
-            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, date);
+            var parsedDate = DateTime.Parse(date);
+            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, parsedDate);
             if (portfolio == null)
             {
                 this.ViewData["Error"] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
