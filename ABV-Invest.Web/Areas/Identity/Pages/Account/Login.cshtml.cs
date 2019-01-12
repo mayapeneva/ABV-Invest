@@ -14,6 +14,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Threading.Tasks;
+    using Controllers;
 
     [AllowAnonymous]
     public class LoginModel : PageModel
@@ -60,6 +61,11 @@
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                await this.LocalRedirect("/").ExecuteResultAsync(this.PageContext);
+            }
+
             if (!string.IsNullOrEmpty(this.ErrorMessage))
             {
                 this.ModelState.AddModelError(string.Empty, this.ErrorMessage);

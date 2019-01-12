@@ -67,8 +67,13 @@
             public string ConfirmPassword { get; set; }
         }
 
-        public void OnGet(string returnUrl = null)
+        public async Task OnGet(string returnUrl = null)
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                await this.LocalRedirect("/").ExecuteResultAsync(this.PageContext);
+            }
+
             this.ReturnUrl = returnUrl;
         }
 

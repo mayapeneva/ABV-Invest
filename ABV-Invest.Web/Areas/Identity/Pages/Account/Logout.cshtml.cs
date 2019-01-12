@@ -22,8 +22,12 @@
             this._logger = logger;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                await this.LocalRedirect("/").ExecuteResultAsync(this.PageContext);
+            }
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
