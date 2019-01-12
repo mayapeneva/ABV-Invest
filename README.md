@@ -14,4 +14,3 @@ Username: ADMIN, PIN: 00000, Pass: 789-Admin
 All logged users have an access to their profile, where they can change their password, e-mail and phone number, can confirm their e-mail, download all their personal information and also delete their account according the GDPR requirements.
 
 https://abvinvest.azurewebsites.net 
-
