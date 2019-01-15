@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>ABV_Invest.Models</RootNamespace>
     <AssemblyName>ABV_Invest.Models</AssemblyName>
   </PropertyGroup>
@@ -13,6 +13,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.Identity.Stores">
       <HintPath>..\..\..\..\Users\User\.nuget\packages\microsoft.extensions.identity.stores\2.1.6\lib\netstandard2.0\Microsoft.Extensions.Identity.Stores.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
   </ItemGroup>
 

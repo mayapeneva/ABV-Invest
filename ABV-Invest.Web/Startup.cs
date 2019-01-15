@@ -64,7 +64,7 @@
 
             services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();
