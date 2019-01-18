@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+	<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>aspnet-ABV_Invest.Web-D05509C6-60A6-44AB-A053-855B1829B8C2</UserSecretsId>
     <ApplicationInsightsResourceId>/subscriptions/9af0157b-a4a7-4b62-a697-8bfe080722a6/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/ABV_Invest.Web</ApplicationInsightsResourceId>
     <ApplicationInsightsAnnotationResourceId>/subscriptions/9af0157b-a4a7-4b62-a697-8bfe080722a6/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/ABV_Invest.Web</ApplicationInsightsAnnotationResourceId>
