@@ -54,15 +54,10 @@
                 if (xmlFile.Length > 0)
                 {
                     // Saving the uploaded file
-                    using (var stream = new FileStream(fileName, FileMode.Create))
-                    {
-                        await xmlFile.CopyToAsync(stream);
-                    }
+                    await this.SaveUploadedFile(xmlFile, fileName);
 
                     // Deserialising the uploaded file data
-                    var xmlFileContent = System.IO.File.ReadAllText(fileName);
-                    var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
-                    var deserializedPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+                    var deserializedPortfolios = this.DeserialiseTheUploadedFileData(fileName);
 
                     // Validating the deserialised data
                     if (!DataValidator.IsValid(deserializedPortfolios))
@@ -109,15 +104,10 @@
                 if (xmlFile.Length > 0)
                 {
                     // Saving the uploaded file
-                    using (var stream = new FileStream(fileName, FileMode.Create))
-                    {
-                        await xmlFile.CopyToAsync(stream);
-                    }
+                    await this.SaveUploadedFile(xmlFile, fileName);
 
                     // Deserialising the uploaded file data
-                    var xmlFileContent = System.IO.File.ReadAllText(fileName);
-                    var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
-                    var deserializedDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+                    DealRowBindingModel[] deserializedDeals = DeserialiseDealsUploadedData(fileName);
 
                     // Validating the deserialised data
                     if (!DataValidator.IsValid(deserializedDeals))
@@ -137,6 +127,30 @@
             // Unsuccessful upload
             this.ViewData["Error"] = Messages.CouldNotUploadInformation;
             return this.View();
+        }
+
+        private static DealRowBindingModel[] DeserialiseDealsUploadedData(string fileName)
+        {
+            var xmlFileContent = System.IO.File.ReadAllText(fileName);
+            var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserializedDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+            return deserializedDeals;
+        }
+
+        private async Task SaveUploadedFile(Microsoft.AspNetCore.Http.IFormFile xmlFile, string fileName)
+        {
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                await xmlFile.CopyToAsync(stream);
+            }
+        }
+
+        private PortfolioRowBindingModel[] DeserialiseTheUploadedFileData(string fileName)
+        {
+            var xmlFileContent = System.IO.File.ReadAllText(fileName);
+            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
+            var deserializedPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+            return deserializedPortfolios;
         }
     }
 }
