@@ -16,7 +16,6 @@
         private const string Link = "link";
         private const string PubDate = "pubDate";
         private const string Description = "description";
-        private const string WindowsEncoding = "windows-1251";
 
         public void LoadNewsFromInvestor(List<RSSFeedViewModel> rssModels)
         {
@@ -93,12 +92,12 @@
             if (xmlDoc.FirstChild.NodeType == XmlNodeType.XmlDeclaration)
             {
                 XmlDeclaration dec = (XmlDeclaration)xmlDoc.FirstChild;
-                dec.Encoding = WindowsEncoding;
+                dec.Encoding = "windows-1252";
             }
             else
             {
                 var xmlDecl = xmlDoc.CreateXmlDeclaration("1.0", null, null);
-                xmlDecl.Encoding = WindowsEncoding;
+                xmlDecl.Encoding = "windows-1252";
                 xmlDoc.InsertBefore(xmlDecl, xmlDoc.DocumentElement);
             }
 

@@ -131,16 +131,16 @@
             var email = await this._userManager.GetEmailAsync(user);
             var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = this.Url.Page(
-                "/Account/ConfirmEmail",
+                Constants.ConfirmEmail,
                 pageHandler: null,
                 values: new { userId = userId, code = code },
                 protocol: this.Request.Scheme);
             await this._emailSender.SendEmailAsync(
                 email,
-                "Потвърдете имейла си",
-                $"Моля потвърдете регистрацията си като клинкнете <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>тук</a>.");
+                Messages.ConfirmEmail,
+                string.Format(Messages.RegistrationConfirmation, HtmlEncoder.Default.Encode(callbackUrl)));
 
-            this.StatusMessage = "Изпратихме Ви имейл за потвърждение. Моля проверете имейла си.";
+            this.StatusMessage = Messages.ConfirmationEmailSent;
             return this.RedirectToPage();
         }
     }

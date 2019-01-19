@@ -64,7 +64,7 @@
             {
                 if (!await this._userManager.CheckPasswordAsync(user, this.Input.Password))
                 {
-                    this.ModelState.AddModelError(string.Empty, "Неправилна парола.");
+                    this.ModelState.AddModelError(string.Empty, Messages.WrongPassword);
                     return this.Page();
                 }
             }
@@ -78,7 +78,7 @@
 
             await this._signInManager.SignOutAsync();
 
-            this._logger.LogInformation("Потребител с ID '{UserId}' изтри регистрацията си.", userId);
+            this._logger.LogInformation(string.Format(Messages.RegistrationDeleted, userId), userId);
 
             return this.Redirect("~/");
         }

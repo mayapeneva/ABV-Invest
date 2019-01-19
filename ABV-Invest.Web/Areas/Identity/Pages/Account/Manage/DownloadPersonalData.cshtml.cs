@@ -16,6 +16,9 @@
 
     public class DownloadPersonalDataModel : PageModel
     {
+        private const string ContentDisposition = "Content-Disposition";
+        private const string ContentDispositionValue = "attachment; filename=PersonalData.json";
+
         private readonly UserManager<AbvInvestUser> _userManager;
         private readonly ILogger<DownloadPersonalDataModel> _logger;
 
@@ -35,7 +38,7 @@
                 return this.NotFound(string.Format(Messages.CantLoadUser, this._userManager.GetUserId(this.User)));
             }
 
-            this._logger.LogInformation("Потребител с ID '{UserId}' поиска личните си данни.", this._userManager.GetUserId(this.User));
+            this._logger.LogInformation(string.Format(Messages.PersonalDataRequested, user.Id), this._userManager.GetUserId(this.User));
 
             // Only include personal data for download
             var personalData = new Dictionary<string, string>();
@@ -46,8 +49,8 @@
                 personalData.Add(p.Name, p.GetValue(user)?.ToString() ?? "null");
             }
 
-            this.Response.Headers.Add("Content-Disposition", "attachment; filename=PersonalData.json");
-            return new FileContentResult(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(personalData)), "text/json");
+            this.Response.Headers.Add(ContentDisposition, ContentDispositionValue);
+            return new FileContentResult(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(personalData)), Constants.TextJson);
         }
     }
 }

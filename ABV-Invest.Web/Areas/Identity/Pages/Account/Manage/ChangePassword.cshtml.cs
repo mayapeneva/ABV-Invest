@@ -40,14 +40,14 @@
             public string OldPassword { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "Паролата трябва да е дълга поне {2} и не повече от {1} символа.", MinimumLength = 6)]
-            [DataType(DataType.Password, ErrorMessage = "Паролата трябва да съдържа поне по една малка, една голяма буква, цифра и символ.")]
+            [StringLength(100, ErrorMessage = Messages.PasswordLengthError, MinimumLength = 6)]
+            [DataType(DataType.Password, ErrorMessage = Messages.PasswordTypeError)]
             [Display(Name = "New password")]
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "Двете въведени пароли не са еднакви.")]
+            [Compare("NewPassword", ErrorMessage = Messages.PasswordsDontMatch)]
             public string ConfirmPassword { get; set; }
         }
 
@@ -62,7 +62,7 @@
             var hasPassword = await this._userManager.HasPasswordAsync(user);
             if (!hasPassword)
             {
-                return this.RedirectToPage("./SetPassword");
+                return this.RedirectToPage(Constants.SetPassword);
             }
 
             return this.Page();
@@ -92,8 +92,8 @@
             }
 
             await this._signInManager.RefreshSignInAsync(user);
-            this._logger.LogInformation("Потребителят успешно смени паролата си.");
-            this.StatusMessage = "Вашата парола беше променена.";
+            this._logger.LogInformation(Messages.PasswordChangeSuccess);
+            this.StatusMessage = Messages.YourPasswordChangedSuccess;
 
             return this.RedirectToPage();
         }

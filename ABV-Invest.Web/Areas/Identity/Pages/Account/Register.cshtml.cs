@@ -1,5 +1,6 @@
 ﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using System;
     using ABV_Invest.Models;
     using Common;
 
@@ -42,28 +43,28 @@
         public class InputModel
         {
             [Required]
-            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$", ErrorMessage = "Потребителското име трябва да е дълго 5 или 10 символа и да съдържа цифри и/или главни латински букви.")]
+            [RegularExpression(Constants.UserNameRegex, ErrorMessage = Messages.UsernameError)]
             [Display(Name = "Username")]
             public string Username { get; set; }
 
             [Required]
-            [RegularExpression(@"^\d{5}$", ErrorMessage = "ПИН кодът трябва да е дълъг 5 символа и да съдържа само цифри.")]
+            [RegularExpression(Constants.PINRegex, ErrorMessage = Messages.PINError)]
             [Display(Name = "PIN")]
             public string PIN { get; set; }
 
-            [DataType(DataType.EmailAddress, ErrorMessage = "Моля въведете валиден имейл адрес.")]
+            [DataType(DataType.EmailAddress, ErrorMessage = Messages.EmailError)]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "Паролата трябва да е дълга поне {2} и не повече от {1} символа.", MinimumLength = 6)]
-            [DataType(DataType.Password, ErrorMessage = "Паролата трябва да съдържа поне по една малка, една голяма буква, цифра и символ.")]
+            [StringLength(100, ErrorMessage = Messages.PasswordLengthError, MinimumLength = 6)]
+            [DataType(DataType.Password, ErrorMessage = Messages.PasswordTypeError)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "Двете въведени пароли не са еднакви.")]
+            [Compare("Password", ErrorMessage = Messages.PasswordsDontMatch)]
             public string ConfirmPassword { get; set; }
         }
 
@@ -94,17 +95,16 @@
                 {
                     await this._userManager.AddToRoleAsync(user, Constants.User);
 
-                    this._logger.LogInformation("Потребителят създаде нова регистрация с парола.");
+                    this._logger.LogInformation(Messages.NewRegistrationWithPassword);
 
                     var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = this.Url.Page(
-                        "/Account/ConfirmEmail",
+                        Constants.ConfirmEmail,
                         pageHandler: null,
                         values: new { userId = user.Id, code = code },
                         protocol: this.Request.Scheme);
 
-                    await this._emailSender.SendEmailAsync(this.Input.Email, "Потвърдете имейла си.",
-                        $"Моля потвърдете регистрацията си като кликнете <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>тук</a>.");
+                    await this._emailSender.SendEmailAsync(this.Input.Email, Messages.ConfirmEmail, string.Format(Messages.RegistrationConfirmation, HtmlEncoder.Default.Encode(callbackUrl)));
 
                     await this._signInManager.SignInAsync(user, isPersistent: false);
                     return this.LocalRedirect(returnUrl);

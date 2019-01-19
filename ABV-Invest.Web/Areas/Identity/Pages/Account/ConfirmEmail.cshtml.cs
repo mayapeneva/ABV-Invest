@@ -24,7 +24,7 @@
         {
             if (userId == null || code == null)
             {
-                return this.RedirectToPage("/Index");
+                return this.RedirectToPage(Constants.Index);
             }
 
             var user = await this._userManager.FindByIdAsync(userId);
@@ -36,7 +36,7 @@
             var result = await this._userManager.ConfirmEmailAsync(user, code);
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Възникна грешка при потвърждаването на имейл за потребител с ID '{userId}':");
+                throw new InvalidOperationException(String.Format(Messages.ConfirmEmailError, userId));
             }
 
             return this.Page();

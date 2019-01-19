@@ -1,5 +1,6 @@
 ﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
+    using System;
     using ABV_Invest.Models;
 
     using Microsoft.AspNetCore.Authorization;
@@ -10,6 +11,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
+    using Common;
 
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
@@ -29,7 +31,7 @@
         public class InputModel
         {
             [Required]
-            [DataType(DataType.EmailAddress, ErrorMessage = "Моля въведете валиден имейл адрес.")]
+            [DataType(DataType.EmailAddress, ErrorMessage = Messages.ValidEmail)]
             public string Email { get; set; }
         }
 
@@ -41,23 +43,22 @@
                 if (user == null || !(await this._userManager.IsEmailConfirmedAsync(user)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return this.RedirectToPage("./ForgotPasswordConfirmation");
+                    return this.RedirectToPage(Constants.ForgotPassword);
                 }
 
                 // For more information on how to enable account confirmation and password reset please
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await this._userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = this.Url.Page(
-                    "/Account/ResetPassword",
+                    Constants.ResetPassword,
                     pageHandler: null,
                     values: new { code },
                     protocol: this.Request.Scheme);
 
                 await this._emailSender.SendEmailAsync(this.Input.Email,
-                    "Промяна на парола",
-                    $"Моля променете паролата си като кликнете <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>тук</a>.");
+                    Constants.PasswordChange, String.Format(Messages.ChangePassword, HtmlEncoder.Default.Encode(callbackUrl)));
 
-                return this.RedirectToPage("./ForgotPasswordConfirmation");
+                return this.RedirectToPage(Constants.ForgotPassword);
             }
 
             return this.Page();

@@ -31,14 +31,14 @@
         public class InputModel
         {
             [Required]
-            [StringLength(100, ErrorMessage = "Паролата трябва да е дълга поне {2} и не повече от {1} символа.", MinimumLength = 6)]
-            [DataType(DataType.Password, ErrorMessage = "Паролата трябва да съдържа поне по една малка, една голяма буква, цифра и символ.")]
+            [StringLength(100, ErrorMessage = Messages.PasswordLengthError, MinimumLength = 6)]
+            [DataType(DataType.Password, ErrorMessage = Messages.PasswordTypeError)]
             [Display(Name = "New password")]
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm new password")]
-            [Compare("Password", ErrorMessage = "Двете въведени пароли не са еднакви.")]
+            [Compare("Password", ErrorMessage = Messages.PasswordsDontMatch)]
             public string ConfirmPassword { get; set; }
         }
 
@@ -54,7 +54,7 @@
 
             if (hasPassword)
             {
-                return this.RedirectToPage("./ChangePassword");
+                return this.RedirectToPage(Constants.ChangePassword);
             }
 
             return this.Page();
@@ -84,7 +84,7 @@
             }
 
             await this._signInManager.RefreshSignInAsync(user);
-            this.StatusMessage = "Паролата ви е приета успешно.";
+            this.StatusMessage = Messages.PasswordAccepted;
 
             return this.RedirectToPage();
         }

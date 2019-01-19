@@ -43,11 +43,11 @@
         public class InputModel
         {
             [Required]
-            [RegularExpression(@"^[A-Z0-9]{5}$|^[A-Z0-9]{10}$", ErrorMessage = "Потребителското име трябва да е дълго 5 или 10 символа и да съдържа цифри и/или главни латински букви.")]
+            [RegularExpression(Constants.UserNameRegex, ErrorMessage = Messages.UsernameError)]
             public string UserName { get; set; }
 
             [Required]
-            [RegularExpression(@"^\d{5}$", ErrorMessage = "ПИН кодът трябва да е дълъг 5 символа и да съдържа само цифри.")]
+            [RegularExpression(Constants.PINRegex, ErrorMessage = Messages.PINError)]
             [Display(Name = "PIN")]
             public string PIN { get; set; }
 
@@ -102,14 +102,14 @@
                     this._logger.LogInformation(Messages.UserLoggedIn);
                     return this.LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
-                {
-                    return this.RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = this.Input.RememberMe });
-                }
+                //if (result.RequiresTwoFactor)
+                //{
+                //    return this.RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = this.Input.RememberMe });
+                //}
                 if (result.IsLockedOut)
                 {
                     this._logger.LogWarning(Messages.LockedAccount);
-                    return this.RedirectToPage("./Lockout");
+                    return this.RedirectToPage(Constants.Lockout);
                 }
                 else
                 {

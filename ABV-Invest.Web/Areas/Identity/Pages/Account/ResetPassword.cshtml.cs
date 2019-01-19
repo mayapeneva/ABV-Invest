@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using System.ComponentModel.DataAnnotations;
     using System.Threading.Tasks;
+    using Common;
 
     [AllowAnonymous]
     public class ResetPasswordModel : PageModel
@@ -25,17 +26,17 @@
         public class InputModel
         {
             [Required]
-            [DataType(DataType.EmailAddress, ErrorMessage = "Моля въведете валиден имейл адрес.")]
+            [DataType(DataType.EmailAddress, ErrorMessage = Messages.ValidEmail)]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "Паролата трябва да е дълга поне {2} и не повече от {1} символа.", MinimumLength = 6)]
-            [DataType(DataType.Password, ErrorMessage = "Паролата трябва да съдържа поне по една малка, една голяма буква, цифра и символ.")]
+            [StringLength(100, ErrorMessage = Messages.PasswordLengthError, MinimumLength = 6)]
+            [DataType(DataType.Password, ErrorMessage = Messages.PasswordTypeError)]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "Двете въведени пароли не са еднакви.")]
+            [Compare("Password", ErrorMessage = Messages.PasswordsDontMatch)]
             public string ConfirmPassword { get; set; }
 
             public string Code { get; set; }
@@ -45,7 +46,7 @@
         {
             if (code == null)
             {
-                return this.BadRequest("Трябва да предоставите код, за да можете да промените паролата.");
+                return this.BadRequest(Messages.CodeNeededForPasswordChange);
             }
             else
             {
@@ -68,13 +69,13 @@
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return this.RedirectToPage("./ResetPasswordConfirmation");
+                return this.RedirectToPage(Constants.ResetPasswordConfirmation);
             }
 
             var result = await this._userManager.ResetPasswordAsync(user, this.Input.Code, this.Input.Password);
             if (result.Succeeded)
             {
-                return this.RedirectToPage("./ResetPasswordConfirmation");
+                return this.RedirectToPage(Constants.ResetPasswordConfirmation);
             }
 
             foreach (var error in result.Errors)
