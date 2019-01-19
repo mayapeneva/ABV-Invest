@@ -33,6 +33,9 @@
         // Identity
         public const string CantLoadUser = "Не беше възможно да заредим данните на потребител с ID '{0}'.";
 
+        public const string ConfirmEmailError =
+            "Възникна грешка при потвърждаването на имейл за потребител с ID '{0}'.";
+
         public const string MistakeWhenSaving = "Възникна грешка при запазването на {0} за потребител с ID '{1}'.";
 
         public const string ProfileChanged = "Профилът ви беше успешно променен.";
@@ -72,5 +75,13 @@
         public const string UserDoesNotExist = "- Клиент с потребителско име {0} не е регистриран и всички записи за този клиент са пропуснати.";
 
         public const string UploadingSuccessfull = "Качването на информация приключи успешно.";
+
+        public const string ValidEmail = "Моля въведете валиден имейл адрес.";
+        public const string ChangePassword = "Моля променете паролата си като кликнете <a href='{0}'>тук</a>.";
+        public const string UsernameError = "Потребителското име трябва да е дълго 5 или 10 символа и да съдържа цифри и/или главни латински букви.";
+        public const string PINError = "ПИН кодът трябва да е дълъг 5 символа и да съдържа само цифри.";
+        public const string EmailError = "Моля въведете валиден имейл адрес.";
+
+        //public const string
     }
 }

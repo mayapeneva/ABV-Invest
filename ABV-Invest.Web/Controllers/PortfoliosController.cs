@@ -12,11 +12,15 @@
     using Rotativa.AspNetCore;
     using System;
     using System.Collections.Generic;
+    using Extensions;
     using Rotativa.AspNetCore.Options;
 
     [Authorize]
     public class PortfoliosController : Controller
     {
+        private const string CreatePDF = "CreatePdf";
+        private const string CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 6";
+
         private readonly IPortfoliosService portfoliosService;
 
         public PortfoliosController(IPortfoliosService portfoliosService)
@@ -32,27 +36,26 @@
         [HttpPost]
         public IActionResult ChooseDate(DateChosenBindingModel dateChosen)
         {
-            if (!this.ModelState.IsValid
-                || dateChosen.Date > DateTime.UtcNow
-                || dateChosen.Date < DateTime.Parse("01/01/2016"))
+            if (!this.ModelState.IsValid ||
+                !DateValidator.ValidateDate(dateChosen.Date))
             {
-                this.ViewData["Error"] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
                 return this.View();
             }
 
-            this.TempData["Date"] = dateChosen.Date;
+            this.TempData[Constants.Date] = dateChosen.Date;
 
-            return this.RedirectToAction("Details");
+            return this.RedirectToAction(Constants.DetailsAction);
         }
 
         public IActionResult Details()
         {
-            var date = (DateTime)this.TempData["Date"];
+            var date = (DateTime)this.TempData[Constants.Date];
             var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, date);
             if (portfolio == null)
             {
-                this.ViewData["Error"] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
-                return this.View("ChooseDate");
+                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                return this.View(Constants.ChooseDateAction);
             }
 
             var portfolioViewModel = Mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);
@@ -67,18 +70,18 @@
             var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, parsedDate);
             if (portfolio == null)
             {
-                this.ViewData["Error"] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString("dd/MM/yyyy"));
-                return this.View("ChooseDate");
+                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                return this.View(Constants.ChooseDateAction);
             }
 
             var portfolioViewModel = Mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);
 
-            return new ViewAsPdf("CreatePdf", portfolioViewModel)
+            return new ViewAsPdf(CreatePDF, portfolioViewModel)
             {
                 PageOrientation = Orientation.Landscape,
                 PageSize = Size.A4,
                 PageMargins = { Left = 15, Bottom = 10, Right = 15, Top = 10 },
-                CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 6"
+                CustomSwitches = CustomSwitches
             };
         }
     }

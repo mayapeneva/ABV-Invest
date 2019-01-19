@@ -33,18 +33,18 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ViewData["Error"] = Messages.WrongCurrencyData;
+                this.ViewData[Constants.Error] = Messages.WrongCurrencyData;
                 return this.View();
             }
 
             var result = this.dataService.CreateCurrency(bindingModel.Code);
             if (!result.Result)
             {
-                this.ViewData["Error"] = Messages.CurrencyExists;
+                this.ViewData[Constants.Error] = Messages.CurrencyExists;
                 return this.View();
             }
 
-            return this.RedirectToAction("Add");
+            return this.RedirectToAction(Constants.AddAction);
         }
 
         public IActionResult AddMarket()
@@ -57,18 +57,18 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ViewData["Error"] = Messages.WrongMarketData;
+                this.ViewData[Constants.Error] = Messages.WrongMarketData;
                 return this.View();
             }
 
             var result = this.dataService.CreateMarket(bindingModel.Name, bindingModel.MIC);
             if (!result.Result)
             {
-                this.ViewData["Error"] = Messages.MarketExists;
+                this.ViewData[Constants.Error] = Messages.MarketExists;
                 return this.View();
             }
 
-            return this.RedirectToAction("Add");
+            return this.RedirectToAction(Constants.AddAction);
         }
 
         public IActionResult AddSecurity()
@@ -81,18 +81,18 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ViewData["Error"] = Messages.WrongSecurityData;
+                this.ViewData[Constants.Error] = Messages.WrongSecurityData;
                 return this.View();
             }
 
             var result = this.dataService.CreateSecurity(bindingModel.Issuer, bindingModel.ISIN, bindingModel.BfbCode, bindingModel.Currency);
             if (!result.Result)
             {
-                this.ViewData["Error"] = Messages.SecurityExists;
+                this.ViewData[Constants.Error] = Messages.SecurityExists;
                 return this.View();
             }
 
-            return this.RedirectToAction("Add");
+            return this.RedirectToAction(Constants.AddAction);
         }
     }
 }

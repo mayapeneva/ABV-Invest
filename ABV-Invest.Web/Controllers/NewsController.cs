@@ -29,7 +29,7 @@
             this.rssFeedParser.LoadNewsFromX3News(rssModels);
             if (!rssModels.Any())
             {
-                this.ViewData["Error"] = Messages.NoNews;
+                this.ViewData[Constants.Error] = Messages.NoNews;
                 return this.View();
             }
 

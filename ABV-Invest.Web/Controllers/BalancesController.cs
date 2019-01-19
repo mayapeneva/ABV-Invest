@@ -12,6 +12,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using Extensions;
 
     [Authorize]
     public class BalancesController : Controller
@@ -33,29 +34,28 @@
         [HttpPost]
         public IActionResult ChooseDate(DateChosenBindingModel dateChosen)
         {
-            if (!this.ModelState.IsValid
-                || dateChosen.Date > DateTime.UtcNow
-                || dateChosen.Date < DateTime.Parse("01/01/2016"))
+            if (!this.ModelState.IsValid ||
+                !DateValidator.ValidateDate(dateChosen.Date))
             {
-                this.ViewData["Error"] = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString("dd/MM/yyyy"));
+                this.ViewData[Constants.Error] = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
                 return this.View();
             }
 
-            this.TempData["Date"] = dateChosen.Date;
+            this.TempData[Constants.Date] = dateChosen.Date;
 
-            return this.RedirectToAction("Details");
+            return this.RedirectToAction(Constants.DetailsAction);
         }
 
         public IActionResult Details()
         {
-            var date = (DateTime)this.TempData["Date"];
+            var date = (DateTime)this.TempData[Constants.Date];
             var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
             var balance = this.balancesService.GetUserDailyBalance<BalanceDto>(user, date);
 
             if (balance == null)
             {
-                this.ViewData["Error"] = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString("dd/MM/yyyy"));
-                return this.View("ChooseDate");
+                this.ViewData[Constants.Error] = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                return this.View(Constants.ChooseDateAction);
             }
 
             var balanceViewModel = Mapper.Map<BalanceViewModel>(balance);

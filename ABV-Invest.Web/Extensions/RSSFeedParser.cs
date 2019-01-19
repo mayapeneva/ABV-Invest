@@ -11,6 +11,13 @@
 
     public class RSSFeedParser : IRSSFeedParser
     {
+        private const string Item = "item";
+        private const string Title = "title";
+        private const string Link = "link";
+        private const string PubDate = "pubDate";
+        private const string Description = "description";
+        private const string WindowsEncoding = "windows-1251";
+
         public void LoadNewsFromInvestor(List<RSSFeedViewModel> rssModels)
         {
             var xmlDoc = new XmlDocument();
@@ -19,14 +26,14 @@
 
             foreach (XmlNode feed in feeds)
             {
-                if (feed.Name == "item")
+                if (feed.Name == Item)
                 {
                     rssModels.Add(new RSSFeedViewModel
                     {
-                        Title = feed["title"].InnerText,
-                        Uri = feed["link"].InnerText,
-                        PublishedDate = DateTime.Parse(feed["pubDate"].InnerText),
-                        Summary = feed["description"].InnerText
+                        Title = feed[Title].InnerText,
+                        Uri = feed[Link].InnerText,
+                        PublishedDate = DateTime.Parse(feed[PubDate].InnerText),
+                        Summary = feed[Description].InnerText
                     });
                 }
             }
@@ -40,9 +47,9 @@
 
             foreach (XmlNode feed in feeds)
             {
-                if (feed.Name == "item")
+                if (feed.Name == Item)
                 {
-                    var summaryRaw = feed["description"].InnerText;
+                    var summaryRaw = feed[Description].InnerText;
 
                     // Clean the feedDescription from html tags, which should not be part of it
                     var startingIndex = summaryRaw.IndexOf(" /><br />", StringComparison.InvariantCulture) + " /><br />".Length;
@@ -70,9 +77,9 @@
                     // Create the RSSModel
                     rssModels.Add(new RSSFeedViewModel
                     {
-                        Title = feed["title"].InnerText,
-                        Uri = feed["link"].InnerText,
-                        PublishedDate = DateTime.Parse(feed["pubDate"].InnerText),
+                        Title = feed[Title].InnerText,
+                        Uri = feed[Link].InnerText,
+                        PublishedDate = DateTime.Parse(feed[PubDate].InnerText),
                         Summary = summary
                     });
                 }
@@ -86,28 +93,28 @@
             if (xmlDoc.FirstChild.NodeType == XmlNodeType.XmlDeclaration)
             {
                 XmlDeclaration dec = (XmlDeclaration)xmlDoc.FirstChild;
-                dec.Encoding = "windows-1251";
+                dec.Encoding = WindowsEncoding;
             }
             else
             {
                 var xmlDecl = xmlDoc.CreateXmlDeclaration("1.0", null, null);
-                xmlDecl.Encoding = "windows-1251";
+                xmlDecl.Encoding = WindowsEncoding;
                 xmlDoc.InsertBefore(xmlDecl, xmlDoc.DocumentElement);
             }
 
             var feeds = xmlDoc.DocumentElement.FirstChild.ChildNodes;
             foreach (XmlNode feed in feeds)
             {
-                if (feed.Name == "item")
+                if (feed.Name == Item)
                 {
                     var model = new RSSFeedViewModel
                     {
-                        Title = feed["title"].InnerText,
-                        Uri = feed["link"].InnerText,
-                        Summary = feed["description"].InnerText
+                        Title = feed[Title].InnerText,
+                        Uri = feed[Link].InnerText,
+                        Summary = feed[Description].InnerText
                     };
 
-                    var notParsedDate = feed["pubDate"].InnerText.ToLower().Replace(" ", "");
+                    var notParsedDate = feed[PubDate].InnerText.ToLower().Replace(" ", "");
                     var dayStartIndex = notParsedDate.IndexOf(",", StringComparison.InvariantCulture) + 1;
                     var ifDayParsed = int.TryParse(notParsedDate.Substring(dayStartIndex, 2), out int day);
 
