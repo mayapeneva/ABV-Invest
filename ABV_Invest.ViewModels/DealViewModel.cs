@@ -32,11 +32,11 @@
         {
             configuration.CreateMap<DealDto, DealViewModel>()
                 .ForMember(dest => dest.DealType, opt => opt.MapFrom(src => src.DealType.ToString()))
-                .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity.ToString("N", CultureInfo.CreateSpecificCulture("sv-SE"))))
-                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price.ToString("N3", CultureInfo.CreateSpecificCulture("sv-SE"))))
-                .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.TotalPrice.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"))))
-                .ForMember(dest => dest.Fee, opt => opt.MapFrom(src => src.Fee.ToString("N2", CultureInfo.CreateSpecificCulture("sv-SE"))))
-                .ForMember(dest => dest.Settlement, opt => opt.MapFrom(src => src.Settlement.ToString("dd/MM/yyyy")));
+                .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity.ToString("N", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price.ToString("N3", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
+                .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.TotalPrice.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
+                .ForMember(dest => dest.Fee, opt => opt.MapFrom(src => src.Fee.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
+                .ForMember(dest => dest.Settlement, opt => opt.MapFrom(src => src.Settlement.ToString(ViewModelConstants.DateTimeParseFormat)));
         }
     }
 }

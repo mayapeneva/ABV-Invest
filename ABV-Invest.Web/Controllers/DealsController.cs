@@ -34,7 +34,7 @@
             if (!this.ModelState.IsValid ||
                 !DateValidator.ValidateDate(dateChosen.Date))
             {
-                this.ViewData[Constants.Error] = string.Format(Messages.NoDeals, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                this.ViewData[Constants.Error] = string.Format(Messages.NoDeals, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View();
             }
 
@@ -50,7 +50,7 @@
 
             if (deals == null)
             {
-                this.ViewData[Constants.Error] = string.Format(Messages.NoDeals, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                this.ViewData[Constants.Error] = string.Format(Messages.NoDeals, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 

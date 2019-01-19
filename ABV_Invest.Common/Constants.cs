@@ -3,10 +3,11 @@
     public class Constants
     {
         // GENERAL
-        public const string DateTimeParseFormat = "ddd, dd MMM yyyy HH:mm:ss zzz";
+        public const string DateTimeParseFormatLong = "ddd, dd MMM yyyy HH:mm:ss zzz";
 
-        public const string DateTimeShortParseFormat = "dd/MM/yyyy";
+        public const string DateTimeParseFormat = "dd/MM/yyyy";
         public const string TextJson = "text/json";
+        public const string JsonContentType = "application/json";
 
         // ROLES
         public const string Admin = "Admin";
@@ -24,6 +25,11 @@
         public const string ChooseDateAction = "ChooseDate";
         public const string AddAction = "Add";
         public const string XmlRootAttr = "WebData";
+
+        // SERVICES
+        public const string Buy = "BUY";
+
+        public const string Sell = "SELL";
 
         // RSS FEED PARSER
         public const string CapitalRSS1 = "https://www.capital.bg/rss/?rubrid=2272";

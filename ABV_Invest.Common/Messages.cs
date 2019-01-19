@@ -86,5 +86,15 @@
         public const string ValidEmail = "Моля въведете валиден имейл адрес.";
         public const string WrongPassword = "Неправилна парола.";
         public const string YourPasswordChangedSuccess = "Вашата парола беше променена.";
+
+        // EMAIL SENDER
+        public const string SendEmailException = "Exception during sending email: {0}";
+
+        public const string SendGridFailure = "SendGrid indicated failure! Code: {0}, reason: {1}";
+        public const string SubjectMessageToBeProvided = "Subject and/or message must be provided.";
+
+        // BINDING MODELS
+        public const string CurrencyCodeError =
+            "Кодът на валутата трябва да е дълъг 3 символа и да съдържа само главни латински букви.";
     }
 }

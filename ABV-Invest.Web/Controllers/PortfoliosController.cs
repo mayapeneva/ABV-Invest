@@ -39,7 +39,7 @@
             if (!this.ModelState.IsValid ||
                 !DateValidator.ValidateDate(dateChosen.Date))
             {
-                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View();
             }
 
@@ -54,7 +54,7 @@
             var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, date);
             if (portfolio == null)
             {
-                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 
@@ -70,7 +70,7 @@
             var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, parsedDate);
             if (portfolio == null)
             {
-                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 

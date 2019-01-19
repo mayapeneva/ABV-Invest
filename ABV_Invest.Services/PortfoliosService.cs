@@ -22,6 +22,17 @@
         private const string initialPIN = "00001";
         private const string initialEmail = "client@abv.bg";
 
+        private const string Quantity = "Наличност";
+        private const string AveragePrice = "Средна цена";
+        private const string MarketPrice = "Пазарна цена";
+        private const string MarketValue = "Пазарна стойност";
+        private const string Profit = "Доходност";
+
+        private const string ProfitInBgn = "Доходност в лева";
+        private const string ProfitInPersentage = "Доходност в %";
+
+        private const string PortfolioShare = "Тегло в портфейла";
+
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IBalancesService balancesService;
         private readonly IDataService dataService;
@@ -124,56 +135,56 @@
                     var ifQuantityParsed = decimal.TryParse(portfolioRow.AccountData.Quantity.Replace(" ", ""), out var quantity);
                     if (!ifQuantityParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Наличност", portfolioRow.AccountData.Quantity));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, Quantity, portfolioRow.AccountData.Quantity));
                         continue;
                     }
 
                     var ifAveragePriceBuyParsed = decimal.TryParse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""), out var averagePriceBuy);
                     if (!ifAveragePriceBuyParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Средна цена", portfolioRow.AccountData.OpenPrice));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, AveragePrice, portfolioRow.AccountData.OpenPrice));
                         continue;
                     }
 
                     var ifMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""), out var marketPrice);
                     if (!ifMarketPriceParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Пазарна цена", portfolioRow.AccountData.MarketPrice));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, MarketPrice, portfolioRow.AccountData.MarketPrice));
                         continue;
                     }
 
                     var ifTotalMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketValue.Replace(" ", ""), out var totalMarketPrice);
                     if (!ifTotalMarketPriceParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Пазарна стойност", portfolioRow.AccountData.MarketValue));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, MarketValue, portfolioRow.AccountData.MarketValue));
                         continue;
                     }
 
                     var ifProfitParsed = decimal.TryParse(portfolioRow.AccountData.Result.Replace(" ", ""), out var profit);
                     if (!ifProfitParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Доходност", portfolioRow.AccountData.Result));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, Profit, portfolioRow.AccountData.Result));
                         continue;
                     }
 
                     var ifProfitInBGNParsed = decimal.TryParse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""), out var profitInBGN);
                     if (!ifProfitInBGNParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Доходност в лева", portfolioRow.AccountData.ResultBGN));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, profitInBGN, portfolioRow.AccountData.ResultBGN));
                         continue;
                     }
 
                     var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", ""), out var profitPercent);
                     if (!ifProfitPercentParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Доходност в %", portfolioRow.Other.YieldPercent));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, ProfitInPersentage, portfolioRow.Other.YieldPercent));
                         continue;
                     }
 
                     var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", ""), out var portfolioShare);
                     if (!ifPortfolioShareParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, "Тегло в портфейла", portfolioRow.Other.RelativePart));
+                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, PortfolioShare, portfolioRow.Other.RelativePart));
                         continue;
                     }
 

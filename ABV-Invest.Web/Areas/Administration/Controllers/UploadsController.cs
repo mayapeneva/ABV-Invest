@@ -45,7 +45,7 @@
             if (!this.ModelState.IsValid ||
                 !DateValidator.ValidateDate(model.Date))
             {
-                this.ViewData[Constants.Error] = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                this.ViewData[Constants.Error] = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View();
             }
 
@@ -94,7 +94,7 @@
             if (!this.ModelState.IsValid ||
                 !DateValidator.ValidateDate(model.Date))
             {
-                this.ViewData[Constants.Error] = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString(Constants.DateTimeShortParseFormat));
+                this.ViewData[Constants.Error] = string.Format(Messages.WrongDate, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View();
             }
 

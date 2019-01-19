@@ -10,27 +10,28 @@
 
     public class EmailSender : IEmailSender
     {
+        private const string EnvironmentVariable = "ABV_Invest_SendGrid";
         private const string AuthenticationScheme = "Bearer";
         private const string BaseUrl = "https://api.sendgrid.com/v3/";
         private const string SendEmailUrlPath = "mail/send";
-        private const string fromAddress = "maya.peneva@gmail.com";
-        private const string fromName = "ABV Invest";
+        private const string FromAddress = "maya.peneva@gmail.com";
+        private const string FromName = "ABV Invest";
 
         private readonly HttpClient httpClient;
 
         public EmailSender()
         {
-            if (string.IsNullOrWhiteSpace(fromAddress))
+            if (string.IsNullOrWhiteSpace(FromAddress))
             {
-                throw new ArgumentOutOfRangeException(nameof(fromAddress));
+                throw new ArgumentOutOfRangeException(nameof(FromAddress));
             }
 
-            if (string.IsNullOrWhiteSpace(fromName))
+            if (string.IsNullOrWhiteSpace(FromName))
             {
-                throw new ArgumentOutOfRangeException(nameof(fromName));
+                throw new ArgumentOutOfRangeException(nameof(FromName));
             }
 
-            var apiKey = Environment.GetEnvironmentVariable("ABV_Invest_SendGrid");
+            var apiKey = Environment.GetEnvironmentVariable(EnvironmentVariable);
             this.httpClient = new HttpClient();
             this.httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue(AuthenticationScheme, apiKey);
@@ -39,9 +40,9 @@
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {
-            if (string.IsNullOrWhiteSpace(fromAddress))
+            if (string.IsNullOrWhiteSpace(FromAddress))
             {
-                throw new ArgumentOutOfRangeException(nameof(fromAddress));
+                throw new ArgumentOutOfRangeException(nameof(FromAddress));
             }
 
             if (string.IsNullOrWhiteSpace(email))
@@ -51,32 +52,31 @@
 
             if (string.IsNullOrWhiteSpace(subject) && string.IsNullOrWhiteSpace(message))
             {
-                throw new ArgumentException("Subject and/or message must be provided.");
+                throw new ArgumentException(Messages.SubjectMessageToBeProvided);
             }
 
             var msg = new SendGridMessage(
                 new SendGridEmail(email),
                 subject,
-                new SendGridEmail(fromAddress, fromName),
+                new SendGridEmail(FromAddress, FromName),
                 message);
             try
             {
                 var json = JsonConvert.SerializeObject(msg);
                 var response = await this.httpClient.PostAsync(
                     SendEmailUrlPath,
-                    new StringContent(json, Encoding.UTF8, "application/json"));
+                    new StringContent(json, Encoding.UTF8, Constants.JsonContentType));
 
                 if (!response.IsSuccessStatusCode)
                 {
                     // See if we can read the response for more information, then log the error
                     var errorJson = await response.Content.ReadAsStringAsync();
-                    throw new Exception(
-                        $"SendGrid indicated failure! Code: {response.StatusCode}, reason: {errorJson}");
+                    throw new Exception(string.Format(Messages.SendGridFailure, response.StatusCode, errorJson));
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Exception during sending email: {ex}");
+                throw new Exception(string.Format(Messages.SendEmailException, ex));
             }
         }
     }

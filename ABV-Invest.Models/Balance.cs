@@ -9,6 +9,8 @@
 
     public class Balance : BaseEntity<int>
     {
+        private const string DateTimeParseFormat = "dd/MM/yyyy";
+
         public Balance()
         {
             this.UsersPortfolio = new HashSet<SecuritiesPerClient>();
@@ -38,7 +40,7 @@
 
         public void SetBalanceFigures(AbvInvestUser user, DateTime date)
         {
-            this.UsersPortfolio = user.Portfolio.SingleOrDefault(p => p.Date.ToString("dd/MM/yyyy") == date.ToString("dd/MM/yyyy"))?.SecuritiesPerIssuerCollection;
+            this.UsersPortfolio = user.Portfolio.SingleOrDefault(p => p.Date.ToString(DateTimeParseFormat) == date.ToString(DateTimeParseFormat))?.SecuritiesPerIssuerCollection;
 
             if (this.UsersPortfolio != null)
             {

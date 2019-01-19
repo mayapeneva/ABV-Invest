@@ -19,6 +19,15 @@
 
     public class DealsService : BaseService, IDealsService
     {
+        private const string TypeOfDeal = "Тип на сделката";
+        private const string Quantity = "Количество";
+        private const string Price = "Цена";
+        private const string Coupon = "Купон";
+        private const string CurrencyValue = "Стойност в дадената валута";
+        private const string BgnValue = "Стойност в лева";
+        private const string Fee = "Комисионна";
+        private const string Settlement = "Сетълмент";
+
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IDataService dataService;
 
@@ -112,60 +121,60 @@
                     }
 
                     // Parse all dates, enums and decimal figures in order to create the Deal
-                    var ifDealTypeParsed = dealRow.DealData.Operation == "BUY" || dealRow.DealData.Operation == "SELL";
+                    var ifDealTypeParsed = dealRow.DealData.Operation == Constants.Buy || dealRow.DealData.Operation == Constants.Sell;
                     if (!ifDealTypeParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Тип на сделката", dealRow.DealData.Operation));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, TypeOfDeal, dealRow.DealData.Operation));
                         continue;
                     }
-                    var dealType = dealRow.DealData.Operation == "BUY" ? DealType.Купува : DealType.Продава;
+                    var dealType = dealRow.DealData.Operation == Constants.Buy ? DealType.Купува : DealType.Продава;
 
                     var ifQuantityParsed = decimal.TryParse(dealRow.DealData.ShareCount.Replace(" ", ""), out var quantity);
                     if (!ifQuantityParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Количество", dealRow.DealData.ShareCount));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Quantity, dealRow.DealData.ShareCount));
                         continue;
                     }
 
                     var ifPriceParsed = decimal.TryParse(dealRow.DealData.SinglePrice.Replace(" ", ""), out var price);
                     if (!ifPriceParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Цена", dealRow.DealData.SinglePrice));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Price, dealRow.DealData.SinglePrice));
                         continue;
                     }
 
                     var ifCouponParsed = decimal.TryParse(dealRow.DealData.Coupon.Replace(" ", ""), out var coupon);
                     if (!ifCouponParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Купон", dealRow.DealData.Coupon));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Coupon, dealRow.DealData.Coupon));
                         continue;
                     }
 
                     var ifTotalPriceParsed = decimal.TryParse(dealRow.DealData.DealAmountInShareCurrency.Replace(" ", ""), out var totalPrice);
                     if (!ifTotalPriceParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Стойност в дадената валута", dealRow.DealData.DealAmountInShareCurrency));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, CurrencyValue, dealRow.DealData.DealAmountInShareCurrency));
                         continue;
                     }
 
                     var ifTotalPriceInBGNParsed = decimal.TryParse(dealRow.DealData.DealAmountInPaymentCurrency.Replace(" ", ""), out var totalPriceInBGN);
                     if (!ifTotalPriceInBGNParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Стойност в лева", dealRow.DealData.DealAmountInPaymentCurrency));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, BgnValue, dealRow.DealData.DealAmountInPaymentCurrency));
                         continue;
                     }
 
                     var ifFeeParsed = decimal.TryParse(dealRow.DealData.CommissionInPaymentCurrency.Replace(" ", ""), out var fee);
                     if (!ifFeeParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Комисионна", dealRow.DealData.CommissionInPaymentCurrency));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Fee, dealRow.DealData.CommissionInPaymentCurrency));
                         continue;
                     }
 
                     var ifSettlementParsed = DateTime.TryParse(dealRow.DealData.DeliveryDate, out DateTime settlement);
                     if (!ifSettlementParsed)
                     {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, "Сетълмент", dealRow.DealData.DeliveryDate));
+                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Settlement, dealRow.DealData.DeliveryDate));
                         continue;
                     }
 
