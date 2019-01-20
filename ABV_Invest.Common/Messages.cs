@@ -12,13 +12,9 @@
         public const string WrongCurrencyData = "Валутният код се състои от 3 главни латински букви.";
 
         public const string CurrencyExists = "Валута с този код вече съществува или въведените данни не са правилни.";
-
         public const string WrongMarketData = "Името на пазара е неправилно.";
-
         public const string MarketExists = "Пазар с това име вече съществува или въведените данни не са правилни.";
-
         public const string WrongSecurityData = "ISIN кодът се състои от 12 цифри или главни латински букви. БФБ кодът се състои от 3 или 4 цифри или главни латински букви.";
-
         public const string SecurityExists = "Ценни книжа с този ISIN код вече съществуват или въведените данни не са правилни.";
 
         // DEALS CONTROLLER
@@ -26,9 +22,6 @@
 
         // PORTFOLIOS CONTROLLER
         public const string NoPortfolio = "Няма налична информация за портфолиото Ви към тази дата. Моля, изберете дата след 01/01/2016г. и не по-късна от {0}г.";
-
-        // RSS FEED PARSER
-        public const string NoNews = "В момента няма новини, които да ви покажем.";
 
         // PORTFOLIOS AND DEALS SERVICES
         public const string CouldNotUploadInformation = "Файлът, който качихте е празен или информацията в него е с неправилен формат.";
@@ -93,8 +86,19 @@
         public const string SendGridFailure = "SendGrid indicated failure! Code: {0}, reason: {1}";
         public const string SubjectMessageToBeProvided = "Subject and/or message must be provided.";
 
+        // RSS FEED PARSER
+        public const string NoNews = "В момента няма новини, които да ви покажем.";
+
         // BINDING MODELS
+        public const string BfbCodeError = "БФБ кодът трябва да е дълъг 3 или 4 символа и да съдържа цифри и/или главни латински букви.";
+
         public const string CurrencyCodeError =
             "Кодът на валутата трябва да е дълъг 3 символа и да съдържа само главни латински букви.";
+
+        public const string DateError = "Моля, въведете дата с правилен формат.";
+        public const string FileError = "Моля, изберете файл с правилен формат.";
+
+        public const string IsinError =
+            "ISIN кодът трябва да е дълъг 12 символа и да съдържа главни латински букви и цифри.";
     }
 }

@@ -3,15 +3,16 @@
     using Microsoft.AspNetCore.Http;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using Common;
 
     public class FilesUploadedBindingModel
     {
         [Required]
-        [DataType(DataType.Date, ErrorMessage = "Моля, въведете дата с правилен формат.")]
+        [DataType(DataType.Date, ErrorMessage = Messages.DateError)]
         public DateTime Date { get; set; }
 
         [Required]
-        [DataType(DataType.Upload, ErrorMessage = "Моля, изберете файл с правилен формат.")]
+        [DataType(DataType.Upload, ErrorMessage = Messages.FileError)]
         public IFormFile XMLFile { get; set; }
     }
 }

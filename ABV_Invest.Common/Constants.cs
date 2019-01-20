@@ -31,13 +31,6 @@
 
         public const string Sell = "SELL";
 
-        // RSS FEED PARSER
-        public const string CapitalRSS1 = "https://www.capital.bg/rss/?rubrid=2272";
-
-        public const string CapitalRSS2 = "https://www.capital.bg/rss/?rubrid=3060";
-        public const string InvestorRSS = "https://www.investor.bg/news/rss/last/10/";
-        public const string X3NewsRSS = "http://www.x3news.com/?page=RSSFeed";
-
         // IDENTITY
         public const string ChangePassword = "./ChangePassword";
 
@@ -51,5 +44,12 @@
         public const string ResetPasswordConfirmation = "./ResetPasswordConfirmation";
         public const string SetPassword = "./SetPassword";
         public const string UserNameRegex = "^[A-Z0-9]{5}$|^[A-Z0-9]{10}$";
+
+        // RSS FEED PARSER
+        public const string CapitalRSS1 = "https://www.capital.bg/rss/?rubrid=2272";
+
+        public const string CapitalRSS2 = "https://www.capital.bg/rss/?rubrid=3060";
+        public const string InvestorRSS = "https://www.investor.bg/news/rss/last/10/";
+        public const string X3NewsRSS = "http://www.x3news.com/?page=RSSFeed";
     }
 }
