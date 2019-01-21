@@ -14,6 +14,8 @@
 
         public string SecurityBfbCode { get; set; }
 
+        public string DailyDealsDate { get; set; }
+
         public string Quantity { get; set; }
 
         public string Price { get; set; }
@@ -32,6 +34,7 @@
         {
             configuration.CreateMap<DealDto, DealViewModel>()
                 .ForMember(dest => dest.DealType, opt => opt.MapFrom(src => src.DealType.ToString()))
+                .ForMember(dest => dest.DailyDealsDate, opt => opt.MapFrom(src => src.DailyDealsDate.ToString(ViewModelConstants.DateTimeParseFormat)))
                 .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity.ToString("N", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price.ToString("N3", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
                 .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.TotalPrice.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))

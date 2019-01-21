@@ -14,6 +14,8 @@
 
         public string SecurityBfbCode { get; set; }
 
+        public DateTime DailyDealsDate { get; set; }
+
         public int Quantity { get; set; }
 
         public decimal Price { get; set; }

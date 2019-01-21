@@ -18,6 +18,8 @@
     [Authorize]
     public class PortfoliosController : Controller
     {
+        private const string Portfolio = "Portfolio";
+        private const string PdfExt = ".pdf";
         private const string CreatePDF = "CreatePdf";
         private const string CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 6";
 
@@ -78,6 +80,7 @@
 
             return new ViewAsPdf(CreatePDF, portfolioViewModel)
             {
+                FileName = Portfolio + "_" + date + PdfExt,
                 PageOrientation = Orientation.Landscape,
                 PageSize = Size.A4,
                 PageMargins = { Left = 15, Bottom = 10, Right = 15, Top = 10 },

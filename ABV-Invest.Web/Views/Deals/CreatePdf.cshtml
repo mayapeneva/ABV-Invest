@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DealViewModel>
+@{
+    Layout = null;
+    ViewData["Title"] = "Сделки";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8-BOM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/reset.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-abvdarkgreen">
+    <article>
+        <table class="table table-bordered">
+            <caption class="bg-abvmiddlegreen large-fontsize">@ViewData["Title"] към дата  @Model.First().DailyDealsDate</caption>
+            <thead class="bg-bg-abvlightgreen">
+                <tr>
+                    <th class="text-left" scope="col">Тип на сделката</th>
+                    <th class="text-left" scope="col">БФБ Код</th>
+                    <th class="text-left" scope="col">Емитент</th>
+                    <th class="text-right" scope="col">Количество</th>
+                    <th class="text-right" scope="col">Цена</th>
+                    <th class="text-right" scope="col">Стойност</th>
+                    <th class="text-right" scope="col">Комисионна</th>
+                    <th class="text-right" scope="col">Валута</th>
+                    <th class="text-right" scope="col">Сетълмент</th>
+                    <th class="text-right" scope="col">Пазар</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var deal in Model)
+                {
+                    <tr>
+                        <td class="text-left">@Html.DisplayFor(model => deal.DealType)</td>
+                        <td class="text-left">@Html.DisplayFor(model => deal.SecurityBfbCode)</td>
+                        <td class="text-left align-text-bottom">@Html.DisplayFor(model => deal.SecurityIssuerName)</td>
+                        <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => deal.Quantity)</td>
+                        <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => deal.Price)</td>
+                        <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.TotalPrice)</td>
+                        <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Fee)</td>
+                        <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.CurrencyCode)</td>
+                        <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Settlement)</td>
+                        <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.MarketName)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+    <footer class="text-center bg-abvmiddlegreen">
+        <p>АБВ Инвестиции. Всички права запазени.</p>
+        <p>&copy; 2018</p>
+    </footer>
+</body>
+</html>
