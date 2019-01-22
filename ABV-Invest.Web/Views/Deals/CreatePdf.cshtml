@@ -24,6 +24,7 @@
                     <th class="text-left" scope="col">Емитент</th>
                     <th class="text-right" scope="col">Количество</th>
                     <th class="text-right" scope="col">Цена</th>
+                    <th class="text-right" scope="col">Купон</th>
                     <th class="text-right" scope="col">Стойност</th>
                     <th class="text-right" scope="col">Комисионна</th>
                     <th class="text-right" scope="col">Валута</th>
@@ -40,6 +41,7 @@
                         <td class="text-left align-text-bottom">@Html.DisplayFor(model => deal.SecurityIssuerName)</td>
                         <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => deal.Quantity)</td>
                         <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => deal.Price)</td>
+                        <td class="text-right align-text-bottom" type="number">@Html.DisplayFor(model => deal.Coupon)</td>
                         <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.TotalPrice)</td>
                         <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.Fee)</td>
                         <td class="text-right align-text-bottom">@Html.DisplayFor(model => deal.CurrencyCode)</td>

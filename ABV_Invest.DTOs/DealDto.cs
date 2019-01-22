@@ -20,6 +20,8 @@
 
         public decimal Price { get; set; }
 
+        public decimal Coupon { get; set; }
+
         public decimal TotalPrice { get; set; }
 
         public decimal Fee { get; set; }

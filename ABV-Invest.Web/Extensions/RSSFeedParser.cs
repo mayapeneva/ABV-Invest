@@ -17,7 +17,7 @@
         private const string PubDate = "pubDate";
         private const string Description = "description";
 
-        private DateTime twoWeeksBackDate = DateTime.UtcNow.Subtract(new TimeSpan(14, 0, 0, 0));
+        private readonly DateTime twoWeeksBackDate = DateTime.UtcNow.Subtract(new TimeSpan(14, 0, 0, 0));
 
         public void LoadNewsFromInvestor(List<RSSFeedViewModel> rssModels)
         {

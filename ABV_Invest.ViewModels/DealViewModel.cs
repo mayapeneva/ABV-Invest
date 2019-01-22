@@ -20,6 +20,8 @@
 
         public string Price { get; set; }
 
+        public string Coupon { get; set; }
+
         public string TotalPrice { get; set; }
 
         public string Fee { get; set; }
@@ -37,6 +39,7 @@
                 .ForMember(dest => dest.DailyDealsDate, opt => opt.MapFrom(src => src.DailyDealsDate.ToString(ViewModelConstants.DateTimeParseFormat)))
                 .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity.ToString("N", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price.ToString("N3", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
+                .ForMember(dest => dest.Coupon, opt => opt.MapFrom(src => src.Coupon.ToString("N3", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
                 .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.TotalPrice.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
                 .ForMember(dest => dest.Fee, opt => opt.MapFrom(src => src.Fee.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture))))
                 .ForMember(dest => dest.Settlement, opt => opt.MapFrom(src => src.Settlement.ToString(ViewModelConstants.DateTimeParseFormat)));
