@@ -26,7 +26,7 @@
             this.rssFeedParser.LoadNewsFromCapital(rssModels, Constants.CapitalRSS1);
             this.rssFeedParser.LoadNewsFromCapital(rssModels, Constants.CapitalRSS2);
 
-            this.rssFeedParser.LoadNewsFromX3News(rssModels);
+            // this.rssFeedParser.LoadNewsFromX3News(rssModels);
             if (!rssModels.Any())
             {
                 this.ViewData[Constants.Error] = Messages.NoNews;

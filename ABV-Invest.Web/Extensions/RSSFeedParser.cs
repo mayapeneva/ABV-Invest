@@ -17,6 +17,8 @@
         private const string PubDate = "pubDate";
         private const string Description = "description";
 
+        private DateTime twoWeeksBackDate = DateTime.UtcNow.Subtract(new TimeSpan(14, 0, 0, 0));
+
         public void LoadNewsFromInvestor(List<RSSFeedViewModel> rssModels)
         {
             var xmlDoc = new XmlDocument();
@@ -27,13 +29,17 @@
             {
                 if (feed.Name == Item)
                 {
-                    rssModels.Add(new RSSFeedViewModel
+                    var publishDate = DateTime.Parse(feed[PubDate].InnerText);
+                    if (publishDate > this.twoWeeksBackDate)
                     {
-                        Title = feed[Title].InnerText,
-                        Uri = feed[Link].InnerText,
-                        PublishedDate = DateTime.Parse(feed[PubDate].InnerText),
-                        Summary = feed[Description].InnerText
-                    });
+                        rssModels.Add(new RSSFeedViewModel
+                        {
+                            Title = feed[Title].InnerText,
+                            Uri = feed[Link].InnerText,
+                            PublishedDate = publishDate,
+                            Summary = feed[Description].InnerText
+                        });
+                    }
                 }
             }
         }
@@ -48,39 +54,43 @@
             {
                 if (feed.Name == Item)
                 {
-                    var summaryRaw = feed[Description].InnerText;
-
-                    // Clean the feedDescription from html tags, which should not be part of it
-                    var startingIndex = summaryRaw.IndexOf(" /><br />", StringComparison.InvariantCulture) + " /><br />".Length;
-                    var lenght = summaryRaw.LastIndexOf("<br />", StringComparison.InvariantCulture);
-
-                    if (lenght == -1)
+                    var publishDate = DateTime.Parse(feed[PubDate].InnerText);
+                    if (publishDate > this.twoWeeksBackDate)
                     {
-                        lenght = summaryRaw.LastIndexOf(".", StringComparison.InvariantCulture);
+                        var summaryRaw = feed[Description].InnerText;
+
+                        // Clean the feedDescription from html tags, which should not be part of it
+                        var startingIndex = summaryRaw.IndexOf(" /><br />", StringComparison.InvariantCulture) + " /><br />".Length;
+                        var lenght = summaryRaw.LastIndexOf("<br />", StringComparison.InvariantCulture);
+
+                        if (lenght == -1)
+                        {
+                            lenght = summaryRaw.LastIndexOf(".", StringComparison.InvariantCulture);
+                        }
+
+                        if (lenght == -1 || lenght < startingIndex)
+                        {
+                            lenght = summaryRaw.Length - 1;
+                        }
+
+                        var subSummary = summaryRaw.Substring(startingIndex, lenght - startingIndex);
+
+                        // Replace the unnecessary symbols and shorten the description length
+                        var summary = subSummary.Replace("<br />", " ");
+                        if (summary.Length > 150)
+                        {
+                            summary = summary.Substring(0, 150) + "...";
+                        }
+
+                        // Create the RSSModel
+                        rssModels.Add(new RSSFeedViewModel
+                        {
+                            Title = feed[Title].InnerText,
+                            Uri = feed[Link].InnerText,
+                            PublishedDate = publishDate,
+                            Summary = summary
+                        });
                     }
-
-                    if (lenght == -1 || lenght < startingIndex)
-                    {
-                        lenght = summaryRaw.Length - 1;
-                    }
-
-                    var subSummary = summaryRaw.Substring(startingIndex, lenght - startingIndex);
-
-                    // Replace the unnecessary symbols and shorten the description length
-                    var summary = subSummary.Replace("<br />", " ");
-                    if (summary.Length > 150)
-                    {
-                        summary = summary.Substring(0, 150) + "...";
-                    }
-
-                    // Create the RSSModel
-                    rssModels.Add(new RSSFeedViewModel
-                    {
-                        Title = feed[Title].InnerText,
-                        Uri = feed[Link].InnerText,
-                        PublishedDate = DateTime.Parse(feed[PubDate].InnerText),
-                        Summary = summary
-                    });
                 }
             }
         }
