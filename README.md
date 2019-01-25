@@ -11,4 +11,4 @@ Logged administrator can upload portfolios and deals for each day separately. Th
 
 All logged users have an access to their profile, where they can change their password, e-mail and phone number, can confirm their e-mail, download all their personal information and also delete their account according the GDPR requirements.
 
-https://abvinvest.azurewebsites.net 
+https://abvinvest.azurewebsites.net
