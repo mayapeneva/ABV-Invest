@@ -1,6 +1,5 @@
 ﻿namespace ABV_Invest.Web.Areas.Identity.Pages.Account
 {
-    using System;
     using ABV_Invest.Models;
     using Common;
 
@@ -86,6 +85,7 @@
                 var dbUser = this._userManager.Users.SingleOrDefault(u => u.UserName == this.Input.Username);
                 if (dbUser != null)
                 {
+                    this.ViewData[Constants.Error] = Messages.UserExists;
                     return this.Page();
                 }
 
@@ -104,7 +104,10 @@
                         values: new { userId = user.Id, code = code },
                         protocol: this.Request.Scheme);
 
-                    await this._emailSender.SendEmailAsync(this.Input.Email, Messages.ConfirmEmail, string.Format(Messages.RegistrationConfirmation, HtmlEncoder.Default.Encode(callbackUrl)));
+                    if (!string.IsNullOrWhiteSpace(this.Input.Email))
+                    {
+                        await this._emailSender.SendEmailAsync(this.Input.Email, Messages.ConfirmEmail, string.Format(Messages.RegistrationConfirmation, HtmlEncoder.Default.Encode(callbackUrl)));
+                    }
 
                     await this._signInManager.SignInAsync(user, isPersistent: false);
                     return this.LocalRedirect(returnUrl);
