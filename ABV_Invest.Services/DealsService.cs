@@ -81,134 +81,21 @@
                 // Create all Deals for this User
                 foreach (var dealRow in deal)
                 {
-                    // Check if such security exists and if not create it
-                    var security =
-                        this.Db.Securities.SingleOrDefault(s => s.ISIN == dealRow.Instrument.ISIN);
-                    if (security == null)
+                    var dealRowResult = this.CreateDealForUser(dealRow, deal.Key, dbDailyDeals);
+                    if (dealRowResult != "")
                     {
-                        var securityInfo = dealRow.Instrument;
-                        var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode,
-                            securityInfo.Currency);
-                        if (!securityResult.Result)
-                        {
-                            mistakes.AppendLine(string.Format(Messages.SecurityCannotBeCreated, deal.Key, securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode, securityInfo.Currency));
-                            continue;
-                        }
-
-                        security = this.Db.Securities.Single(s => s.ISIN == dealRow.Instrument.ISIN);
+                        mistakes.AppendLine(dealRowResult);
                     }
-
-                    // Check if such currency exists and if not create it
-                    var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == dealRow.Instrument.Currency);
-                    if (currency == null)
-                    {
-                        var currencyResult = this.dataService.CreateCurrency(dealRow.Instrument.Currency);
-                        if (!currencyResult.Result)
-                        {
-                            mistakes.AppendLine(string.Format(Messages.CurrencyCannotBeCreated, dealRow.Instrument.Currency, deal.Key, dealRow.Instrument.Issuer, dealRow.Instrument.ISIN, dealRow.Instrument.NewCode));
-                            continue;
-                        }
-
-                        currency = this.Db.Currencies.Single(c => c.Code == dealRow.Instrument.Currency);
-                    }
-
-                    // Check if such market exists
-                    var market = this.Db.Markets.SingleOrDefault(m => m.MIC == dealRow.DealData.StockExchangeMIC);
-                    if (market == null)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.MarketDoesNotExist, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, dealRow.DealData.StockExchangeMIC));
-                        continue;
-                    }
-
-                    // Parse all dates, enums and decimal figures in order to create the Deal
-                    var ifDealTypeParsed = dealRow.DealData.Operation == Constants.Buy || dealRow.DealData.Operation == Constants.Sell;
-                    if (!ifDealTypeParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, TypeOfDeal, dealRow.DealData.Operation));
-                        continue;
-                    }
-                    var dealType = dealRow.DealData.Operation == Constants.Buy ? DealType.Купува : DealType.Продава;
-
-                    var ifQuantityParsed = decimal.TryParse(dealRow.DealData.ShareCount.Replace(" ", ""), out var quantity);
-                    if (!ifQuantityParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Quantity, dealRow.DealData.ShareCount));
-                        continue;
-                    }
-
-                    var ifPriceParsed = decimal.TryParse(dealRow.DealData.SinglePrice.Replace(" ", ""), out var price);
-                    if (!ifPriceParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Price, dealRow.DealData.SinglePrice));
-                        continue;
-                    }
-
-                    var ifCouponParsed = decimal.TryParse(dealRow.DealData.Coupon.Replace(" ", ""), out var coupon);
-                    if (!ifCouponParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Coupon, dealRow.DealData.Coupon));
-                        continue;
-                    }
-
-                    var ifTotalPriceParsed = decimal.TryParse(dealRow.DealData.DealAmountInShareCurrency.Replace(" ", ""), out var totalPrice);
-                    if (!ifTotalPriceParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, CurrencyValue, dealRow.DealData.DealAmountInShareCurrency));
-                        continue;
-                    }
-
-                    var ifTotalPriceInBGNParsed = decimal.TryParse(dealRow.DealData.DealAmountInPaymentCurrency.Replace(" ", ""), out var totalPriceInBGN);
-                    if (!ifTotalPriceInBGNParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, BgnValue, dealRow.DealData.DealAmountInPaymentCurrency));
-                        continue;
-                    }
-
-                    var ifFeeParsed = decimal.TryParse(dealRow.DealData.CommissionInPaymentCurrency.Replace(" ", ""), out var fee);
-                    if (!ifFeeParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Fee, dealRow.DealData.CommissionInPaymentCurrency));
-                        continue;
-                    }
-
-                    var ifSettlementParsed = DateTime.TryParse(dealRow.DealData.DeliveryDate, out DateTime settlement);
-                    if (!ifSettlementParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealCannotBeRegistered, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, Settlement, dealRow.DealData.DeliveryDate));
-                        continue;
-                    }
-
-                    // Create the Deal
-                    var dbDeal = new Deal
-                    {
-                        DealType = (DealType)dealType,
-                        Security = security,
-                        Quantity = quantity,
-                        Price = price,
-                        Coupon = coupon,
-                        TotalPrice = totalPrice,
-                        TotalPriceInBGN = totalPriceInBGN,
-                        Fee = fee,
-                        Currency = currency,
-                        Settlement = settlement,
-                        Market = market
-                    };
-
-                    // Validate the Deal and add it to the dailyDeals
-                    if (!DataValidator.IsValid(dbDeal))
-                    {
-                        mistakes.AppendLine(string.Format(Messages.DealRowCannotBeCreated, dealRow.DealData.Operation, dealRow.Instrument.ISIN, deal.Key, dealRow.DealData.ShareCount, dealRow.DealData.SinglePrice));
-                        continue;
-                    }
-                    dbDailyDeals.Deals.Add(dbDeal);
                 }
 
-                // Validate dailyDeals and add them to user's Deals
+                // Validate dailyDeals
                 if (!DataValidator.IsValid(dbDailyDeals) || !dbDailyDeals.Deals.Any())
                 {
                     mistakes.AppendLine(string.Format(Messages.DailyDealsCannotBeCreated, deal.Key, date));
                     continue;
                 }
+
+                //Add dailyDeals to user's Deals
                 user.Deals.Add(dbDailyDeals);
                 changesCounter += await this.Db.SaveChangesAsync();
             }
@@ -218,6 +105,167 @@
             finalResult.Append(mistakes);
 
             return finalResult;
+        }
+
+        private string CreateDealForUser(DealRowBindingModel dealRow, string dealKey,
+            DailyDeals dbDailyDeals)
+        {
+            var securityInfo = dealRow.Instrument;
+            // Get or create security
+            var security = this.GetOrCreateSecurity(securityInfo);
+            if (security == null)
+            {
+                return string.Format(Messages.SecurityCannotBeCreated, dealKey, securityInfo.Issuer,
+                    securityInfo.ISIN, securityInfo.NewCode, securityInfo.Currency);
+            }
+
+            // Get or create currency
+            var currency = this.GetOrCreateCurrency(securityInfo);
+            if (currency == null)
+            {
+                return string.Format(Messages.CurrencyCannotBeCreated, securityInfo.Currency, dealKey,
+                    securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode);
+            }
+
+            // Check if such market exists
+            var dealData = dealRow.DealData;
+            var market = this.Db.Markets.SingleOrDefault(m => m.MIC == dealData.StockExchangeMIC);
+            if (market == null)
+            {
+                return string.Format(Messages.MarketDoesNotExist, dealData.Operation,
+                    securityInfo.ISIN, dealKey, dealData.StockExchangeMIC);
+            }
+
+            // Parse data and create deal
+            var dealResult = this.ParseDataAndCreateDeal(dealData, security, currency, market, out var dbDeal);
+            if (dbDeal == null)
+            {
+                return string.Format(Messages.DealCannotBeRegistered, dealData.Operation,
+                    securityInfo.ISIN, dealKey, dealResult[0], dealResult[1]);
+            };
+
+            // Validate the Deal and add it to the dailyDeals
+            if (!DataValidator.IsValid(dbDeal))
+            {
+                return string.Format(Messages.DealRowCannotBeCreated, dealData.Operation,
+                    securityInfo.ISIN, dealKey, dealData.ShareCount, dealData.SinglePrice);
+            }
+
+            dbDailyDeals.Deals.Add(dbDeal);
+            return "";
+        }
+
+        private Security GetOrCreateSecurity(Instrument securityInfo)
+        {
+            var security =
+                this.Db.Securities.SingleOrDefault(s => s.ISIN == securityInfo.ISIN);
+            if (security == null)
+            {
+                var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN,
+                    securityInfo.NewCode,
+                    securityInfo.Currency);
+                if (!securityResult.Result)
+                {
+                    return null;
+                }
+
+                security = this.Db.Securities.Single(s => s.ISIN == securityInfo.ISIN);
+            }
+
+            return security;
+        }
+
+        private Currency GetOrCreateCurrency(Instrument securityInfo)
+        {
+            var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == securityInfo.Currency);
+            if (currency == null)
+            {
+                var currencyResult = this.dataService.CreateCurrency(securityInfo.Currency);
+                if (!currencyResult.Result)
+                {
+                    return null;
+                }
+
+                currency = this.Db.Currencies.Single(c => c.Code == securityInfo.Currency);
+            }
+
+            return currency;
+        }
+
+        private string[] ParseDataAndCreateDeal(DealData dealData, Security security, Currency currency, Market market, out Deal dbDeal)
+        {
+            var operation = dealData.Operation;
+            if (operation != Constants.Buy && operation != Constants.Sell)
+            {
+                dbDeal = null;
+                return new[] { TypeOfDeal, operation };
+            }
+            var dealType = operation == Constants.Buy ? DealType.Купува : DealType.Продава;
+
+            var ifQuantityParsed = decimal.TryParse(dealData.ShareCount.Replace(" ", ""), out var quantity);
+            if (!ifQuantityParsed)
+            {
+                dbDeal = null;
+                return new[] { Quantity, dealData.ShareCount };
+            }
+
+            var ifPriceParsed = decimal.TryParse(dealData.SinglePrice.Replace(" ", ""), out var price);
+            if (!ifPriceParsed)
+            {
+                dbDeal = null;
+                return new[] { Price, dealData.SinglePrice };
+            }
+
+            var ifCouponParsed = decimal.TryParse(dealData.Coupon.Replace(" ", ""), out var coupon);
+            if (!ifCouponParsed)
+            {
+                dbDeal = null;
+                return new[] { Coupon, dealData.Coupon };
+            }
+
+            var ifTotalPriceParsed = decimal.TryParse(dealData.DealAmountInShareCurrency.Replace(" ", ""), out var totalPrice);
+            if (!ifTotalPriceParsed)
+            {
+                dbDeal = null;
+                return new[] { CurrencyValue, dealData.DealAmountInShareCurrency };
+            }
+
+            var ifTotalPriceInBGNParsed = decimal.TryParse(dealData.DealAmountInPaymentCurrency.Replace(" ", ""), out var totalPriceInBGN);
+            if (!ifTotalPriceInBGNParsed)
+            {
+                dbDeal = null;
+                return new[] { BgnValue, dealData.DealAmountInPaymentCurrency };
+            }
+
+            var ifFeeParsed = decimal.TryParse(dealData.CommissionInPaymentCurrency.Replace(" ", ""), out var fee);
+            if (!ifFeeParsed)
+            {
+                dbDeal = null;
+                return new[] { Fee, dealData.CommissionInPaymentCurrency };
+            }
+
+            var ifSettlementParsed = DateTime.TryParse(dealData.DeliveryDate, out DateTime settlement);
+            if (!ifSettlementParsed)
+            {
+                dbDeal = null;
+                return new[] { Settlement, dealData.DeliveryDate };
+            }
+
+            dbDeal = new Deal
+            {
+                DealType = dealType,
+                Security = security,
+                Quantity = quantity,
+                Price = price,
+                Coupon = coupon,
+                TotalPrice = totalPrice,
+                TotalPriceInBGN = totalPriceInBGN,
+                Fee = fee,
+                Currency = currency,
+                Settlement = settlement,
+                Market = market
+            };
+            return null;
         }
     }
 }
