@@ -132,9 +132,9 @@
             var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = this.Url.Page(
                 Constants.ConfirmEmail,
-                pageHandler: null,
-                values: new { userId = userId, code = code },
-                protocol: this.Request.Scheme);
+                null,
+                new { userId, code },
+                this.Request.Scheme);
             await this._emailSender.SendEmailAsync(
                 email,
                 Messages.ConfirmEmail,
