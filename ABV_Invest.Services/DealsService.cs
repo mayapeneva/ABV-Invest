@@ -81,7 +81,7 @@
                 // Create all Deals for this User
                 foreach (var dealRow in deal)
                 {
-                    var dealRowResult = this.CreateDealForUser(dealRow, deal.Key, dbDailyDeals);
+                    var dealRowResult = this.CreateDealRowForUser(dealRow, deal.Key, dbDailyDeals);
                     if (dealRowResult != "")
                     {
                         mistakes.AppendLine(dealRowResult);
@@ -107,7 +107,7 @@
             return finalResult;
         }
 
-        private string CreateDealForUser(DealRowBindingModel dealRow, string dealKey,
+        private string CreateDealRowForUser(DealRowBindingModel dealRow, string dealKey,
             DailyDeals dbDailyDeals)
         {
             var securityInfo = dealRow.Instrument;

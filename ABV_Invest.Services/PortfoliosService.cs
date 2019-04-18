@@ -11,24 +11,21 @@
     using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
+    using ViewModels;
 
     public class PortfoliosService : BaseService, IPortfoliosService
     {
-        private const string initialPass = "789-Asd";
-        private const string initialPIN = "00001";
-        private const string initialEmail = "client@abv.bg";
-
         private const string Quantity = "Наличност";
         private const string AveragePrice = "Средна цена";
         private const string MarketPrice = "Пазарна цена";
         private const string MarketValue = "Пазарна стойност";
         private const string Profit = "Доходност";
 
-        private const string ProfitInBgn = "Доходност в лева";
         private const string ProfitInPersentage = "Доходност в %";
 
         private const string PortfolioShare = "Тегло в портфейла";
@@ -87,129 +84,11 @@
                 // Create all SecuritiesPerClient for this User
                 foreach (var portfolioRow in portfolio)
                 {
-                    // Fill in user's FullName if empty
-                    if (String.IsNullOrWhiteSpace(user.FullName))
+                    var portfolioResult = this.CreatePortfolioRowForUser(date, user, portfolioRow, portfolio.Key, dbPortfolio);
+                    if (portfolioResult != "")
                     {
-                        user.FullName = portfolioRow.Client.Name;
+                        mistakes.AppendLine(portfolioResult);
                     }
-
-                    // Check if such security exists and if not create it
-                    var security =
-                        this.Db.Securities.SingleOrDefault(s => s.ISIN == portfolioRow.Instrument.ISIN);
-                    if (security == null)
-                    {
-                        var securityInfo = portfolioRow.Instrument;
-                        var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode,
-                            securityInfo.Currency);
-                        if (!securityResult.Result)
-                        {
-                            mistakes.AppendLine(string.Format(Messages.SecurityCannotBeCreated, portfolio.Key, securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode, securityInfo.Currency));
-                            continue;
-                        }
-
-                        security = this.Db.Securities.Single(s => s.ISIN == portfolioRow.Instrument.ISIN);
-                    }
-
-                    // Check if such portfolioRow already exists in the usersPortfolio for this date
-                    if (dbPortfolio.SecuritiesPerIssuerCollection.Any(sc => sc.Security.ISIN == security.ISIN))
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityExistsInThisPortfolio, portfolio.Key, date, portfolioRow.Instrument.Issuer, portfolioRow.Instrument.ISIN, portfolioRow.Instrument.NewCode, portfolioRow.Instrument.Currency));
-                        continue;
-                    }
-
-                    // Check if such currency exists and if not create it
-                    var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == portfolioRow.Instrument.Currency);
-                    if (currency == null)
-                    {
-                        var currencyResult = this.dataService.CreateCurrency(portfolioRow.Instrument.Currency);
-                        if (!currencyResult.Result)
-                        {
-                            mistakes.AppendLine(string.Format(Messages.CurrencyCannotBeCreated, portfolioRow.Instrument.Currency, portfolio.Key, portfolioRow.Instrument.Issuer, portfolioRow.Instrument.ISIN, portfolioRow.Instrument.NewCode));
-                            continue;
-                        }
-
-                        currency = this.Db.Currencies.Single(c => c.Code == portfolioRow.Instrument.Currency);
-                    }
-
-                    // Parse all decimal figures in order to create the SecuritiesPerClient
-                    var ifQuantityParsed = decimal.TryParse(portfolioRow.AccountData.Quantity.Replace(" ", ""), out var quantity);
-                    if (!ifQuantityParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, Quantity, portfolioRow.AccountData.Quantity));
-                        continue;
-                    }
-
-                    var ifAveragePriceBuyParsed = decimal.TryParse(portfolioRow.AccountData.OpenPrice.Replace(" ", ""), out var averagePriceBuy);
-                    if (!ifAveragePriceBuyParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, AveragePrice, portfolioRow.AccountData.OpenPrice));
-                        continue;
-                    }
-
-                    var ifMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketPrice.Replace(" ", ""), out var marketPrice);
-                    if (!ifMarketPriceParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, MarketPrice, portfolioRow.AccountData.MarketPrice));
-                        continue;
-                    }
-
-                    var ifTotalMarketPriceParsed = decimal.TryParse(portfolioRow.AccountData.MarketValue.Replace(" ", ""), out var totalMarketPrice);
-                    if (!ifTotalMarketPriceParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, MarketValue, portfolioRow.AccountData.MarketValue));
-                        continue;
-                    }
-
-                    var ifProfitParsed = decimal.TryParse(portfolioRow.AccountData.Result.Replace(" ", ""), out var profit);
-                    if (!ifProfitParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, Profit, portfolioRow.AccountData.Result));
-                        continue;
-                    }
-
-                    var ifProfitInBGNParsed = decimal.TryParse(portfolioRow.AccountData.ResultBGN.Replace(" ", ""), out var profitInBGN);
-                    if (!ifProfitInBGNParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, profitInBGN, portfolioRow.AccountData.ResultBGN));
-                        continue;
-                    }
-
-                    var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", ""), out var profitPercent);
-                    if (!ifProfitPercentParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, ProfitInPersentage, portfolioRow.Other.YieldPercent));
-                        continue;
-                    }
-
-                    var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", ""), out var portfolioShare);
-                    if (!ifPortfolioShareParsed)
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeRegistered, portfolio.Key, PortfolioShare, portfolioRow.Other.RelativePart));
-                        continue;
-                    }
-
-                    // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
-                    var securitiesPerClient = new SecuritiesPerClient
-                    {
-                        Security = security,
-                        Quantity = quantity,
-                        Currency = currency,
-                        AveragePriceBuy = averagePriceBuy,
-                        MarketPrice = marketPrice,
-                        TotalMarketPrice = totalMarketPrice,
-                        Profit = profit,
-                        ProfitInBGN = profitInBGN,
-                        ProfitPercentаge = profitPercent,
-                        PortfolioShare = portfolioShare
-                    };
-
-                    // Validate SecuritiesPerClient and add them to the portfolio
-                    if (!DataValidator.IsValid(securitiesPerClient))
-                    {
-                        mistakes.AppendLine(string.Format(Messages.SecurityCannotBeCreated, portfolio.Key, portfolioRow.Instrument.Issuer, portfolioRow.Instrument.ISIN, portfolioRow.Instrument.NewCode, portfolioRow.Instrument.Currency));
-                        continue;
-                    }
-                    dbPortfolio.SecuritiesPerIssuerCollection.Add(securitiesPerClient);
                 }
 
                 // Validate portfolio and add it to user's Portfolios
@@ -235,6 +114,173 @@
             finalResult.Append(mistakes);
 
             return finalResult;
+        }
+
+        private string CreatePortfolioRowForUser(DateTime date, AbvInvestUser user, PortfolioRowBindingModel portfolioRow,
+            string portfolioKey, DailySecuritiesPerClient dbPortfolio)
+        {
+            // Fill in user's FullName if empty
+            if (String.IsNullOrWhiteSpace(user.FullName))
+            {
+                user.FullName = portfolioRow.Client.Name;
+            }
+
+            var securityInfo = portfolioRow.Instrument;
+            // Get or create security
+            var security = this.GetOrCreateSecurity(securityInfo);
+            if (security == null)
+            {
+                return string.Format(Messages.SecurityCannotBeCreated, portfolioKey, securityInfo.Issuer,
+                    securityInfo.ISIN, securityInfo.NewCode, securityInfo.Currency);
+            }
+
+            // Check if such portfolioRow already exists in the usersPortfolio for this date
+            if (dbPortfolio.SecuritiesPerIssuerCollection.Any(sc => sc.Security.ISIN == security.ISIN))
+            {
+                return string.Format(Messages.SecurityExistsInThisPortfolio, portfolioKey, date,
+                    securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode,
+                    securityInfo.Currency);
+            }
+
+            // Get or create currency
+            var currency = this.GetOrCreateCurrency(securityInfo);
+            if (currency == null)
+            {
+                return string.Format(Messages.CurrencyCannotBeCreated, securityInfo.Currency,
+                        portfolioKey, securityInfo.Issuer, securityInfo.ISIN,
+                        securityInfo.NewCode);
+            }
+
+            var accountData = portfolioRow.AccountData;
+            // Parse data and create SecuritiesPerClient
+            var securityResult = this.ParseDataAndCreateSecuritiesPerClient(portfolioRow, accountData,
+                security, currency, out var securitiesPerClient);
+            if (securitiesPerClient == null)
+            {
+                return string.Format(Messages.SecurityCannotBeRegistered, portfolioKey, securityResult[0], securityResult[1]);
+            }
+
+            // Validate SecuritiesPerClient and add them to the portfolio
+            if (!DataValidator.IsValid(securitiesPerClient))
+            {
+                return string.Format(Messages.SecurityCannotBeCreated, portfolioKey,
+                    securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode,
+                    securityInfo.Currency);
+            }
+
+            dbPortfolio.SecuritiesPerIssuerCollection.Add(securitiesPerClient);
+            return "";
+        }
+
+        private Security GetOrCreateSecurity(Instrument securityInfo)
+        {
+            var security = this.Db.Securities.SingleOrDefault(s => s.ISIN == securityInfo.ISIN);
+            if (security == null)
+            {
+                var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN,
+                    securityInfo.NewCode, securityInfo.Currency);
+                if (!securityResult.Result)
+                {
+                    return null;
+                }
+
+                security = this.Db.Securities.Single(s => s.ISIN == securityInfo.ISIN);
+            }
+
+            return security;
+        }
+
+        private Currency GetOrCreateCurrency(Instrument securityInfo)
+        {
+            var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == securityInfo.Currency);
+            if (currency == null)
+            {
+                var currencyResult = this.dataService.CreateCurrency(securityInfo.Currency);
+                if (!currencyResult.Result)
+                {
+                    return null;
+                }
+
+                currency = this.Db.Currencies.Single(c => c.Code == securityInfo.Currency);
+            }
+
+            return currency;
+        }
+
+        private string[] ParseDataAndCreateSecuritiesPerClient(PortfolioRowBindingModel portfolioRow, AccountData accountData,
+            Security security, Currency currency, out SecuritiesPerClient securitiesPerClient)
+        {
+            var ifQuantityParsed = decimal.TryParse(accountData.Quantity.Replace(" ", ""), out var quantity);
+            if (!ifQuantityParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { Quantity, accountData.Quantity };
+            }
+
+            var ifAveragePriceBuyParsed = decimal.TryParse(accountData.OpenPrice.Replace(" ", ""), out var averagePriceBuy);
+            if (!ifAveragePriceBuyParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { AveragePrice, accountData.OpenPrice };
+            }
+
+            var ifMarketPriceParsed = decimal.TryParse(accountData.MarketPrice.Replace(" ", ""), out var marketPrice);
+            if (!ifMarketPriceParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { MarketPrice, accountData.MarketPrice };
+            }
+
+            var ifTotalMarketPriceParsed = decimal.TryParse(accountData.MarketValue.Replace(" ", ""), out var totalMarketPrice);
+            if (!ifTotalMarketPriceParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { MarketValue, accountData.MarketValue };
+            }
+
+            var ifProfitParsed = decimal.TryParse(accountData.Result.Replace(" ", ""), out var profit);
+            if (!ifProfitParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { Profit, accountData.Result };
+            }
+
+            var ifProfitInBGNParsed = decimal.TryParse(accountData.ResultBGN.Replace(" ", ""), out var profitInBGN);
+            if (!ifProfitInBGNParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { profitInBGN.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture)), accountData.ResultBGN };
+            }
+
+            var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", ""), out var profitPercent);
+            if (!ifProfitPercentParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { ProfitInPersentage, portfolioRow.Other.YieldPercent };
+            }
+
+            var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", ""), out var portfolioShare);
+            if (!ifPortfolioShareParsed)
+            {
+                securitiesPerClient = null;
+                return new[] { PortfolioShare, portfolioRow.Other.RelativePart };
+            }
+
+            // Create the SecuritiesPerClient and add it to the DailySecuritiesPerClient
+            securitiesPerClient = new SecuritiesPerClient
+            {
+                Security = security,
+                Quantity = quantity,
+                Currency = currency,
+                AveragePriceBuy = averagePriceBuy,
+                MarketPrice = marketPrice,
+                TotalMarketPrice = totalMarketPrice,
+                Profit = profit,
+                ProfitInBGN = profitInBGN,
+                ProfitPercentаge = profitPercent,
+                PortfolioShare = portfolioShare
+            };
+            return null;
         }
     }
 }

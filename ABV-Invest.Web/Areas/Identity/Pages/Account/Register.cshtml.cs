@@ -109,7 +109,7 @@
                         await this._emailSender.SendEmailAsync(this.Input.Email, Messages.ConfirmEmail, string.Format(Messages.RegistrationConfirmation, HtmlEncoder.Default.Encode(callbackUrl)));
                     }
 
-                    await this._signInManager.SignInAsync(user, isPersistent: false);
+                    await this._signInManager.SignInAsync(user, false);
                     return this.LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
