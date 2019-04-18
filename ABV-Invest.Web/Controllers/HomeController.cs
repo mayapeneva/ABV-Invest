@@ -23,7 +23,6 @@
             return this.View();
         }
 
-        [Authorize]
         public IActionResult Privacy()
         {
             return this.View();

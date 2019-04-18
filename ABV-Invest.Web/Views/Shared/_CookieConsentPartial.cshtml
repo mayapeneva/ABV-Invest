@@ -9,22 +9,22 @@
 {
     <nav id="cookieConsent" class="navbar navbar-default navbar-fixed-top" role="alert">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#cookieConsent .navbar-collapse">
-                    <span class="sr-only">Toggle cookie consent banner</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <span class="navbar-brand"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></span>
-            </div>
+            @*<div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#cookieConsent .navbar-collapse">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>*@
             <div class="collapse navbar-collapse">
-                <p class="navbar-text">
-                    Use this space to summarize your privacy and cookie use policy.
+                <span class="navbar-brand"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></span>
+                <p class="navbar-left bg-abvlightgreen">
+                    Този сайт използва бисквитки, за да може да функционира. Бисквитките правят употребата му технически възможна, лесна и сигурна, спомагайки за навигирането, преноса на данни и сигурността. Бисквитките се ползват и за набавяне на обобщена и напълно анонимизирана статистическа информация за това как сайтът се ползва от потребителите. Тази информация ни помага за подобряване на неговата визия, съдържание и бързина. За да работи нашия сайт по най-добрия и адаптиран за всеки потребител начин е необходимо съгласие с бисквитките.
                 </p>
                 <div class="navbar-right">
-                    <a asp-controller="Home" asp-action="Privacy" class="btn btn-info navbar-btn">Learn More</a>
-                    <button type="button" class="btn btn-default navbar-btn" data-cookie-string="@cookieString">Accept</button>
+                    <button type="button" class="btn btn-default navbar-btn bg-abvdarkgreen bg-bg-abvlightgreen" data-cookie-string="@cookieString">Приемам</button>
+                    <a asp-controller="Home" asp-action="Privacy" class="btn btn-info navbar-btn bg-abvdarkgreen bg-bg-abvmiddlegreen">Повече информация</a>
                 </div>
             </div>
         </div>
