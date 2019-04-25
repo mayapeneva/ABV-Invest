@@ -4,11 +4,10 @@
     ViewData["Title"] = "Качване на информация за сделки";
 }
 
-<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
-<hr class="hr-2" />
-
-<div class="container">
-    <h4>Тук можете да качите файлът с клиентските сделки:</h4>
+<div class="container bg-abvdarkgreen">
+    <h2 class="bg-abvmiddlegreen">@ViewData["Title"]</h2>
+    <hr class="hr-2" />
+    <h4 class="bg-abvmiddlegreen">Тук можете да качите файлът с клиентските сделки:</h4>
     <br />
     <section>
         <form method="post" asp-area="Administration" asp-controller="Uploads" asp-action="DealsInfo" enctype="multipart/form-data">

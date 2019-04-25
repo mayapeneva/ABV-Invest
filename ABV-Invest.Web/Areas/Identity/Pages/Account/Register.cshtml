@@ -4,12 +4,11 @@
     ViewData["Title"] = "Регистрация";
 }
 
-<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
-<hr />
-
 <div class="container bg-abvdarkgreen">
+    <h2 class="bg-abvmiddlegreen">@ViewData["Title"]</h2>
+    <hr />
     <div class="col-md-6">
-        <h4>Създаване на нов потребител:</h4>
+        <h4 class="bg-abvmiddlegreen">Създаване на нов потребител:</h4>
         <br />
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>

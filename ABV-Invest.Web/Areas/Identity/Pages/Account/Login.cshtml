@@ -5,12 +5,11 @@
     ViewData["Title"] = "Вход";
 }
 
-<h2 class="bg-abvmiddlegreen text-center">@ViewData["Title"]</h2>
-<hr />
-
 <div class="container bg-abvdarkgreen">
+    <h2 class="bg-abvmiddlegreen">@ViewData["Title"]</h2>
+    <hr />
     <div class="col-md-6">
-        <h4>Вход за потребители:</h4>
+        <h4 class="bg-abvmiddlegreen">Вход за потребители:</h4>
         <br />
         <section>
             <form method="post">
@@ -45,10 +44,10 @@
                 <br />
                 <div class="form-group">
                     <p>
-                        <a asp-page="./ForgotPassword" class="bg-abvdarkgreen">Забравена парола</a>
+                        <a asp-page="./ForgotPassword" class="bg-abvmiddlegreen">Забравена парола</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="bg-abvdarkgreen">Регистрирай се като потребител</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="bg-abvmiddlegreen">Регистрирайте се като потребител</a>
                     </p>
                 </div>
             </form>
