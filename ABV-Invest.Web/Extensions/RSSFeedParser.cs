@@ -3,11 +3,10 @@
     using Common;
     using Contracts;
     using Enums;
-    using ViewModels;
-
     using System;
     using System.Collections.Generic;
     using System.Xml;
+    using ViewModels;
 
     public class RSSFeedParser : IRSSFeedParser
     {

@@ -3,10 +3,9 @@
     using BindingModels.Uploads.Deals;
     using Contracts;
     using Data;
-    using Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using Models;
     using Moq;
     using System;
     using System.IO;

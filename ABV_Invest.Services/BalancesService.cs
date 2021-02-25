@@ -20,10 +20,8 @@
         public async Task<bool> CreateBalanceForUser(AbvInvestUser user, DateTime date)
         {
             var dailyBalance = await this.GetUserDailyBalanceetDailyBalance(user, date);
-
             dailyBalance.Balance.SetBalanceFigures(user, date);
             await this.Db.SaveChangesAsync();
-
             return true;
         }
 
@@ -52,7 +50,7 @@
         public T GetUserDailyBalance<T>(AbvInvestUser user, DateTime date)
         {
             var dailyBalance = user.Balances.SingleOrDefault(b => b.Date == date);
-            if (dailyBalance == null)
+            if (dailyBalance is null)
             {
                 return default(T);
             }

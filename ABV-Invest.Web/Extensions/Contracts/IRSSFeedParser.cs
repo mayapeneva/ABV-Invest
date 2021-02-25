@@ -1,8 +1,7 @@
 ﻿namespace ABV_Invest.Web.Extensions.Contracts
 {
-    using ViewModels;
-
     using System.Collections.Generic;
+    using ViewModels;
 
     public interface IRSSFeedParser
     {

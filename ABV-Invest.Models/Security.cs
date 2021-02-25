@@ -2,7 +2,6 @@
 {
     using Base;
     using Enums;
-
     using System.ComponentModel.DataAnnotations;
 
     public class Security : BaseEntity<int>

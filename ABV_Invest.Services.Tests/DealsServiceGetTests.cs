@@ -4,11 +4,10 @@
     using Data;
     using DTOs;
     using Mapping;
-    using Models;
-    using Models.Enums;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using Models;
+    using Models.Enums;
     using Moq;
     using System;
     using System.Collections.Generic;
@@ -71,14 +70,15 @@
         }
 
         [Fact]
-        public void GetUserDailyDeals_ShouldReturnDailyDealsWithCorrectTotalPrice()
+        public async Task GetUserDailyDeals_ShouldReturnDailyDealsWithCorrectTotalPrice()
         {
             // Arange
             var expectedTotalPrice =
                 this.moqUser.Object.Deals.Select(dd => dd.Deals.Sum(d => d.TotalPrice));
 
             // Act
-            var actualTotalPrice = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, this.Date).Select(d => d.TotalPrice);
+            var totalPrice = await this.dealsService.GetUserDailyDeals<DealDto>(this.principal, this.Date);
+            var actualTotalPrice = totalPrice.Select(d => d.TotalPrice);
 
             // Assert
             Assert.Equal(expectedTotalPrice, actualTotalPrice);

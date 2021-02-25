@@ -156,11 +156,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\files\" />
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
   <ItemGroup>
-    <WCFMetadata Include="Connected Services" />
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
 </Project>

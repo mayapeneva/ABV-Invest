@@ -1,9 +1,9 @@
 ﻿namespace ABV_Invest.BindingModels
 {
+    using Common;
     using Microsoft.AspNetCore.Http;
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Common;
 
     public class FilesUploadedBindingModel
     {

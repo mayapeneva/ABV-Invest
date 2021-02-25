@@ -3,7 +3,6 @@
     using Mapping.Contracts;
     using Models;
     using Models.Enums;
-
     using System;
 
     public class DealDto : IMapFrom<Deal>

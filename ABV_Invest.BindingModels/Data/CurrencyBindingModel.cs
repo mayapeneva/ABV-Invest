@@ -1,7 +1,7 @@
 ﻿namespace ABV_Invest.BindingModels.Data
 {
-    using System.ComponentModel.DataAnnotations;
     using Common;
+    using System.ComponentModel.DataAnnotations;
 
     public class CurrencyBindingModel
     {

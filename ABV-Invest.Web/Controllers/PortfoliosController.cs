@@ -4,16 +4,16 @@
     using BindingModels;
     using Common;
     using DTOs;
-    using Services.Contracts;
-    using ViewModels;
-
+    using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Rotativa.AspNetCore;
+    using Rotativa.AspNetCore.Options;
+    using Services.Contracts;
     using System;
     using System.Collections.Generic;
-    using Extensions;
-    using Rotativa.AspNetCore.Options;
+    using System.Threading.Tasks;
+    using ViewModels;
 
     [Authorize]
     public class PortfoliosController : Controller
@@ -46,38 +46,35 @@
             }
 
             this.TempData[Constants.Date] = dateChosen.Date;
-
             return this.RedirectToAction(Constants.DetailsAction);
         }
 
-        public IActionResult Details()
+        public async Task<IActionResult> Details()
         {
             var date = (DateTime)this.TempData[Constants.Date];
-            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, date);
-            if (portfolio == null)
+            var portfolio = await this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, date);
+            if (portfolio is null)
             {
                 this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 
             var portfolioViewModel = Mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);
-
             return this.View(portfolioViewModel);
         }
 
         [HttpPost]
-        public IActionResult CreatePdf(string date)
+        public async Task<IActionResult> CreatePdf(string date)
         {
             var parsedDate = DateTime.Parse(date);
-            var portfolio = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, parsedDate);
-            if (portfolio == null)
+            var portfolio = await this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.User, parsedDate);
+            if (portfolio is null)
             {
                 this.ViewData[Constants.Error] = string.Format(Messages.NoPortfolio, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 
             var portfolioViewModel = Mapper.Map<PortfolioDto[], IEnumerable<PortfolioViewModel>>(portfolio);
-
             return new ViewAsPdf(CreatePDF, portfolioViewModel)
             {
                 FileName = Portfolio + "_" + date + PdfExt,

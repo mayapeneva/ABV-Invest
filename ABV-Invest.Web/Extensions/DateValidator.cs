@@ -1,8 +1,6 @@
 ﻿namespace ABV_Invest.Web.Extensions
 {
     using System;
-    using Common;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public static class DateValidator
     {

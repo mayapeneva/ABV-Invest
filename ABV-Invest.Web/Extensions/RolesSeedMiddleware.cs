@@ -2,7 +2,6 @@
 {
     using ABV_Invest.Models;
     using Common;
-
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore.Internal;

@@ -4,16 +4,16 @@
     using BindingModels;
     using Common;
     using DTOs;
-    using Services.Contracts;
-    using ViewModels;
-
+    using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System;
-    using System.Collections.Generic;
-    using Extensions;
     using Rotativa.AspNetCore;
     using Rotativa.AspNetCore.Options;
+    using Services.Contracts;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using ViewModels;
 
     [Authorize]
     public class DealsController : Controller
@@ -46,39 +46,35 @@
             }
 
             this.TempData[Constants.Date] = dateChosen.Date;
-
             return this.RedirectToAction(Constants.DetailsAction);
         }
 
-        public IActionResult Details()
+        public async Task<IActionResult> Details()
         {
             var date = (DateTime)this.TempData[Constants.Date];
-            var deals = this.dealsService.GetUserDailyDeals<DealDto>(this.User, date);
-
-            if (deals == null)
+            var deals = await this.dealsService.GetUserDailyDeals<DealDto>(this.User, date);
+            if (deals is null)
             {
                 this.ViewData[Constants.Error] = string.Format(Messages.NoDeals, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 
             var dealsViewModel = Mapper.Map<DealDto[], IEnumerable<DealViewModel>>(deals);
-
             return this.View(dealsViewModel);
         }
 
         [HttpPost]
-        public IActionResult CreatePdf(string date)
+        public async Task<IActionResult> CreatePdf(string date)
         {
             var parsedDate = DateTime.Parse(date);
-            var deals = this.dealsService.GetUserDailyDeals<DealDto>(this.User, parsedDate);
-            if (deals == null)
+            var deals = await this.dealsService.GetUserDailyDeals<DealDto>(this.User, parsedDate);
+            if (deals is null)
             {
                 this.ViewData[Constants.Error] = string.Format(Messages.NoDeals, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 
             var dealsViewModel = Mapper.Map<DealDto[], IEnumerable<DealViewModel>>(deals);
-
             return new ViewAsPdf(CreatePDF, dealsViewModel)
             {
                 FileName = Deals + "_" + date + PdfExt,

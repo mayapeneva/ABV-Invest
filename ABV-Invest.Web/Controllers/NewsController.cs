@@ -2,11 +2,10 @@
 {
     using Common;
     using Extensions.Contracts;
-    using ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Linq;
+    using ViewModels;
 
     public class NewsController : Controller
     {
@@ -20,7 +19,6 @@
         public IActionResult Load()
         {
             var rssModels = new List<RSSFeedViewModel>();
-
             this.rssFeedParser.LoadNewsFromInvestor(rssModels);
 
             this.rssFeedParser.LoadNewsFromCapital(rssModels, Constants.CapitalRSS1);

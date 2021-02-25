@@ -6,10 +6,9 @@
     using Common;
     using Contracts;
     using Data;
+    using Microsoft.AspNetCore.Identity;
     using Models;
     using Models.Enums;
-
-    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -37,9 +36,9 @@
             this.dataService = dataService;
         }
 
-        public T[] GetUserDailyDeals<T>(ClaimsPrincipal user, DateTime date)
+        public async Task<T[]> GetUserDailyDeals<T>(ClaimsPrincipal user, DateTime date)
         {
-            var dbUser = this.userManager.GetUserAsync(user).GetAwaiter().GetResult();
+            var dbUser = await this.userManager.GetUserAsync(user);
             return dbUser?.Deals
                 .SingleOrDefault(p => p.Date == date)
                 ?.Deals
@@ -58,7 +57,7 @@
             {
                 // Check if User exists
                 var user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == deal.Key);
-                if (user == null)
+                if (user is null)
                 {
                     mistakes.AppendLine(string.Format(Messages.UserDoesNotExist, deal.Key));
                     continue;
@@ -81,8 +80,8 @@
                 // Create all Deals for this User
                 foreach (var dealRow in deal)
                 {
-                    var dealRowResult = this.CreateDealRowForUser(dealRow, deal.Key, dbDailyDeals);
-                    if (dealRowResult != "")
+                    var dealRowResult = await this.CreateDealRowForUser(dealRow, deal.Key, dbDailyDeals);
+                    if (string.IsNullOrWhiteSpace(dealRowResult))
                     {
                         mistakes.AppendLine(dealRowResult);
                     }
@@ -107,21 +106,21 @@
             return finalResult;
         }
 
-        private string CreateDealRowForUser(DealRowBindingModel dealRow, string dealKey,
+        private async Task<string> CreateDealRowForUser(DealRowBindingModel dealRow, string dealKey,
             DailyDeals dbDailyDeals)
         {
             var securityInfo = dealRow.Instrument;
             // Get or create security
-            var security = this.GetOrCreateSecurity(securityInfo);
-            if (security == null)
+            var security = await this.GetOrCreateSecurity(securityInfo);
+            if (security is null)
             {
                 return string.Format(Messages.SecurityCannotBeCreated, dealKey, securityInfo.Issuer,
                     securityInfo.ISIN, securityInfo.NewCode, securityInfo.Currency);
             }
 
             // Get or create currency
-            var currency = this.GetOrCreateCurrency(securityInfo);
-            if (currency == null)
+            var currency = await this.GetOrCreateCurrency(securityInfo);
+            if (currency is null)
             {
                 return string.Format(Messages.CurrencyCannotBeCreated, securityInfo.Currency, dealKey,
                     securityInfo.Issuer, securityInfo.ISIN, securityInfo.NewCode);
@@ -130,7 +129,7 @@
             // Check if such market exists
             var dealData = dealRow.DealData;
             var market = this.Db.Markets.SingleOrDefault(m => m.MIC == dealData.StockExchangeMIC);
-            if (market == null)
+            if (market is null)
             {
                 return string.Format(Messages.MarketDoesNotExist, dealData.Operation,
                     securityInfo.ISIN, dealKey, dealData.StockExchangeMIC);
@@ -138,7 +137,7 @@
 
             // Parse data and create deal
             var dealResult = this.ParseDataAndCreateDeal(dealData, security, currency, market, out var dbDeal);
-            if (dbDeal == null)
+            if (dbDeal is null)
             {
                 return string.Format(Messages.DealCannotBeRegistered, dealData.Operation,
                     securityInfo.ISIN, dealKey, dealResult[0], dealResult[1]);
@@ -147,24 +146,31 @@
             // Validate the Deal and add it to the dailyDeals
             if (!DataValidator.IsValid(dbDeal))
             {
-                return string.Format(Messages.DealRowCannotBeCreated, dealData.Operation,
-                    securityInfo.ISIN, dealKey, dealData.ShareCount, dealData.SinglePrice);
+                return string.Format(Messages.DealRowCannotBeCreated,
+                    dealData.Operation,
+                    securityInfo.ISIN,
+                    dealKey,
+                    dealData.ShareCount,
+                    dealData.SinglePrice);
             }
 
             dbDailyDeals.Deals.Add(dbDeal);
-            return "";
+
+            return null;
         }
 
-        private Security GetOrCreateSecurity(Instrument securityInfo)
+        private async Task<Security> GetOrCreateSecurity(Instrument securityInfo)
         {
             var security =
                 this.Db.Securities.SingleOrDefault(s => s.ISIN == securityInfo.ISIN);
-            if (security == null)
+            if (security is null)
             {
-                var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN,
+                var securityResult = await this.dataService.CreateSecurity(
+                    securityInfo.Issuer,
+                    securityInfo.ISIN,
                     securityInfo.NewCode,
                     securityInfo.Currency);
-                if (!securityResult.Result)
+                if (!securityResult)
                 {
                     return null;
                 }
@@ -175,13 +181,13 @@
             return security;
         }
 
-        private Currency GetOrCreateCurrency(Instrument securityInfo)
+        private async Task<Currency> GetOrCreateCurrency(Instrument securityInfo)
         {
             var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == securityInfo.Currency);
-            if (currency == null)
+            if (currency is null)
             {
-                var currencyResult = this.dataService.CreateCurrency(securityInfo.Currency);
-                if (!currencyResult.Result)
+                var currencyResult = await this.dataService.CreateCurrency(securityInfo.Currency);
+                if (!currencyResult)
                 {
                     return null;
                 }
@@ -202,42 +208,42 @@
             }
             var dealType = operation == Constants.Buy ? DealType.Купува : DealType.Продава;
 
-            var ifQuantityParsed = decimal.TryParse(dealData.ShareCount.Replace(" ", ""), out var quantity);
+            var ifQuantityParsed = decimal.TryParse(dealData.ShareCount.Replace(" ", string.Empty), out var quantity);
             if (!ifQuantityParsed)
             {
                 dbDeal = null;
                 return new[] { Quantity, dealData.ShareCount };
             }
 
-            var ifPriceParsed = decimal.TryParse(dealData.SinglePrice.Replace(" ", ""), out var price);
+            var ifPriceParsed = decimal.TryParse(dealData.SinglePrice.Replace(" ", string.Empty), out var price);
             if (!ifPriceParsed)
             {
                 dbDeal = null;
                 return new[] { Price, dealData.SinglePrice };
             }
 
-            var ifCouponParsed = decimal.TryParse(dealData.Coupon.Replace(" ", ""), out var coupon);
+            var ifCouponParsed = decimal.TryParse(dealData.Coupon.Replace(" ", string.Empty), out var coupon);
             if (!ifCouponParsed)
             {
                 dbDeal = null;
                 return new[] { Coupon, dealData.Coupon };
             }
 
-            var ifTotalPriceParsed = decimal.TryParse(dealData.DealAmountInShareCurrency.Replace(" ", ""), out var totalPrice);
+            var ifTotalPriceParsed = decimal.TryParse(dealData.DealAmountInShareCurrency.Replace(" ", string.Empty), out var totalPrice);
             if (!ifTotalPriceParsed)
             {
                 dbDeal = null;
                 return new[] { CurrencyValue, dealData.DealAmountInShareCurrency };
             }
 
-            var ifTotalPriceInBGNParsed = decimal.TryParse(dealData.DealAmountInPaymentCurrency.Replace(" ", ""), out var totalPriceInBGN);
+            var ifTotalPriceInBGNParsed = decimal.TryParse(dealData.DealAmountInPaymentCurrency.Replace(" ", string.Empty), out var totalPriceInBGN);
             if (!ifTotalPriceInBGNParsed)
             {
                 dbDeal = null;
                 return new[] { BgnValue, dealData.DealAmountInPaymentCurrency };
             }
 
-            var ifFeeParsed = decimal.TryParse(dealData.CommissionInPaymentCurrency.Replace(" ", ""), out var fee);
+            var ifFeeParsed = decimal.TryParse(dealData.CommissionInPaymentCurrency.Replace(" ", string.Empty), out var fee);
             if (!ifFeeParsed)
             {
                 dbDeal = null;
@@ -265,6 +271,7 @@
                 Settlement = settlement,
                 Market = market
             };
+
             return null;
         }
     }

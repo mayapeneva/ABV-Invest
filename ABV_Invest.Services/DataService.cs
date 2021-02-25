@@ -69,13 +69,13 @@
                 return false;
             }
 
-            var issuer = this.Db.Issuers.SingleOrDefault(i => i.Name == issuerName) ?? this.CreateIssuer(issuerName).GetAwaiter().GetResult();
+            var issuer = this.Db.Issuers.SingleOrDefault(i => i.Name == issuerName) ?? await this.CreateIssuer(issuerName);
 
             var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == currencyCode);
-            if (currency == null)
+            if (currency is null)
             {
-                var result = this.CreateCurrency(currencyCode);
-                if (!result.Result)
+                var result = await this.CreateCurrency(currencyCode);
+                if (!result)
                 {
                     return false;
                 }
@@ -90,6 +90,7 @@
                 BfbCode = bfbCode,
                 Currency = currency
             };
+
             security.SetSecuritiesType();
             if (!DataValidator.IsValid(security))
             {

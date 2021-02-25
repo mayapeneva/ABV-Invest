@@ -3,7 +3,6 @@
     using AutoMapper;
     using DTOs;
     using Mapping.Contracts;
-
     using System.Globalization;
 
     public class DealViewModel : IMapFrom<DealDto>, ICustomMap

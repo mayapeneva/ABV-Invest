@@ -4,16 +4,15 @@
     using BindingModels.Uploads.Deals;
     using BindingModels.Uploads.Portfolios;
     using Common;
-    using Services.Contracts;
-
+    using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
+    using Services.Contracts;
     using System;
     using System.IO;
     using System.Threading.Tasks;
     using System.Xml.Serialization;
-    using Extensions;
 
     [Area(Constants.Administration)]
     [Authorize(Roles = Constants.Admin)]
@@ -70,9 +69,8 @@
                     }
 
                     // Seeding the data from the deserialised file
-                    var result = this.portfolioService.SeedPortfolios(deserializedPortfolios, model.Date);
-                    this.ViewData[Constants.Error] = result.Result;
-
+                    var result = await this.portfolioService.SeedPortfolios(deserializedPortfolios, model.Date);
+                    this.ViewData[Constants.Error] = result;
                     return this.View();
                 }
             }
@@ -119,9 +117,8 @@
                     }
 
                     // Seeding the data from the deserialised file
-                    var result = this.dealsService.SeedDeals(deserializedDeals, model.Date);
-                    this.ViewData[Constants.Error] = result.Result;
-
+                    var result = await this.dealsService.SeedDeals(deserializedDeals, model.Date);
+                    this.ViewData[Constants.Error] = result;
                     return this.View();
                 }
             }

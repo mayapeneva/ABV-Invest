@@ -1,10 +1,9 @@
 ﻿namespace ABV_Invest.Data
 {
-    using Models;
-    using Models.Enums;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using Models;
+    using Models.Enums;
     using System;
 
     public class AbvDbContext : IdentityDbContext<AbvInvestUser>

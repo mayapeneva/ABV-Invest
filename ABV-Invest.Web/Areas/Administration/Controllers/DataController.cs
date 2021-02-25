@@ -2,10 +2,10 @@
 {
     using BindingModels.Data;
     using Common;
-    using Services.Contracts;
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Services.Contracts;
+    using System.Threading.Tasks;
 
     [Area(Constants.Administration)]
     [Authorize(Roles = Constants.Admin)]
@@ -29,7 +29,7 @@
         }
 
         [HttpPost]
-        public IActionResult AddCurrency(CurrencyBindingModel bindingModel)
+        public async Task<IActionResult> AddCurrency(CurrencyBindingModel bindingModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -37,8 +37,8 @@
                 return this.View();
             }
 
-            var result = this.dataService.CreateCurrency(bindingModel.Code);
-            if (!result.Result)
+            var result = await this.dataService.CreateCurrency(bindingModel.Code);
+            if (!result)
             {
                 this.ViewData[Constants.Error] = Messages.CurrencyExists;
                 return this.View();
@@ -53,7 +53,7 @@
         }
 
         [HttpPost]
-        public IActionResult AddMarket(MarketBindingModel bindingModel)
+        public async Task<IActionResult> AddMarket(MarketBindingModel bindingModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -61,8 +61,8 @@
                 return this.View();
             }
 
-            var result = this.dataService.CreateMarket(bindingModel.Name, bindingModel.MIC);
-            if (!result.Result)
+            var result = await this.dataService.CreateMarket(bindingModel.Name, bindingModel.MIC);
+            if (!result)
             {
                 this.ViewData[Constants.Error] = Messages.MarketExists;
                 return this.View();
@@ -77,7 +77,7 @@
         }
 
         [HttpPost]
-        public IActionResult AddSecurity(SecurityBindingModel bindingModel)
+        public async Task<IActionResult> AddSecurity(SecurityBindingModel bindingModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -85,8 +85,8 @@
                 return this.View();
             }
 
-            var result = this.dataService.CreateSecurity(bindingModel.Issuer, bindingModel.ISIN, bindingModel.BfbCode, bindingModel.Currency);
-            if (!result.Result)
+            var result = await this.dataService.CreateSecurity(bindingModel.Issuer, bindingModel.ISIN, bindingModel.BfbCode, bindingModel.Currency);
+            if (!result)
             {
                 this.ViewData[Constants.Error] = Messages.SecurityExists;
                 return this.View();

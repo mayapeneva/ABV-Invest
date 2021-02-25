@@ -4,9 +4,8 @@ namespace ABV_Invest.Services.Tests
     using Data;
     using DTOs;
     using Mapping;
-    using Models;
-
     using Microsoft.EntityFrameworkCore;
+    using Models;
     using Moq;
     using System;
     using System.Collections.Generic;

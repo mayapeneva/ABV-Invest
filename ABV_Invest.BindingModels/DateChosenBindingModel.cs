@@ -1,8 +1,8 @@
 ﻿namespace ABV_Invest.BindingModels
 {
+    using Common;
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Common;
 
     public class DateChosenBindingModel
     {

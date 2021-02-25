@@ -9,10 +9,6 @@
     using Extensions.Contracts;
     using Firewall;
     using Mapping;
-    using Services;
-    using Services.Contracts;
-    using ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -23,7 +19,10 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Rotativa.AspNetCore;
+    using Services;
+    using Services.Contracts;
     using System.Collections.Generic;
+    using ViewModels;
 
     public class Startup
     {

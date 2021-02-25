@@ -2,7 +2,6 @@
 {
     using Contracts;
     using Data;
-
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using System.Threading.Tasks;
@@ -47,21 +46,21 @@
             var expected = false;
 
             // Act
-            var actual = this.dataService.CreateCurrency(currencyCode).GetAwaiter().GetResult();
+            var actual = await this.dataService.CreateCurrency(currencyCode);
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void CreateCurrency_ShouldNotCreateCurrencyIfCodeNotCorrect()
+        public async Task CreateCurrency_ShouldNotCreateCurrencyIfCodeNotCorrect()
         {
             // Arrange
             var currencyCode = "US1";
             var expected = false;
 
             // Act
-            var actual = this.dataService.CreateCurrency(currencyCode).GetAwaiter().GetResult();
+            var actual = await this.dataService.CreateCurrency(currencyCode);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -94,14 +93,14 @@
             var expected = false;
 
             // Act
-            var actual = this.dataService.CreateMarket(marketName, marketName).GetAwaiter().GetResult();
+            var actual = await this.dataService.CreateMarket(marketName, marketName);
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void CreateMarket_ShouldNotCreateMarketIfCodeNotCorrect()
+        public async Task CreateMarket_ShouldNotCreateMarketIfCodeNotCorrect()
         {
             // Arrange
             var marketName = "БФБ";
@@ -109,7 +108,7 @@
             var expected = false;
 
             // Act
-            var actual = this.dataService.CreateMarket(marketName, marketCode).GetAwaiter().GetResult();
+            var actual = await this.dataService.CreateMarket(marketName, marketCode);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -147,7 +146,7 @@
             var expected = false;
 
             // Act
-            var actual = this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode).GetAwaiter().GetResult();
+            var actual = await this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -186,7 +185,7 @@
         }
 
         [Fact]
-        public void CreateSecurity_ShouldNotCreateSrcurityIfISINOrBFBCodeNotCorrect()
+        public async Task CreateSecurity_ShouldNotCreateSrcurityIfISINOrBFBCodeNotCorrect()
         {
             // Arrange
             var issuerName = "БФБ";
@@ -196,7 +195,7 @@
             var expected = false;
 
             // Act
-            var actual = this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode).GetAwaiter().GetResult();
+            var actual = await this.dataService.CreateSecurity(issuerName, ISIN, bfbCode, currencyCode);
 
             // Assert
             Assert.Equal(expected, actual);

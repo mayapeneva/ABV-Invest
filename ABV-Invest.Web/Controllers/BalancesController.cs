@@ -5,14 +5,14 @@
     using BindingModels;
     using Common;
     using DTOs;
-    using Services.Contracts;
-    using ViewModels;
-
+    using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Services.Contracts;
     using System;
-    using Extensions;
+    using System.Threading.Tasks;
+    using ViewModels;
 
     [Authorize]
     public class BalancesController : Controller
@@ -42,24 +42,21 @@
             }
 
             this.TempData[Constants.Date] = dateChosen.Date;
-
             return this.RedirectToAction(Constants.DetailsAction);
         }
 
-        public IActionResult Details()
+        public async Task<IActionResult> Details()
         {
             var date = (DateTime)this.TempData[Constants.Date];
-            var user = this.userManager.GetUserAsync(this.User).GetAwaiter().GetResult();
+            var user = await this.userManager.GetUserAsync(this.User);
             var balance = this.balancesService.GetUserDailyBalance<BalanceDto>(user, date);
-
-            if (balance == null)
+            if (balance is null)
             {
                 this.ViewData[Constants.Error] = string.Format(Messages.NoBalance, DateTime.UtcNow.ToString(Constants.DateTimeParseFormat));
                 return this.View(Constants.ChooseDateAction);
             }
 
             var balanceViewModel = Mapper.Map<BalanceViewModel>(balance);
-
             return this.View(balanceViewModel);
         }
     }

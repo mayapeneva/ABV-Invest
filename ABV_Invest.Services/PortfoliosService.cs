@@ -5,10 +5,8 @@
     using Common;
     using Contracts;
     using Data;
-    using Models;
-
-    using Mapper = AutoMapper.Mapper;
     using Microsoft.AspNetCore.Identity;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -17,6 +15,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using ViewModels;
+    using Mapper = AutoMapper.Mapper;
 
     public class PortfoliosService : BaseService, IPortfoliosService
     {
@@ -41,9 +40,9 @@
             this.dataService = dataService;
         }
 
-        public T[] GetUserDailyPortfolio<T>(ClaimsPrincipal user, DateTime date)
+        public async Task<T[]> GetUserDailyPortfolio<T>(ClaimsPrincipal user, DateTime date)
         {
-            var dbUser = this.userManager.GetUserAsync(user).GetAwaiter().GetResult();
+            var dbUser = await this.userManager.GetUserAsync(user);
             return dbUser?.Portfolio
                 .SingleOrDefault(p => p.Date == date)?
                 .SecuritiesPerIssuerCollection
@@ -62,7 +61,7 @@
             {
                 // Check if User exists
                 var user = this.Db.AbvInvestUsers.SingleOrDefault(u => u.UserName == portfolio.Key);
-                if (user == null)
+                if (user is null)
                 {
                     mistakes.AppendLine(string.Format(Messages.UserDoesNotExist, portfolio.Key));
                     continue;
@@ -84,8 +83,8 @@
                 // Create all SecuritiesPerClient for this User
                 foreach (var portfolioRow in portfolio)
                 {
-                    var portfolioResult = this.CreatePortfolioRowForUser(date, user, portfolioRow, portfolio.Key, dbPortfolio);
-                    if (portfolioResult != "")
+                    var portfolioResult = await this.CreatePortfolioRowForUser(date, user, portfolioRow, portfolio.Key, dbPortfolio);
+                    if (string.IsNullOrWhiteSpace(portfolioResult))
                     {
                         mistakes.AppendLine(portfolioResult);
                     }
@@ -97,6 +96,7 @@
                     mistakes.AppendLine(string.Format(Messages.PortfolioCannotBeCreated, portfolio.Key, date));
                     continue;
                 }
+
                 user.Portfolio.Add(dbPortfolio);
                 var result = await this.Db.SaveChangesAsync();
 
@@ -104,7 +104,6 @@
                 if (result > 0)
                 {
                     await this.balancesService.CreateBalanceForUser(user, date);
-
                     changesCounter += result;
                 }
             }
@@ -116,7 +115,7 @@
             return finalResult;
         }
 
-        private string CreatePortfolioRowForUser(DateTime date, AbvInvestUser user, PortfolioRowBindingModel portfolioRow,
+        private async Task<string> CreatePortfolioRowForUser(DateTime date, AbvInvestUser user, PortfolioRowBindingModel portfolioRow,
             string portfolioKey, DailySecuritiesPerClient dbPortfolio)
         {
             // Fill in user's FullName if empty
@@ -127,8 +126,8 @@
 
             var securityInfo = portfolioRow.Instrument;
             // Get or create security
-            var security = this.GetOrCreateSecurity(securityInfo);
-            if (security == null)
+            var security = await this.GetOrCreateSecurity(securityInfo);
+            if (security is null)
             {
                 return string.Format(Messages.SecurityCannotBeCreated, portfolioKey, securityInfo.Issuer,
                     securityInfo.ISIN, securityInfo.NewCode, securityInfo.Currency);
@@ -143,8 +142,8 @@
             }
 
             // Get or create currency
-            var currency = this.GetOrCreateCurrency(securityInfo);
-            if (currency == null)
+            var currency = await this.GetOrCreateCurrency(securityInfo);
+            if (currency is null)
             {
                 return string.Format(Messages.CurrencyCannotBeCreated, securityInfo.Currency,
                         portfolioKey, securityInfo.Issuer, securityInfo.ISIN,
@@ -155,7 +154,7 @@
             // Parse data and create SecuritiesPerClient
             var securityResult = this.ParseDataAndCreateSecuritiesPerClient(portfolioRow, accountData,
                 security, currency, out var securitiesPerClient);
-            if (securitiesPerClient == null)
+            if (securitiesPerClient is null)
             {
                 return string.Format(Messages.SecurityCannotBeRegistered, portfolioKey, securityResult[0], securityResult[1]);
             }
@@ -169,17 +168,17 @@
             }
 
             dbPortfolio.SecuritiesPerIssuerCollection.Add(securitiesPerClient);
-            return "";
+            return null;
         }
 
-        private Security GetOrCreateSecurity(Instrument securityInfo)
+        private async Task<Security> GetOrCreateSecurity(Instrument securityInfo)
         {
             var security = this.Db.Securities.SingleOrDefault(s => s.ISIN == securityInfo.ISIN);
-            if (security == null)
+            if (security is null)
             {
-                var securityResult = this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN,
+                var securityResult = await this.dataService.CreateSecurity(securityInfo.Issuer, securityInfo.ISIN,
                     securityInfo.NewCode, securityInfo.Currency);
-                if (!securityResult.Result)
+                if (!securityResult)
                 {
                     return null;
                 }
@@ -190,13 +189,13 @@
             return security;
         }
 
-        private Currency GetOrCreateCurrency(Instrument securityInfo)
+        private async Task<Currency> GetOrCreateCurrency(Instrument securityInfo)
         {
             var currency = this.Db.Currencies.SingleOrDefault(c => c.Code == securityInfo.Currency);
-            if (currency == null)
+            if (currency is null)
             {
-                var currencyResult = this.dataService.CreateCurrency(securityInfo.Currency);
-                if (!currencyResult.Result)
+                var currencyResult = await this.dataService.CreateCurrency(securityInfo.Currency);
+                if (!currencyResult)
                 {
                     return null;
                 }
@@ -210,56 +209,56 @@
         private string[] ParseDataAndCreateSecuritiesPerClient(PortfolioRowBindingModel portfolioRow, AccountData accountData,
             Security security, Currency currency, out SecuritiesPerClient securitiesPerClient)
         {
-            var ifQuantityParsed = decimal.TryParse(accountData.Quantity.Replace(" ", ""), out var quantity);
+            var ifQuantityParsed = decimal.TryParse(accountData.Quantity.Replace(" ", string.Empty), out var quantity);
             if (!ifQuantityParsed)
             {
                 securitiesPerClient = null;
                 return new[] { Quantity, accountData.Quantity };
             }
 
-            var ifAveragePriceBuyParsed = decimal.TryParse(accountData.OpenPrice.Replace(" ", ""), out var averagePriceBuy);
+            var ifAveragePriceBuyParsed = decimal.TryParse(accountData.OpenPrice.Replace(" ", string.Empty), out var averagePriceBuy);
             if (!ifAveragePriceBuyParsed)
             {
                 securitiesPerClient = null;
                 return new[] { AveragePrice, accountData.OpenPrice };
             }
 
-            var ifMarketPriceParsed = decimal.TryParse(accountData.MarketPrice.Replace(" ", ""), out var marketPrice);
+            var ifMarketPriceParsed = decimal.TryParse(accountData.MarketPrice.Replace(" ", string.Empty), out var marketPrice);
             if (!ifMarketPriceParsed)
             {
                 securitiesPerClient = null;
                 return new[] { MarketPrice, accountData.MarketPrice };
             }
 
-            var ifTotalMarketPriceParsed = decimal.TryParse(accountData.MarketValue.Replace(" ", ""), out var totalMarketPrice);
+            var ifTotalMarketPriceParsed = decimal.TryParse(accountData.MarketValue.Replace(" ", string.Empty), out var totalMarketPrice);
             if (!ifTotalMarketPriceParsed)
             {
                 securitiesPerClient = null;
                 return new[] { MarketValue, accountData.MarketValue };
             }
 
-            var ifProfitParsed = decimal.TryParse(accountData.Result.Replace(" ", ""), out var profit);
+            var ifProfitParsed = decimal.TryParse(accountData.Result.Replace(" ", string.Empty), out var profit);
             if (!ifProfitParsed)
             {
                 securitiesPerClient = null;
                 return new[] { Profit, accountData.Result };
             }
 
-            var ifProfitInBGNParsed = decimal.TryParse(accountData.ResultBGN.Replace(" ", ""), out var profitInBGN);
+            var ifProfitInBGNParsed = decimal.TryParse(accountData.ResultBGN.Replace(" ", string.Empty), out var profitInBGN);
             if (!ifProfitInBGNParsed)
             {
                 securitiesPerClient = null;
                 return new[] { profitInBGN.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture)), accountData.ResultBGN };
             }
 
-            var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", ""), out var profitPercent);
+            var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", string.Empty), out var profitPercent);
             if (!ifProfitPercentParsed)
             {
                 securitiesPerClient = null;
                 return new[] { ProfitInPersentage, portfolioRow.Other.YieldPercent };
             }
 
-            var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", ""), out var portfolioShare);
+            var ifPortfolioShareParsed = decimal.TryParse(portfolioRow.Other.RelativePart.Replace(" ", string.Empty), out var portfolioShare);
             if (!ifPortfolioShareParsed)
             {
                 securitiesPerClient = null;
@@ -280,6 +279,7 @@
                 ProfitPercentаge = profitPercent,
                 PortfolioShare = portfolioShare
             };
+
             return null;
         }
     }

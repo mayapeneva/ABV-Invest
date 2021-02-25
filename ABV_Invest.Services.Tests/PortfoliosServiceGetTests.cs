@@ -4,10 +4,9 @@
     using Data;
     using DTOs;
     using Mapping;
-    using Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using Models;
     using Moq;
     using System;
     using System.Collections.Generic;
@@ -72,14 +71,15 @@
         }
 
         [Fact]
-        public void GetUserDailyPortfolio_ShouldReturnDailyPortfolioWithCorrectTotalMarketPrice()
+        public async Task GetUserDailyPortfolio_ShouldReturnDailyPortfolioWithCorrectTotalMarketPrice()
         {
             // Arange
             var expectedTotalMarketPrice =
                 this.moqUser.Object.Portfolio.Select(p => p.SecuritiesPerIssuerCollection.Sum(s => s.TotalMarketPrice));
 
             // Act
-            var actualTotalMarketPrice = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, this.Date).Select(p => p.TotalMarketPrice);
+            var totalMarketPrice = await this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, this.Date);
+            var actualTotalMarketPrice = totalMarketPrice.Select(p => p.TotalMarketPrice);
 
             // Assert
             Assert.Equal(expectedTotalMarketPrice, actualTotalMarketPrice);
