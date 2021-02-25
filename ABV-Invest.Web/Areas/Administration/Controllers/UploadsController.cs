@@ -1,8 +1,8 @@
 ﻿namespace ABV_Invest.Web.Areas.Administration.Controllers
 {
-    using BindingModels;
-    using BindingModels.Uploads.Deals;
-    using BindingModels.Uploads.Portfolios;
+    using ABV_Invest.Common.BindingModels;
+    using ABV_Invest.Common.BindingModels.Uploads.Deals;
+    using ABV_Invest.Common.BindingModels.Uploads.Portfolios;
     using Common;
     using Extensions;
     using Microsoft.AspNetCore.Authorization;

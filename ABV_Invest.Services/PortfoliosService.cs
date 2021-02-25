@@ -1,7 +1,7 @@
 ﻿namespace ABV_Invest.Services
 {
+    using ABV_Invest.Common.BindingModels.Uploads.Portfolios;
     using Base;
-    using BindingModels.Uploads.Portfolios;
     using Common;
     using Contracts;
     using Data;
@@ -14,7 +14,6 @@
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
-    using ViewModels;
     using Mapper = AutoMapper.Mapper;
 
     public class PortfoliosService : BaseService, IPortfoliosService
@@ -24,6 +23,7 @@
         private const string MarketPrice = "Пазарна цена";
         private const string MarketValue = "Пазарна стойност";
         private const string Profit = "Доходност";
+        private const string SvSeCulture = "sv-SE";
 
         private const string ProfitInPersentage = "Доходност в %";
 
@@ -248,7 +248,7 @@
             if (!ifProfitInBGNParsed)
             {
                 securitiesPerClient = null;
-                return new[] { profitInBGN.ToString("N2", CultureInfo.CreateSpecificCulture(ViewModelConstants.SvSeCulture)), accountData.ResultBGN };
+                return new[] { profitInBGN.ToString("N2", CultureInfo.CreateSpecificCulture(SvSeCulture)), accountData.ResultBGN };
             }
 
             var ifProfitPercentParsed = decimal.TryParse(portfolioRow.Other.YieldPercent.Replace(" ", string.Empty), out var profitPercent);

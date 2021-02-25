@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ABV-Invest.Data\ABV_Invest.Data.csproj" />
-    <ProjectReference Include="..\ABV_Invest.BindingModels\ABV_Invest.BindingModels.csproj" />
     <ProjectReference Include="..\ABV_Invest.Common\ABV_Invest.Common.csproj" />
-    <ProjectReference Include="..\ABV_Invest.DTOs\ABV_Invest.DTOs.csproj" />
-    <ProjectReference Include="..\ABV_Invest.Mapping\ABV_Invest.Mapping.csproj" />
   </ItemGroup>
 
   <ItemGroup>

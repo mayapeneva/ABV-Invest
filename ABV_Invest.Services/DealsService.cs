@@ -1,8 +1,8 @@
 ﻿namespace ABV_Invest.Services
 {
+    using ABV_Invest.Common.BindingModels.Uploads.Deals;
     using AutoMapper;
     using Base;
-    using BindingModels.Uploads.Deals;
     using Common;
     using Contracts;
     using Data;

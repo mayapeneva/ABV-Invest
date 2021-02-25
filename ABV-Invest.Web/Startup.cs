@@ -1,14 +1,14 @@
 ﻿namespace ABV_Invest.Web
 {
+    using ABV_Invest.Common.BindingModels;
+    using ABV_Invest.Common.DTOs;
+    using ABV_Invest.Common.Mapping;
     using ABV_Invest.Models;
-    using BindingModels;
     using Common.EmailSender;
     using Data;
-    using DTOs;
     using Extensions;
     using Extensions.Contracts;
     using Firewall;
-    using Mapping;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;

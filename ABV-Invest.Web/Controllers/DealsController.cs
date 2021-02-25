@@ -1,9 +1,9 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
+    using ABV_Invest.Common.BindingModels;
+    using ABV_Invest.Common.DTOs;
     using AutoMapper;
-    using BindingModels;
     using Common;
-    using DTOs;
     using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

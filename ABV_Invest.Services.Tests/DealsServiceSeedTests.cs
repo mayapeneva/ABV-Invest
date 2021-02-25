@@ -1,6 +1,6 @@
 ﻿namespace ABV_Invest.Services.Tests
 {
-    using BindingModels.Uploads.Deals;
+    using ABV_Invest.Common.BindingModels.Uploads.Deals;
     using Contracts;
     using Data;
     using Microsoft.AspNetCore.Identity;

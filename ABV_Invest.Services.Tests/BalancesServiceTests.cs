@@ -1,9 +1,9 @@
 namespace ABV_Invest.Services.Tests
 {
+    using ABV_Invest.Common.DTOs;
+    using ABV_Invest.Common.Mapping;
     using Contracts;
     using Data;
-    using DTOs;
-    using Mapping;
     using Microsoft.EntityFrameworkCore;
     using Models;
     using Moq;

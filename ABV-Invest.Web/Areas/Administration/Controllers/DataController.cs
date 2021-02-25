@@ -1,6 +1,6 @@
 ﻿namespace ABV_Invest.Web.Areas.Administration.Controllers
 {
-    using BindingModels.Data;
+    using ABV_Invest.Common.BindingModels.Data;
     using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

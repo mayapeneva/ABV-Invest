@@ -1,6 +1,6 @@
 ﻿namespace ABV_Invest.Services.Contracts
 {
-    using BindingModels.Uploads.Portfolios;
+    using ABV_Invest.Common.BindingModels.Uploads.Portfolios;
     using System;
     using System.Collections.Generic;
     using System.Security.Claims;
