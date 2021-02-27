@@ -2,10 +2,10 @@
 {
     using ABV_Invest.Common.BindingModels;
     using ABV_Invest.Common.DTOs;
+    using ABV_Invest.Common.Validators;
     using ABV_Invest.Models;
     using AutoMapper;
     using Common;
-    using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;

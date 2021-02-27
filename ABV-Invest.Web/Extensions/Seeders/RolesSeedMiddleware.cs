@@ -1,4 +1,4 @@
-﻿namespace ABV_Invest.Web.Extensions
+﻿namespace ABV_Invest.Web.Extensions.Seeders
 {
     using ABV_Invest.Models;
     using Common;

@@ -1,4 +1,4 @@
-namespace ABV_Invest.Web.Models
+namespace ABV_Invest.Web.ViewModels
 {
     public class ErrorViewModel
     {

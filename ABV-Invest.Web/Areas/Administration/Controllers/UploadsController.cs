@@ -2,17 +2,15 @@
 {
     using ABV_Invest.Common.BindingModels;
     using ABV_Invest.Common.BindingModels.Uploads.Deals;
-    using ABV_Invest.Common.BindingModels.Uploads.Portfolios;
+    using ABV_Invest.Common.Validators;
+    using ABV_Invest.Web.Extensions.Contracts;
     using Common;
-    using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using Services.Contracts;
     using System;
-    using System.IO;
     using System.Threading.Tasks;
-    using System.Xml.Serialization;
 
     [Area(Constants.Administration)]
     [Authorize(Roles = Constants.Admin)]
@@ -23,13 +21,19 @@
 
         private readonly IPortfoliosService portfolioService;
         private readonly IDealsService dealsService;
+        private readonly IUploadsHelper helper;
         private readonly IHostingEnvironment environment;
 
-        public UploadsController(IPortfoliosService portfolioService, IHostingEnvironment environment, IDealsService dealsService)
+        public UploadsController(
+            IPortfoliosService portfolioService,
+            IDealsService dealsService,
+            IUploadsHelper helper,
+            IHostingEnvironment environment)
         {
             this.portfolioService = portfolioService;
-            this.environment = environment;
             this.dealsService = dealsService;
+            this.helper = helper;
+            this.environment = environment;
         }
 
         public IActionResult PortfoliosInfo()
@@ -56,10 +60,10 @@
                 if (xmlFile.Length > 0)
                 {
                     // Saving the uploaded file
-                    await this.SaveUploadedFile(xmlFile, fileName);
+                    await helper.SaveUploadedFile(xmlFile, fileName);
 
                     // Deserialising the uploaded file data
-                    var deserializedPortfolios = this.DeserialiseTheUploadedFileData(fileName);
+                    var deserializedPortfolios = helper.DeserialiseTheUploadedFileData(fileName);
 
                     // Validating the deserialised data
                     if (!DataValidator.IsValid(deserializedPortfolios))
@@ -104,10 +108,10 @@
                 if (xmlFile.Length > 0)
                 {
                     // Saving the uploaded file
-                    await this.SaveUploadedFile(xmlFile, fileName);
+                    await helper.SaveUploadedFile(xmlFile, fileName);
 
                     // Deserialising the uploaded file data
-                    DealRowBindingModel[] deserializedDeals = DeserialiseDealsUploadedData(fileName);
+                    DealRowBindingModel[] deserializedDeals = helper.DeserialiseDealsUploadedData(fileName);
 
                     // Validating the deserialised data
                     if (!DataValidator.IsValid(deserializedDeals))
@@ -126,30 +130,6 @@
             // Unsuccessful upload
             this.ViewData[Constants.Error] = Messages.CouldNotUploadInformation;
             return this.View();
-        }
-
-        private static DealRowBindingModel[] DeserialiseDealsUploadedData(string fileName)
-        {
-            var xmlFileContent = System.IO.File.ReadAllText(fileName);
-            var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute(Constants.XmlRootAttr));
-            var deserializedDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
-            return deserializedDeals;
-        }
-
-        private async Task SaveUploadedFile(Microsoft.AspNetCore.Http.IFormFile xmlFile, string fileName)
-        {
-            using (var stream = new FileStream(fileName, FileMode.Create))
-            {
-                await xmlFile.CopyToAsync(stream);
-            }
-        }
-
-        private PortfolioRowBindingModel[] DeserialiseTheUploadedFileData(string fileName)
-        {
-            var xmlFileContent = System.IO.File.ReadAllText(fileName);
-            var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute(Constants.XmlRootAttr));
-            var deserializedPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
-            return deserializedPortfolios;
         }
     }
 }

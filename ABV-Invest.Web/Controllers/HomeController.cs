@@ -1,7 +1,7 @@
 ﻿namespace ABV_Invest.Web.Controllers
 {
+    using ABV_Invest.Web.ViewModels;
     using Microsoft.AspNetCore.Mvc;
-    using Models;
     using System.Diagnostics;
 
     public class HomeController : Controller

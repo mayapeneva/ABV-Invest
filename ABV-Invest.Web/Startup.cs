@@ -4,10 +4,12 @@
     using ABV_Invest.Common.DTOs;
     using ABV_Invest.Common.Mapping;
     using ABV_Invest.Models;
+    using ABV_Invest.Web.Extensions;
+    using ABV_Invest.Web.Extensions.Contracts;
+    using ABV_Invest.Web.Extensions.Parsers;
     using Common.EmailSender;
     using Data;
-    using Extensions;
-    using Extensions.Contracts;
+    using Extensions.Seeders;
     using Firewall;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -72,6 +74,7 @@
             services.AddScoped<IDataService, DataService>();
 
             services.AddScoped<IRSSFeedParser, RSSFeedParser>();
+            services.AddScoped<IUploadsHelper, UploadsHelper>();
             services.AddSingleton<IEmailSender, EmailSender>();
         }
 

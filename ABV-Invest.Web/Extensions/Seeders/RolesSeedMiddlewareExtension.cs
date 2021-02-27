@@ -1,4 +1,4 @@
-﻿namespace ABV_Invest.Web.Extensions
+﻿namespace ABV_Invest.Web.Extensions.Seeders
 {
     using Microsoft.AspNetCore.Builder;
 

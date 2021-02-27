@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <WebData>
-  <New>
+<New>
     <Client>
       <ClientID>17437</ClientID>
       <CDNumber>V000017601</CDNumber>
@@ -19,7 +19,7 @@
       <MaturityDate />
     </Instrument>
     <AccountData>
-      <Quantity>1njn212 499.00</Quantity>
+      <Quantity>1 212 499.00</Quantity>
       <OpenPrice>0.0000</OpenPrice>
       <MarketPrice>0.0010</MarketPrice>
       <MarketDate>30.11.2018</MarketDate>
@@ -43,7 +43,7 @@
     <Instrument>
       <ActiveID>Капиталови ФИ</ActiveID>
       <ShareID>884</ShareID>
-      <ISIN>BG1100026985jjj</ISIN>
+      <ISIN>BG1100026985</ISIN>
       <StockCode>GAMZA</StockCode>
       <NewCode>6S4</NewCode>
       <Issuer>Северкооп-Гъмза Холдинг АД</Issuer>
@@ -158,6 +158,198 @@
     <Other>
       <YieldPercent>- 30.552</YieldPercent>
       <RelativePart>0.061</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>5382</ShareID>
+      <ISIN>BG11EMTOAT16</ISIN>
+      <StockCode>EMPI</StockCode>
+      <NewCode>58E</NewCode>
+      <Issuer>Химснаб България АД-София</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>20.00</Quantity>
+      <OpenPrice>43.1500</OpenPrice>
+      <MarketPrice>42.6000</MarketPrice>
+      <MarketDate>15.11.2018</MarketDate>
+      <MarketValue>852.00</MarketValue>
+      <Result>-11</Result>
+      <ResultBGN>-11</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 1.275</YieldPercent>
+      <RelativePart>0.004</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6207</ShareID>
+      <ISIN>BG1100007985</ISIN>
+      <StockCode>HEKI</StockCode>
+      <NewCode>5EK</NewCode>
+      <Issuer>Екип-98 Холдинг АД</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>30 164.00</Quantity>
+      <OpenPrice>0.0000</OpenPrice>
+      <MarketPrice>10.0000</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>301 640.00</MarketValue>
+      <Result>301640</Result>
+      <ResultBGN>301640</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>0.000</YieldPercent>
+      <RelativePart>1.289</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6373</ShareID>
+      <ISIN>BG1100003059</ISIN>
+      <StockCode>AKTIV</StockCode>
+      <NewCode>5AX</NewCode>
+      <Issuer>Актив Пропъртис АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>3 120.00</Quantity>
+      <OpenPrice>4.8728</OpenPrice>
+      <MarketPrice>7.5000</MarketPrice>
+      <MarketDate>28.11.2018</MarketDate>
+      <MarketValue>23 400.00</MarketValue>
+      <Result>8196.91</Result>
+      <ResultBGN>8196.91</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>53.916</YieldPercent>
+      <RelativePart>0.100</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6532</ShareID>
+      <ISIN>BG1100026068</ISIN>
+      <StockCode>FEEI</StockCode>
+      <NewCode>6EE</NewCode>
+      <Issuer>Фонд за енергетика и енергийни икономии -</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>9 020.00</Quantity>
+      <OpenPrice>0.2517</OpenPrice>
+      <MarketPrice>0.1140</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>1 028.28</MarketValue>
+      <Result>-1242.04</Result>
+      <ResultBGN>-1242.04</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 54.708</YieldPercent>
+      <RelativePart>0.004</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>6664</ShareID>
+      <ISIN>BG1100041067</ISIN>
+      <StockCode>SBPF</StockCode>
+      <NewCode>6SB</NewCode>
+      <Issuer>Супер Боровец Пропърти Фонд АДСИЦ</Issuer>
+      <Currency>BGN</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>62 800.00</Quantity>
+      <OpenPrice>1.9217</OpenPrice>
+      <MarketPrice>1.9200</MarketPrice>
+      <MarketDate>11.12.2018</MarketDate>
+      <MarketValue>120 576.00</MarketValue>
+      <Result>-106</Result>
+      <ResultBGN>-106</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 0.088</YieldPercent>
+      <RelativePart>0.515</RelativePart>
+    </Other>
+  </New>
+  <New>
+    <Client>
+      <ClientID>17437</ClientID>
+      <CDNumber>V000017601</CDNumber>
+      <Name>АДАРА АД</Name>
+      <PortfolioID />
+      <PortfolioName />
+    </Client>
+    <Instrument>
+      <ActiveID>Капиталови ФИ</ActiveID>
+      <ShareID>7351</ShareID>
+      <ISIN>IM00BYQLTS50</ISIN>
+      <StockCode>BSP</StockCode>
+      <NewCode />
+      <Issuer>Black Sea Property Plc</Issuer>
+      <Currency>EUR</Currency>
+      <MaturityDate />
+    </Instrument>
+    <AccountData>
+      <Quantity>6 600 000.00</Quantity>
+      <OpenPrice>0.0150</OpenPrice>
+      <MarketPrice>0.0140</MarketPrice>
+      <MarketDate>30.11.2018</MarketDate>
+      <MarketValue>92 400.00</MarketValue>
+      <Result>-6671.58</Result>
+      <ResultBGN>-13048.4763114</ResultBGN>
+    </AccountData>
+    <Other>
+      <YieldPercent>- 6.734</YieldPercent>
+      <RelativePart>0.395</RelativePart>
     </Other>
   </New>
 </WebData>
