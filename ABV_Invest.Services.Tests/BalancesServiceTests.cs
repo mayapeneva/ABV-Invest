@@ -25,18 +25,18 @@ namespace ABV_Invest.Services.Tests
         {
             var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABV")
                 .Options;
-            this.db = new AbvDbContext(options);
+            db = new AbvDbContext(options);
 
             AutoMapperConfig.RegisterMappings(
                 typeof(BalanceDto).Assembly);
 
-            this.balanacesService = new BalancesService(this.db);
+            balanacesService = new BalancesService(db);
 
-            this.moqUser = new Mock<AbvInvestUser>();
-            this.moqUser.Setup(u => u.Balances).Returns(new HashSet<DailyBalance>());
-            this.moqUser.Setup(u => u.Portfolio).Returns(new HashSet<DailySecuritiesPerClient> { new DailySecuritiesPerClient
+            moqUser = new Mock<AbvInvestUser>();
+            moqUser.Setup(u => u.Balances).Returns(new HashSet<DailyBalance>());
+            moqUser.Setup(u => u.Portfolio).Returns(new HashSet<DailySecuritiesPerClient> { new DailySecuritiesPerClient
             {
-                Date = this.date,
+                Date = date,
                 SecuritiesPerIssuerCollection = new HashSet<SecuritiesPerClient> { new SecuritiesPerClient
                     {
                         Quantity = 100,
@@ -56,12 +56,12 @@ namespace ABV_Invest.Services.Tests
         public async Task CreateBalanceForUser_ShouldNotCreateSecondDailyBalanceForUserForSameDate()
         {
             // Arrange
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
             var expectedUserBalancesCount = 1;
 
             // Act
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
-            var actualUserBalancesCount = this.moqUser.Object.Balances.Count(b => b.Date == this.date);
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
+            var actualUserBalancesCount = moqUser.Object.Balances.Count(b => b.Date == date);
 
             // Assert
             Assert.Equal(expectedUserBalancesCount, actualUserBalancesCount);
@@ -74,22 +74,22 @@ namespace ABV_Invest.Services.Tests
             var expectedUserBalancesCount = 1;
 
             // Act
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
-            var actualUserBalancesCount = this.moqUser.Object.Balances.Count;
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
+            var actualUserBalancesCount = moqUser.Object.Balances.Count;
 
             // Assert
             Assert.Equal(expectedUserBalancesCount, actualUserBalancesCount);
-            Assert.Contains(this.moqUser.Object.Balances, b => b.Date == this.date);
+            Assert.Contains(moqUser.Object.Balances, b => b.Date == date);
         }
 
         [Fact]
         public async Task CreateBalanceForUser_ShouldCreateBalanceForUser()
         {
             // Act
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
 
             // Assert
-            Assert.NotNull(this.moqUser.Object.Balances.SingleOrDefault(b => b.Date == this.date)?.Balance);
+            Assert.NotNull(moqUser.Object.Balances.SingleOrDefault(b => b.Date == date)?.Balance);
         }
 
         [Fact]
@@ -99,8 +99,8 @@ namespace ABV_Invest.Services.Tests
             var expectedVirtualProfit = 10000;
 
             // Act
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
-            var balance = this.moqUser.Object.Balances.SingleOrDefault(b => b.Date == this.date)?.Balance;
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
+            var balance = moqUser.Object.Balances.SingleOrDefault(b => b.Date == date)?.Balance;
             var actualVirtualProfit = balance?.VirtualProfit;
 
             // Assert
@@ -114,8 +114,8 @@ namespace ABV_Invest.Services.Tests
             var expectedVirtualProfitPercentage = 100;
 
             // Act
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
-            var balance = this.moqUser.Object.Balances.SingleOrDefault(b => b.Date == this.date)?.Balance;
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
+            var balance = moqUser.Object.Balances.SingleOrDefault(b => b.Date == date)?.Balance;
             var actualVirtualProfitPercentage = balance?.VirtualProfitPercentage;
 
             // Assert
@@ -126,10 +126,10 @@ namespace ABV_Invest.Services.Tests
         public async Task GetUserDailyBalance_ShouldReturnBalance()
         {
             // Arrange
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
 
             // Act
-            var actualUserBalance = this.balanacesService.GetUserDailyBalance<BalanceDto>(this.moqUser.Object, this.date);
+            var actualUserBalance = balanacesService.GetUserDailyBalance<BalanceDto>(moqUser.Object, date);
 
             // Assert
             Assert.NotNull(actualUserBalance);
@@ -139,7 +139,7 @@ namespace ABV_Invest.Services.Tests
         public async Task GetUserDailyBalance_ShouldReturnBalanceWithCorrectProfitFigures()
         {
             // Arrange
-            await this.balanacesService.CreateBalanceForUser(this.moqUser.Object, this.date);
+            await balanacesService.CreateBalanceForUser(moqUser.Object, date);
             var expectedUserBalance = new BalanceDto
             {
                 VirtualProfit = 10000,
@@ -147,7 +147,7 @@ namespace ABV_Invest.Services.Tests
             };
 
             // Act
-            var actualUserBalance = this.balanacesService.GetUserDailyBalance<BalanceDto>(this.moqUser.Object, this.date);
+            var actualUserBalance = balanacesService.GetUserDailyBalance<BalanceDto>(moqUser.Object, date);
 
             // Assert
             Assert.Equal(expectedUserBalance.VirtualProfit, actualUserBalance.VirtualProfit);
@@ -158,7 +158,7 @@ namespace ABV_Invest.Services.Tests
         public void GetUserDailyBalance_ShouldNotReturnBalanceIfSuchDoesNotExist()
         {
             // Act
-            var actualUserBalance = this.balanacesService.GetUserDailyBalance<BalanceDto>(this.moqUser.Object, this.date);
+            var actualUserBalance = balanacesService.GetUserDailyBalance<BalanceDto>(moqUser.Object, date);
 
             // Assert
             Assert.Null(actualUserBalance);

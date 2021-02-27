@@ -28,33 +28,33 @@
         public PortfoliosServiceSeedTests()
         {
             var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABV").Options;
-            this.db = new AbvDbContext(options);
+            db = new AbvDbContext(options);
 
-            if (!this.db.AbvInvestUsers.Any(u => u.UserName == UserNameOne))
+            if (!db.AbvInvestUsers.Any(u => u.UserName == UserNameOne))
             {
-                this.db.AbvInvestUsers.Add(new AbvInvestUser
+                db.AbvInvestUsers.Add(new AbvInvestUser
                 {
                     UserName = UserNameOne
                 });
-                this.db.SaveChanges();
+                db.SaveChanges();
             }
 
-            if (!this.db.AbvInvestUsers.Any(u => u.UserName == UserNameTwo))
+            if (!db.AbvInvestUsers.Any(u => u.UserName == UserNameTwo))
             {
-                this.db.AbvInvestUsers.Add(new AbvInvestUser
+                db.AbvInvestUsers.Add(new AbvInvestUser
                 {
                     UserName = UserNameTwo
                 });
-                this.db.SaveChanges();
+                db.SaveChanges();
             }
 
             var mockUserStore = new Mock<IUserStore<AbvInvestUser>>();
             var userManager = new Mock<UserManager<AbvInvestUser>>(mockUserStore.Object, null, null, null, null, null, null, null, null);
             var moqUser = new Mock<AbvInvestUser>();
             userManager.Setup(um => um.GetUserAsync(new ClaimsPrincipal())).Returns(Task.FromResult(moqUser.Object));
-            var balancesService = new BalancesService(this.db);
-            var dataService = new DataService(this.db);
-            this.portfoliosService = new PortfoliosService(this.db, userManager.Object, balancesService, dataService);
+            var balancesService = new BalancesService(db);
+            var dataService = new DataService(db);
+            portfoliosService = new PortfoliosService(db, userManager.Object, balancesService, dataService);
 
             var fileName = "../../../Files/Portfolios/Portfolios.xml";
             var xmlFileContent = File.ReadAllText(fileName);
@@ -70,9 +70,9 @@
             var expected = true;
 
             // Act
-            await this.portfoliosService.SeedPortfolios(this.deserializedPortfolios, date);
-            var actualUser1 = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.Any(p => p.Date == date);
-            var actualUser2 = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.Any(p => p.Date == date); ;
+            await portfoliosService.SeedPortfolios(deserializedPortfolios, date);
+            var actualUser1 = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.Any(p => p.Date == date);
+            var actualUser2 = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.Any(p => p.Date == date); ;
 
             // Assert
             Assert.Equal(expected, actualUser1);
@@ -92,8 +92,8 @@
             var userName = "V000018048";
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var usersPortfolio = this.db.DailySecuritiesPerClient.SingleOrDefault(ds => ds.AbvInvestUser.UserName == userName);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var usersPortfolio = db.DailySecuritiesPerClient.SingleOrDefault(ds => ds.AbvInvestUser.UserName == userName);
 
             // Assert
             Assert.Null(usersPortfolio);
@@ -104,12 +104,12 @@
         {
             // Arange
             var date = new DateTime(2018, 12, 03);
-            await this.portfoliosService.SeedPortfolios(this.deserializedPortfolios, date);
+            await portfoliosService.SeedPortfolios(deserializedPortfolios, date);
             var expectedPortfoliosCount = 1;
 
             // Act
-            await this.portfoliosService.SeedPortfolios(this.deserializedPortfolios, date);
-            var actualPortfoliosCount = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.Count(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserializedPortfolios, date);
+            var actualPortfoliosCount = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.Count(p => p.Date == date);
 
             // Assert
             Assert.Equal(expectedPortfoliosCount, actualPortfoliosCount);
@@ -120,11 +120,11 @@
         {
             // Arange
             var userName = "0000000008";
-            this.db.AbvInvestUsers.Add(new AbvInvestUser
+            db.AbvInvestUsers.Add(new AbvInvestUser
             {
                 UserName = userName
             });
-            this.db.SaveChanges();
+            db.SaveChanges();
 
             var fileName3 = "../../../Files/Portfolios/Portfolios3.xml";
             var xmlFileContent = File.ReadAllText(fileName3);
@@ -135,8 +135,8 @@
             var expectedUserFullName = "ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД";
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var user = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == userName);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var user = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == userName);
 
             // Assert
             Assert.Equal(expectedUserFullName, user?.FullName);
@@ -155,8 +155,8 @@
             var securityISIN = "BG1100019980";
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var securities = this.db.Securities;
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var securities = db.Securities;
 
             // Assert
             Assert.Contains(securities, s => s.ISIN == securityISIN);
@@ -174,8 +174,8 @@
             var date = new DateTime(2018, 12, 06);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -190,8 +190,8 @@
             var expectedSecurityEntryCount = 1;
 
             // Act
-            await this.portfoliosService.SeedPortfolios(this.deserializedPortfolios, date);
-            var actualSecurityEntryCount = (this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.SingleOrDefault(p => p.Date == date)?.SecuritiesPerIssuerCollection.Select(s => s.Security.ISIN))?.Count(n => n == securityISIN);
+            await portfoliosService.SeedPortfolios(deserializedPortfolios, date);
+            var actualSecurityEntryCount = (db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.SingleOrDefault(p => p.Date == date)?.SecuritiesPerIssuerCollection.Select(s => s.Security.ISIN))?.Count(n => n == securityISIN);
 
             // Assert
             Assert.Equal(expectedSecurityEntryCount, actualSecurityEntryCount);
@@ -210,8 +210,8 @@
             var currencyCode = "EUR";
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var currencies = this.db.Currencies;
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var currencies = db.Currencies;
 
             // Assert
             Assert.Contains(currencies, c => c.Code == currencyCode);
@@ -229,8 +229,8 @@
             var date = new DateTime(2018, 12, 09);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -248,8 +248,8 @@
             var date = new DateTime(2018, 12, 10);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -267,8 +267,8 @@
             var date = new DateTime(2018, 12, 11);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -286,8 +286,8 @@
             var date = new DateTime(2018, 12, 12);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -305,8 +305,8 @@
             var date = new DateTime(2018, 12, 13);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -324,8 +324,8 @@
             var date = new DateTime(2018, 12, 14);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -343,8 +343,8 @@
             var date = new DateTime(2018, 12, 15);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -362,8 +362,8 @@
             var date = new DateTime(2018, 12, 16);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);
@@ -381,8 +381,8 @@
             var date = new DateTime(2018, 12, 17);
 
             // Act
-            await this.portfoliosService.SeedPortfolios(deserPortfolios, date);
-            var dailyPortfolio = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
+            await portfoliosService.SeedPortfolios(deserPortfolios, date);
+            var dailyPortfolio = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Portfolio.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyPortfolio);

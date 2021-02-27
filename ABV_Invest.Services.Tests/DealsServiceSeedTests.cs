@@ -28,48 +28,48 @@
         public DealsServiceSeedTests()
         {
             var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABVInvest").Options;
-            this.db = new AbvDbContext(options);
+            db = new AbvDbContext(options);
 
-            if (!this.db.AbvInvestUsers.Any(u => u.UserName == UserNameOne))
+            if (!db.AbvInvestUsers.Any(u => u.UserName == UserNameOne))
             {
-                this.db.AbvInvestUsers.Add(new AbvInvestUser
+                db.AbvInvestUsers.Add(new AbvInvestUser
                 {
                     UserName = UserNameOne
                 });
-                this.db.SaveChanges();
+                db.SaveChanges();
             }
 
-            if (!this.db.AbvInvestUsers.Any(u => u.UserName == UserNameTwo))
+            if (!db.AbvInvestUsers.Any(u => u.UserName == UserNameTwo))
             {
-                this.db.AbvInvestUsers.Add(new AbvInvestUser
+                db.AbvInvestUsers.Add(new AbvInvestUser
                 {
                     UserName = UserNameTwo
                 });
-                this.db.SaveChanges();
+                db.SaveChanges();
             }
 
-            if (!this.db.Markets.Any(m => m.MIC == "XBUL"))
+            if (!db.Markets.Any(m => m.MIC == "XBUL"))
             {
                 var market = new Market
                 {
                     Name = "БФБ",
                     MIC = "XBUL"
                 };
-                this.db.Markets.Add(market);
-                this.db.SaveChanges();
+                db.Markets.Add(market);
+                db.SaveChanges();
             }
 
             var mockUserStore = new Mock<IUserStore<AbvInvestUser>>();
             var userManager = new Mock<UserManager<AbvInvestUser>>(mockUserStore.Object, null, null, null, null, null, null, null, null);
             var moqUser = new Mock<AbvInvestUser>();
             userManager.Setup(um => um.GetUserAsync(new ClaimsPrincipal())).Returns(Task.FromResult(moqUser.Object));
-            var dataService = new DataService(this.db);
-            this.dealsService = new DealsService(this.db, userManager.Object, dataService);
+            var dataService = new DataService(db);
+            dealsService = new DealsService(db, userManager.Object, dataService);
 
             var fileName = "../../../Files/Deals/Deals.xml";
             var xmlFileContent = File.ReadAllText(fileName);
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
-            this.deserializedDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
+            deserializedDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
         }
 
         [Fact]
@@ -80,9 +80,9 @@
             var expected = true;
 
             // Act
-            await this.dealsService.SeedDeals(this.deserializedDeals, date);
-            var actualUser1 = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.Any(p => p.Date == date);
-            var actualUser2 = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.Any(p => p.Date == date);
+            await dealsService.SeedDeals(deserializedDeals, date);
+            var actualUser1 = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.Any(p => p.Date == date);
+            var actualUser2 = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.Any(p => p.Date == date);
 
             // Assert
             Assert.Equal(expected, actualUser1);
@@ -102,8 +102,8 @@
             var userName = "V000018048";
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var usersDeals = this.db.DailyDeals.SingleOrDefault(dd => dd.AbvInvestUser.UserName == userName);
+            await dealsService.SeedDeals(deserDeals, date);
+            var usersDeals = db.DailyDeals.SingleOrDefault(dd => dd.AbvInvestUser.UserName == userName);
 
             // Assert
             Assert.Null(usersDeals);
@@ -114,12 +114,12 @@
         {
             // Arange
             var date = new DateTime(2018, 12, 03);
-            await this.dealsService.SeedDeals(this.deserializedDeals, date);
+            await dealsService.SeedDeals(deserializedDeals, date);
             var expectedDealsCount = 1;
 
             // Act
-            await this.dealsService.SeedDeals(this.deserializedDeals, date);
-            var actualDealsCount = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.Count(p => p.Date == date);
+            await dealsService.SeedDeals(deserializedDeals, date);
+            var actualDealsCount = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.Count(p => p.Date == date);
 
             // Assert
             Assert.Equal(expectedDealsCount, actualDealsCount);
@@ -138,8 +138,8 @@
             var securityISIN = "BG1100041067";
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var securities = this.db.Securities;
+            await dealsService.SeedDeals(deserDeals, date);
+            var securities = db.Securities;
 
             // Assert
             Assert.Contains(securities, s => s.ISIN == securityISIN);
@@ -157,8 +157,8 @@
             var date = new DateTime(2018, 12, 05);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -177,8 +177,8 @@
             var currencyCode = "EUR";
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var currencies = this.db.Currencies;
+            await dealsService.SeedDeals(deserDeals, date);
+            var currencies = db.Currencies;
 
             // Assert
             Assert.Contains(currencies, c => c.Code == currencyCode);
@@ -196,8 +196,8 @@
             var date = new DateTime(2018, 12, 07);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -215,8 +215,8 @@
             var date = new DateTime(2018, 12, 08);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameOne)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -234,8 +234,8 @@
             var date = new DateTime(2018, 12, 09);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -253,8 +253,8 @@
             var date = new DateTime(2018, 12, 10);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -272,8 +272,8 @@
             var date = new DateTime(2018, 12, 11);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -291,8 +291,8 @@
             var date = new DateTime(2018, 12, 12);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -310,8 +310,8 @@
             var date = new DateTime(2018, 12, 13);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -329,8 +329,8 @@
             var date = new DateTime(2018, 12, 14);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -348,8 +348,8 @@
             var date = new DateTime(2018, 12, 15);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);
@@ -367,8 +367,8 @@
             var date = new DateTime(2018, 12, 16);
 
             // Act
-            await this.dealsService.SeedDeals(deserDeals, date);
-            var dailyDeals = this.db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
+            await dealsService.SeedDeals(deserDeals, date);
+            var dailyDeals = db.AbvInvestUsers.SingleOrDefault(u => u.UserName == UserNameTwo)?.Deals.SingleOrDefault(p => p.Date == date);
 
             // Assert
             Assert.Null(dailyDeals);

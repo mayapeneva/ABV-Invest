@@ -28,15 +28,15 @@
         {
             var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABV")
                 .Options;
-            this.db = new AbvDbContext(options);
+            db = new AbvDbContext(options);
 
             AutoMapperConfig.RegisterMappings(
                 typeof(PortfolioDto).Assembly);
 
-            this.moqUser = new Mock<AbvInvestUser>();
-            this.moqUser.Setup(u => u.Portfolio).Returns(new HashSet<DailySecuritiesPerClient> { new DailySecuritiesPerClient
+            moqUser = new Mock<AbvInvestUser>();
+            moqUser.Setup(u => u.Portfolio).Returns(new HashSet<DailySecuritiesPerClient> { new DailySecuritiesPerClient
             {
-                Date = this.Date,
+                Date = Date,
                 SecuritiesPerIssuerCollection = new HashSet<SecuritiesPerClient> { new SecuritiesPerClient
                     {
                         Quantity = 100,
@@ -51,20 +51,20 @@
                 }
             }});
 
-            var balancesService = new BalancesService(this.db);
-            var dataService = new DataService(this.db);
+            var balancesService = new BalancesService(db);
+            var dataService = new DataService(db);
             var mockUserStore = new Mock<IUserStore<AbvInvestUser>>();
             var userManager = new Mock<UserManager<AbvInvestUser>>(mockUserStore.Object, null, null, null, null, null, null, null, null);
-            this.principal = new ClaimsPrincipal();
-            userManager.Setup(um => um.GetUserAsync(this.principal)).Returns(Task.FromResult(this.moqUser.Object));
-            this.portfoliosService = new PortfoliosService(this.db, userManager.Object, balancesService, dataService);
+            principal = new ClaimsPrincipal();
+            userManager.Setup(um => um.GetUserAsync(principal)).Returns(Task.FromResult(moqUser.Object));
+            portfoliosService = new PortfoliosService(db, userManager.Object, balancesService, dataService);
         }
 
         [Fact]
         public void GetUserDailyPortfolio_ShouldReturnDailyPortfolio()
         {
             // Act
-            var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, this.Date);
+            var result = portfoliosService.GetUserDailyPortfolio<PortfolioDto>(principal, Date);
 
             // Assert
             Assert.NotNull(result);
@@ -75,10 +75,10 @@
         {
             // Arange
             var expectedTotalMarketPrice =
-                this.moqUser.Object.Portfolio.Select(p => p.SecuritiesPerIssuerCollection.Sum(s => s.TotalMarketPrice));
+                moqUser.Object.Portfolio.Select(p => p.SecuritiesPerIssuerCollection.Sum(s => s.TotalMarketPrice));
 
             // Act
-            var totalMarketPrice = await this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, this.Date);
+            var totalMarketPrice = await portfoliosService.GetUserDailyPortfolio<PortfolioDto>(principal, Date);
             var actualTotalMarketPrice = totalMarketPrice.Select(p => p.TotalMarketPrice);
 
             // Assert
@@ -86,26 +86,26 @@
         }
 
         [Fact]
-        public void GetUserDailyPortfolio_ShouldReturnNullIfThereIsNoPortfolioForThisDate()
+        public async Task GetUserDailyPortfolio_ShouldReturnNullIfThereIsNoPortfolioForThisDate()
         {
             // Arange
             var date = new DateTime(2018, 12, 27);
 
             // Act
-            var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(this.principal, date);
+            var result = await portfoliosService.GetUserDailyPortfolio<PortfolioDto>(principal, date);
 
             // Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public void GetUserDailyPortfolio_ShouldReturnNullIfThereIsNoSuchUser()
+        public async Task GetUserDailyPortfolio_ShouldReturnNullIfThereIsNoSuchUser()
         {
             // Arange
             var user = new ClaimsPrincipal();
 
             // Act
-            var result = this.portfoliosService.GetUserDailyPortfolio<PortfolioDto>(user, this.Date);
+            var result = await portfoliosService.GetUserDailyPortfolio<PortfolioDto>(user, Date);
 
             // Assert
             Assert.Null(result);

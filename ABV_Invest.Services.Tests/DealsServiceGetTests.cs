@@ -29,15 +29,15 @@
         {
             var options = new DbContextOptionsBuilder<AbvDbContext>().UseInMemoryDatabase("ABVInvest")
                 .Options;
-            this.db = new AbvDbContext(options);
+            db = new AbvDbContext(options);
 
             AutoMapperConfig.RegisterMappings(
                 typeof(DealDto).Assembly);
 
-            this.moqUser = new Mock<AbvInvestUser>();
-            this.moqUser.Setup(u => u.Deals).Returns(new HashSet<DailyDeals> { new DailyDeals
+            moqUser = new Mock<AbvInvestUser>();
+            moqUser.Setup(u => u.Deals).Returns(new HashSet<DailyDeals> { new DailyDeals
             {
-                Date = this.Date,
+                Date = Date,
                 Deals = new HashSet<Deal> { new Deal
                     {
                         DealType = DealType.Купува,
@@ -53,17 +53,17 @@
 
             var mockUserStore = new Mock<IUserStore<AbvInvestUser>>();
             var userManager = new Mock<UserManager<AbvInvestUser>>(mockUserStore.Object, null, null, null, null, null, null, null, null);
-            this.principal = new ClaimsPrincipal();
-            userManager.Setup(um => um.GetUserAsync(this.principal)).Returns(Task.FromResult(this.moqUser.Object));
-            var dataService = new DataService(this.db);
-            this.dealsService = new DealsService(this.db, userManager.Object, dataService);
+            principal = new ClaimsPrincipal();
+            userManager.Setup(um => um.GetUserAsync(principal)).Returns(Task.FromResult(moqUser.Object));
+            var dataService = new DataService(db);
+            dealsService = new DealsService(db, userManager.Object, dataService);
         }
 
         [Fact]
         public void GetUserDailyDeals_ShouldReturnDailyDeals()
         {
             // Act
-            var result = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, this.Date);
+            var result = dealsService.GetUserDailyDeals<DealDto>(principal, Date);
 
             // Assert
             Assert.NotNull(result);
@@ -74,10 +74,10 @@
         {
             // Arange
             var expectedTotalPrice =
-                this.moqUser.Object.Deals.Select(dd => dd.Deals.Sum(d => d.TotalPrice));
+                moqUser.Object.Deals.Select(dd => dd.Deals.Sum(d => d.TotalPrice));
 
             // Act
-            var totalPrice = await this.dealsService.GetUserDailyDeals<DealDto>(this.principal, this.Date);
+            var totalPrice = await dealsService.GetUserDailyDeals<DealDto>(principal, Date);
             var actualTotalPrice = totalPrice.Select(d => d.TotalPrice);
 
             // Assert
@@ -85,26 +85,26 @@
         }
 
         [Fact]
-        public void GetUserDailyDeals_ShouldReturnNullIfThereIsNoDealsForThisDate()
+        public async Task GetUserDailyDeals_ShouldReturnNullIfThereIsNoDealsForThisDate()
         {
             // Arange
             var date = new DateTime(2018, 12, 27);
 
             // Act
-            var result = this.dealsService.GetUserDailyDeals<DealDto>(this.principal, date);
+            var result = await dealsService.GetUserDailyDeals<DealDto>(principal, date);
 
             // Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public void GetUserDailyDeals_ShouldReturnNullIfThereIsNoSuchUser()
+        public async Task GetUserDailyDeals_ShouldReturnNullIfThereIsNoSuchUser()
         {
             // Arange
             var user = new ClaimsPrincipal();
 
             // Act
-            var result = this.dealsService.GetUserDailyDeals<DealDto>(user, this.Date);
+            var result = await dealsService.GetUserDailyDeals<DealDto>(user, Date);
 
             // Assert
             Assert.Null(result);
