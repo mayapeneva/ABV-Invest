@@ -20,6 +20,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using Rotativa.AspNetCore;
     using Services;
     using Services.Contracts;
@@ -67,6 +68,7 @@
             services.AddMvc(options => options.EnableEndpointRouting = false);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddApplicationInsightsTelemetry();
 
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();
@@ -80,7 +82,7 @@
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -117,7 +119,7 @@
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            RotativaConfiguration.Setup(env);
+            RotativaConfiguration.Setup(env.WebRootPath, "Rotativa");
         }
     }
 }

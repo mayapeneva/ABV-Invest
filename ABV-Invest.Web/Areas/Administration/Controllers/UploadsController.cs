@@ -22,13 +22,13 @@
         private readonly IPortfoliosService portfolioService;
         private readonly IDealsService dealsService;
         private readonly IUploadsHelper helper;
-        private readonly IHostingEnvironment environment;
+        private readonly IWebHostEnvironment environment;
 
         public UploadsController(
             IPortfoliosService portfolioService,
             IDealsService dealsService,
             IUploadsHelper helper,
-            IHostingEnvironment environment)
+            IWebHostEnvironment environment)
         {
             this.portfolioService = portfolioService;
             this.dealsService = dealsService;
