@@ -30,7 +30,11 @@
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IDataService dataService;
 
-        public DealsService(AbvDbContext db, UserManager<AbvInvestUser> userManager, IDataService dataService) : base(db)
+        public DealsService(
+            AbvDbContext db,
+            UserManager<AbvInvestUser> userManager,
+            IDataService dataService)
+            : base(db)
         {
             this.userManager = userManager;
             this.dataService = dataService;
@@ -42,7 +46,7 @@
             return dbUser?.Deals
                 .SingleOrDefault(p => p.Date == date)
                 ?.Deals
-                .Select(Mapper.Map<T>)
+                .Select(d => Mapper.Map<T>(d))
                 .ToArray();
         }
 

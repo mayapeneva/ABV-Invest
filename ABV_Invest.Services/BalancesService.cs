@@ -5,7 +5,6 @@
     using Contracts;
     using Data;
     using Models;
-
     using System;
     using System.Linq;
     using System.Threading.Tasks;
@@ -13,7 +12,7 @@
     public class BalancesService : BaseService, IBalancesService
     {
         public BalancesService(AbvDbContext db)
-        : base(db)
+            : base(db)
         {
         }
 

@@ -64,8 +64,9 @@
                 .AddDefaultTokenProviders();
 
             services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+            services.AddMvc(options => options.EnableEndpointRouting = false);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             // Application services
             services.AddScoped<IPortfoliosService, PortfoliosService>();
@@ -84,7 +85,6 @@
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {

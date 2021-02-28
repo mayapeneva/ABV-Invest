@@ -1,7 +1,7 @@
 ﻿namespace ABV_Invest.Common.Mapping
 {
+    using ABV_Invest.Common.Mapping.Contracts;
     using AutoMapper;
-    using Contracts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -9,16 +9,16 @@
 
     public static class AutoMapperConfig
     {
-        private static bool initialized;
+        private static bool initialised;
 
         public static void RegisterMappings(params Assembly[] assemblies)
         {
-            if (initialized)
+            if (initialised)
             {
                 return;
             }
 
-            initialized = true;
+            initialised = true;
 
             var types = assemblies.SelectMany(a => a.GetExportedTypes()).ToList();
             Mapper.Initialize(configuration =>
@@ -29,13 +29,7 @@
                     configuration.CreateMap(map.Source, map.Destination);
                 }
 
-                // IMapTo<>
-                foreach (var map in GetToMaps(types))
-                {
-                    configuration.CreateMap(map.Source, map.Destination);
-                }
-
-                // IHaveCustomMappings
+                // ICustomMappings
                 foreach (var map in GetCustomMappings(types))
                 {
                     map.CreateMappings(configuration);
@@ -59,23 +53,6 @@
                            };
 
             return fromMaps;
-        }
-
-        private static IEnumerable<TypesMap> GetToMaps(IEnumerable<Type> types)
-        {
-            var toMaps = from t in types
-                         from i in t.GetTypeInfo().GetInterfaces()
-                         where i.GetTypeInfo().IsGenericType &&
-                               i.GetTypeInfo().GetGenericTypeDefinition() == typeof(IMapTo<>) &&
-                               !t.GetTypeInfo().IsAbstract &&
-                               !t.GetTypeInfo().IsInterface
-                         select new TypesMap
-                         {
-                             Source = t,
-                             Destination = i.GetTypeInfo().GetGenericArguments()[0],
-                         };
-
-            return toMaps;
         }
 
         private static IEnumerable<ICustomMap> GetCustomMappings(IEnumerable<Type> types)

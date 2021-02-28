@@ -1,6 +1,7 @@
 ﻿namespace ABV_Invest.Services
 {
     using ABV_Invest.Common.BindingModels.Uploads.Portfolios;
+    using AutoMapper;
     using Base;
     using Common;
     using Contracts;
@@ -14,7 +15,6 @@
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
-    using Mapper = AutoMapper.Mapper;
 
     public class PortfoliosService : BaseService, IPortfoliosService
     {
@@ -33,7 +33,12 @@
         private readonly IBalancesService balancesService;
         private readonly IDataService dataService;
 
-        public PortfoliosService(AbvDbContext db, UserManager<AbvInvestUser> userManager, IBalancesService balancesService, IDataService dataService) : base(db)
+        public PortfoliosService(
+            AbvDbContext db,
+            UserManager<AbvInvestUser> userManager,
+            IBalancesService balancesService,
+            IDataService dataService)
+            : base(db)
         {
             this.userManager = userManager;
             this.balancesService = balancesService;

@@ -20,7 +20,9 @@
         private readonly UserManager<AbvInvestUser> userManager;
         private readonly IBalancesService balancesService;
 
-        public BalancesController(UserManager<AbvInvestUser> userManager, IBalancesService balancesService)
+        public BalancesController(
+            UserManager<AbvInvestUser> userManager,
+            IBalancesService balancesService)
         {
             this.userManager = userManager;
             this.balancesService = balancesService;
