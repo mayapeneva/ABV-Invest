@@ -10,7 +10,6 @@
     using Common.EmailSender;
     using Data;
     using Extensions.Seeders;
-    using Firewall;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -24,7 +23,6 @@
     using Rotativa.AspNetCore;
     using Services;
     using Services.Contracts;
-    using System.Collections.Generic;
     using ViewModels;
 
     public class Startup
@@ -97,12 +95,6 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-            app.UseFirewall(
-                FirewallRulesEngine
-                .DenyAllAccess()
-                .ExceptFromLocalhost()
-                .ExceptFromCountries(new List<CountryCode> { CountryCode.BG }));
 
             app.UseSeedRolesMiddleware();
             app.UseAuthentication();
