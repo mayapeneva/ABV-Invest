@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+    app:
+        image: abvinvest
+        container_name: abvinvestapi
+        build:
+            context: .
+            dockerfile: ABV-Invest.Web/Dockerfile
+        environment:
+            - ConnectionStrings:DefaultConnection
+        ports:
+            - "49501:80"
+        depends_on:
+            - migration
+        
+    db:
+        image: mcr.microsoft.com/mssql/server
+        container_name: mssql1
+        environment:
+            SA_PASSWORD: "Asd0123K"
+            ACCEPT_EULA: "Y"
+        ports: 
+            - "1620:1433"
+            
+    migration:
+        image: boxfuse/flyway:latest
+        container_name: flyway_migration
+        volumes:
+        - ./flyway/sql:/flyway/sql
+        - ./flyway/bin:/flyway/bin
+        entrypoint: ["bash", "/flyway/bin/wait-for-it.sh", "--timeout=30", "db:1433", "--", "flyway"]      
+        command: -url=jdbc:sqlserver://db;database=master -user=sa -password=Asd0123K -mixed=true migrate
+        depends_on:
+        - db
