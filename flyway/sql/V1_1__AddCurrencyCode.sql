@@ -1,4 +1,5 @@
-﻿USE ABV_Invest
+﻿BEGIN TRANSACTION;
+USE ABV_Invest
 GO
 
 ALTER TABLE [Balances] DROP CONSTRAINT [FK_Balances_Currencies_CurrencyId];
@@ -18,3 +19,5 @@ GO
 
 ALTER TABLE [Balances] ADD [CurrencyCode] nvarchar(max) NULL;
 GO
+
+COMMIT;

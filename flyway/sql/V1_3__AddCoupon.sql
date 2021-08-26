@@ -1,3 +1,4 @@
+BEGIN TRANSACTION;
 USE ABV_Invest
 GO
 
@@ -9,3 +10,5 @@ GO
 
 ALTER TABLE [Balances] ADD [AllSecuritiesTotalPriceBuy] decimal(18, 4) NOT NULL DEFAULT 0.0;
 GO
+
+COMMIT;

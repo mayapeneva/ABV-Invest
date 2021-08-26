@@ -1,3 +1,4 @@
+BEGIN TRANSACTION;
 USE ABV_Invest
 GO
 
@@ -9,3 +10,5 @@ WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Balances]') AND [c].[name] = N'Bala
 IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Balances] DROP CONSTRAINT [' + @var1 + '];');
 ALTER TABLE [Balances] DROP COLUMN [BalanceId];
 GO
+
+COMMIT;

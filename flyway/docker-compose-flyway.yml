@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   migration:
-    image: boxfuse/flyway:latest
+    image: flyway/flyway:latest
     container_name: flyway_migration_solo
     volumes:
      - ./sql:/flyway/sql

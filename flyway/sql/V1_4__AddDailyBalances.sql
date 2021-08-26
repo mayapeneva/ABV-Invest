@@ -1,4 +1,5 @@
-﻿USE ABV_Invest
+﻿BEGIN TRANSACTION;
+USE ABV_Invest
 GO
 
 ALTER TABLE [DailyBalance] DROP CONSTRAINT [FK_DailyBalance_AbvInvestUsers_AbvInvestUserId];
@@ -30,3 +31,5 @@ GO
 
 ALTER TABLE [DailyBalances] ADD CONSTRAINT [FK_DailyBalances_Balances_BalanceId] FOREIGN KEY ([BalanceId]) REFERENCES [Balances] ([Id]) ON DELETE CASCADE;
 GO
+
+COMMIT;

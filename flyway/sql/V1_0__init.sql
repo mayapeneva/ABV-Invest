@@ -1,5 +1,4 @@
-﻿
-WAITFOR DELAY '00:00:03'
+﻿WAITFOR DELAY '00:00:03'
 
 CREATE LOGIN AppLogin WITH PASSWORD = 'Asd0123K'
 GO
@@ -19,14 +18,15 @@ GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE TO AspNetRoles
 EXEC sp_addrolemember N'AspNetRoles', N'ABVInvestUser' 
 GO
 
-Create database ABV_Invest
+Create DATABASE ABV_Invest
 GO
 
+BEGIN TRANSACTION;
 USE ABV_Invest
 GO 
 
 CREATE TABLE [AbvInvestUsers] (
-    [Id] nvarchar(450) NOT NULL,
+    [Id] nvarchar(200) NOT NULL,
     [UserName] nvarchar(256) NULL,
     [NormalizedUserName] nvarchar(256) NULL,
     [Email] nvarchar(256) NULL,
@@ -50,7 +50,7 @@ CREATE TABLE [AbvInvestUsers] (
 GO
 
 CREATE TABLE [AspNetRoles] (
-    [Id] nvarchar(450) NOT NULL,
+    [Id] nvarchar(200) NOT NULL,
     [Name] nvarchar(256) NULL,
     [NormalizedName] nvarchar(256) NULL,
     [ConcurrencyStamp] nvarchar(max) NULL,
@@ -85,7 +85,7 @@ GO
 
 CREATE TABLE [AspNetUserClaims] (
     [Id] int NOT NULL IDENTITY,
-    [UserId] nvarchar(450) NOT NULL,
+    [UserId] nvarchar(200) NOT NULL,
     [ClaimType] nvarchar(max) NULL,
     [ClaimValue] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
@@ -95,10 +95,10 @@ CREATE TABLE [AspNetUserClaims] (
 GO
 
 CREATE TABLE [AspNetUserLogins] (
-    [LoginProvider] nvarchar(450) NOT NULL,
-    [ProviderKey] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(100) NOT NULL,
+    [ProviderKey] nvarchar(100) NOT NULL,
     [ProviderDisplayName] nvarchar(max) NULL,
-    [UserId] nvarchar(450) NOT NULL,
+    [UserId] nvarchar(200) NOT NULL,
     CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
     CONSTRAINT [FK_AspNetUserLogins_AbvInvestUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AbvInvestUsers] ([Id]) ON DELETE CASCADE
 );
@@ -106,55 +106,50 @@ CREATE TABLE [AspNetUserLogins] (
 GO
 
 CREATE TABLE [AspNetUserTokens] (
-    [UserId] nvarchar(450) NOT NULL,
-    [LoginProvider] nvarchar(450) NOT NULL,
-    [Name] nvarchar(450) NOT NULL,
+    [UserId] nvarchar(200) NOT NULL,
+    [LoginProvider] nvarchar(100) NOT NULL,
+    [Name] nvarchar(100) NOT NULL,
     [Value] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
     CONSTRAINT [FK_AspNetUserTokens_AbvInvestUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AbvInvestUsers] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE TABLE [DailyDeals] (
     [Id] int NOT NULL IDENTITY,
-    [AbvInvestUserId] nvarchar(450) NULL,
+    [AbvInvestUserId] nvarchar(200) NULL,
     [Date] datetime2 NOT NULL,
     CONSTRAINT [PK_DailyDeals] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_DailyDeals_AbvInvestUsers_AbvInvestUserId] FOREIGN KEY ([AbvInvestUserId]) REFERENCES [AbvInvestUsers] ([Id]) ON DELETE NO ACTION
 );
-
 GO
 
 CREATE TABLE [DailySecuritiesPerClient] (
     [Id] int NOT NULL IDENTITY,
-    [AbvInvestUserId] nvarchar(450) NULL,
+    [AbvInvestUserId] nvarchar(200) NULL,
     [Date] datetime2 NOT NULL,
     CONSTRAINT [PK_DailySecuritiesPerClient] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_DailySecuritiesPerClient_AbvInvestUsers_AbvInvestUserId] FOREIGN KEY ([AbvInvestUserId]) REFERENCES [AbvInvestUsers] ([Id]) ON DELETE NO ACTION
 );
-
 GO
 
 CREATE TABLE [AspNetRoleClaims] (
     [Id] int NOT NULL IDENTITY,
-    [RoleId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(200) NOT NULL,
     [ClaimType] nvarchar(max) NULL,
     [ClaimValue] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE TABLE [AspNetUserRoles] (
-    [UserId] nvarchar(450) NOT NULL,
-    [RoleId] nvarchar(450) NOT NULL,
+    [UserId] nvarchar(200) NOT NULL,
+    [RoleId] nvarchar(200) NOT NULL,
     CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
     CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_AspNetUserRoles_AbvInvestUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AbvInvestUsers] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE TABLE [Balances] (
@@ -168,7 +163,6 @@ CREATE TABLE [Balances] (
     CONSTRAINT [PK_Balances] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_Balances_Currencies_CurrencyId] FOREIGN KEY ([CurrencyId]) REFERENCES [Currencies] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE TABLE [Securities] (
@@ -182,19 +176,17 @@ CREATE TABLE [Securities] (
     CONSTRAINT [FK_Securities_Currencies_CurrencyId] FOREIGN KEY ([CurrencyId]) REFERENCES [Currencies] ([Id]) ON DELETE NO ACTION,
     CONSTRAINT [FK_Securities_Issuers_IssuerId] FOREIGN KEY ([IssuerId]) REFERENCES [Issuers] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE TABLE [DailyBalance] (
     [Id] int NOT NULL IDENTITY,
-    [AbvInvestUserId] nvarchar(450) NULL,
+    [AbvInvestUserId] nvarchar(200) NULL,
     [Date] datetime2 NOT NULL,
     [BalanceId] int NOT NULL,
     CONSTRAINT [PK_DailyBalance] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_DailyBalance_AbvInvestUsers_AbvInvestUserId] FOREIGN KEY ([AbvInvestUserId]) REFERENCES [AbvInvestUsers] ([Id]) ON DELETE NO ACTION,
     CONSTRAINT [FK_DailyBalance_Balances_BalanceId] FOREIGN KEY ([BalanceId]) REFERENCES [Balances] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE TABLE [Deals] (
@@ -215,7 +207,6 @@ CREATE TABLE [Deals] (
     CONSTRAINT [FK_Deals_Markets_MarketId] FOREIGN KEY ([MarketId]) REFERENCES [Markets] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_Deals_Securities_SecurityId] FOREIGN KEY ([SecurityId]) REFERENCES [Securities] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE TABLE [SecuritiesPerClient] (
@@ -236,91 +227,69 @@ CREATE TABLE [SecuritiesPerClient] (
     CONSTRAINT [FK_SecuritiesPerClient_DailySecuritiesPerClient_DailySecuritiesPerClientId] FOREIGN KEY ([DailySecuritiesPerClientId]) REFERENCES [DailySecuritiesPerClient] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_SecuritiesPerClient_Securities_SecurityId] FOREIGN KEY ([SecurityId]) REFERENCES [Securities] ([Id]) ON DELETE CASCADE
 );
-
 GO
 
 CREATE INDEX [EmailIndex] ON [AbvInvestUsers] ([NormalizedEmail]);
-
 GO
 
 CREATE UNIQUE INDEX [UserNameIndex] ON [AbvInvestUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
-
 GO
 
 CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
-
 GO
 
 CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
-
 GO
 
 CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
-
 GO
 
 CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
-
 GO
 
 CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
-
 GO
 
 CREATE INDEX [IX_Balances_CurrencyId] ON [Balances] ([CurrencyId]);
-
 GO
 
 CREATE INDEX [IX_DailyBalance_AbvInvestUserId] ON [DailyBalance] ([AbvInvestUserId]);
-
 GO
 
 CREATE UNIQUE INDEX [IX_DailyBalance_BalanceId] ON [DailyBalance] ([BalanceId]);
-
 GO
 
 CREATE INDEX [IX_DailyDeals_AbvInvestUserId] ON [DailyDeals] ([AbvInvestUserId]);
-
 GO
 
 CREATE INDEX [IX_DailySecuritiesPerClient_AbvInvestUserId] ON [DailySecuritiesPerClient] ([AbvInvestUserId]);
-
 GO
 
 CREATE INDEX [IX_Deals_CurrencyId] ON [Deals] ([CurrencyId]);
-
 GO
 
 CREATE INDEX [IX_Deals_DailyDealsId] ON [Deals] ([DailyDealsId]);
-
 GO
 
 CREATE INDEX [IX_Deals_MarketId] ON [Deals] ([MarketId]);
-
 GO
 
 CREATE INDEX [IX_Deals_SecurityId] ON [Deals] ([SecurityId]);
-
 GO
 
 CREATE INDEX [IX_Securities_CurrencyId] ON [Securities] ([CurrencyId]);
-
 GO
 
 CREATE INDEX [IX_Securities_IssuerId] ON [Securities] ([IssuerId]);
-
 GO
 
 CREATE INDEX [IX_SecuritiesPerClient_CurrencyId] ON [SecuritiesPerClient] ([CurrencyId]);
-
 GO
 
 CREATE INDEX [IX_SecuritiesPerClient_DailySecuritiesPerClientId] ON [SecuritiesPerClient] ([DailySecuritiesPerClientId]);
-
 GO
 
 CREATE INDEX [IX_SecuritiesPerClient_SecurityId] ON [SecuritiesPerClient] ([SecurityId]);
-
 GO
 
-
+COMMIT;
