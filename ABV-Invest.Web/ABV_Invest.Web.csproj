@@ -12,6 +12,10 @@
     <PackageReference Include="CloudinaryDotNet" Version="1.15.2" />
     <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.18.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
     <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0-beta" />
@@ -27,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="appsettings.Development.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Areas\Administration\Views\Data\AddSecurity.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
