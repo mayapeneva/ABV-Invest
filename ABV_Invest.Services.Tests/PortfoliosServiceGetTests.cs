@@ -45,7 +45,7 @@
                         TotalMarketPrice = 20000,
                         Profit = 10000,
                         ProfitInBGN = 10000,
-                        ProfitPercentаge = 100,
+                        ProfitPercentage = 100,
                         PortfolioShare = 10
                     }
                 }

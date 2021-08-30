@@ -278,7 +278,7 @@ namespace ABV_Invest.Data.Migrations
                     b.Property<decimal>("ProfitInBGN")
                         .HasColumnType("decimal(18, 4)");
 
-                    b.Property<decimal>("ProfitPercentаge")
+                    b.Property<decimal>("ProfitPercentage")
                         .HasColumnType("decimal(18, 4)");
 
                     b.Property<decimal>("Quantity")

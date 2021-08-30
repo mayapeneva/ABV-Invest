@@ -43,7 +43,7 @@
 
         [Required]
         [Column(TypeName = "decimal(18, 4)")]
-        public decimal ProfitPercentаge { get; set; }
+        public decimal ProfitPercentage { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(18, 4)")]

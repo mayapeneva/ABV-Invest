@@ -28,7 +28,7 @@
 
         public decimal Profit { get; set; }
 
-        public decimal ProfitPercentаge { get; set; }
+        public decimal ProfitPercentage { get; set; }
 
         public decimal PortfolioShare { get; set; }
     }

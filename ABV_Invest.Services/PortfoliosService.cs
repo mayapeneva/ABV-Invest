@@ -281,7 +281,7 @@
                 TotalMarketPrice = totalMarketPrice,
                 Profit = profit,
                 ProfitInBGN = profitInBGN,
-                ProfitPercentаge = profitPercent,
+                ProfitPercentage = profitPercent,
                 PortfolioShare = portfolioShare
             };
 

@@ -376,7 +376,7 @@
                     TotalMarketPrice = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
                     Profit = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
                     ProfitInBGN = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
-                    ProfitPercentаge = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
+                    ProfitPercentage = table.Column<decimal>(type: "decimal(18, 4)", nullable: false),
                     PortfolioShare = table.Column<decimal>(type: "decimal(18, 4)", nullable: false)
                 },
                 constraints: table =>

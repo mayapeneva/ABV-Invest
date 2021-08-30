@@ -45,7 +45,7 @@ namespace ABV_Invest.Services.Tests
                         TotalMarketPrice = 20000,
                         Profit = 10000,
                         ProfitInBGN = 10000,
-                        ProfitPercentàge = 100,
+                        ProfitPercentage = 100,
                         PortfolioShare = 10
                     }
                 }
