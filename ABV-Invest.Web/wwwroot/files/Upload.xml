@@ -2,8 +2,8 @@
 <WebData>
   <New>
     <Client>
-      <ClientID>17437</ClientID>
-      <CDNumber>V000017601</CDNumber>
+      <ClientID>00001</ClientID>
+      <CDNumber>0000000001</CDNumber>
       <ClientName>АДАРА АД</ClientName>
       <PortfolioID />
       <PortfolioName />
@@ -20,9 +20,9 @@
     </Instrument>
     <DealData>
       <DealID>34463</DealID>
-      <DealDate>17.12.2018 14:29:24</DealDate>
+      <DealDate>17.12.2020 14:29:24</DealDate>
       <Operation>BUY</Operation>
-      <DeliveryDate>19.12.2018</DeliveryDate>
+      <DeliveryDate>19.12.2020</DeliveryDate>
       <StockExchangeMIC>XBUL</StockExchangeMIC>
       <ShareCount>100.000000</ShareCount>
       <SinglePrice>7.500000</SinglePrice>
@@ -35,8 +35,8 @@
   </New>
   <New>
     <Client>
-      <ClientID>17437</ClientID>
-      <CDNumber>V000017601</CDNumber>
+      <ClientID>00001</ClientID>
+      <CDNumber>0000000001</CDNumber>
       <ClientName>АДАРА АД</ClientName>
       <PortfolioID />
       <PortfolioName />
@@ -53,9 +53,9 @@
     </Instrument>
     <DealData>
       <DealID>34464</DealID>
-      <DealDate>17.12.2018 14:29:24</DealDate>
+      <DealDate>17.12.2020 14:29:24</DealDate>
       <Operation>BUY</Operation>
-      <DeliveryDate>19.12.2018</DeliveryDate>
+      <DeliveryDate>19.12.2020</DeliveryDate>
       <StockExchangeMIC>XBUL</StockExchangeMIC>
       <ShareCount>2500.000000</ShareCount>
       <SinglePrice>7.500000</SinglePrice>
@@ -68,8 +68,8 @@
   </New>
   <New>
     <Client>
-      <ClientID>17437</ClientID>
-      <CDNumber>V000017601</CDNumber>
+      <ClientID>00001</ClientID>
+      <CDNumber>0000000001</CDNumber>
       <ClientName>АДАРА АД</ClientName>
       <PortfolioID />
       <PortfolioName />
@@ -86,9 +86,9 @@
     </Instrument>
     <DealData>
       <DealID>34465</DealID>
-      <DealDate>17.12.2018 14:29:24</DealDate>
+      <DealDate>17.12.2020 14:29:24</DealDate>
       <Operation>BUY</Operation>
-      <DeliveryDate>19.12.2018</DeliveryDate>
+      <DeliveryDate>19.12.2020</DeliveryDate>
       <StockExchangeMIC>XBUL</StockExchangeMIC>
       <ShareCount>200.000000</ShareCount>
       <SinglePrice>7.500000</SinglePrice>

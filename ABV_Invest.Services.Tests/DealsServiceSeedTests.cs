@@ -17,8 +17,8 @@
 
     public class DealsServiceSeedTests
     {
-        private const string UserNameOne = "V000017601";
-        private const string UserNameTwo = "V000018024";
+        private const string UserNameOne = "0000000001";
+        private const string UserNameTwo = "0000000003";
 
         private readonly AbvDbContext db;
         private readonly IDealsService dealsService;
