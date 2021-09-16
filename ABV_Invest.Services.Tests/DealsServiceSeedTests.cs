@@ -76,7 +76,7 @@
         public async Task _1_SeedDeals_ShouldCreateDealCollectionForThisDateForEachUserInFile()
         {
             // Arrange
-            var date = new DateTime(2018, 11, 01);
+            var date = new DateTime(2020, 11, 01);
             var expected = true;
 
             // Act
@@ -98,7 +98,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 02);
+            var date = new DateTime(2020, 12, 02);
             var userName = "V000018048";
 
             // Act
@@ -113,7 +113,7 @@
         public async Task _3_SeedDeals_ShouldNotCreateSecondDealsCollectionForUserWithSameDate()
         {
             // Arange
-            var date = new DateTime(2018, 12, 03);
+            var date = new DateTime(2020, 12, 03);
             await dealsService.SeedDeals(deserializedDeals, date);
             var expectedDealsCount = 1;
 
@@ -134,7 +134,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 04);
+            var date = new DateTime(2020, 12, 04);
             var securityISIN = "BG1100041067";
 
             // Act
@@ -154,7 +154,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 05);
+            var date = new DateTime(2020, 12, 05);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -173,7 +173,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 06);
+            var date = new DateTime(2020, 12, 06);
             var currencyCode = "EUR";
 
             // Act
@@ -193,7 +193,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 07);
+            var date = new DateTime(2020, 12, 07);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -212,7 +212,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 08);
+            var date = new DateTime(2020, 12, 08);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -231,7 +231,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 09);
+            var date = new DateTime(2020, 12, 09);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -250,7 +250,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 10);
+            var date = new DateTime(2020, 12, 10);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -269,7 +269,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 11);
+            var date = new DateTime(2020, 12, 11);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -288,7 +288,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 12);
+            var date = new DateTime(2020, 12, 12);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -307,7 +307,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 13);
+            var date = new DateTime(2020, 12, 13);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -326,7 +326,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 14);
+            var date = new DateTime(2020, 12, 14);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -345,7 +345,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 15);
+            var date = new DateTime(2020, 12, 15);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
@@ -364,7 +364,7 @@
             var serializer = new XmlSerializer(typeof(DealRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 16);
+            var date = new DateTime(2020, 12, 16);
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);

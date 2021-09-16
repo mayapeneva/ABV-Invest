@@ -23,7 +23,7 @@
         private readonly Mock<AbvInvestUser> moqUser;
         private readonly ClaimsPrincipal principal;
 
-        private DateTime Date = new DateTime(2018, 12, 16);
+        private DateTime Date = new DateTime(2020, 12, 16);
 
         public DealsServiceGetTests()
         {
@@ -46,7 +46,7 @@
                         Coupon = 0,
                         TotalPrice = 10000,
                         Fee = 90,
-                        Settlement = new DateTime(2018, 12, 18)
+                        Settlement = new DateTime(2020, 12, 18)
                     }
                 }
             }});
@@ -88,7 +88,7 @@
         public async Task GetUserDailyDeals_ShouldReturnNullIfThereIsNoDealsForThisDate()
         {
             // Arange
-            var date = new DateTime(2018, 12, 27);
+            var date = new DateTime(2020, 12, 27);
 
             // Act
             var result = await dealsService.GetUserDailyDeals<DealDto>(principal, date);

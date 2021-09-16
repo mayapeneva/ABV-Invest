@@ -22,7 +22,7 @@
         private readonly Mock<AbvInvestUser> moqUser;
         private readonly ClaimsPrincipal principal;
 
-        private DateTime Date = new DateTime(2018, 12, 15);
+        private DateTime Date = new DateTime(2020, 12, 15);
 
         public PortfoliosServiceGetTests()
         {
@@ -89,7 +89,7 @@
         public async Task GetUserDailyPortfolio_ShouldReturnNullIfThereIsNoPortfolioForThisDate()
         {
             // Arange
-            var date = new DateTime(2018, 12, 27);
+            var date = new DateTime(2020, 12, 27);
 
             // Act
             var result = await portfoliosService.GetUserDailyPortfolio<PortfolioDto>(principal, date);

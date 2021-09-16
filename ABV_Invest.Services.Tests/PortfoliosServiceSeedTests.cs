@@ -66,7 +66,7 @@
         public async Task _1_SeedPortfolios_ShouldCreatePortfolioForThisDateForEachUserInFile()
         {
             // Arrange
-            var date = new DateTime(2018, 12, 01);
+            var date = new DateTime(2020, 12, 01);
             var expected = true;
 
             // Act
@@ -88,7 +88,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 02);
+            var date = new DateTime(2020, 12, 02);
             var userName = "V000018048";
 
             // Act
@@ -103,7 +103,7 @@
         public async Task _3_SeedPortfolios_ShouldNotCreateSecondProtfolioForUserWithSameDate()
         {
             // Arange
-            var date = new DateTime(2018, 12, 03);
+            var date = new DateTime(2020, 12, 03);
             await portfoliosService.SeedPortfolios(deserializedPortfolios, date);
             var expectedPortfoliosCount = 1;
 
@@ -131,7 +131,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 04);
+            var date = new DateTime(2020, 12, 04);
             var expectedUserFullName = "ИНДЪСТРИ ДИВЕЛЪПМЪНТ ХОЛДИНГ АД";
 
             // Act
@@ -151,7 +151,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 05);
+            var date = new DateTime(2020, 12, 05);
             var securityISIN = "BG1100019980";
 
             // Act
@@ -171,7 +171,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 06);
+            var date = new DateTime(2020, 12, 06);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -185,7 +185,7 @@
         public async Task _7_SeedPortfolios_ShouldNotMakePortfolioRowEntryIfSecurityAlreadyEnteredInThisDailyPortfolio()
         {
             // Arange
-            var date = new DateTime(2018, 12, 07);
+            var date = new DateTime(2020, 12, 07);
             var securityISIN = "BG1100026985";
             var expectedSecurityEntryCount = 1;
 
@@ -206,7 +206,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 08);
+            var date = new DateTime(2020, 12, 08);
             var currencyCode = "EUR";
 
             // Act
@@ -226,7 +226,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 09);
+            var date = new DateTime(2020, 12, 09);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -245,7 +245,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 10);
+            var date = new DateTime(2020, 12, 10);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -264,7 +264,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 11);
+            var date = new DateTime(2020, 12, 11);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -283,7 +283,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 12);
+            var date = new DateTime(2020, 12, 12);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -302,7 +302,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 13);
+            var date = new DateTime(2020, 12, 13);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -321,7 +321,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 14);
+            var date = new DateTime(2020, 12, 14);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -340,7 +340,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 15);
+            var date = new DateTime(2020, 12, 15);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -359,7 +359,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 16);
+            var date = new DateTime(2020, 12, 16);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);
@@ -378,7 +378,7 @@
             var serializer = new XmlSerializer(typeof(PortfolioRowBindingModel[]), new XmlRootAttribute("WebData"));
             var deserPortfolios = (PortfolioRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
-            var date = new DateTime(2018, 12, 17);
+            var date = new DateTime(2020, 12, 17);
 
             // Act
             await portfoliosService.SeedPortfolios(deserPortfolios, date);

@@ -19,7 +19,7 @@ namespace ABV_Invest.Services.Tests
         private readonly IBalancesService balanacesService;
 
         private readonly Mock<AbvInvestUser> moqUser;
-        private readonly DateTime date = new DateTime(2018, 12, 20);
+        private readonly DateTime date = new DateTime(2020, 12, 20);
 
         public BalancesServiceTests()
         {
