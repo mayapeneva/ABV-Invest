@@ -99,7 +99,7 @@
             var deserDeals = (DealRowBindingModel[])serializer.Deserialize(new StringReader(xmlFileContent));
 
             var date = new DateTime(2020, 12, 02);
-            var userName = "V000018048";
+            var userName = "0000000002";
 
             // Act
             await dealsService.SeedDeals(deserDeals, date);
